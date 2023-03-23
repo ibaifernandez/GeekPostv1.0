@@ -40,8 +40,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-        favicon: 'geekpost-icon.png',
-        template: 'template.html'
+        favicon: "./src/front/img/geekpost-icon.png",
+        template: "template.html",
     }),
     new Dotenv({ safe: true, systemvars: true })
   ]
