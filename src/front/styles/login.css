@@ -1,27 +1,17 @@
-* {
-    box-sizing: border-box;
-    color: #0c0d1f;
-    font: 400 15px 'Didact Gothic', sans-serif;
-}
-
-*::after,
-*::before {
-    box-sizing: inherit;
-}
-
-html,
-body {
-    font: 400 15px 'Didact Gothic', sans-serif;
+.fondo {
+    font: 400 30px 'Didact Gothic',
+        sans-serif;
     height: 100%;
     margin: 0;
     overflow: hidden;
     padding: 0;
     width: 100%;
+    height: 100%;
 }
 
-body {
+.fondo {
     background-attachment: fixed;
-    background-image: url(https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg);
+    background-image: url("https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -29,20 +19,26 @@ body {
     position: relative;
 }
 
-a {
+.fondo {
+    width: 100%;
+    height: 900px;
+}
+
+
+.alink {
     color: #ae9a51;
     text-decoration: none;
 }
 
-a:hover {
+.alink:hover {
     text-decoration: underline;
 }
 
-label {
+.labellogin {
     display: block;
 }
 
-input {
+.inputlogin {
     background: transparent;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -52,10 +48,10 @@ input {
     position: relative;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    width: 100%;
+    width: 90%;
 }
 
-input:focus {
+.inputlogin:focus {
     border-bottom-color: #0c0d1f;
 }
 
@@ -66,19 +62,19 @@ input:focus {
     width: 100%;
 }
 
-.col {
+.recuadro {
     border-radius: inherit;
-    float: left;
+    float: right;
     margin: 0;
     padding: 30px 50px;
     position: relative;
 }
 
-.col.col-6 {
+.recuadro.col-6 {
     width: calc(((100% - calc(((12 / 6) - 1) * 0px)) / 12) * 6);
 }
 
-.col.col-6:not(:last-child) {
+.recuadro.col-6:not(:last-child) {
     margin: 0 0px 0 0;
 }
 
@@ -94,7 +90,7 @@ input:focus {
     -webkit-transform: translate3d(-50%, -50%, 0) scale(1, 1);
     transform: translate3d(-50%, -50%, 0) scale(1, 1);
     width: 90%;
-    max-width: 1000px;
+
 }
 
 .login-title {
@@ -103,19 +99,20 @@ input:focus {
     width: 60%;
 }
 
-h1 {
-    font: 400 48px 'Lobster', cursive;
+.h1login {
+    font: 400 60px 'Lobster', cursive;
     text-transform: uppercase;
 }
 
 .small-text {
-    font-size: 22px;
+    font-size: 30px;
 }
 
 .login-form {
     background: #f9f0ea;
     text-align: center;
-    width: 40%;
+    width: 60%;
+    font: 400 20px 'Didact Gothic', sans-serif;
 }
 
 .login-form>form>*:not(:last-child) {
@@ -209,7 +206,7 @@ h1 {
     content: '\f084';
 }
 
-.button {
+.buttonlogin {
     border: none;
     background: #ae9a51;
     color: #f9f0ea;

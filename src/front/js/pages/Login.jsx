@@ -28,42 +28,43 @@ export const Login = () => {
  
   
     return (
-        <div className="container row login-box">
-        <div className=" col login-title">
-        <h1>Que quieres crear hoy?</h1>
+      <div className="fondo" id="fondo">
+        <div className="container row login-box" >
+        <div className="  recuadro login-title">
+        <h1 className="h1login">Que quieres crear hoy?</h1>
         <span className="small-text">Empecemos!</span>
         </div>
-        <div className=" col login-form p-3">
-        <div className="avatar p-3">
+        <div className=" col recuadro login-form ">
+        <div className="avatar ">
         </div>
         <div className="registration">
         Necesitas una cuenta? 
-        <Link to="/signup"><a href="#">Registrate</a></Link>
+        <Link to="/signup"><a href="#" className="alink">Registrate</a></Link>
         </div>
         <form action="" method="POST">
-        <label for="login" className="login">
+        <label htmlFor="login" className="login labellogin">
         <input id="login" type="email" 
-        className="ps-4 m-1"
+        className=" inputlogin"
         placeholder="Usuario" 
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         />
         </label>
-        <label for="passwd" className="passwd ps-4 m-1">
-        <input id="passwd" type="password" placeholder="Password" 
-         onChange={(e) => setPassword(e.target.value)}
-         value={password}
+        <label htmlFor="passwd" className="passwd  labellogin">
+        <input id="passwd" type="password" placeholder="Password" className="inputlogin"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
         />
         </label>
-        <button className="button" type="submit" onClick={handleSubmit} >Entrar</button>
+        <button className="buttonlogin" type="submit" onClick={handleSubmit} >Entrar</button>
         </form>
         <div className="lost-passwd">
-        <a href="#">Olvidaste tu password?</a>
+        <a href="#" className="alink">Olvidaste tu password?</a>
         </div>
         </div>
         </div>
        
-       
+    </div>  
     );
   };
   
