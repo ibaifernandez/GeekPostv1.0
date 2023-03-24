@@ -1,7 +1,147 @@
-/*
-    home.css: This website contains selectors only used in home.css
+/*--------------------------------------------------------------
+  # Hero Section
+  --------------------------------------------------------------*/
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+  #hero {
+    position: relative;
+    height: 75vh;
+    background: url("../img/hero-img.jpeg");
+    background-size: cover;
+    margin-top: -70px;
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(95, 57, 141, 0.5);
+}
+
+#hero .container {
+    position: relative;
+}
+
+#hero h1 {
+    margin: 0 0 10px 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    color: var(--white);
+    text-align: right;
+}
+
+#hero h2 {
+    color: var(--yellow);
+    margin-bottom: 50px;
+    font-size: 24px;
+    text-align: right;
+}
+
+.btn-get-started {
+    font-weight: 200;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 28px 11px 28px;
+    border-radius: 50px;
+    transition: 1s;
+    margin: 10px 0 0 0;
+    color: var(--white);
+    border: 1px solid var(--white);
+    background: transparent;
+}
+
+.btn-get-started:hover {
+    background: var(--fucsia);
+    color: var(--white);
+}
+
+.btn-watch-video {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+    margin: 10px 0 0 25px;
+    color: #fff;
+    line-height: 1;
+}
+
+.bi-play-circle {
+    font-weight: 100;
+}
+
+#hero .btn-watch-video i {
+    line-height: 0;
+    color: #fff;
+    font-size: 32px;
+    transition: 0.3s;
+    margin-right: 8px;
+}
+
+#hero .btn-watch-video:hover i {
+    color: #47b2e4;
+}
+
+#hero .animated {
+    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (max-width: 991px) {
+    #hero {
+        height: 100vh;
+        text-align: center;
+    }
+
+    #hero .animated {
+        animation: none;
+    }
+
+    #hero .hero-img {
+        text-align: center;
+    }
+
+    #hero .hero-img img {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    #hero h2 {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 30px;
+    }
+
+    #hero .hero-img img {
+        width: 70%;
+    }
+}
+
+@media (max-width: 575px) {
+    #hero .hero-img img {
+        width: 80%;
+    }
+
+    #hero .btn-get-started {
+        font-size: 16px;
+        padding: 10px 24px 11px 24px;
+    }
+}
+
+@keyframes up-down {
+    0% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}

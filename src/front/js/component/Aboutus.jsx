@@ -40,19 +40,18 @@ export const Aboutus = () => (
                         </div>
                     </div>
                 </div>
-                {/* <div className="col-lg-1 pt-4 pt-lg-0"></div> */}
-                <div className="col-lg-5 pt-4 pt-lg-0 ms-5 my-auto">
-                    <p className="about-us-main-text">
+                <div className="col-lg-5 pt-4 pt-lg-0 ms-lg-5 my-auto">
+                    <p className="lead">
                         Somos maravillosos, increíbles, cojonudos, fabulosos,
-                        maravillosos, inmejorables, incomparables, empiezo a
-                        quedarme sin adejativos para poder rellenar cuatro o
-                        cinco líneas de texto... ¡Nooo! Increíble pero cierto:
-                        aun me falta una línea entera... ¡entera! A ver, creo
-                        que ya...
+                        maravillosos, incomparables... Y empiezo a
+                        quedarme sin adjetivos para poder rellenar cuatro o
+                        cinco líneas de texto...
                     </p>
-                    <a href="#" className="btn-learn-more">
+                    <div className="d-flex justify-content-center">
+                        <a href="#" className="btn-learn-more ms-0">
                         Conócenos 🤓
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

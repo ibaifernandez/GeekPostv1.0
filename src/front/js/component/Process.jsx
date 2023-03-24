@@ -1,11 +1,12 @@
 import React from "react";
+import roundedPhoto1 from "../../img/cta-bg.jpg";
 
 export const Process = () => (
-    <section id="services" className="services section-bg">
+    <section id="process" className="process section-bg">
         <div className="container" data-aos="fade-up">
             <div className="section-title">
                 <h2>El proceso más fácil</h2>
-                <p>
+                <p className="lead">
                     Un sencillo proceso que te servirá para postear en tus redes
                     favoritas con el mejor estilo y el mínimo esfuerzo.
                 </p>
@@ -17,8 +18,8 @@ export const Process = () => (
                     data-aos-delay="100"
                 >
                     <div className="icon-box">
-                        <div className="icon">
-                            <i className="bi bi-camera"></i>
+                       <div className="icon d-flex justify-content-center">
+                            <img className="rounded-photo" src={roundedPhoto1} />
                         </div>
                         <h3>Carga una foto</h3>
                         <p>
@@ -33,8 +34,8 @@ export const Process = () => (
                     data-aos-delay="200"
                 >
                     <div className="icon-box">
-                        <div className="icon">
-                            <i className="bi bi-pencil"></i>
+                      <div className="icon d-flex justify-content-center">
+                            <img className="rounded-photo" src={roundedPhoto1} />
                         </div>
                         <h3>Añade información</h3>
                         <p>
@@ -49,8 +50,8 @@ export const Process = () => (
                     data-aos-delay="200"
                 >
                     <div className="icon-box">
-                        <div className="icon">
-                            <i className="bi bi-gear-wide-connected"></i>
+                        <div className="icon d-flex justify-content-center">
+                            <img className="rounded-photo" src={roundedPhoto1} />
                         </div>
                         <h3>¡Obtén tu diseño!</h3>
                         <p>
@@ -65,8 +66,8 @@ export const Process = () => (
                     data-aos-delay="200"
                 >
                     <div className="icon-box">
-                        <div className="icon">
-                            <i className="bi bi-share-fill"></i>
+                        <div className="icon d-flex justify-content-center">
+                            <img className="rounded-photo" src={roundedPhoto1} />
                         </div>
                         <h3>Comparte</h3>
                         <p>

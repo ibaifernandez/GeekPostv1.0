@@ -5,7 +5,6 @@ import { Main } from "../component/Main.jsx";
 
 export const Home = () => (
     <>
-        <Hero />
         <Main />
     </>
 );
