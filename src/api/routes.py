@@ -91,17 +91,24 @@ def update_account():
         user_query.name =  body["name"]
     if "last_name" in body:
         user_query.last_name =  body["last_namewebsite_url"]
-    if "website_url" in body:
-        user_query.website_url =  body["website_url"]
+    if "contact_data" in body:
+        user_query.contact_data =  body["contact_data"]
     if "facebook_profile" in body:
         user_query.facebook_profile =  body["facebook_profile"]
     if "instagram_profile" in body:
         user_query.instagram_profile =  body["instagram_profile"]
     if "tiktok_profile" in body:
         user_query.instagram_profile =  body["tiktok_profile"]
-    if "business_name" in body:
-        user_query.business_name =  body["business_name"]
-
+    if "identity" in body:
+        user_query.identity =  body["identity"]
+    if "logo" in body:
+        user_query.logo =  body["logo"]
+    if "main_color" in body:
+        user_query.main_color =  body["main_color"]
+    if "secondary_color" in body:
+        user_query.secondary_color =  body["secondary_color"]
+    if "aux_color" in body:
+        user_query.aux_color =  body["aux_color"]
     db.session.commit()
     return jsonify({"msg": "You information has been updated"}), 200
 

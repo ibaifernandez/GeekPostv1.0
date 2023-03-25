@@ -8,11 +8,15 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     first_name = db.Column(db.String(80), unique=False, nullable=False)
     last_name = db.Column(db.String(80), unique=False, nullable=True)
-    website_url = db.Column(db.String(250), unique=True, nullable=True)
+    contact_data = db.Column(db.String(250), unique=True, nullable=True)
     facebook_profile =  db.Column(db.String(250), nullable=True)
     instagram_profile =  db.Column(db.String(250), nullable=True)
     tiktok_profile =  db.Column(db.String(250), nullable=True)
-    business_name =  db.Column(db.String(250), nullable=True)
+    identity =  db.Column(db.String(250), nullable=True)
+    logo =  db.Column(db.String(250), nullable=True)
+    main_color = db.Column(db.String(250), nullable=True)
+    secondary_color = db.Column(db.String(250), nullable=True)
+    aux_color = db.Column(db.String(250), nullable=True)
     post = db.relationship('Post', backref='user', lazy=True)
 
     def __repr__(self):
@@ -24,12 +28,16 @@ class User(db.Model):
             "email": self.email,
             "first_name": self.first_name,
             "last_name": self.last_name,
-            "website_url": self.website_url,
+            "contact_data": self.contact_data,
             "facebook_profile": self.facebook_profile,
             "instagram_profile": self.instagram_profile,
             "tiktok_profile": self.tiktok_profile,
-            "business_name": self.business_name
-            # do not serialize the password, its a security breach
+            "identity": self.identity,
+            "logo": self.logo,
+            "main_color": self.main_color,
+            "secondary_color": self.secondary_color,
+            "aux_color": self.aux_color,
+
         }
 
 class Post(db.Model):
@@ -48,7 +56,7 @@ class Post(db.Model):
     ratio = db.Column(db.String(250), nullable=True)
     image_id = db.Column(db.String(250), nullable=True)
     final_composition = db.Column(db.String(250), nullable=True)
-    contact_details = db.Column(db.String(250), nullable=True)
+    contact_data = db.Column(db.String(250), nullable=True)
         
     def __repr__(self):
         return '<Post %r>' % self.id
@@ -69,5 +77,5 @@ class Post(db.Model):
             "ratio": self.ratio,
             "image_id": self.image_id,
             "final_composition": self.final_composition,
-            "contact_details": self.contact_details
+            "contact_data": self.contact_data
         }

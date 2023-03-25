@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/index.css";
 import YouTube from "react-youtube";
+import { Link } from "react-router-dom";
 
 export const Hero = () => (
     <section id="hero" className="d-flex align-items-center p-3">
@@ -23,9 +24,11 @@ export const Hero = () => (
                     </h1>
                     <h2 className="fs-1">... muy sencilla.</h2>
                     <div className="d-flex justify-content-center justify-content-lg-end">
-                        <a href="#about" className="btn-get-started">
-                            Regístrate 🖋
-                        </a>
+                        <Link to={`/signup`}>
+                            <a href="#about" className="btn-get-started">
+                                Regístrate 🖋
+                            </a>
+                        </Link>
                         <a
                             href="#"
                             className="glightbox btn-watch-video nav-link"

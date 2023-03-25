@@ -11,17 +11,14 @@ export const Login = () => {
     const { store, actions } = useContext(Context);
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState("");
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
       e.preventDefault();
       if (email === "" || password === "") {
-        console.log("Complete la Formacion solicitada");
+        alert("Enter your information to login");
       } else {
-        const ver = await actions.fetchCredentials(email, password);
-        ver ? Navigate("/principal") : null;
-        //	if (store.login === true)
-        //	   {<Link to="/demo"/> }
-        console.log(ver);
+        const isAuth = await actions.fetchCredentials( {email, password} );;
+        isAuth ? navigate("/home") : null;
       }
     };
 
