@@ -6,7 +6,6 @@ import GeekPostIso from "../../img/geekpost-iso.png";
 
 export const Footer = () => (
     <footer id="footer">
-        <Newsletter />
         <div className="footer-top">
             <div className="container">
                 <div className="row">

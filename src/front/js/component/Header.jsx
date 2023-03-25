@@ -20,7 +20,7 @@ export const Header = () => {
             id="header"
             className="sticky-top"
         >
-            <nav className="navbar navbar-expand-lg  px-3 d-flex justify-content-between">
+            <nav className="navbar navbar-expand-lg px-3 d-flex justify-content-between">
                 <Logo />
                 <button
                     className="navbar-toggler"

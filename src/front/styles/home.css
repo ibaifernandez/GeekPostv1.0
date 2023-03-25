@@ -1,147 +1,55 @@
-/*--------------------------------------------------------------
-  # Hero Section
-  --------------------------------------------------------------*/
-
-  #hero {
-    position: relative;
-    height: 75vh;
-    background: url("../img/hero-img.jpeg");
-    background-size: cover;
-    margin-top: -70px;
+#home {
+    background: var(--blue);
 }
 
-#hero::before {
-    content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    background-color: rgba(95, 57, 141, 0.5);
+#home-header {
+    transition: all 0.5s;
+    z-index: 999;
+    zoom: 0.95;
+    background: var(--purple);
 }
 
-#hero .container {
-    position: relative;
+#home-header #logo .logo {
+    margin: 0;
 }
 
-#hero h1 {
-    margin: 0 0 10px 0;
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 56px;
+#home-header #logo a h1 span {
+    font-style: italic;
     color: var(--white);
-    text-align: right;
+    font-size: 42px;
+    top: 3px;
+    left: 7px;
 }
 
-#hero h2 {
-    color: var(--yellow);
-    margin-bottom: 50px;
-    font-size: 24px;
-    text-align: right;
+#home-header #logo a img {
+    max-height: 40px;
+    z-index: 1;
 }
 
-.btn-get-started {
-    font-weight: 200;
-    font-size: 16px;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 10px 28px 11px 28px;
-    border-radius: 50px;
-    transition: 1s;
-    margin: 10px 0 0 0;
-    color: var(--white);
-    border: 1px solid var(--white);
-    background: transparent;
+/* Sidebar */
+
+aside {
+    width: 280px;
+    height:100vh;
+    position:absolute;
+    padding: 148px 0 0 1rem;
+
 }
 
-.btn-get-started:hover {
-    background: var(--fucsia);
-    color: var(--white);
+#sidebar-username {
+    font-size:18px;
+    margin-top: 15px;
 }
 
-.btn-watch-video {
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    transition: 0.5s;
-    margin: 10px 0 0 25px;
-    color: #fff;
-    line-height: 1;
+.sidebar-nav-link {
+    padding:1.35rem 0;
 }
 
-.bi-play-circle {
-    font-weight: 100;
+#main-wrapper {
+    position:relative;
+    margin-left:280px;
 }
 
-#hero .btn-watch-video i {
-    line-height: 0;
-    color: #fff;
-    font-size: 32px;
-    transition: 0.3s;
-    margin-right: 8px;
-}
-
-#hero .btn-watch-video:hover i {
-    color: #47b2e4;
-}
-
-#hero .animated {
-    animation: up-down 2s ease-in-out infinite alternate-reverse both;
-}
-
-@media (max-width: 991px) {
-    #hero {
-        height: 100vh;
-        text-align: center;
-    }
-
-    #hero .animated {
-        animation: none;
-    }
-
-    #hero .hero-img {
-        text-align: center;
-    }
-
-    #hero .hero-img img {
-        width: 50%;
-    }
-}
-
-@media (max-width: 768px) {
-    #hero h1 {
-        font-size: 28px;
-        line-height: 36px;
-    }
-
-    #hero h2 {
-        font-size: 18px;
-        line-height: 24px;
-        margin-bottom: 30px;
-    }
-
-    #hero .hero-img img {
-        width: 70%;
-    }
-}
-
-@media (max-width: 575px) {
-    #hero .hero-img img {
-        width: 80%;
-    }
-
-    #hero .btn-get-started {
-        font-size: 16px;
-        padding: 10px 24px 11px 24px;
-    }
-}
-
-@keyframes up-down {
-    0% {
-        transform: translateY(10px);
-    }
-
-    100% {
-        transform: translateY(-10px);
-    }
+#home-process h2 {
+    font-size:24px;
 }
