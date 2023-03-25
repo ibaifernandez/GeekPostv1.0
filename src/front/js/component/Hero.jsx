@@ -11,11 +11,18 @@ export const Hero = () => (
                     data-aos="fade-up"
                     data-aos-delay="200"
                 >
+
+                </div>
+                <div
+                    className="col-lg-6 hero-img"
+                    data-aos="zoom-in"
+                    data-aos-delay="200"
+                >
                     <h1 className="hero-h1">
                         Publica en redes sociales de una manera sencilla...
                     </h1>
                     <h2 className="fs-1">... muy sencilla.</h2>
-                    <div className="d-flex justify-content-center justify-content-lg-start">
+                    <div className="d-flex justify-content-center justify-content-lg-end">
                         <a href="#about" className="btn-get-started">
                             Regístrate 🖋
                         </a>
@@ -25,21 +32,6 @@ export const Hero = () => (
                         >
                             <span>&gt; Watch Video 🎥</span>
                         </a>
-                    </div>
-                </div>
-                <div
-                    className="col-lg-6 hero-img"
-                    data-aos="zoom-in"
-                    data-aos-delay="200"
-                >
-                    <div className="embed-responsive embed-responsive-16by9 mt-5">
-                        <YouTube
-                            className="embed-responsive-item d-flex justify-content-center w-100 mt-md-5"
-                            controls
-                            autoPlay
-                            muted
-                            videoId="jgm58cbu0kw"
-                        />
                     </div>
                 </div>
             </div>

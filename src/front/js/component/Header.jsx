@@ -16,11 +16,11 @@ export const Header = () => {
 
     return (
         <header
-            style={{ background: `rgb(71, 149, 209, ${opacity})` }}
+            style={{ background: `rgb(95, 57, 141, ${opacity})` }}
             id="header"
             className="sticky-top"
         >
-            <nav className="navbar navbar-expand-lg pt-3 pb-3 px-3 d-flex justify-content-between">
+            <nav className="navbar navbar-expand-lg px-3 d-flex justify-content-between">
                 <Logo />
                 <button
                     className="navbar-toggler"
@@ -32,7 +32,7 @@ export const Header = () => {
                     aria-label="Toggle navigation"
                 >
                     <span className="navbar-toggler-icon">
-                        <i className="bi bi-three-dots"></i>
+                        <i className="fas fa-bars"></i>
                     </span>
                 </button>
                 <div
@@ -60,7 +60,7 @@ export const Header = () => {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <button className="nav-item getstarted ms-auto">
+                            <button className="getstarted ms-auto">
                                 Ingresar 🤩
                             </button>
                         </li>

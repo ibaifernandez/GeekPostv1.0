@@ -1,7 +1,55 @@
-/*
-    home.css: This website contains selectors only used in home.css
+#home {
+    background: var(--blue);
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+#home-header {
+    transition: all 0.5s;
+    z-index: 999;
+    zoom: 0.95;
+    background: var(--purple);
+}
+
+#home-header #logo .logo {
+    margin: 0;
+}
+
+#home-header #logo a h1 span {
+    font-style: italic;
+    color: var(--white);
+    font-size: 42px;
+    top: 3px;
+    left: 7px;
+}
+
+#home-header #logo a img {
+    max-height: 40px;
+    z-index: 1;
+}
+
+/* Sidebar */
+
+aside {
+    width: 280px;
+    height:100vh;
+    position:absolute;
+    padding: 148px 0 0 1rem;
+
+}
+
+#sidebar-username {
+    font-size:18px;
+    margin-top: 15px;
+}
+
+.sidebar-nav-link {
+    padding:1.35rem 0;
+}
+
+#main-wrapper {
+    position:relative;
+    margin-left:280px;
+}
+
+#home-process h2 {
+    font-size:24px;
+}

@@ -54,7 +54,7 @@ export const Newsletter = () => {
                 <div className="row justify-content-center">
                     <div className="col-lg-6">
                         <h4>Tu taza humenate de inspiración de los lunes</h4>
-                        <p>
+                        <p className="lead">
                             Suscríbete a nuestra lista de difusión para recibir
                             cada lunes nuestro boletín de noticias semanal con
                             el que avivaremos la llama de tu inspiración.

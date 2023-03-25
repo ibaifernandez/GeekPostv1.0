@@ -1,12 +1,12 @@
 import React from "react";
 import roundedPhoto1 from "../../img/cta-bg.jpg";
 
-export const Process = () => (
-    <section id="process" className="process section-bg">
+export const HomeProcess = () => (
+    <section id="home-process" className="process section-bg">
         <div className="container" data-aos="fade-up">
             <div className="section-title">
-                <h2>El proceso más fácil</h2>
-                <p className="lead">
+                <h2>Recuerda el «Proceso GeekPost»</h2>
+                <p>
                     Un sencillo proceso que te servirá para postear en tus redes
                     favoritas con el mejor estilo y el mínimo esfuerzo.
                 </p>
@@ -78,7 +78,7 @@ export const Process = () => (
                 </div>
                 <div className="d-flex justify-content-center">
                     <a href="#signup" className="btn-get-registered">
-                        Regístrate 🖋
+                        Crear 🖌
                     </a>
                 </div>
             </div>

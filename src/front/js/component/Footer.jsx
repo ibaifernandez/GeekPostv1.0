@@ -6,7 +6,6 @@ import GeekPostIso from "../../img/geekpost-iso.png";
 
 export const Footer = () => (
     <footer id="footer">
-        <Newsletter />
         <div className="footer-top">
             <div className="container">
                 <div className="row">
@@ -18,7 +17,7 @@ export const Footer = () => (
                         />
                         <h2>GeekPost</h2>
                         <p>
-                            <i className="bi bi-geo-alt-fill"></i> Salinas ·
+                            <i className="fa-solid fa-location-dot"></i> Salinas ·
                             Bogotá · Panamá
                         </p>
                     </div>
@@ -75,19 +74,18 @@ export const Footer = () => (
                             mira qué bonitos, serios y profesionales quedan
                             estos botoncitos aquí...
                         </p>
-                        <div className="social-links mt-3">
+                        <div className="social-links">
                             <a href="#" className="twitter">
-                                <i className="bi bi-twitter"></i>{" "}
+                                <i className="fa-brands fa-twitter"></i>
                             </a>
                             <a href="#" className="facebook">
-                                <i className="bi bi-facebook"></i>{" "}
+                                <i className="fa-brands fa-facebook"></i>                            
                             </a>
                             <a href="#" className="instagram">
-                                <i className="bi bi-instagram"></i>{" "}
+                                <i className="fa-brands fa-instagram"></i>
                             </a>
-
                             <a href="#" className="linkedin">
-                                <i className="bi bi-linkedin"></i>{" "}
+                                <i className="fa-brands fa-linkedin-in"></i>
                             </a>
                         </div>
                     </div>
