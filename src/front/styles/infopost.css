@@ -6,6 +6,7 @@ display-flex {
 
 /* @extend list-type-ulli; */
 /*list-type-ulli,
+
 /* roboto-slab-300 - latin */
 /*@font-face {
     font-family: 'Roboto', sans-serif;
@@ -41,8 +42,6 @@ display-flex {
     src: url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 }
     Legacy iOS */
-
-
 
 .ayuda {
     scale: 0.5;
