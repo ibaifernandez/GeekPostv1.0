@@ -22,7 +22,7 @@ export const Infopost = () => {
     <div className="main todo">
       <div className="container cont">
         <form method="POST" className="appointment-form" id="appointment-form">
-          <h2 className="tituloh2">Completar la siguiente informacion</h2>
+          <h2 className="w-100">Completar la siguiente informacion</h2>
 
           <div className="form-group-1">
             <div className="form-group d-flex justify-content-around">
@@ -177,8 +177,9 @@ export const Infopost = () => {
               </select>
             </div>
 
-            <h3 className="tituloh3">
-              ELIGE 3 COLORES QUE SE IDENTIFIQUEN CON TU MARCA:
+            <h3 >
+              Elige 3 colores que se identifiquen con tu marca:
+             
             </h3>
             <div className="d-flex justify-content-around">
               <div className="">
@@ -251,10 +252,8 @@ export const Infopost = () => {
               </div>
             </div>
           </div>
-
-          <div className="form-submit d-flex justify-content-center mt-5 ">
-            <button className="crear">CREA TU DISEÑO</button>
-          </div>
+          <div class="d-flex justify-content-center"><a href="#signup" class="btn-get-registered">Crear 🖌</a></div>
+          
         </form>
       </div>
     </div>
