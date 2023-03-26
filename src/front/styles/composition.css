@@ -41,3 +41,11 @@
     background-color: #666;
     color: white;
 }
+
+button.nav-link {
+    color: purple;
+}
+
+button.nav-link:hover {
+    color: purple;
+}

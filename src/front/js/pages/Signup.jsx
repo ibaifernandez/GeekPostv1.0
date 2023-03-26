@@ -21,9 +21,15 @@ export const Signup = () => {
         password,
         firstName,
       });
-      createUser ? navigate("/home") : null;
+      createUser();
     }
   };
+
+  const handleLogin = async () => {
+    const isAuth = await actions.fetchCredentials( {email, password, firstName} );
+    isAuth ? navigate("/home") : null;
+  };
+  
 
   return (
     <div className="d-flex justify-content-around">
@@ -127,12 +133,30 @@ export const Signup = () => {
 
           <div className="col-12 m-3 ms-3">
             <button
-              type="submit"
+              type="button"
               className="btn btn-primary opacity-50 m-3"
+              data-bs-toggle="modal" 
+              data-bs-target="#staticBackdrop"
               onClick={handleSubmit}
             >
               Registrarme
             </button>
+            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h1 className="modal-title fs-5 text-primary" id="staticBackdropLabel">Registro Exitoso!</h1>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div className="modal-body">
+                    Bienvenido a GeekPost!
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-outline-success" data-bs-dismiss="modal" onClick={handleLogin}>Continua a tu cuenta!</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <Link to="/login">
               <a href="#" className=" text-secondary text-decoration-underline">
                 Ya estoy registrado
