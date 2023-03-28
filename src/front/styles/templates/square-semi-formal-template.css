@@ -1,0 +1,131 @@
+#ssft-wrapper {
+    --raisin-black: #28262C;
+    --tropical-indigo: #998FC7;
+    --periwinkle: #D4C2FC;
+    --magnolia: #F9F5FF;
+    --resolution-blue: #14248A;
+}
+
+#ssft {
+    position: relative; /* Importantísimo para que todo permanezca dentro del cuadrado */
+    margin: 25px auto; /* Esto solo sirve para separarlo del borde superior y centrarlo horizontalmente */
+    width: 800px; 
+    height: 800px;
+    background: var(--magnolia);
+}
+
+#ssft-main-wrapper {
+    height: 70%; /* Altura del contenedor principal (superior) */
+    background: var(--periwinkle); 
+}
+
+#ssft-top-margin-accent {
+    position: absolute; /* Importante para que el acepto del margen superior no se descuadre */
+    left: 100px; 
+    height: 20px; 
+    width: 200px; 
+    background: var(--tropical-indigo); 
+}
+
+#ssft-offer-tag {
+    position: absolute; 
+    width: 150px; 
+    height: 150px;
+    margin: 25px 25px 0 0;
+    border-radius: 50%; 
+    background: var(--resolution-blue);
+    right: 0; 
+    z-index: 999; /* Hace que la etiqueta sobre salga por encima de la fotografía (z-index:998;) */
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    color: var(--magnolia); 
+    font-size: 2rem; 
+    font-weight: bold;
+}
+
+#ssft-main-text { /* Esta es la caja donde va el titulo principal */
+    position:absolute; /* Importante */
+    top:170px; 
+    transform: rotate(270deg);
+    width:400px;
+    height:200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ssft-h1 {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--resolution-blue); 
+}
+
+#ssft-photo-wrapper img {
+    position: absolute; /* Importante */
+    top: 10px; 
+    right: 45px;
+    width: 400px;
+    height: 540px;
+    object-fit: cover; /* Importante: respeta el ratio original cualesquiera que sean sus dimensiones */
+    object-position: 25%; /* Mueve la foto dentro del propio contenedor, lo que permite ajustar que salga hacia el centro */
+    z-index: 998; /* Hace que la foto salga por encima de todo salvo de la etiqueta del precio (z-index:999;) */ 
+}
+
+#ssft-right-margin {
+    position:absolute; /* Importante */
+    top:215px; 
+    right:-25px; 
+    width:400px;
+    height:350px;
+    background: var(--tropical-indigo);
+    transform: rotate(270deg); 
+    display:flex; 
+    align-items: end; 
+    justify-content: center; 
+    padding-right:10px; 
+    color: var(--magnolia); 
+    font-size: 2rem; 
+}
+
+#ssft-left-margin {
+    position:absolute; /* Importante */
+    top: 549px;
+    left: 100px;
+    width: 200px;
+    height: 40px;
+    background: var(--tropical-indigo);
+    color: var(--magnolia);
+}
+
+#ssft-secondary-inner-wrapper {
+    display:flex;
+    padding-left:100px;
+    padding-top:50px;
+    align-items: center;
+    height:240px; /* Importante */
+}
+
+#ssft-secondary-text {
+    width: 300px; /* Importante */
+    color: var(--raisin-black)
+}
+
+#ssft-cta {
+    margin-left:125px; /* Importante */
+    text-align: center; /* Importante */
+}
+
+#ssft-cta p:first-child {
+    padding:15px 30px; /* importante */
+    background: var(--resolution-blue);
+    color: var(--magnolia)
+}
+
+#ssft-cta p:first-child span {
+    font-weight: bold;
+}
+
+#ssft-cta p:nth-child(2) {
+    margin-top:-10px; /* Importante */
+}
