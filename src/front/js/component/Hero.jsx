@@ -3,6 +3,7 @@ import "../../styles/index.css";
 import YouTube from "react-youtube";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
     const [show, setShow] = useState(false);
@@ -29,8 +30,9 @@ return (    <section id="hero" className="d-flex align-items-center p-3">
                         Publica en redes sociales de una manera sencilla...
                     </h1>
                     <h2 className="fs-1">... muy sencilla.</h2>
+                    
                     <div className="d-flex justify-content-center justify-content-lg-end justify-content-md-around">
-                        <a href="#about" className="btn-get-started">
+                        <Link to={`/signup`} className="btn-get-started">
                             Regístrate 🖋
                         </a>
                         <Button

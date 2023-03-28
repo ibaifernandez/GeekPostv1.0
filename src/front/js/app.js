@@ -9,6 +9,7 @@ import { Infopost } from "./pages/Infopost.jsx";
 import { Home } from "./pages/Home.jsx";
 import { VerticalSemiFormalTemplate } from "./templates/VerticalSemiFormalTemplate.jsx"
 import { SquareSemiFormalTemplate } from "./templates/SquareSemiFormalTemplate.jsx"
+import { Compositions } from "./pages/Compositions.jsx";
 import injectContext from "./store/appContext";
 
 import Layout from "./layout.js";
