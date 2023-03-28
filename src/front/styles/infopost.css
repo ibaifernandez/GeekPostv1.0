@@ -82,7 +82,7 @@ figure {
     font-size: 13px;
     line-height: 1.8;
     color: #b72222;
-    background-image: url("https://images.unsplash.com/photo-1661956602944-249bcd04b63f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80");
+    background-image: url("..//img/imagen_infopost2.png");
     background-repeat: no-repeat;
     background-size: cover;
     -moz-background-size: cover;
@@ -95,6 +95,26 @@ figure {
     margin: 0px;
 
 }
+
+.btn-delete {
+    font-weight: 200;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 28px 11px 28px;
+    border-radius: 50px;
+    transition: 1s;
+    margin-top: 3rem;
+    color: var(--blue);
+    border: 1px solid var(--fucsia);
+    background: transparent;
+}
+
+.btn-delete:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
 
 .todo {
     padding: 20px 0;
