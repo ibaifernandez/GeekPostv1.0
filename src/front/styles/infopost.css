@@ -124,7 +124,7 @@ figure {
     padding: 50px 60px 70px 60px;
 }
 
-input,
+/* input,
 select .elegir {
     width: 100%;
     display: block;
@@ -134,7 +134,7 @@ select .elegir {
     color: #222;
     margin-bottom: 15px;
     font-family: 'Roboto Slab';
-}
+} */
 
 input:focus,
 select:focus {
