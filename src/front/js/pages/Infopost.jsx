@@ -16,6 +16,13 @@ export const Infopost = () => {
   const [main_color, setMain_color] = useState(" ");
   const [secondary_color, setSecondary_color] = useState("");
   const [aux_color, setAux_color] = useState("");
+
+  const [Post9_16, setPost9_16] = useState("");
+  const [Post1_1, setPost1_1] = useState("");
+  const [KeyWord1, setKeyWord1] = useState("");
+  const [KeyWord2, setKeyWord2] = useState("");
+  const [KeyWord3, setKeyWord3] = useState("");
+
   const navigate = useNavigate();
 
   return (
@@ -249,15 +256,25 @@ export const Infopost = () => {
 
 
                 <div class="form-check">
-                  <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                 
-                  />
+                  <input className="form-check-input" 
+                  type="checkbox" 
+                  name="Post9_16"
+                  id="Post9_16"
+                  onChange={(e) => setPost9_16(e.target.value)}
+                  value={Post9_16}/>
                   <label className="form-check-label text-dark" for="flexCheckDefault">
                     Historia de Instagram (relacion 9:16)
                     </label>
                 </div>
+                
                 <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                  
+                  <input className="form-check-input" 
+                  type="checkbox" 
+                  name="Post1_1"
+                  id="Post1_1"
+                  onChange={(e) => setPost1_1(e.target.value)}
+                  value={Post1_1}/>
                   <label className="form-check-label text-dark" for="flexCheckDefault">
                     Publicacion de instagram (relacion 1:1)
                     </label>
@@ -271,28 +288,28 @@ export const Infopost = () => {
                 <input
                     type="text"
                     className="m-3 p-2"
-                  //  name="identity"
-                  //  id="identity"
-                  //  onChange={(e) => setIdentity(e.target.value)}
-                  //  value={identity}
+                    name="KeyWord1"
+                    id="KeyWord1"
+                    onChange={(e) => setKeyWord1(e.target.value)}
+                    value={KeyWord1}
                     placeholder="Palabra 1"
               />
                   <input
                     type="text"
                     className="m-3 p-2"
-                  //  name="identity"
-                  //  id="identity"
-                  //  onChange={(e) => setIdentity(e.target.value)}
-                  //  value={identity}
+                    name="KeyWord2"
+                    id="KeyWord2"
+                    onChange={(e) => setKeyWord2(e.target.value)}
+                    value={KeyWord2}
                     placeholder="Palabra 2"
               />
                   <input
                     type="text"
                     className="m-3 p-2"
-                  //  name="identity"
-                  //  id="identity"
-                  //  onChange={(e) => setIdentity(e.target.value)}
-                  //  value={identity}
+                    name="KeyWord3"
+                    id="KeyWord3"
+                    onChange={(e) => setKeyWord3(e.target.value)}
+                    value={KeyWord3}
                     placeholder="Palabra 3"
               />
                 </div>
