@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import roundedPhoto1 from "../../img/subir-foto.jpeg";
 import roundedPhoto2 from "../../img/escribe.jpeg";
 import roundedPhoto3 from "../../img/disena.jpeg";
@@ -80,9 +81,9 @@ export const Process = () => (
                     </div>
                 </div>
                 <div className="d-flex justify-content-center">
-                    <a href="#signup" className="btn-get-registered">
+                    <Link to="/signup" className="btn-get-registered">
                         Regístrate 🖋
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
