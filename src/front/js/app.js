@@ -7,6 +7,7 @@ import { Login } from "./pages/Login.jsx";
 import { Signup } from "./pages/Signup.jsx";
 import { Infopost } from "./pages/Infopost.jsx";
 import { Home } from "./pages/Home.jsx";
+import { Compositions } from "./pages/Compositions.jsx";
 // import { Demo } from "./views/demo";
 // import { Single } from "./views/single";
 import injectContext from "./store/appContext";
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/home" element={<Home />} />
+                <Route path="/compositions" element={<Compositions />} />
                 <Route path="/infopost" element={<Infopost />} />
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Intro />} />
