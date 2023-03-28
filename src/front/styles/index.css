@@ -32,6 +32,7 @@
     src: local("inglobal-bold"),
         url("../../fonts/inglobal-bold.ttf") format("truetype");
 }
+
 @font-face {
     font-family: "inglobal-bold-italic";
     src: local("inglobal-bold-italic"),
@@ -51,6 +52,7 @@ h4,
 h5,
 h6 {
     font-family: "inglobal-bold", sans-serif;
+    color: var(--purple)
 }
 
 p {
@@ -420,7 +422,7 @@ section {
     outline: none;
 }
 
-#footer .footer-newsletter form input[type="submit"] {
+#newsletter-btn {
     position: absolute;
     top: 0;
     right: 0;
@@ -429,14 +431,14 @@ section {
     background: none;
     font-size: 16px;
     padding: 0 20px;
-    background: #47b2e4;
+    background: var(--blue);
     color: #fff;
     transition: 1s;
     border-radius: 50px;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-#footer .footer-newsletter form input[type="submit"]:hover {
+#newsletter-btn:hover {
     background: var(--fucsia);
 }
 
