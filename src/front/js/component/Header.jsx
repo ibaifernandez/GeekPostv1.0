@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Logo } from "./Logo.jsx";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
     const [headerOpacity, setHeaderOpacity] = useState({
@@ -59,11 +60,13 @@ export const Header = () => {
                                 Contacto 💌
                             </a>
                         </li>
-                        <li className="nav-item">
-                            <button className="getstarted ms-auto">
-                                Ingresar 🤩
-                            </button>
-                        </li>
+                        <Link to={`/login`}>
+                            <li className="nav-item">
+                                <button className="getstarted ms-auto">
+                                    Ingresar 🤩
+                                </button>
+                            </li>
+                        </Link>
                     </ul>
                 </div>
             </nav>

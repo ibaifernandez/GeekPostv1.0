@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/index.css";
 import YouTube from "react-youtube";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { Link } from "react-router-dom";
 
-export const Hero = () => (
-    <section id="hero" className="d-flex align-items-center p-3">
+export const Hero = () => {
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+return (    <section id="hero" className="d-flex align-items-center p-3">
         <div className="container">
             <div className="row">
                 <div
@@ -22,19 +30,33 @@ export const Hero = () => (
                         Publica en redes sociales de una manera sencilla...
                     </h1>
                     <h2 className="fs-1">... muy sencilla.</h2>
-                    <div className="d-flex justify-content-center justify-content-lg-end">
-                        <a href="#about" className="btn-get-started">
+                    
+                    <div className="d-flex justify-content-center justify-content-lg-end justify-content-md-around">
+                        <Link to={`/signup`} className="btn-get-started">
                             Regístrate 🖋
                         </a>
-                        <a
-                            href="#"
-                            className="glightbox btn-watch-video nav-link"
-                        >
-                            <span>&gt; Watch Video 🎥</span>
-                        </a>
+                        <Button
+                        onClick={handleShow}
+                        className="btn-watch-video nav-link">
+                            &gt; Ver vídeo 🎥
+                        </Button>
+                        <Modal size="lg" show={show} onHide={handleClose} centered className="d-flex">
+                            <Modal.Header closeButton>
+                                <Modal.Title>Enjoy GeekPost!</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body className="d-flex justify-content-center">
+                                <YouTube videoId="K22qJ-VikTo" />
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={handleClose}>
+                                    Cerrar
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-);
+)
+};
