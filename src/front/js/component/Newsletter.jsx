@@ -7,9 +7,6 @@ export const Newsletter = () => {
         setUsermail(e.target.value);
     };
 
-    const apiKey = '4d4d3ca7e119a5921810d8b5e943647e';
-    const groupId = '111975751';
-
     const addSubscriber = (usermail) => {
         console.log("Enviando...");
         // fetch(`https://api.mailerlite.com/api/v2/groups/${groupId}/subscribers`, {
