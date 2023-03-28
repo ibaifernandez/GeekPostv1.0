@@ -21,8 +21,8 @@ export const Infopost = () => {
   return (
     <div className="main todo">
       <div className="container cont">
-        <form method="POST" className="appointment-form" id="appointment-form">
-          <h2 className="tituloh2">Completar la siguiente informacion</h2>
+        <form method="POST" className="appointment-form formulario_infopost" id="appointment-form">
+          <h2 className="w-100">Completar la siguiente informacion</h2>
 
           <div className="form-group-1">
             <div className="form-group d-flex justify-content-around">
@@ -45,7 +45,8 @@ export const Infopost = () => {
                     <i className="fa-solid fa-question"></i>
               </button>
             </div>
-            <div className="form-group d-flex justify-content-around">
+            <div className="form-group d-flex justify-content-around ">
+              
               <input
               type="text"
               name="identity"
@@ -54,6 +55,7 @@ export const Infopost = () => {
               value={identity}
               placeholder="Identidad"
               />
+
               <button
                   type="button"
                   className=" ayuda btn btn-outline-secondary h-25 mt-4 ms-2 rounded-circle border border-dark-subtle "
@@ -177,9 +179,10 @@ export const Infopost = () => {
               </select>
             </div>
 
-            <h3 className="tituloh3">
-              ELIGE 3 COLORES QUE SE IDENTIFIQUEN CON TU MARCA:
-            </h3>
+            <h4 className="pb-3">
+              Elige 3 colores que se identifiquen con tu marca:
+             
+            </h4>
             <div className="d-flex justify-content-around">
               <div className="">
                 <label htmlFor="color" className="ms-2 labelcss ">
@@ -204,7 +207,7 @@ export const Infopost = () => {
               </div>
               <div>
               <label htmlFor="color" className="ms-2 labelcss ">
-                  Color 1:{" "}
+                  Color 2:{" "}
                 </label>
                 <input
                   type="color"
@@ -228,7 +231,7 @@ export const Infopost = () => {
               
               <div>
               <label htmlFor="color" className="ms-2 labelcss ">
-                  Color 1:{" "}
+                  Color 3:{" "}
                 </label>
                 <input
                   type="color"
@@ -237,10 +240,62 @@ export const Infopost = () => {
                   className="w-50 ms-3 elegir "
                   onChange={(e) => setAux_color(e.target.value)}
                   value={aux_color}
-                
                 />
+                </div>
+                </div>
+                
+                <h4 className="pb-3 pt-3">En que formato quieres tu posteo:</h4>
+                <div >
 
 
+                <div class="form-check">
+                  <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                 
+                  />
+                  <label className="form-check-label text-dark" for="flexCheckDefault">
+                    Historia de Instagram (relacion 9:16)
+                    </label>
+                </div>
+                <div className="form-check">
+                  <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                  <label className="form-check-label text-dark" for="flexCheckDefault">
+                    Publicacion de instagram (relacion 1:1)
+                    </label>
+                
+                </div>
+
+              <h4 className="pb-3 pt-3">Escribe 3 palabras que se relaciones con tu posteo: </h4>
+              
+               
+              <div className="form-group d-flex justify-content-around">
+                <input
+                    type="text"
+                    className="m-3 p-2"
+                  //  name="identity"
+                  //  id="identity"
+                  //  onChange={(e) => setIdentity(e.target.value)}
+                  //  value={identity}
+                    placeholder="Palabra 1"
+              />
+                  <input
+                    type="text"
+                    className="m-3 p-2"
+                  //  name="identity"
+                  //  id="identity"
+                  //  onChange={(e) => setIdentity(e.target.value)}
+                  //  value={identity}
+                    placeholder="Palabra 2"
+              />
+                  <input
+                    type="text"
+                    className="m-3 p-2"
+                  //  name="identity"
+                  //  id="identity"
+                  //  onChange={(e) => setIdentity(e.target.value)}
+                  //  value={identity}
+                    placeholder="Palabra 3"
+              />
+                </div>
 {/* 
                 <button
                     className="ms-3 rounded-circle"
@@ -248,12 +303,14 @@ export const Infopost = () => {
                     value={aux_color}>
                   <i class="fa-sharp fa-solid fa-check"></i>
                 </button> */}
-              </div>
+              
             </div>
           </div>
-
-          <div className="form-submit d-flex justify-content-center mt-5 ">
-            <button className="crear">CREA TU DISEÑO</button>
+          <div className="d-flex justify-content-center"><a href="#signup" className="btn-get-registered">Crear 🖌</a></div>
+          <div className="d-flex justify-content-center">
+          <button type="reset" className="btn-delete "> 
+           Borrar todo <i class="fa-regular fa-trash-can"></i>
+          </button>
           </div>
         </form>
       </div>
