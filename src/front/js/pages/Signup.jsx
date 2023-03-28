@@ -157,10 +157,8 @@ export const Signup = () => {
                 </div>
               </div>
             </div>
-            <Link to="/login">
-              <a href="#" className=" text-secondary text-decoration-underline">
+            <Link to="/login" className=" text-secondary text-decoration-underline">
                 Ya estoy registrado
-              </a>
             </Link>
           </div>
         </form>

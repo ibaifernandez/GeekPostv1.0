@@ -6,7 +6,7 @@ import { Composition } from "../component/Composition.jsx";
 import "../../styles/home.css";
 
 
-export const Compositions = () => (
+export const MyCompositions = () => (
     <div id="home">
         <HomeHeader />
         <HomeSidebar />

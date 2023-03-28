@@ -34,7 +34,7 @@ return (    <section id="hero" className="d-flex align-items-center p-3">
                     <div className="d-flex justify-content-center justify-content-lg-end justify-content-md-around">
                         <Link to={`/signup`} className="btn-get-started">
                             Regístrate 🖋
-                        </a>
+                        </Link>
                         <Button
                         onClick={handleShow}
                         className="btn-watch-video nav-link">
