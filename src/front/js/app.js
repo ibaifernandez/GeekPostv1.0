@@ -10,6 +10,7 @@ import { Home } from "./pages/Home.jsx";
 import { VerticalSemiFormalTemplate } from "./templates/VerticalSemiFormalTemplate.jsx"
 import { SquareSemiFormalTemplate } from "./templates/SquareSemiFormalTemplate.jsx"
 import { MyCompositions } from "./pages/MyCompositions.jsx";
+import { PostFormalStory } from "./component/PostFormalStory.jsx";
 import injectContext from "./store/appContext";
 
 import Layout from "./layout.js";
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/postFormalStory" element={<PostFormalStory />} />
             <Route path="ibai-square" element={<SquareSemiFormalTemplate />} />
             <Route path="ibai-vertical" element={<VerticalSemiFormalTemplate />} />
             <Route path="/infopost" element={<Infopost />} />
