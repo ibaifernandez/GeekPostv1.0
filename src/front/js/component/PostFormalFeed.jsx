@@ -9,7 +9,7 @@ import { Context } from "../store/appContext";
 
 
 
-export const PostFormalStory = () => {
+export const PostFormalFeed = () => {
  
 //     const { store, actions } = useContext(Context);
 //     const { addData } = actions;
