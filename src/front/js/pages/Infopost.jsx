@@ -21,7 +21,7 @@ export const Infopost = () => {
   return (
     <div className="main todo">
       <div className="container cont">
-        <form method="POST" className="appointment-form formulario_infopost" id="appointment-form">
+        <form method="POST" className="appointment-form formulario_infopost" >
           <h2 className="w-100">Completar la siguiente informacion</h2>
 
           <div className="form-group-1">
@@ -45,9 +45,10 @@ export const Infopost = () => {
                     <i className="fa-solid fa-question"></i>
               </button>
             </div>
-            <div className="form-group d-flex justify-content-around ">
+            <div className="form-group d-flex justify-content-around  ">
               
               <input
+              className="border border-0 border-bottom"
               type="text"
               name="identity"
               id="identity"
