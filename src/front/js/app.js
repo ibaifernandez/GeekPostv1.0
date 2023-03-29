@@ -10,18 +10,20 @@ import { Help } from "./pages/Help.jsx";
 import { Contact } from "./pages/Contact.jsx";
 import { Signup } from "./pages/Signup.jsx";
 import { Login } from "./pages/Login.jsx";
-import { Output } from "./pages/Output.jsx";
 import { Error404 } from "./pages/Error404.jsx";
 
 // Vistas tras registro
 import { Home } from "./pages/Home.jsx";
 import { Infopost } from "./pages/Infopost.jsx";
 import { MyCompositions } from "./pages/MyCompositions.jsx";
+import { Output } from "./pages/Output.jsx";
+import { MyProfile } from "./pages/MyProfile.jsx";
 import injectContext from "./store/appContext";
 
 // Plantillas
 import { VerticalSemiFormalTemplate } from "./templates/VerticalSemiFormalTemplate.jsx"
 import { SquareSemiFormalTemplate } from "./templates/SquareSemiFormalTemplate.jsx"
+import { PostFormalFeed } from "./component/PostFormalFeed.jsx";
 
 import { Layout } from "./layout.js";
 import { HomeLayout } from "./homeLayout.js";
@@ -37,7 +39,7 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="ibai-square" element={<SquareSemiFormalTemplate />} />
             <Route path="ibai-vertical" element={<VerticalSemiFormalTemplate />} />
-            <Route path="/info-post" element={<Infopost />} />
+            <Route path="/infopost" element={<Infopost />} />
             <Route path="/output" element={<Output />} />
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Intro />} />
@@ -50,6 +52,7 @@ const App = () => {
                 <Route path="/" element={<HomeLayout />}>
                     <Route path="/home" element={<Home />} /> 
                     <Route path="/my-compositions" element={<MyCompositions />} /> 
+                    <Route path="/profile" element={<Profile />} /> 
                 </Route>
             </Routes>
         </BrowserRouter>
