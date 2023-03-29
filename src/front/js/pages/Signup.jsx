@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/signup.css";
 import { Link, useNavigate } from "react-router-dom";
-import foto1 from "../../../front/img/foto1.jpg";
+import "../../styles/signup.css";
+import fotoSignup from "../../../front/img/foto1.jpg";
 
 export const Signup = () => {
-  const { store, actions } = useContext(Context);
+  const { actions } = useContext(Context);
   const [email, setEmail] = useState(" ");
   const [firstName, setFirstname] = useState(" ");
   const [password, setPassword] = useState("");
@@ -14,7 +14,7 @@ export const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email === "" || password === "" || firstName === "") {
-      alert("Enter all the required information");
+      alert("Por favor, introduce todos los elementos necesarios: correo, contraseña y tu nombre.");
     } else {
       const createUser = await actions.createUser({
         email,
@@ -29,7 +29,6 @@ export const Signup = () => {
     const isAuth = await actions.fetchCredentials( {email, password, firstName} );
     isAuth ? navigate("/home") : null;
   };
-  
 
   return (
     <div className="d-flex justify-content-around">
@@ -164,7 +163,7 @@ export const Signup = () => {
         </form>
       </div>
       <div>
-        <img className="col-8  mt-5 me-5 w-100 rounded" src={foto1} alt="" />
+        <img className="col-8  mt-5 me-5 w-100 rounded" src={fotoSignup} alt="" />
       </div>
     </div>
   );

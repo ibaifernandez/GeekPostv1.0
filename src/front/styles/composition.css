@@ -24,7 +24,7 @@
 }
 
 /* Style the buttons */
-.btn {
+.btn-compositions {
     border: none;
     outline: none;
     padding: 10px 16px;
@@ -33,19 +33,13 @@
     font-size: 18px;
 }
 
-.btn:hover {
+.bt-compsitions:hover {
     background-color: #ddd;
 }
 
-.btn.active {
+.btn-compositions:active {
     background-color: #666;
     color: white;
 }
 
-button.nav-link {
-    color: purple;
-}
-
-button.nav-link:hover {
-    color: purple;
-}
+/*  */
