@@ -1,0 +1,149 @@
+.CuadradoExterior {
+    width: 1080px;
+    height: 1080px;
+    background-color: rgb(228, 224, 210);
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: -2;
+}
+
+.recorte1 {
+    background-color: white;
+    width: 1080px;
+    height: 1080px;
+    position: absolute;
+    top: 0px;
+    left: 1180px;
+}
+
+.recorte2 {
+    background-color: white;
+    width: 1080px;
+    height: 100px;
+    position: absolute;
+    top: 0px;
+    left: 100px;
+}
+
+.CuadradoColor2 {
+    width: 600px;
+    height: 600px;
+    background-color: bisque;
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    z-index: 30;
+}
+
+.ImagenCargada {
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    top: 330px;
+    left: 330px;
+    z-index: 200;
+    object-fit: cover;
+    object-position: bottom;
+
+}
+
+.CuadroQueContiene {
+    position: relative;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.Cuadricula1 {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 240px;
+    left: 240px;
+    z-index: 10000;
+    background-color: blueviolet;
+    opacity: 30%;
+
+}
+
+.Cuadricula2 {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 940px;
+    left: 50px;
+    z-index: 20000;
+    background-color: blueviolet;
+    opacity: 30%;
+}
+
+.CuadradoBorde {
+    border-color: rgb(13, 13, 37) !important;
+    border-width: 50px;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 150px;
+    left: 400px;
+    z-index: 20;
+}
+
+.logo {
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.circulo {
+    width: 300px;
+    height: 300px;
+    background-color: rgb(143, 160, 43);
+    position: absolute;
+    overflow: hidden;
+    top: -100px;
+    left: 900px;
+    overflow: auto;
+}
+
+.TextoPrincipal {
+    font-family: 'Playfair Display', serif;
+    position: absolute;
+    top: 80px;
+    left: 200px;
+    width: 300px;
+
+}
+
+.TextoPrincipalb {
+    font-family: 'Playfair Display', serif;
+    position: absolute;
+    rotate: -90deg;
+    top: 310px;
+    left: 20px;
+    width: 300px;
+
+}
+
+
+.TextoSecundario {
+    font-family: 'Playfair Display', serif;
+    font-size: x-large;
+    position: absolute;
+    top: 120px;
+    left: 200px;
+}
+
+.oferta {
+    background-color: black;
+    width: 200px;
+    height: auto;
+    color: blanchedalmond;
+    position: absolute;
+    top: 950px;
+    left: 600px;
+}

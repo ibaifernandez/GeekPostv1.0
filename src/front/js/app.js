@@ -17,6 +17,8 @@ import { Error404 } from "./pages/Error404.jsx";
 import { Home } from "./pages/Home.jsx";
 import { Infopost } from "./pages/Infopost.jsx";
 import { MyCompositions } from "./pages/MyCompositions.jsx";
+import { MyProfile } from "./pages/MyProfile.jsx";
+import { PostFormalFeed } from "./component/PostFormalFeed.jsx";
 import injectContext from "./store/appContext";
 
 // Plantillas
@@ -37,7 +39,7 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="ibai-square" element={<SquareSemiFormalTemplate />} />
             <Route path="ibai-vertical" element={<VerticalSemiFormalTemplate />} />
-            <Route path="/info-post" element={<Infopost />} />
+            <Route path="/infopost" element={<Infopost />} />
             <Route path="/output" element={<Output />} />
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Intro />} />
