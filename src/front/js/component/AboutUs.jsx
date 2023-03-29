@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ibai from "../../img/ibai-fernandez.jpeg";
 import sebas from "../../img/sebastian-cardonas.jpg";
 import sol from "../../img/Sol-La-Banca.jpg";
@@ -12,15 +13,17 @@ export const AboutUs = () => (
 
             <div className="row content">
                 <div className="col-lg-6 d-flex justify-content-around">
-                    <div className="aboutus-img-wrap">
-                        <img className="aboutus-img" src={ibai} />
-                        <div className="aboutus-img-text">
-                            <p>Ibai Fernández</p>
-                            <p>
-                                <em>Full-Stack Developer</em>
-                            </p>
+                    <a href="https://portfolio.ibaifernandez.com" target="_blank">
+                        <div className="aboutus-img-wrap">
+                            <img className="aboutus-img" src={ibai} />
+                            <div className="aboutus-img-text">
+                                <p>Ibai Fernández</p>
+                                <p>
+                                    <em>Full-Stack Developer</em>
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div className="aboutus-img-wrap">
                         <img className="aboutus-img" src={sebas} />
                         <div className="aboutus-img-text">
@@ -48,9 +51,9 @@ export const AboutUs = () => (
                         cinco líneas de texto...
                     </p>
                     <div className="d-flex justify-content-center">
-                        <a href="#" className="btn-learn-more ms-0">
+                        <Link to="/hello" className="btn-learn-more ms-0">
                         Conócenos 🤓
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

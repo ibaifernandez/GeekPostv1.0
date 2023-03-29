@@ -42,13 +42,13 @@ return (    <section id="hero" className="d-flex align-items-center p-3">
                         </Button>
                         <Modal size="lg" show={show} onHide={handleClose} centered className="d-flex">
                             <Modal.Header closeButton>
-                                <Modal.Title>Enjoy GeekPost!</Modal.Title>
+                                <Modal.Title as="h4">¡Conoce GeekPost!</Modal.Title>
                             </Modal.Header>
                             <Modal.Body className="d-flex justify-content-center">
                                 <YouTube videoId="K22qJ-VikTo" />
                             </Modal.Body>
                             <Modal.Footer>
-                                <Button variant="secondary" onClick={handleClose}>
+                                <Button className="btn-close-video" onClick={handleClose}>
                                     Cerrar
                                 </Button>
                             </Modal.Footer>

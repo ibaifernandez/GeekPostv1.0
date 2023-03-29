@@ -1,20 +1,35 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useContext } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ScrollToTop } from "./component/ScrollToTop.jsx";
 
+// Vistas iniciales
 import { Intro } from "./pages/Intro.jsx";
-import { Login } from "./pages/Login.jsx";
+import { Hello } from "./pages/Hello.jsx";
+import { Docs } from "./pages/Docs.jsx";
+import { Help } from "./pages/Help.jsx";
+import { Contact } from "./pages/Contact.jsx";
 import { Signup } from "./pages/Signup.jsx";
-import { Infopost } from "./pages/Infopost.jsx";
+import { Login } from "./pages/Login.jsx";
+import { Error404 } from "./pages/Error404.jsx";
+
+// Vistas tras registro
 import { Home } from "./pages/Home.jsx";
-import { VerticalSemiFormalTemplate } from "./templates/VerticalSemiFormalTemplate.jsx"
-import { SquareSemiFormalTemplate } from "./templates/SquareSemiFormalTemplate.jsx"
+import { Infopost } from "./pages/Infopost.jsx";
 import { MyCompositions } from "./pages/MyCompositions.jsx";
+import { Output } from "./pages/Output.jsx";
+import { MyProfile } from "./pages/MyProfile.jsx";
 import injectContext from "./store/appContext";
 
-import Layout from "./layout.js";
+// Plantillas
+import { VerticalSemiFormalTemplate } from "./templates/VerticalSemiFormalTemplate.jsx"
+import { SquareSemiFormalTemplate } from "./templates/SquareSemiFormalTemplate.jsx"
+import { PostFormalFeed } from "./component/PostFormalFeed.jsx";
 
+import { Layout } from "./layout.js";
+import { HomeLayout } from "./homeLayout.js";
+    
 const App = () => {
+    
     const basename = process.env.BASENAME || "";
 
     return (
@@ -22,21 +37,22 @@ const App = () => {
             <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/home" element={<Home />} />
             <Route path="ibai-square" element={<SquareSemiFormalTemplate />} />
             <Route path="ibai-vertical" element={<VerticalSemiFormalTemplate />} />
             <Route path="/infopost" element={<Infopost />} />
+            <Route path="/output" element={<Output />} />
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Intro />} />
-                    {/* <Route path="/hello" element={<Hello />} />
+                    <Route path="/hello" element={<Hello />} />
                     <Route path="/docs" element={<Docs />} />
-                    <Route path="/help" element={<Help />} /> */}
-                    <Route path="*" element={<h1>Not found!</h1>} />
-                {/* </Route>
+                    <Route path="/help" element={<Help />} /> */
+                    <Route path="/contact" element={<Contact />} /> */
+                    <Route path="*" element={<Error404 />} />
+                </Route>
                 <Route path="/" element={<HomeLayout />}>
-                    <Route path="/xxx" element={<HomeProcess />} />
-                    <Route path="/yyy" element={<Profile />} /> */}
-                <Route path="/my-compositions" element={<MyCompositions />} /> 
+                    <Route path="/home" element={<Home />} /> 
+                    <Route path="/my-compositions" element={<MyCompositions />} /> 
+                    <Route path="/profile" element={<Profile />} /> 
                 </Route>
             </Routes>
         </BrowserRouter>

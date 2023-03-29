@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import logo from "../../img/geekpost-icon.png";
 
 export const Logo = () => (
     <div id="logo" className="d-flex align-items-center logo">
-        <a
+        <Link to="/"
             href="#"
             className="logo-link"
         >
@@ -12,6 +13,6 @@ export const Logo = () => (
             <h1 className="logo position-relative">
                 <span className="position-relative">GeekPost</span>
             </h1>
-        </a>
+        </Link>
     </div>
 );

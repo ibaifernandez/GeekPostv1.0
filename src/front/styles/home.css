@@ -33,7 +33,7 @@ aside {
     height:100vh;
     position:absolute;
     padding: 148px 0 0 1rem;
-
+    background: var(--blue);
 }
 
 #sidebar-username {
@@ -45,7 +45,7 @@ aside {
     padding:1.35rem 0;
 }
 
-#main-wrapper {
+.main-wrapper {
     position:relative;
     margin-left:280px;
 }

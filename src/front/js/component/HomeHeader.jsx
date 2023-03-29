@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Logo } from "./Logo.jsx";
+import { Link } from "react-router-dom"
 
 export const HomeHeader = () => {
     // const [headerOpacity, setHeaderOpacity] = useState({
@@ -24,9 +25,11 @@ export const HomeHeader = () => {
                 <Logo />
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <button className="getstarted ms-auto">
-                                Crear 🖌
-                            </button>
+                            <Link to="/info-post">
+                                <button className="getstarted ms-auto">
+                                    Crear 🖌
+                                </button>
+                            </Link>
                         </li>
                     </ul>
             </nav>

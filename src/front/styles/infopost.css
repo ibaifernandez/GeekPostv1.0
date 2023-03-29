@@ -1,8 +1,8 @@
 /* @extend display-flex; */
-display-flex {
+/* display-flex {
     display: flex;
     display: -webkit-flex;
-}
+} */
 
 /* @extend list-type-ulli; */
 /*list-type-ulli,
@@ -82,7 +82,7 @@ figure {
     font-size: 13px;
     line-height: 1.8;
     color: #b72222;
-    background-image: url("..//img/imagen_infopost2.png");
+    background-image: url("..//img/fondo2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     -moz-background-size: cover;
@@ -134,7 +134,7 @@ figure {
 }
 
 .appointment-form {
-    padding: 50px 60px 70px 60px;
+    padding: 50px 60px 70px 60px !important;
 }
 
 /* input,
@@ -151,38 +151,38 @@ select .elegir {
 
 input:focus,
 select:focus {
-    color: #222;
-    border-bottom: 2px solid #4966b1;
+    color: #222 !important;
+    border-bottom: 2px solid #4966b1 !important;
 }
 
 
 
 
 input[type=checkbox]:not(old):checked+label>span {
-    background-image: -moz-linear-gradient(white, white);
-    background-image: -ms-linear-gradient(white, white);
-    background-image: -o-linear-gradient(white, white);
-    background-image: -webkit-linear-gradient(white, white);
-    background-image: linear-gradient(white, white);
+    background-image: -moz-linear-gradient(white, white) !important;
+    background-image: -ms-linear-gradient(white, white) !important;
+    background-image: -o-linear-gradient(white, white) !important;
+    background-image: -webkit-linear-gradient(white, white) !important;
+    background-image: linear-gradient(white, white) !important;
 }
 
 input[type=checkbox]:not(old):checked+label>span:before {
-    content: '\f26b';
-    display: block;
-    color: #222;
-    font-size: 11px;
-    line-height: 1.2;
-    text-align: center;
-    font-family: 'Material-Design-Iconic-Font';
-    font-weight: bold;
+    content: '\f26b' !important;
+    display: block !important;
+    color: #222 !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    font-family: 'Material-Design-Iconic-Font' !important;
+    font-weight: bold !important;
 }
 
 .label-agree-term {
-    color: #999;
+    color: #999 !important;
 }
 
 .term-service {
-    color: #222;
+    color: #222 !important;
 }
 
 .crear {
@@ -241,19 +241,19 @@ input[type=checkbox]:not(old):checked+label>span:before {
 }
 
 .labelcss {
-    width: 100%;
-    display: block;
-    border: none;
-    padding: 0;
-    color: #585757;
-    margin-bottom: 2px;
-    font-family: 'Roboto Slab';
+    width: 100% !important;
+    display: block !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #585757 !important;
+    margin-bottom: 2px !important;
+    font-family: 'Roboto Slab' !important;
 }
 
 input:focus,
 select:focus {
-    color: #222;
-    border-bottom: 2px solid #4966b1;
+    color: #222 !important;
+    border-bottom: 2px solid #4966b1 !important;
 }
 
 
