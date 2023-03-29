@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const NeedHelp = () => (
     <section id="cta" className="cta">
@@ -19,9 +20,9 @@ export const NeedHelp = () => (
                     <p className="lead">Déjate ayudar. </p>
                 </div>
                 <div className="col-lg-3 cta-btn-container text-center">
-                    <a className="cta-btn align-middle" href="#">
+                    <Link to="/help" className="cta-btn align-middle">
                         ¡Ayuda! 😱
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
