@@ -11,7 +11,9 @@
 
 .fondo {
     background-attachment: fixed;
-    background-image: url("https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg");
+    background-image: url("../img/login\ 2.jpg") !important;
+
+    /*background-image: url("https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg");*/
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -26,7 +28,7 @@
 
 
 .alink {
-    color: #ae9a51;
+    color: #61398d;
     text-decoration: none;
 }
 
@@ -63,6 +65,7 @@
 }
 
 .recuadro {
+    background-color: #61398d;
     border-radius: inherit;
     float: right;
     margin: 0;
@@ -139,7 +142,7 @@
 .avatar::after,
 .avatar::before {
     border-radius: 50%;
-    color: #ae9a51;
+    color: #61398d;
     content: '';
     left: 50%;
     position: absolute;
@@ -208,8 +211,8 @@
 
 .buttonlogin {
     border: none;
-    background: #ae9a51;
-    color: #f9f0ea;
+    background: #fac52c;
+    color: #61398d;
     cursor: pointer;
     display: block;
     padding: 12px;
