@@ -1,0 +1,19 @@
+.final-composition-wrapper {
+    background: lightblue;
+}
+
+.final-composition-wrapper-img {
+    display:flex;
+    justify-content: center;
+    transform: scale(0.85);
+    margin-top:-25px;
+    zoom:0.75;
+}
+
+.feedback-happy-talk-lead {
+    padding: 1rem 100px 0 1rem;
+}
+
+.feedback-happy-talk{
+    padding: 0 100px 0 1rem;
+}

@@ -8,7 +8,6 @@
 
 #ssft {
     position: relative; /* Importantísimo para que todo permanezca dentro del cuadrado */
-    margin: 25px auto; /* Esto solo sirve para separarlo del borde superior y centrarlo horizontalmente */
     width: 800px; 
     height: 800px;
     background: var(--magnolia);

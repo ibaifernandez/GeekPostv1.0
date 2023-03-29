@@ -10,6 +10,7 @@ import { Help } from "./pages/Help.jsx";
 import { Contact } from "./pages/Contact.jsx";
 import { Signup } from "./pages/Signup.jsx";
 import { Login } from "./pages/Login.jsx";
+import { Output } from "./pages/Output.jsx";
 import { Error404 } from "./pages/Error404.jsx";
 
 // Vistas tras registro
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="ibai-square" element={<SquareSemiFormalTemplate />} />
             <Route path="ibai-vertical" element={<VerticalSemiFormalTemplate />} />
             <Route path="/info-post" element={<Infopost />} />
+            <Route path="/output" element={<Output />} />
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Intro />} />
                     <Route path="/hello" element={<Hello />} />
