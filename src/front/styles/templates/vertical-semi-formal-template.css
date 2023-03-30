@@ -50,7 +50,7 @@
     font-size: 32px;
     font-weight: 900;
     color: var(--resolution-blue);
-    margin: 0; /* Importante */
+    margin: 0 0 0 1rem; /* Importante */
 }
 
 #vsft-photo-wrapper img {

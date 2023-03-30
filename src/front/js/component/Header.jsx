@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Logo } from "./Logo.jsx";
 import { Link } from "react-router-dom";
 
@@ -8,10 +8,10 @@ export const Header = () => {
         currentScrollHeight: 0,
     });
 
-    window.onscroll = () => {
+    useEffect(window.onscroll = () => {
         const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
         setHeaderOpacity({ currentScrollHeight: newScrollHeight });
-    };
+    },[]);
 
     const opacity = Math.min(headerOpacity.currentScrollHeight / 100, 1);
 
@@ -22,7 +22,7 @@ export const Header = () => {
             className="sticky-top"
         >
             <nav className="navbar navbar-expand-lg px-3 d-flex justify-content-between">
-                <Logo />
+                    <Logo />
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -42,23 +42,28 @@ export const Header = () => {
                 >
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <a
+                            <Link
                                 className="nav-link active"
                                 aria-current="page"
-                                href="#"
+                                to="/hello"
                             >
                                 ¡Hola! 👋🏼
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <Link to="/help" className="nav-link">
                                 Ayuda 👩🏽‍🚒
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <Link to="/docs" className="nav-link">
+                                Docs 📚
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/contact" className="nav-link">
                                 Contacto 💌
-                            </a>
+                            </Link>
                         </li>
                         <Link to={`/login`}>
                             <li className="nav-item">
