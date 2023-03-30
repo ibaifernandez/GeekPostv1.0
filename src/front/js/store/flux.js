@@ -1,4 +1,4 @@
-let url = "https://3001-ibaifernand-geekpostv10-gfvsk2kj0s4.ws-us92.gitpod.io"
+let url = "https://3001-ibaifernand-geekpostv10-pw2de15qidw.ws-us93.gitpod.io"
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -16,7 +16,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			user: []
+			user: [],
+			errorLogin: "",
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -42,7 +43,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({ email: email, password: password }),
 				  });
-				  if (resp.status === 401) {
+				  if (resp.status === 404) {
+					setStore( { errorLogin: "Usuario o Contraseña incorrecta" } )
 					return false;
 				  } else if (resp.status === 400) {
 					return false;
@@ -54,7 +56,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return true;
 				  }
 				} catch (error) {
-				  console.log("Error loading message from backend", error);
+					console.log("Error loading message from backend", error);
+					return false
 				}
 			},
 			createUser: async ({ email, password, firstName }) => {
@@ -62,9 +65,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  const resp = await fetch(url + "/api/signup", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ email: email, password: password, first_name: firstName }),
+					body: JSON.stringify({ email , password , first_name: firstName }),
 				  });
-				  if (resp.status === 401) {
+				  if (resp.status === 403) {
+					setStore( { errorLogin: "Cuenta ya existente" } )
 					return false;
 				  } else if (resp.status === 400) {
 					return false;
@@ -72,11 +76,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  if (resp.status === 200) {
 					const data = await resp.json();
 					localStorage.setItem("token", data?.access_token);
-					setStore({ auth: true });
+					setStore( { errorLogin: "" } )
+					setStore( { auth: true } );
 					return true;
 				  }
 				} catch (error) {
 				  console.log("Error loading message from backend", error);
+				  return false
 				}
 			},
 			getUserDetails: async () => {
@@ -103,6 +109,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(e);
 				}
 			},
+
+				//reset the global store
+				setStore({ demo: demo });
+			}
+
 			logOut: () => {
                 localStorage.removeItem("token");
                 setStore({
@@ -116,3 +127,4 @@ const getState = ({ getStore, getActions, setStore }) => {
 };
 
 export default getState;
+

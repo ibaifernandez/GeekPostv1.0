@@ -24,7 +24,7 @@ def login():
         return jsonify({"msg": "Incorrect email or password"}), 401
 
     access_token = create_access_token(identity=user.id)
-    return jsonify(access_token=access_token)
+    return jsonify(access_token=access_token), 200
 
 
 @api.route("/home", methods=["GET"])
@@ -43,7 +43,7 @@ def signup():
     user = User.query.filter_by(email=body["email"]).first()
 
     if user:
-        return jsonify({"msg": "User already exists"}), 404
+        return jsonify({"msg": "User already exists"}), 403
 
     new_user = User(
         email = body["email"], 
@@ -52,9 +52,11 @@ def signup():
 
     db.session.add(new_user)
     db.session.commit()
-    
-    response_body = {"msg": "Hello, you have signed up"}
-    return jsonify(response_body), 200
+
+    userCreated = User.query.filter_by(email=body["email"]).first()
+
+    access_token = create_access_token(identity=userCreated.id)
+    return jsonify(access_token=access_token), 200
 
 
 @api.route('/profile', methods=['DELETE'])
@@ -122,9 +124,25 @@ def get_users():
 
 @api.route('/profile', methods=['GET'])
 @jwt_required()
-def get_user_details():
+def get_user_info():
     current_user = get_jwt_identity()
     user_query = User.query.filter_by(id=current_user).first()
     result = user_query.serialize()
 
     return jsonify(result), 200
+
+
+# ROUTES FOR POST TABLE
+
+@api.route('/infoPost', methods=['GET'])
+@jwt_required()
+def get_info_post():
+    current_user = get_jwt_identity()
+    post_query = Post.query.filter_by(user_id=current_user).first()
+    
+    if post_query is None:
+        return jsonify({"msg": "There are no Post for this user"}), 400
+    else:
+        result = post_query.serialize()
+        return jsonify(result), 200
+    
