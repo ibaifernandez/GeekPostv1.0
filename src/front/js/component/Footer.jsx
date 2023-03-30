@@ -27,7 +27,7 @@ export const Footer = () => (
                         <ul>
                             <li>
                                 <i className="fa fa-chevron-right me-3"></i>
-                                <Link to="/hola">¡Hola!</Link>
+                                <Link to="/hello">¡Hola!</Link>
                             </li>
                             <li>
                                 <i className="fa fa-chevron-right me-3"></i>

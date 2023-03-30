@@ -25,7 +25,7 @@ export const HomeHeader = () => {
                 <Logo />
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <Link to="/info-post">
+                            <Link to="/infopost">
                                 <button className="getstarted ms-auto">
                                     Crear 🖌
                                 </button>
