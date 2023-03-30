@@ -9,13 +9,13 @@ import { Navigate, Link, useNavigate } from "react-router-dom";
 
 export const Login = () => {
     const { store, actions } = useContext(Context);
-    const [email, setEmail] = useState(" ");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
       e.preventDefault();
       if (email === "" || password === "") {
-        alert("Enter all the required information");
+        store.errorLogin = "Llene todos los campos"
       } else {
         const isAuth = await actions.fetchCredentials( {email, password} );
         isAuth ? navigate("/home") : null;
@@ -58,6 +58,10 @@ export const Login = () => {
               </label>
               <button className="buttonlogin" type="submit" onClick={handleSubmit} >Entrar</button>
             </form>
+            {store.errorLogin
+            ? <div className="text-danger"><p>{store.errorLogin}</p></div> 
+            : null
+            }
             <div className="lost-passwd">
               <a href="#" className="alink">Olvidaste tu password?</a>
             </div>
