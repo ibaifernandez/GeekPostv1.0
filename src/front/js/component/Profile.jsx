@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/composition.css";
+import "../../styles/profile.css";
 import roundedPhoto1 from "../../img/cta-bg.jpg";
 
 export const profile = () => {
@@ -23,7 +23,7 @@ export const profile = () => {
       </div>
     </div>
     
- 
+
     <div class="form-group">
         <label class="col-md-4 control-label" >Apellido</label> 
         <div class="col-md-10 inputGroupContainer">
@@ -45,7 +45,7 @@ export const profile = () => {
         </div>
     </div>
     
- 
+
     <div class="form-group">
         <label class="col-md-4 control-label">Dato de contacto</label>  
         <div class="col-md-10 inputGroupContainer">
@@ -56,7 +56,7 @@ export const profile = () => {
         </div>
     </div>
     
- 
+
     <div class="form-group">
         <label class="col-md-4 control-label">Perfil de Facebbok</label>  
         <div class="col-md-10 inputGroupContainer">
@@ -77,7 +77,7 @@ export const profile = () => {
         </div>
         </div>
     </div>
-     
+
 
     <div class="form-group">
         <label class="col-md-4 control-label">Perfil de TikTok</label>  
@@ -111,7 +111,7 @@ export const profile = () => {
               type="file"
           />
         </label>
-     
+
       </div>
 
       <div class="form-group">
@@ -133,7 +133,7 @@ export const profile = () => {
           </div>
         </div>
       </div>
-       
+      
       <div class="form-group">
         <label class="col-md-4 control-label">Color 3</label>  
           <div class="col-md-10 inputGroupContainer">
