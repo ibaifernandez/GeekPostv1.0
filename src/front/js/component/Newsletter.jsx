@@ -7,8 +7,8 @@ export const Newsletter = () => {
         setUsermail(e.target.value);
     };
 
-    const addSubscriber = (usermail) => {
-        console.log("Enviando...");
+    const addSubscriber = (e) => {
+        e.preventDefault()
         // fetch(`https://api.mailerlite.com/api/v2/groups/${groupId}/subscribers`, {
         //     method: 'POST',
         //     headers: {
