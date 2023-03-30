@@ -33,13 +33,13 @@ export const Infopost = () => {
 
           <div className="form-group-1">
             <div className="form-group d-flex justify-content-around">
-              <label htmlFor="formFileSm" className="form-label labelcss">
+              <label htmlFor="formFileSm" className="ms-2 form-label labelcss">
                 Subir foto
                 <input
                     className="form-control form-control-sm"
                     id="image"
                     onChange={(e) => setImage(e.target.value)}
-                    //  value={image}
+                  //  value={image}
                     type="file"
                 />
               </label>
@@ -54,14 +54,15 @@ export const Infopost = () => {
             </div>
             <div className="form-group d-flex justify-content-around ">
               
-              <input
+            <input
               type="text"
               name="identity"
               id="identity"
+              className="inputInfoPost border border-0 border-bottom"
               onChange={(e) => setIdentity(e.target.value)}
               value={identity}
               placeholder="Identidad"
-              />
+            />
 
               <button
                   type="button"
@@ -78,6 +79,7 @@ export const Infopost = () => {
               type="text"
               name="main_text"
               id="main_text"
+              className="inputInfoPost border border-0 border-bottom"
               onChange={(e) => setMain_text(e.target.value)}
               value={main_text}
               placeholder="Texto principal (opcional)"
@@ -97,6 +99,7 @@ export const Infopost = () => {
               type="text"
               name="secondary_text"
               id="secondary_text"
+              className="inputInfoPost "
               onChange={(e) => setSecondary_text(e.target.value)}
               value={secondary_text}
               placeholder="Texto secundario (opcional)"
@@ -116,6 +119,7 @@ export const Infopost = () => {
               type="text"
               name="price"
               id="price"
+              className="inputInfoPost border border-0 border-bottom"
               onChange={(e) => setPrice(e.target.value)}
               value={price}
               placeholder="Oferta (opcional)"
@@ -135,6 +139,7 @@ export const Infopost = () => {
               type="text"
               name="contact"
               id="contact"
+              className="inputInfoPost border border-0 border-bottom"
               onChange={(e) => setContact_details(e.target.value)}
               value={contact_details}
               placeholder="Dato de contacto (opcional)"
@@ -151,30 +156,33 @@ export const Infopost = () => {
 
            
             <div className="form-group">
-              <label htmlFor="formFileSm" className="form-label labelcss">
+              <label htmlFor="formFileSm" className=" form-label labelcss">
                 Subir logo
               </label>
               <input
-                className="form-control form-control-sm"
+                className="form-control form-control-sm inputLogo"
                 id="Logo"
                 onChange={(e) => setLogo(e.target.value)}
-                value={logo}
+              //  value={logo}
                 type="file"
               />
-             
-            
+          
+
+
+
          
           </div>
             <div className="select-list seleccionar">
               <label
                  htmlFor="confirm_type"
-                 className="form-label labelcss"
+                 className="form-label labelcss mt-3 "
                  required
               >
                 Que tan formal queres que sea tu publicacion
               </label>
               <select
                 name="confirm_type"
+                className="SelectorFormalidad "
                 onChange={(e) => setFormality(e.target.value)}
                 value={formality}
                 id="formality"
@@ -209,7 +217,7 @@ export const Infopost = () => {
                   onClick={(e) => setMain_color(e.target.value)}
                   value={main_color}
                 >
-                  <i class="fa-sharp fa-solid fa-check"></i>
+                  <i className="fa-sharp fa-solid fa-check"></i>
                 </button> */}
               </div>
               <div>
@@ -220,7 +228,7 @@ export const Infopost = () => {
                   type="color"
                   name="color"
                   id="color"
-                  className="w-50 ms-3 elegir "
+                  className="w-50 ms-3 elegir  "
                   onChange={(e) => setSecondary_color(e.target.value)}
                   value={secondary_color}
                 
@@ -232,7 +240,7 @@ export const Infopost = () => {
                   onClick={(e) => setSecondary_color(e.target.value)}
                   value={secondary_color}
                 >
-                  <i class="fa-sharp fa-solid fa-check"></i>
+                  <i className="fa-sharp fa-solid fa-check"></i>
                 </button> */}
               
               
@@ -255,7 +263,7 @@ export const Infopost = () => {
                 <div >
 
 
-                <div class="form-check">
+                <div className="form-check">
                   <input className="form-check-input" 
                   type="checkbox" 
                   name="Post9_16"
@@ -284,10 +292,10 @@ export const Infopost = () => {
               <h4 className="pb-3 pt-3">Escribe 3 palabras que se relaciones con tu posteo: </h4>
               
                
-              <div className="form-group d-flex justify-content-around">
+              <div className="form-group d-flex justify-content-around ">
                 <input
                     type="text"
-                    className="m-3 p-2"
+                    className="m-3 p-2 border border-0 border-bottom inputKW"
                     name="KeyWord1"
                     id="KeyWord1"
                     onChange={(e) => setKeyWord1(e.target.value)}
@@ -296,7 +304,7 @@ export const Infopost = () => {
               />
                   <input
                     type="text"
-                    className="m-3 p-2"
+                    className="m-3 p-2 border border-0 border-bottom inputKW"
                     name="KeyWord2"
                     id="KeyWord2"
                     onChange={(e) => setKeyWord2(e.target.value)}
@@ -305,7 +313,7 @@ export const Infopost = () => {
               />
                   <input
                     type="text"
-                    className="m-3 p-2"
+                    className="m-3 p-2 border border-0 border-bottom inputKW"
                     name="KeyWord3"
                     id="KeyWord3"
                     onChange={(e) => setKeyWord3(e.target.value)}
@@ -318,15 +326,21 @@ export const Infopost = () => {
                     className="ms-3 rounded-circle"
                     onClick={(e) => setAux_color(e.target.value)}
                     value={aux_color}>
-                  <i class="fa-sharp fa-solid fa-check"></i>
+                  <i className="fa-sharp fa-solid fa-check"></i>
                 </button> */}
               
             </div>
           </div>
-          <div className="d-flex justify-content-center"><a href="#signup" className="btn-get-registered">Crear 🖌</a></div>
+          <div className="d-flex justify-content-center">
+            <button 
+                className="btn-get-registered"
+                onClick={() => {
+                  getInfoPost();
+                    }}> Crear 🖌  </button>
+            <a href="#signup" className="btn-get-registered">Crear 🖌</a></div>
           <div className="d-flex justify-content-center">
           <button type="reset" className="btn-delete "> 
-           Borrar todo <i class="fa-regular fa-trash-can"></i>
+           Borrar todo <i className="fa-regular fa-trash-can"></i>
           </button>
           </div>
         </form>

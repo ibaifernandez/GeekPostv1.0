@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 //import { useParams } from "react-router-dom";
 //import { getCharacters } from "../helpers/getCharacters";
 //include your index.scss file into the bundle
-import "../../styles/postFormalStory.css";
+import "../../styles/postFormalFeed.css";
 import { Context } from "../store/appContext";
 
 
@@ -25,7 +25,7 @@ export const PostFormalFeed = () => {
     <>
     <div className="container-fluid CuadroQueContiene">
         <div className="CuadradoExterior">
-        <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2560px-Adidas_Logo.svg.png" alt=""/>
+        <img className="logoPFF" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2560px-Adidas_Logo.svg.png" alt=""/>
         <div className="border-bottom divTextoPrincipal">
         <h3  className="TextoPrincipal text-decoration-underline">TEXTO PRINCIPAL</h3>
         </div>

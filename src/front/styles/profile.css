@@ -6,13 +6,28 @@
     width: 120px;
     position: absolute;
     top: 50px;
-    left: 500px;
+    left: 530px;
 }
+
+.BotonP1 {
+    position: relative;
+
+    left: -50px;
+}
+
+
+
+.InputArchivos {
+    width: 580px;
+
+}
+
+
 
 .TituloProfile {
     position: absolute;
     top: 200px;
-    left: 500px;
+    left: 530px;
 }
 
 .ContenedorProfile {
@@ -21,8 +36,24 @@
 
 }
 
+.InputProfile {
+    width: 700px;
+}
+
+
+
+.ContenedorProfileG {
+    width: 1400px;
+    height: 830px;
+    position: relative;
+
+    left: 270px;
+}
+
+
 .formularioProfile {
     position: absolute;
     top: 300px;
     left: 300px;
+    width: 700px;
 }
