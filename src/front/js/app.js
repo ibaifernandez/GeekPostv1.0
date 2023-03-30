@@ -39,6 +39,7 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="ibai-square" element={<SquareSemiFormalTemplate />} />
             <Route path="ibai-vertical" element={<VerticalSemiFormalTemplate />} />
+            <Route path="post-formal-feed" element={<PostFormalFeed />} />
             <Route path="/infopost" element={<Infopost />} />
             <Route path="/output" element={<Output />} />
                 <Route path="/" element={<Layout />}>
@@ -52,7 +53,7 @@ const App = () => {
                 <Route path="/" element={<HomeLayout />}>
                     <Route path="/home" element={<Home />} /> 
                     <Route path="/my-compositions" element={<MyCompositions />} /> 
-                    <Route path="/profile" element={<Profile />} /> 
+                    <Route path="/my-profile" element={<MyProfile />} /> 
                 </Route>
             </Routes>
         </BrowserRouter>
