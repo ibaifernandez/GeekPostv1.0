@@ -335,7 +335,7 @@ export const Infopost = () => {
             <button 
                 className="btn-get-registered"
                 onClick={() => {
-                  getInfoPost();
+                  actions.getInfoPost();
                     }}> Crear 🖌  </button>
             <a href="#signup" className="btn-get-registered">Crear 🖌</a></div>
           <div className="d-flex justify-content-center">

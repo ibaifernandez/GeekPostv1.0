@@ -154,45 +154,79 @@ const getState = ({
                 console.log(getStore())
             },
 
+            getInfoPost: async (identity, main_text) => {
+                let api = url + "/api/infoPost";
+                try {
+                    const resp = await fetch((api), {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: "Bearer " + localStorage.getItem("token"),
+                        },
+                        body: JSON.stringify({
+                            identity,
+                            main_text,
+                            secondary_text: data.secondary_text,
+                            price,
+                            logo,
+                            formality,
+                            main_color,
+                            secondary_color,
+                            aux_color,
+                            ratio,
+                            image_id,
+                            post1_1,
+                            post9_16,
+                            contact_data,
+                            keyword1,
+                            keyword2,
+                            keyword3,
+                        }),
+                    })
+                } catch (e) {
+                    console.log(e);
+                }
+            },
             // getInfoPost: async () => {
             //     let api = url + "/api/infopost";
             //     try {
             //         const resp = await fetch((api), {
-            //             method: "GET",
+            //             method: "POST",
             //             headers: {
             //                 "Content-Type": "application/json",
             //                 Authorization: "Bearer " + localStorage.getItem("token"),
             //             },
             //         });
             //         const data = await resp.json();
-            //         setStore({
-            //             post: {
+                    // setStore({
+                    //     post: {
 
-            //                 identity: data.identity,
-            //                 main_text: data.main_text,
-            //                 secondary_text: data.secondary_text,
-            //                 price: data.price,
-            //                 logo: data.logo,
-            //                 formality: data.formality,
-            //                 main_color: data.main_color,
-            //                 secondary_color: data.secondary_color,
-            //                 aux_color: data.aux_color,
-            //                 ratio: data.ratio,
-            //                 image_id: data.image_id,
-            //                 post1_1: data.post1_1,
-            //                 post9_16: data.post9_16,
-            //                 contact_data: data.contact_data,
-            //                 keyword1: data.keyword1,
-            //                 keyword2: data.keyword2,
-            //                 keyword3: data.keyword3,
+                    //         identity: data.identity,
+                    //         main_text: data.main_text,
+                    //         secondary_text: data.secondary_text,
+                    //         price: data.price,
+                    //         logo: data.logo,
+                    //         formality: data.formality,
+                    //         main_color: data.main_color,
+                    //         secondary_color: data.secondary_color,
+                    //         aux_color: data.aux_color,
+                    //         ratio: data.ratio,
+                    //         image_id: data.image_id,
+                    //         post1_1: data.post1_1,
+                    //         post9_16: data.post9_16,
+                    //         contact_data: data.contact_data,
+                    //         keyword1: data.keyword1,
+                    //         keyword2: data.keyword2,
+                    //         keyword3: data.keyword3,
                             
-            //             }
-            //         });
-            //     } catch (e) {
-            //         console.log(e);
-            //     }
-            // },
-    },
-};
+                    //     }
+                    // });
+    //             } catch (e) {
+    //                 console.log(e);
+    //             }
+    //         },
+    //},
 }
+}
+
 export default getState
