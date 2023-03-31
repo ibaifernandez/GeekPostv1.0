@@ -1,5 +1,6 @@
 import React from "react";
 import roundedPhoto1 from "../../img/cta-bg.jpg";
+import { Link } from "react-router-dom" 
 
 export const HomeProcess = () => (
     <section id="home-process" className="process section-bg">
@@ -77,9 +78,9 @@ export const HomeProcess = () => (
                     </div>
                 </div>
                 <div className="d-flex justify-content-center">
-                    <a href="#signup" className="btn-get-registered">
+                    <Link to="/infopost" className="btn-get-registered">
                         Crear 🖌
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

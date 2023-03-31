@@ -2,14 +2,20 @@ import user_img from "../../img/hero-img.jpeg"
 import { Logo } from "../component/Logo.jsx"
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const HomeSidebar = () => {
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
 
   useEffect(() => {
     actions.getUserDetails();
   }, []);
+
+  const handleLogout = () => {
+    actions.logOut();
+    navigate("/");
+  }
 
   return (
     <aside className="main">
@@ -39,7 +45,7 @@ export const HomeSidebar = () => {
             </Link>
           </li>
           <li className="nav-item">
-              <button className="nav-link sidebar-nav-link" onClick={actions.logOut}>
+              <button className="nav-link sidebar-nav-link" onClick={handleLogout}>
                 <i className="fa fa-sign-out pe-3" aria-hidden="true" width="16" height="16"></i>
                 Salir
               </button>
