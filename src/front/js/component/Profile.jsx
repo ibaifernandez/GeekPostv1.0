@@ -6,7 +6,7 @@ export const Profile = () => {
 
 
     return(
-      <div classNameName="ContenedorProfileG d-flex flex-row overflow-scroll p-3 m-3">
+      <div className="ContenedorProfileG d-flex flex-row overflow-scroll p-3 m-3">
         <div className=" w-100  ContenedorProfile">
 
         <img className="fotoAvatar " src="https://cdn.pixabay.com/photo/2020/10/11/19/51/cat-5646889_1280.jpg"/>
@@ -101,11 +101,11 @@ export const Profile = () => {
             </div>
         </div>
     
-      <div classNameName="form-group d-flex justify-content-around">
-        <label htmlFor="formFileSm" classNameName="form-label labelcss mt-4">
+      <div className="form-group d-flex justify-content-around">
+        <label htmlFor="formFileSm" className="form-label labelcss mt-4">
           Logo
           <input
-              classNameName="form-control form-control-sm InputArchivos mb-4"
+              className="form-control form-control-sm InputArchivos mb-4"
               // id="image"
               // onChange={(e) => setImage(e.target.value)}
               //   value={image}
@@ -150,9 +150,9 @@ export const Profile = () => {
   
   
     
-    <div classNameName="d-flex justify-content-center BotonP1"><a href="#signup" classNameName="btn-get-registered">Actualizar <i className="fa-solid fa-paperclip"></i></a></div>
-            <div classNameName="d-flex justify-content-center">
-            <button type="reset" classNameName="btn-delete BotonP1"> 
+    <div className="d-flex justify-content-center BotonP1"><a href="#signup" className="btn-get-registered">Actualizar <i className="fa-solid fa-paperclip"></i></a></div>
+            <div className="d-flex justify-content-center">
+            <button type="reset" className="btn-delete BotonP1"> 
                 Borrar todo <i className="fa-regular fa-trash-can"></i>
             </button>
             </div>

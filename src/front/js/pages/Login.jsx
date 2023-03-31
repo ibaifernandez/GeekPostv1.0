@@ -29,8 +29,9 @@ export const Login = () => {
                 <div className="login-left-wrapper">
                     <h1>¿Qué quieres crear hoy?</h1>
                     <h2 className="login-h2">¡Empecemos!</h2>
-
-         
+                    <Link to="/" className="login-link">
+                    <h4 className="login-link FlechaVolver"><i class="fa-solid fa-arrow-rotate-left"></i>{" "}Volver al inicio</h4>
+                    </Link>
 
 
                 </div>
@@ -81,11 +82,7 @@ export const Login = () => {
                             Entrar
                         </button>
                     </form>
-                    <div className="lost-password">
-                        <a href="#" className="login-link">
-                            ¿Olvidaste tu contraseña?
-                        </a>
-                    </div>
+                  
                 </div>
             </div>
         </div>

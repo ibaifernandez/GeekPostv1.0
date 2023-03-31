@@ -99,7 +99,7 @@ export const Infopost = () => {
               type="text"
               name="secondary_text"
               id="secondary_text"
-              className="inputInfoPost "
+              className="inputInfoPost border border-0 border-bottom "
               onChange={(e) => setSecondary_text(e.target.value)}
               value={secondary_text}
               placeholder="Texto secundario (opcional)"
@@ -337,7 +337,8 @@ export const Infopost = () => {
                 onClick={() => {
                   actions.getInfoPost();
                     }}> Crear 🖌  </button>
-            <a href="#signup" className="btn-get-registered">Crear 🖌</a></div>
+            
+            </div>
           <div className="d-flex justify-content-center">
           <button type="reset" className="btn-delete "> 
            Borrar todo <i className="fa-regular fa-trash-can"></i>
