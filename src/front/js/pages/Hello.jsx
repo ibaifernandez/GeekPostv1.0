@@ -1,5 +1,12 @@
 import React from "react";
+import { OurTeam } from "../component/OurTeam.jsx"
+import { OurProject } from "../component/OurProject.jsx"
+import { OurSkills } from "../component/OurSkills.jsx"
 
 export const Hello = () => (
-    <h1>¡Hola!</h1>
-)
+    <>
+        <OurTeam />
+        <OurProject />
+        <OurSkills />
+    </>
+    );
