@@ -137,10 +137,10 @@
 }
 
 /* .row::after {
-    clear: both;
-    content: '';
-    display: block;
-    width: 100%;
+  clear: both;
+  content: '';
+  display: block;
+  width: 100%;
 } */
 
 .login-button {

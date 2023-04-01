@@ -10,6 +10,7 @@ import { Help } from "./pages/Help.jsx";
 import { Contact } from "./pages/Contact.jsx";
 import { Signup } from "./pages/Signup.jsx";
 import { Login } from "./pages/Login.jsx";
+
 import { Error404 } from "./pages/Error404.jsx";
 
 // Vistas tras registro
