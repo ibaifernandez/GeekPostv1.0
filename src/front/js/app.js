@@ -49,13 +49,13 @@ const App = () => {
                     <Route path="/docs" element={<Docs />} />
                     <Route path="/help" element={<Help />} /> */
                     <Route path="/contact" element={<Contact />} /> */
-                    <Route path="*" element={<Error404 />} />
                 </Route>
                 <Route path="/" element={<HomeLayout />}>
                     <Route path="/home" element={<Home />} /> 
                     <Route path="/my-compositions" element={<MyCompositions />} /> 
                     <Route path="/my-profile" element={<MyProfile />} /> 
                 </Route>
+                <Route path="*" element={<Error404 />} />
             </Routes>
         </BrowserRouter>
     );

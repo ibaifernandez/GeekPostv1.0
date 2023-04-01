@@ -5,13 +5,14 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-router-dom";
 
-export const Hero = () => {
+export const MainHero = () => {
     const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-return (    <section id="hero" className="d-flex align-items-center p-3">
+return (
+    <section id="hero" className="d-flex align-items-center p-3">
         <div className="container">
             <div className="row">
                 <div
