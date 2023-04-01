@@ -142,7 +142,39 @@ def get_info_post():
     
     if post_query is None:
         return jsonify({"msg": "There are no Post for this user"}), 400
-    else:
-        result = post_query.serialize()
-        return jsonify(result), 200
+    result = post_query.serialize()
+    return jsonify(result), 200
     
+
+
+@api.route("/infoPost", methods=["POST"])
+def infoPostGuardar():
+    body = json.loads(request.data)
+
+    new_post = Post(
+        user_id= body["user_id"],
+        identity= body["identity"],
+        main_text= body["main_text"],
+        secondary_text= body["secondary_text"],
+        price= body["price"],
+        logo= body["logo"],
+        formality= body["formality"],
+        main_color= body["main_color"],
+        secondary_color= body["secondary_color"],
+        aux_color= body["aux_color"],
+        template= body["template"],
+        ratio= body["ratio"],
+        image_id= body["image_id"],
+        post1_1= body["post1_1"],   
+        post9_16= body["post9_16"],
+        contact_data= body["contact_data"],
+        keyword1= body["keyword1"],
+        keyword2= body["keyword2"],
+        keyword3= body["keyword3"]
+        )
+
+    db.session.add(new_post)
+    db.session.commit()
+
+
+    return jsonify(new_post.serialize()), 200
