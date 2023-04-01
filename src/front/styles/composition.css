@@ -28,18 +28,21 @@
     border: none;
     outline: none;
     padding: 10px 16px;
-    background-color: #f1f1f1;
+    color: purple;
     cursor: pointer;
     font-size: 18px;
 }
 
 .bt-compsitions:hover {
-    background-color: #ddd;
+    background-color: purple;
 }
 
 .btn-compositions:active {
     background-color: #666;
-    color: white;
+    color: purple;
 }
 
+button.nav-link {
+    color:purple;
+}
 /*  */
