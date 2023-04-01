@@ -32,7 +32,7 @@ export const Login = () => {
                     <Link to="/" className="login-link">
                     <h4 className="login-link FlechaVolver"><i class="fa-solid fa-arrow-rotate-left"></i>{" "}Volver al inicio</h4>
                     </Link>
-
+                      <h1>borrar</h1>
 
                 </div>
                 <div className="col login-right-wrapper login-form">
