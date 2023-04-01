@@ -1,24 +1,19 @@
 import React from "react";
-import "../../styles/composition.css";
-import roundedPhoto1 from "../../img/cta-bg.jpg";
 
-export const profile = () => {
-
-
-    return(
+export const Profile = () => (
         <div class=" w-50 d-flex justify-content-center ContenedorProfile">
 
-        <img class="fotoAvatar " src="https://cdn.pixabay.com/photo/2020/10/11/19/51/cat-5646889_1280.jpg"/>
+        <img class="fotoAvatar" src="https://cdn.pixabay.com/photo/2020/10/11/19/51/cat-5646889_1280.jpg"/>
         <h2 class="TituloProfile">Mi Perfil</h2>
         <form class="well form-horizontal" action=" " method="post"  id="contact_form">
         <fieldset class="formularioProfile">
 
-    <div class="form-group ">
+    <div class="form-group">
         <label class="col-md-4 control-label">Primer Nombre</label>  
         <div class="col-md-10 inputGroupContainer">
         <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input  name="first_name" placeholder="Primer Nombre" class="form-control border border-0 border-bottom w-100"  type="text"/>
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input  name="first_name" placeholder="Primer Nombre" class="form-control border border-0 border-bottom w-100"  type="text"/>
         </div>
       </div>
     </div>
@@ -107,7 +102,7 @@ export const profile = () => {
               className="form-control form-control-sm"
               id="image"
               onChange={(e) => setImage(e.target.value)}
-                value={image}
+                value=""
               type="file"
           />
         </label>
@@ -167,5 +162,4 @@ export const profile = () => {
     </form>
     </div>
         
-    )
-};
+    );
