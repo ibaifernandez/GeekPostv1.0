@@ -1,4 +1,4 @@
-let url = "https://3001-ibaifernand-geekpostv10-pw2de15qidw.ws-us93.gitpod.io"
+let url = "https://3001-ibaifernand-geekpostv10-3ncif0vi9vq.ws-us93.gitpod.io"
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -99,11 +99,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ user: { 
 					first_name: data.first_name,
 					last_name: data.last_name,
-					business_name: data.business_name,
+					email: data.email,
+					contact_data: data.contact_data,
+					identity: data.identity,
 					facebook_profile: data.facebook_profile,
 					instagram_profile: data.instagram_profile,
 					tiktok_profile: data.tiktok_profile,
 					website_url: data.website_url,
+					main_color: data.main_color,
+					secondary_color: data.secondary_color,
+					aux_color: data.aux_color,
+					logo: data.logo
 				 } });
 				} catch (e) {
 				console.log(e);
