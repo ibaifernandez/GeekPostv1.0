@@ -53,7 +53,7 @@ export const Footer = () => (
                             </li>
                             <li>
                                 <i className="fa fa-chevron-right me-3"></i>
-                                <Link to="/tos">Términos y condiciones</Link>
+                                <Link to="/terminos-y-condiciones">Términos y condiciones</Link>
                             </li>
                             <li>
                                 <i className="fa fa-chevron-right me-3"></i>

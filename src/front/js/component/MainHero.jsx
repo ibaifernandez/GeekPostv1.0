@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../styles/index.css";
 import YouTube from "react-youtube";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';

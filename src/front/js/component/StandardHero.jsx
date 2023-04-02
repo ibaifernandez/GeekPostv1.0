@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import "../../styles/index.css";
 import YouTube from "react-youtube";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-router-dom";
 
-export const StandardHero = () => {
+export const MainHero = () => {
     const [show, setShow] = useState(false);
-    
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 return (
-    <section id="standard-hero" className="d-flex align-items-center p-3">
+    <section id="hero" className="d-flex align-items-center p-3">
         <div className="container">
             <div className="row">
                 <div
@@ -20,7 +19,7 @@ return (
                     data-aos="fade-up"
                     data-aos-delay="200"
                 >
-aaa
+
                 </div>
                 <div
                     className="col-lg-6 hero-img"
