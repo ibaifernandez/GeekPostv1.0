@@ -201,21 +201,22 @@ export const Signup = () => {
           <div className="col-12 m-3 ms-3">
           
            
-           
+         
             <button
               type="button"
               className="btn-get-registered"
               data-bs-toggle="modal" 
-              data-bs-target="#staticBackdrop"
+              // data-bs-target="#staticBackdrop"
               onClick={handleSubmit}
             >
               Regístrate 🖋
             </button>
+          
             <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div className="modal-dialog">
                 <div className="modal-content">
                   <div className="modal-header">
-                    <h1 className="modal-title fs-5 text-primary" id="staticBackdropLabel">Registro Exitoso!</h1>
+                    <h1 className="modal-title fs-5 text-primary" id="">Registro Exitoso!</h1>
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div className="modal-body">
