@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ScrollToTop } from "./ScrollToTop.jsx";
 import GeekPostIso from "../../img/geekpost-iso.png";
 
 export const Footer = () => (

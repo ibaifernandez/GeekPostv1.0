@@ -1,9 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { IntroHeader } from "./component/IntroHeader.jsx";
-import { Footer } from "./component/Footer.jsx";
+import { IntroHeader } from "../component/IntroHeader.jsx";
+import { Footer } from "../component/Footer.jsx";
 
-export const Layout = () => (
+export const IntroLayout = () => (
     <>
         <IntroHeader />
         <Outlet />
