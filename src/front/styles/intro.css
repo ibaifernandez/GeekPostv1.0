@@ -136,8 +136,8 @@
 
   #hero {
     position: relative;
-    height: 75vh;
-    background: url("../img/hero-img.jpeg") fixed;
+    height: 85vh;
+    background: url("../img/hero-img.jpeg") fixed -100px 0;
     background-size: cover;
     margin-top: -70px;
 }

@@ -11,12 +11,6 @@ export const MainHero = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    useEffect(() => {
-        AOS.init({
-          // Opciones de configuración de AOS
-        });
-      }, []);
-
     return (
         <section id="hero" className="d-flex align-items-center p-3">
             <div className="container">
