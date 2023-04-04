@@ -265,12 +265,12 @@ export const Infopost = () => {
 
                 <div className="form-check">
                   <input className="form-check-input" 
-                  type="checkbox" 
-                  name="Post9_16"
-                  id="Post9_16"
+                  type="radio" 
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
                   onChange={(e) => setPost9_16(e.target.value)}
                   value={Post9_16}/>
-                  <label className="form-check-label text-dark" for="flexCheckDefault">
+                  <label class="form-check-label" for="flexRadioDefault1">
                     Historia de Instagram (relacion 9:16)
                     </label>
                 </div>
@@ -278,12 +278,12 @@ export const Infopost = () => {
                 <div className="form-check">
                   
                   <input className="form-check-input" 
-                  type="checkbox" 
-                  name="Post1_1"
-                  id="Post1_1"
+                  type="radio" 
+                  name="flexRadioDefault"
+                  id="flexRadioDefault2"
                   onChange={(e) => setPost1_1(e.target.value)}
                   value={Post1_1}/>
-                  <label className="form-check-label text-dark" for="flexCheckDefault">
+                  <label class="form-check-label" for="flexRadioDefault2">
                     Publicacion de instagram (relacion 1:1)
                     </label>
                 

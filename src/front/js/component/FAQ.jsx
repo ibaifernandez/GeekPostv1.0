@@ -4,7 +4,7 @@ export const FAQ = () => (
     <section id="faq" className="faq section-bg">
                 <div className="container" data-aos="fade-up">
                     <div className="section-title">
-                        <h2>Frequently Asked Questions</h2>
+                        <h2 className="pt-5">Frequently Asked Questions</h2>
                         <p>
                             Magnam dolores commodi suscipit. Necessitatibus eius
                             consequatur ex aliquid fuga eum quidem. Sit sint

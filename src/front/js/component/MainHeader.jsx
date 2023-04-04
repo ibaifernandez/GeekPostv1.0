@@ -2,23 +2,23 @@ import React, { useState, useEffect } from "react";
 import { Logo } from "./Logo.jsx";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
-    const [headerOpacity, setHeaderOpacity] = useState({
-        opacity: 0,
-        currentScrollHeight: 0,
-    });
+export const MainHeader = () => {
+    // const [headerOpacity, setHeaderOpacity] = useState({
+    //     opacity: 0,
+    //     currentScrollHeight: 0,
+    // });
 
-    useEffect(window.onscroll = () => {
-        const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
-        setHeaderOpacity({ currentScrollHeight: newScrollHeight });
-    },[]);
+    // useEffect(window.onscroll = () => {
+    //     const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
+    //     setHeaderOpacity({ currentScrollHeight: newScrollHeight });
+    // },[]);
 
-    const opacity = Math.min(headerOpacity.currentScrollHeight / 100, 1);
+    // const opacity = Math.min(headerOpacity.currentScrollHeight / 100, 1);
 
     return (
         <header
-            style={{ background: `rgb(95, 57, 141, ${opacity})` }}
-            id="header"
+            // style={{ background: `rgb(95, 57, 141, ${opacity})` }}
+            id="main-header"
             className="sticky-top"
         >
             <nav className="navbar navbar-expand-lg px-3 d-flex justify-content-between">
@@ -55,11 +55,11 @@ export const Header = () => {
                                 Ayuda 👩🏽‍🚒
                             </Link>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link to="/docs" className="nav-link">
                                 Docs 📚
                             </Link>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                             <Link to="/contact" className="nav-link">
                                 Contacto 💌

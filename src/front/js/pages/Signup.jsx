@@ -203,6 +203,7 @@ export const Signup = () => {
             >
               Regístrate 🖋
             </button>
+
             <Link to="/login" className=" text-secondary text-decoration-underline ps-5">
                 Ya estoy registrado
             </Link>

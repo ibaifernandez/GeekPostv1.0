@@ -4,7 +4,7 @@ export const OurTeam = () => (
     <section id="team" className="team section-bg">
         <div className="container" data-aos="fade-up">
             <div className="section-title">
-                <h2>Team</h2>
+                <h2 className="pt-5">Team</h2>
                 <p>
                 Magnam dolores commodi suscipit. Necessitatibus eius
                 consequatur ex aliquid fuga eum quidem. Sit sint
