@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ScrollToTop } from "./component/ScrollToTop.jsx";
 import "../styles/index.css";
-import 'aos/dist/aos.css';
+import AOS from './component/AOS/aos.js';
+import AOSWrapper from './component/AOS/AOSWrapper.jsx';
 
 // Vistas iniciales
 import { Intro } from "./pages/Intro.jsx";
