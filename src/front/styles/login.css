@@ -5,11 +5,6 @@
     height: 100vh;
 }
 
-.FlechaVolver {
-    position: absolute;
-    top: 360px;
-}
-
 .login-box {
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4),
@@ -53,7 +48,7 @@
 .avatar::after,
 .avatar::before {
     /* -webkit-backface-visibility: hidden;
-  backface-visibility: hidden; */
+    backface-visibility: hidden; */
     content: "";
     position: absolute;
     left: 50%;
@@ -100,7 +95,7 @@
 .usermail::after,
 .password::after {
     /* -webkit-backface-visibility: hidden;
-  backface-visibility: hidden; */
+    backface-visibility: hidden; */
     color: rgba(0, 0, 0, 0.2);
     display: block;
     font: 400 16px "FontAwesome", sans-serif;

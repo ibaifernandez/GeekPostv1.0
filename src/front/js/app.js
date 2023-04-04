@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ScrollToTop } from "./component/ScrollToTop.jsx";
+import "../styles/index.css";
+import 'aos/dist/aos.css';
 
 // Vistas iniciales
 import { Intro } from "./pages/Intro.jsx";
@@ -10,6 +12,8 @@ import { Help } from "./pages/Help.jsx";
 import { Contact } from "./pages/Contact.jsx";
 import { Signup } from "./pages/Signup.jsx";
 import { Login } from "./pages/Login.jsx";
+import { POP } from "./pages/POP.jsx";
+import { TOS } from "./pages/TOS.jsx";
 
 import { Error404 } from "./pages/Error404.jsx";
 
@@ -28,6 +32,7 @@ import { PostFormalFeed } from "./component/PostFormalFeed.jsx";
 
 import { Layout } from "./layout.js";
 import { HomeLayout } from "./homeLayout.js";
+import { StandardLayout } from "./standardLayout.js";
     
 const App = () => {
     
@@ -35,28 +40,33 @@ const App = () => {
 
     return (
         <BrowserRouter basename={basename}>
-            <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="ibai-square" element={<SquareSemiFormalTemplate />} />
-            <Route path="ibai-vertical" element={<VerticalSemiFormalTemplate />} />
-            <Route path="post-formal-feed" element={<PostFormalFeed />} />
-            <Route path="/infopost" element={<Infopost />} />
-            <Route path="/output" element={<Output />} />
-                <Route path="/" element={<Layout />}>
-                    <Route index element={<Intro />} />
-                    <Route path="/hello" element={<Hello />} />
-                    <Route path="/docs" element={<Docs />} />
-                    <Route path="/help" element={<Help />} /> */
-                    <Route path="/contact" element={<Contact />} /> */
-                </Route>
-                <Route path="/" element={<HomeLayout />}>
-                    <Route path="/home" element={<Home />} /> 
-                    <Route path="/my-compositions" element={<MyCompositions />} /> 
-                    <Route path="/my-profile" element={<MyProfile />} /> 
-                </Route>
-                <Route path="*" element={<Error404 />} />
-            </Routes>
+            <ScrollToTop />
+                <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="ibai-square" element={<SquareSemiFormalTemplate />} />
+                <Route path="ibai-vertical" element={<VerticalSemiFormalTemplate />} />
+                <Route path="post-formal-feed" element={<PostFormalFeed />} />
+                <Route path="/infopost" element={<Infopost />} />
+                <Route path="/output" element={<Output />} />
+                    <Route path="/" element={<Layout />}>
+                        <Route index element={<Intro />} />
+                    </Route>
+                    <Route path="/" element={<StandardLayout />}>
+                        <Route path="/hello" element={<Hello />} />
+                        <Route path="/docs" element={<Docs />} />
+                        <Route path="/help" element={<Help />} /> */
+                        <Route path="/contact" element={<Contact />} /> */
+                        <Route path="/politica-de-privacidad" element={<POP />} /> */
+                        <Route path="/terminos-y-condiciones" element={<TOS />} /> */
+                    </Route>
+                    <Route path="/" element={<HomeLayout />}>
+                        <Route path="/home" element={<Home />} /> 
+                        <Route path="/my-compositions" element={<MyCompositions />} /> 
+                        <Route path="/my-profile" element={<MyProfile />} /> 
+                    </Route>
+                    <Route path="*" element={<Error404 />} />
+                </Routes>
         </BrowserRouter>
     );
 };
