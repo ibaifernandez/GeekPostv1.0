@@ -4,7 +4,7 @@ import ibai from "../../img/ibai-fernandez.jpeg";
 import sebas from "../../img/sebastian-cardonas.jpg";
 import sol from "../../img/Sol-La-Banca.jpg";
 
-export const AboutUs = () => (
+export const IntroAboutUs = () => (
     <section id="about" className="about">
         <div className="container" data-aos="fade-up">
             <div className="section-title">

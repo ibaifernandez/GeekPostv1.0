@@ -39,7 +39,7 @@ export const Footer = () => (
                             </li>
                             <li>
                                 <i className="fa fa-chevron-right me-3"></i>
-                                <Link to="/contact">Contact</Link>
+                                <Link to="/contact">Contacto</Link>
                             </li>
                         </ul>
                     </div>

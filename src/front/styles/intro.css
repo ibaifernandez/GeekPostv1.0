@@ -137,7 +137,7 @@
   #hero {
     position: relative;
     height: 75vh;
-    background: url("../img/hero-img.jpeg");
+    background: url("../img/hero-img.jpeg") fixed;
     background-size: cover;
     margin-top: -70px;
 }
@@ -240,6 +240,11 @@
 .btn-close-video:hover {
     background: var(--fucsia);
     color: var(--white);
+}
+
+.about {
+    padding: 100px 0;
+    background: var(--white)
 }
 
 @media (min-width: 576px) {
