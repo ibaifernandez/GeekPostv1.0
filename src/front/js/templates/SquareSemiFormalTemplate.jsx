@@ -13,7 +13,7 @@ export const SquareSemiFormalTemplate = () => (
                     <div id="ssft-offer-tag">Oferta</div>
                     <div id="ssft-texts-wrapper">
                         <div id="ssft-main-text">
-                            <h1 id="ssft-h1">Este es el texto principal</h1>
+                            <h1 id="ssft-h1">Este es el texto principal!</h1>
                         </div>
                         <div id="ssft-photo-wrapper">
                             <img src={ssftPhoto} />

@@ -13,13 +13,14 @@ export const Composition = () => {
                         <div className="col-12 d-flex justify-content-center p-2">
                             <ul className="nav nav-pills" id="pills-tab" role="tablist">
                                 <li className="nav-item" role="presentation">
-                                    <button className="btn-comp nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i className="fa-sharp fa-solid fa-grip"></i></button>
+                                    <button className="comp-btn nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i className="fa-sharp fa-solid fa-grip"></i></button>
                                 </li>
                                 <li className="nav-item" role="presentation">
-                                    <button className="btn-comp nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><i className="fa-regular fa-square"></i></button>
+                                    <button className="comp-btn nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><i className="fa-regular fa-square"></i></button>
                                 </li>
                             </ul>
                         </div>
+                        
                         <div className="container-fluid tab-content" id="pills-tabContent">
                             <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                                 <div className="row justify-content-center g-2 flex-column flex-md-row ps-2 pe-2">

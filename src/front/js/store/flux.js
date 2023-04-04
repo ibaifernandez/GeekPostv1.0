@@ -1,4 +1,4 @@
-let url = "https://3001-ibaifernand-geekpostv10-w558ar89ma8.ws-us93.gitpod.io"
+let url = "https://3001-ibaifernand-geekpostv10-ncpisj34ilr.ws-us93.gitpod.io"
 
 const getState = ({
         getStore,

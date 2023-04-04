@@ -29,6 +29,8 @@ import injectContext from "./store/appContext";
 import { VerticalSemiFormalTemplate } from "./templates/VerticalSemiFormalTemplate.jsx"
 import { SquareSemiFormalTemplate } from "./templates/SquareSemiFormalTemplate.jsx"
 import { PostFormalFeed } from "./component/PostFormalFeed.jsx";
+import { SquareInformalTemplate } from "./templates/SquareInformalTemplate.jsx";
+import { VerticalInformalTemplate } from "./templates/VerticalInformalTemplate.jsx";
 
 import { Layout } from "./layout.js";
 import { HomeLayout } from "./homeLayout.js";

@@ -7,6 +7,7 @@
     font-size: 18px;
 }
 
+
 .bt-compsitions:hover {
     background-color: purple;
 }
@@ -16,6 +17,6 @@
     color: purple;
 }
 
-button.btn-comp {
+button.comp-btn {
     color:purple;
 }

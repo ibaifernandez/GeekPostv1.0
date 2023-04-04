@@ -4,24 +4,21 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../styles/login.css";
 
 export const Login = () => {
-    const { actions } = useContext(Context);
-
+    const { store, actions } = useContext(Context);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (email === "" || password === "") {
-            alert(
-                "El correo o la contraseña están vacíos. Por favor, introduce tus credenciales."
-            );
+          store.errorLogin = "Llene todos los campos"
         } else {
-            const isAuth = await actions.fetchCredentials({ email, password });
-            isAuth ? navigate("/home") : null;
+          const isAuth = await actions.fetchCredentials( {email, password} );
+          isAuth ? navigate("/home") : null;
         }
-    };
+      };
+  
 
     return (
         <div className="login-bg">
@@ -82,7 +79,10 @@ export const Login = () => {
                             Entrar
                         </button>
                     </form>
-                  
+                    {store.errorLogin
+                    ? <div className="text-danger"><p>{store.errorLogin}</p></div> 
+                    : null
+                    }
                 </div>
             </div>
         </div>
