@@ -13,10 +13,10 @@ export const Composition = () => {
                         <div className="col-12 d-flex justify-content-center p-2">
                             <ul className="nav nav-pills" id="pills-tab" role="tablist">
                                 <li className="nav-item" role="presentation">
-                                    <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i className="fa-sharp fa-solid fa-grip"></i></button>
+                                    <button className="btn-comp nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i className="fa-sharp fa-solid fa-grip"></i></button>
                                 </li>
                                 <li className="nav-item" role="presentation">
-                                    <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><i className="fa-regular fa-square"></i></button>
+                                    <button className="btn-comp nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><i className="fa-regular fa-square"></i></button>
                                 </li>
                             </ul>
                         </div>
