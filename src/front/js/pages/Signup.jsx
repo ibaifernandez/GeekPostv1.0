@@ -13,21 +13,18 @@ export const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email === "" || password === "" || firstName === "") {
-      alert("Enter all the required information");
+    if (firstName==="" || email === "" || password === "") {
+      store.errorLogin = "Llene todos los campos"
     } else {
       const createUser = await actions.createUser({
         email,
         password,
         firstName,
       });
-      createUser();
+      if (createUser) {
+        navigate("/home");
+      }
     }
-  };
-
-  const handleLogin = async () => {
-    const isAuth = await actions.fetchCredentials( {email, password, firstName} );
-    isAuth ? navigate("/home") : null;
   };
   
 
@@ -191,42 +188,21 @@ export const Signup = () => {
                         </div>
                         </div>
                         </div>
-             
-                
-               
               </label>
             </div>
           </div>
-
-          <div className="col-12 m-3 ms-3">
-          
-           
-           
+          {store.errorLogin
+          ? <div className="text-danger"><p>{store.errorLogin}</p></div> 
+          : null
+          }
+          <div className="col-12 m-3 ms-3">     
             <button
               type="button"
               className="btn-get-registered"
-              data-bs-toggle="modal" 
-              data-bs-target="#staticBackdrop"
               onClick={handleSubmit}
             >
               Regístrate 🖋
             </button>
-            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div className="modal-dialog">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h1 className="modal-title fs-5 text-primary" id="staticBackdropLabel">Registro Exitoso!</h1>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div className="modal-body">
-                    Bienvenido a GeekPost!
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-outline-success" data-bs-dismiss="modal" onClick={handleLogin}>Continua a tu cuenta!</button>
-                  </div>
-                </div>
-              </div>
-            </div>
             <Link to="/login" className=" text-secondary text-decoration-underline ps-5">
                 Ya estoy registrado
             </Link>
