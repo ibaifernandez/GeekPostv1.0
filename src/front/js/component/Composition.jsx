@@ -20,6 +20,7 @@ export const Composition = () => {
                                 </li>
                             </ul>
                         </div>
+                        
                         <div className="container-fluid tab-content" id="pills-tabContent">
                             <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                                 <div className="row justify-content-center g-2 flex-column flex-md-row ps-2 pe-2">

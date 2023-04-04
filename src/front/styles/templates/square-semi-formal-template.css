@@ -94,7 +94,7 @@
     width: 200px;
     height: 40px;
     background: var(--tropical-indigo);
-    color: var(--magnolia);
+    color: var(--magnolia); 
 }
 
 #ssft-secondary-inner-wrapper {

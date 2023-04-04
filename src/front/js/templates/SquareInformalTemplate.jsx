@@ -16,7 +16,7 @@ export const SquareInformalTemplate = () => (
                             <img src={ssftPhoto} />
                         </div>
                         <div id="sit-main-text">
-                            <h1 id="sit-h1">Texto principal</h1>
+                            <h1 id="sit-h1">Texto principal!</h1>
                         </div>
                     </div>
                 </div>

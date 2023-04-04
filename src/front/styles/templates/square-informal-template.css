@@ -44,6 +44,7 @@
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, .05);
     z-index: 1;
 }
+
 .sit-imagecontainer img{
     transform: rotate(-45deg);
     -ms-transform: rotate(-45deg); /* IE 9 */
@@ -52,6 +53,7 @@
     top:-220px;
     left:-150px;
 }
+
 
 #sit-h1 {
     transform: rotate(45deg);
