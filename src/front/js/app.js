@@ -4,9 +4,15 @@ import React, { useContext } from "react";
 // Import de hooks de React Router
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 
+// Import de React Helmet
+import { Helmet } from 'react-helmet';
+
 // Import de componentes globales
 import { ScrollToTop } from "./component/scroll-to-top/ScrollToTop.jsx";
 import { ScrollToTopButton } from "./component/scroll-to-top/ScrollToTopButton.jsx";
+
+// Import de AOS (Animated On Scroll)
+import AOSWrapper from './component/AOS/AOSWrapper.jsx';
 
 // Import de estilos globales
 import "../styles/index.css";
@@ -49,14 +55,40 @@ import { HomeLayout } from "./layouts/homeLayout.js";
 const App = () => {
   const basename = process.env.BASENAME || "";
 
+  
+
   return (
+    <div>
+      <Helmet>
+        <meta name="title" content="GeekPost" />
+        <meta name="description" content="Semi-automatic system for social media post creation." />
+        <meta name="keywords" content="Social Media, React, HTML, CSS, JavaScript, Python, Flask, SQLAlchemy, Front-End Development, Back-end Development, Full-Stack Development, Software Engineer, Full-Stack Engineer, Web Developer, Web Development, Web Design, Full-Stack Web Developer, Node.js, SQL" />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="Spanish" />
+        <meta name="author" content="Ibai Fernández, Sol La Banca & Sebastián Cardona" />
+    
+        <meta property="og:locale" content="es_ES" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="GeekPost" />
+        <meta property="og:url" content="#" />
+        <meta property="og:site_name" content="GeekPost" />
+        <meta property="og:description" content="Semi-automatic system for social media post creation." />
+        <meta property="og:image" content="../img/geekpost-iso.png" />
+    
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="GeekPost" />
+        <meta name="twitter:description" content="Semi-automatic system for social media post creation." />
+        <meta name="twitter:image" content="../img/geekpost-iso.png" />
+
+        <title>GeekPost</title>
+
+        <link rel="icon" href="/geekpost-icon.png" />
+      </Helmet>   
     <BrowserRouter basename={basename}>
       <ScrollToTop />
       <ScrollToTopButton />
       <Routes>
-        {/* Rutas para vistas de registro, ingreso, recuperación de contraseña y Error 404 [sin header ninguno]*/}
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        {/* Ruta para Error [sin header ninguno]*/}
         <Route path="*" element={<Error404 />} />
         {/* Rutas para previsualizar templates [sin header ninguno] */}
         <Route path="ibai-square" element={<SquareSemiFormalTemplate />} />
@@ -70,6 +102,8 @@ const App = () => {
         </Route>
         {/* Rutas de las vistas «extra» de la aplicación [con «Standard Header»] */}
         <Route path="/" element={<Layout />}>
+        <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/hello" element={<Hello />} />
           <Route path="/docs" element={<Docs />} />
           <Route path="/help" element={<Help />} /> */
@@ -88,6 +122,7 @@ const App = () => {
         </Route>
       </Routes>
     </BrowserRouter>
+    </div>
   );
 };
 

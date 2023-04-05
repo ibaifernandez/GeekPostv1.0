@@ -1,17 +1,19 @@
 import React from "react";
+import ibai from "../../img/3geeks/ibai-fernandez.jpeg";
+import sebas from "../../img/3geeks/sebastian-cardonas.jpg";
+import sol from "../../img/3geeks/Sol-La-Banca.jpg";
+import harryStamper from "../../img/3geeks/harry-stamper.jpeg";
 
 export const OurTeam = () => (
     <section id="team" className="team section-bg">
         <div className="container" data-aos="fade-up">
             <div className="section-title">
-                <h2 className="pt-5">Team</h2>
-                <p>
-                Magnam dolores commodi suscipit. Necessitatibus eius
-                consequatur ex aliquid fuga eum quidem. Sit sint
-                consectetur velit. Quisquam quos quisquam
-                cupiditate. Et nemo qui impedit suscipit alias ea.
-                Quia fugiat sit in iste officiis commodi quidem hic
-                quas.
+                <h2 className="pt-5">El equipo</h2>
+                <h3>3Geeks @ 4Geeks</h3>
+                <p className="our-team-p">
+                    Mejor que tener a tres Messi en la delantera, es tener a este equipo. Te juegan lo mismo en el
+                    back-end, que en el front-end; tienen un control del Visual Studio Code que ya quisieran otros. Y lo
+                    mejor: ahora mismo, como novatos que son, están a precio de ganga. 
                 </p>
             </div>
 
@@ -23,32 +25,17 @@ export const OurTeam = () => (
                         >
                             <div className="member d-flex align-items-start">
                                 <div className="pic">
-                                    <img
-                                        src="assets/img/team/team-1.jpg"
-                                        className="img-fluid"
-                                        alt=""
-                                    />
+                                    <img src={sol} className="img-fluid" alt="Sol La Banca"/>
                                 </div>
                                 <div className="member-info">
-                                    <h4>Walter White</h4>
-                                    <span>Chief Executive Officer</span>
-                                    <p>
-                                        Explicabo voluptatem mollitia et
-                                        repellat qui dolorum quasi
-                                    </p>
+                                    <h4>Sol La Banca</h4>
+                                    <span>Full-Stack Expert</span>
+                                    <p>No querrás empezar un proyecto sin ella</p>
                                     <div className="social">
-                                        <a href=""
-                                            ><i className="ri-twitter-fill"></i
-                                        ></a>
-                                        <a href=""
-                                            ><i className="ri-facebook-fill"></i
-                                        ></a>
-                                        <a href=""
-                                            ><i className="ri-instagram-fill"></i
-                                        ></a>
-                                        <a href="">
-                                            <i className="ri-linkedin-box-fill"></i>
-                                        </a>
+                                        <a href=""><i className="ri-twitter-fill"></i></a>
+                                        <a href=""><i className="ri-facebook-fill"></i></a>
+                                        <a href=""><i className="ri-instagram-fill"></i></a>
+                                        <a href=""><i className="ri-linkedin-box-fill"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -61,32 +48,17 @@ export const OurTeam = () => (
                         >
                             <div className="member d-flex align-items-start">
                                 <div className="pic">
-                                    <img
-                                        src="assets/img/team/team-2.jpg"
-                                        className="img-fluid"
-                                        alt=""
-                                    />
+                                    <img src={sebas} className="img-fluid" alt="Sbastián Cardona"/>
                                 </div>
                                 <div className="member-info">
-                                    <h4>Sarah Jhonson</h4>
-                                    <span>Product Manager</span>
-                                    <p>
-                                        Aut maiores voluptates amet et quis
-                                        praesentium qui senda para
-                                    </p>
+                                    <h4>Sebastián Cardona</h4>
+                                    <span>Full-Stack Developer</span>
+                                    <p>Tan silencioso como letal</p>
                                     <div className="social">
-                                        <a href=""
-                                            ><i className="ri-twitter-fill"></i
-                                        ></a>
-                                        <a href=""
-                                            ><i className="ri-facebook-fill"></i
-                                        ></a>
-                                        <a href=""
-                                            ><i className="ri-instagram-fill"></i
-                                        ></a>
-                                        <a href="">
-                                            <i className="ri-linkedin-box-fill"></i>
-                                        </a>
+                                        <a href=""><i className="ri-twitter-fill"></i></a>
+                                        <a href=""><i className="ri-facebook-fill"></i></a>
+                                        <a href=""><i className="ri-instagram-fill"></i></a>
+                                        <a href=""><i className="ri-linkedin-box-fill"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -99,32 +71,17 @@ export const OurTeam = () => (
                         >
                             <div className="member d-flex align-items-start">
                                 <div className="pic">
-                                    <img
-                                        src="assets/img/team/team-3.jpg"
-                                        className="img-fluid"
-                                        alt=""
-                                    />
+                                    <img src={ibai} className="img-fluid" alt="Ibai Fernández"/>
                                 </div>
                                 <div className="member-info">
-                                    <h4>William Anderson</h4>
-                                    <span>CTO</span>
-                                    <p>
-                                        Quisquam facilis cum velit laborum
-                                        corrupti fuga rerum quia
-                                    </p>
+                                    <h4>Ibai Fernández</h4>
+                                    <span>Full-Stack Developer</span>
+                                    <p>Intensidad en su estado más puro</p>
                                     <div className="social">
-                                        <a href=""
-                                            ><i className="ri-twitter-fill"></i
-                                        ></a>
-                                        <a href=""
-                                            ><i className="ri-facebook-fill"></i
-                                        ></a>
-                                        <a href=""
-                                            ><i className="ri-instagram-fill"></i
-                                        ></a>
-                                        <a href="">
-                                            <i className="ri-linkedin-box-fill"></i>
-                                        </a>
+                                        <a href=""><i className="ri-twitter-fill"></i></a>
+                                        <a href=""><i className="ri-facebook-fill"></i></a>
+                                        <a href=""><i className="ri-instagram-fill"></i></a>
+                                        <a href=""><i className="ri-linkedin-box-fill"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -138,32 +95,15 @@ export const OurTeam = () => (
                             <div className="member d-flex align-items-start">
                                 <div className="pic">
                                     <img
-                                        src="assets/img/team/team-4.jpg"
+                                        src={harryStamper}
                                         className="img-fluid"
-                                        alt=""
+                                        alt="Harry Stamper"
                                     />
                                 </div>
                                 <div className="member-info">
-                                    <h4>Amanda Jepson</h4>
-                                    <span>Accountant</span>
-                                    <p>
-                                        Dolorum tempora officiis odit laborum
-                                        officiis et et accusamus
-                                    </p>
-                                    <div className="social">
-                                        <a href=""
-                                            ><i className="ri-twitter-fill"></i
-                                        ></a>
-                                        <a href=""
-                                            ><i className="ri-facebook-fill"></i
-                                        ></a>
-                                        <a href=""
-                                            ><i className="ri-instagram-fill"></i
-                                        ></a>
-                                        <a href="">
-                                            <i className="ri-linkedin-box-fill"></i>
-                                        </a>
-                                    </div>
+                                    <h4>Harry Stamper</h4>
+                                    <span>World Savior</span>
+                                    <p>Porque no estaríamos aquí si no fuera por Harry Stamper (DEP)</p>
                                 </div>
                             </div>
                         </div>

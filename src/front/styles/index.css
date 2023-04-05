@@ -52,7 +52,8 @@ h4,
 h5,
 h6 {
     font-family: "inglobal-bold", sans-serif;
-    color: var(--purple)
+    color: var(--purple);
+    margin: 0;
 }
 
 p {
@@ -68,6 +69,15 @@ a {
 input {
     font-family: "Roboto", sans-serif;
     font-weight: 200;
+}
+
+input:focus-visible {
+    border:none;
+    outline: none;
+}
+
+.row>* {
+    padding-right:0px;
 }
 
 /*--------------------------------------------------------------
