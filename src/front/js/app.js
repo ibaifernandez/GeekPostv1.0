@@ -42,7 +42,8 @@ import injectContext from "./store/appContext";
 // Import de templates
 import { VerticalSemiFormalTemplate } from "./templates/VerticalSemiFormalTemplate.jsx";
 import { SquareSemiFormalTemplate } from "./templates/SquareSemiFormalTemplate.jsx";
-import { PostFormalFeed } from "./templates/PostFormalFeed.jsx";
+import { PostFormalFeed } from "./component/PostFormalFeed.jsx";
+import { PostFormalStory } from "./component/PostFormalStory.jsx";
 import { SquareInformalTemplate } from "./templates/SquareInformalTemplate.jsx";
 import { VerticalInformalTemplate } from ".//templates/VerticalInformalTemplate.jsx";
 
@@ -54,8 +55,6 @@ import { HomeLayout } from "./layouts/homeLayout.js";
 // Componente App
 const App = () => {
   const basename = process.env.BASENAME || "";
-
-  
 
   return (
     <div>
