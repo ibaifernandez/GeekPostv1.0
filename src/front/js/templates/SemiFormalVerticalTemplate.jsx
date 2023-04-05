@@ -1,8 +1,8 @@
 import React from "react";
-import "../../styles/templates/vertical-semi-formal-template.css";
+import "../../styles/templates/semiformal-vertical-template.css";
 import vsftPhoto from "../../img/hero-img.jpeg" 
 
-export const VerticalSemiFormalTemplate = () => (
+export const SemiFormalVerticalTemplate = () => (
     <div id="vsft-wrapper">
         <div id="vsft">
             <div id="vsft-main-wrapper">

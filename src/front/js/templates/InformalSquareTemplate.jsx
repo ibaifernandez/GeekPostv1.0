@@ -1,8 +1,8 @@
 import React from "react";
-import "../../styles/templates/square-informal-template.css";
+import "../../styles/templates/informal-square-template.css";
 import ssftPhoto from "../../img/hero-img.jpeg" 
 
-export const SquareInformalTemplate = () => (
+export const InformalSquareTemplate = () => (
     <div id="sit-wrapper">
         <div id="sit">
             <div id="sit-main-wrapper">

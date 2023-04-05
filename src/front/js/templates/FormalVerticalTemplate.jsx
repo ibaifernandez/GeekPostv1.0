@@ -1,31 +1,17 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-
-//import { useParams } from "react-router-dom";
-//import { getCharacters } from "../helpers/getCharacters";
-//include your index.scss file into the bundle
-import "../../styles/postFormalStory.css";
+import React, { useContext } from "react";
+import "../../styles/templates/formal-vertical-template.css";
 import { Context } from "../store/appContext";
 
 
 
-export const PostFormalStory = () => {
- 
-      const { store, actions } = useContext(Context);
-//     const { addData } = actions;
-
- 
-//   const post = async () => {
- 
-  //    useEffect(() => {
- //       actions.obtenerData();
-//   }, []);
-  //console.log(store.personajes)
-    return (
-    <>
-    
+export const FormalVerticalTemplate = () => {
+  
+  const { store } = useContext(Context);
+  
+  return (
+  <>  
     <div className="container-fluid CuadroQueContieneS">
-    <div className=" CuadradoBlancoS">  
+      <div className=" CuadradoBlancoS">  
         <div className="CuadradoExteriorS">
         <img className="logoPFFS" src={store.infoPost.logo} alt=""/>
         <div className="border-bottom divTextoPrincipalS">
