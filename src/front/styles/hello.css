@@ -1,3 +1,8 @@
+
+.our-team-p {
+  padding: 0 150px;
+}
+
 .team .member {
     position: relative;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -98,7 +103,7 @@
 --------------------------------------------------------------*/
 
 .why-us .content {
-    padding: 60px 100px 0 100px;
+    padding-top: 60px;
   }
   
   .why-us .content h3 {
@@ -119,13 +124,13 @@
   }
   
   .why-us .img {
-    background-size: contain;
+    background: url(../img/comparte.jpeg);
     background-repeat: no-repeat;
     background-position: center center;
   }
   
   .why-us .accordion-list {
-    padding: 0 100px 60px 100px;
+    padding-bottom: 60px;
   }
   
   .why-us .accordion-list ul {
@@ -285,5 +290,4 @@
     height: 10px;
     transition: 0.9s;
     background-color: #4668a2;
-  }
-  
+  }  

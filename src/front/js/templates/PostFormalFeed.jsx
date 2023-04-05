@@ -29,7 +29,7 @@ export const PostFormalFeed = () => {
         <div className="border-bottom divTextoPrincipal">
         <h3  className="TextoPrincipal text-decoration-underline">{store.infoPost.main_text}</h3>
         </div>
-        <h5 className="TextoSecundario">{store.infoPost.main_text}</h5>
+        <h5 className="TextoSecundario">{store.infoPost.secondary_text}</h5>
         <div className="rounded-circle circulo overflow-hidden" style={{backgroundColor:"{store.infoPost.main_color}"}}></div>
         <div className="CuadradoBorde border border-5" style={{backgroundColor:"{store.infoPost.aux_color}"}}></div>
         <div className="CuadradoColor2" style={{backgroundColor:"{store.infoPost.secondary_color}"}}></div>

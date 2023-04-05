@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ScrollToTop } from "./ScrollToTop.jsx";
 import GeekPostIso from "../../img/geekpost-iso.png";
 
 export const Footer = () => (
@@ -86,6 +85,9 @@ export const Footer = () => (
                             </a>
                             <a href="#" className="linkedin">
                                 <i className="fa-brands fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://api.whatsapp.com/send?phone=+593984038732&text=%C2%A1Pim%20pam%20pum%20bocadillo%20de%20at%C3%BAn!" target="_blank" className="linkedin">
+                                <i className="fa-brands fa-whatsapp"></i>
                             </a>
                         </div>
                     </div>
