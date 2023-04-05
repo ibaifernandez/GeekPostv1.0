@@ -1,8 +1,8 @@
 import React from "react";
-import "../../styles/templates/square-semi-formal-template.css";
+import "../../styles/templates/semiformal-square-template.css";
 import ssftPhoto from "../../img/hero-img.jpeg" 
 
-export const SquareSemiFormalTemplate = () => (
+export const SemiFormalSquareTemplate = () => (
     <div id="ssft-wrapper">
         <div id="ssft">
             <div id="ssft-main-wrapper">

@@ -1,5 +1,5 @@
 import React from "react";
-import { VerticalSemiFormalTemplate } from "../templates/VerticalSemiFormalTemplate.jsx"
+import { SemiFormalVerticalTemplate } from "../templates/SemiFormalVerticalTemplate.jsx"
 import { Footer } from "../component/Footer.jsx"
 import "../../styles/output.css";
 import { FacebookShareButton, FacebookIcon } from 'react-share';
@@ -11,7 +11,7 @@ export const Output = () => (
                 <div className="col-sm-12 col-lg-6 p-0 m-0">
                     <div className="final-composition-wrapper">
                         <div className="final-composition-wrapper-img">
-                            <VerticalSemiFormalTemplate />
+                            <SemiFormalVerticalTemplate />
                         </div>
                     </div>
                 </div>

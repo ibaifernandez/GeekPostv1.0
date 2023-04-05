@@ -1,8 +1,8 @@
 import React from "react";
-import "../../styles/templates/vertical-informal-template.css";
+import "../../styles/templates/informal-vertical-template.css";
 import ssftPhoto from "../../img/hero-img.jpeg" 
 
-export const VerticalInformalTemplate = () => (
+export const InformalVerticalTemplate = () => (
     <div id="vit-wrapper">
         <div id="vit">
             <div id="vit-main-wrapper">
