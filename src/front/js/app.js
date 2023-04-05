@@ -30,6 +30,7 @@ import injectContext from "./store/appContext";
 import { VerticalSemiFormalTemplate } from "./templates/VerticalSemiFormalTemplate.jsx"
 import { SquareSemiFormalTemplate } from "./templates/SquareSemiFormalTemplate.jsx"
 import { PostFormalFeed } from "./component/PostFormalFeed.jsx";
+import { PostFormalStory } from "./component/PostFormalStory.jsx";
 import { SquareInformalTemplate } from "./templates/SquareInformalTemplate.jsx";
 import { VerticalInformalTemplate } from "./templates/VerticalInformalTemplate.jsx";
 
@@ -49,7 +50,8 @@ const App = () => {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="ibai-square" element={<SquareSemiFormalTemplate />} />
                 <Route path="ibai-vertical" element={<VerticalSemiFormalTemplate />} />
-                <Route path="post-formal-feed" element={<PostFormalFeed />} />
+                <Route path="/post-formal-feed" element={<PostFormalFeed />} />
+                <Route path="/post-formal-story" element={<PostFormalStory />} />
                 <Route path="/infopost" element={<Infopost />} />
                 <Route path="/output" element={<Output />} />
                     <Route path="/" element={<Layout />}>

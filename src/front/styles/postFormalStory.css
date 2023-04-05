@@ -1,0 +1,162 @@
+.CuadradoExteriorS {
+    width: 980px;
+    height: 1820px;
+    background-color: rgb(228, 224, 210);
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: -1;
+}
+
+.CuadradoBlancoS {
+    background-color: rgb(234, 232, 232);
+    width: 1080px;
+    height: 1920px;
+    position: absolute;
+    top: 150px;
+    left: 150px;
+    z-index: -30;
+}
+
+
+.recorte1S {
+    background-color: white;
+    width: 1080px;
+    height: 1080px;
+    position: absolute;
+    top: -50px;
+    left: 1030px;
+}
+
+.recorte2S {
+    background-color: white;
+    width: 1280px;
+    height: 300px;
+    position: absolute;
+    top: -250px;
+    left: 100px;
+}
+
+.CuadradoColor2S {
+    width: 700px;
+    height: 700px;
+    background-color: bisque;
+    position: absolute;
+    top: 400px;
+    left: 50px;
+    z-index: 30;
+}
+
+.ImagenCargadaS {
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    top: 530px;
+    left: 180px;
+    z-index: 200;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.CuadroQueContieneS {
+    position: relative;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.Cuadricula1S {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 440px;
+    left: 90px;
+    z-index: 10000;
+    background-color: blueviolet;
+    opacity: 30%;
+}
+
+.Cuadricula2S {
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 1620px;
+    left: 50px;
+    z-index: 20000;
+    background-color: blueviolet;
+    opacity: 30%;
+}
+
+.CuadradoBordeS {
+    border-color: rgb(13, 13, 37) !important;
+    border-width: 50px;
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    top: 350px;
+    left: 240px;
+    z-index: 20;
+}
+
+.logoPFFS {
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.circuloS {
+    width: 500px;
+    height: 500px;
+    background-color: rgb(143, 160, 43);
+    position: absolute;
+    overflow: hidden;
+    top: -210px;
+    left: 700px;
+    overflow: auto;
+}
+
+.TextoPrincipalS {
+    font-family: "Playfair Display", serif;
+    position: absolute;
+    background-color: red;
+    scale: 2;
+    left: 340px;
+    top: 280px;
+
+}
+
+.TextoPrincipalbS {
+    font-family: "Playfair Display", serif;
+    position: absolute;
+    background-color: blueviolet;
+    rotate: -90deg;
+    left: 30px;
+    top: 1400px;
+
+    scale: 2;
+
+}
+
+.TextoSecundarioS {
+    font-family: "Playfair Display", serif;
+    font-size: x-large;
+    position: absolute;
+    top: 1270px;
+    left: 300px;
+    scale: 2;
+}
+
+.ofertaS {
+    background-color: black;
+    width: 190px;
+    height: auto;
+    color: blanchedalmond;
+    position: absolute;
+    top: 1500px;
+    left: 600px;
+    scale: 2;
+}
