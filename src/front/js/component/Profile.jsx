@@ -270,7 +270,7 @@ export const Profile = () => {
 
           <div className="d-flex justify-content-center">
             <a href="#signup" className="btn-get-registered">
-              Crear 🖌
+              Guardar Info <i class="fa-solid fa-paperclip"></i>
             </a>
           </div>
           <div className="d-flex justify-content-center">

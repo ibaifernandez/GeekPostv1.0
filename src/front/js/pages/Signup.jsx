@@ -9,7 +9,7 @@ import "../../styles/signup.css";
 import fotoSignUp from "../../img/sign-up.jpg";
 
 export const Signup = () => {
-  const { actions } = useContext(Context);
+  const { store,actions } = useContext(Context);
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
@@ -156,8 +156,10 @@ export const Signup = () => {
 						</div>
 					</div>		
 								
-			<div className="d-flex justify-content-center">     
+			<div className="d-flex justify-content-center">    
+			<Link to="/home">
 				<button type="submit" className="btn-signup">Regístrate 🖋</button>
+				</Link>
 			</div>
 			</form>
 			<div className="d-flex justify-content-center">
