@@ -27,7 +27,7 @@ export const Login = () => {
                     <h1>¿Qué quieres crear hoy?</h1>
                     <h2 className="login-h2">¡Empecemos!</h2>
                     <Link to="/" className="login-link">
-                    <h4 className="login-link FlechaVolver"><i class="fa-solid fa-arrow-rotate-left"></i>{" "}Volver al inicio</h4>
+                    <h4 className="login-link FlechaVolver"><i className="fa-solid fa-arrow-rotate-left"></i>{" "}Volver al inicio</h4>
                     </Link>
                       
 

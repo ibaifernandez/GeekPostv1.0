@@ -2,9 +2,19 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../../front/styles/infopost.css";
 import { Link, useNavigate } from "react-router-dom";
+import { OverlayTrigger, Button } from "react-bootstrap"
 
 export const Infopost = () => {
   const { store, actions } = useContext(Context);
+
+
+  const [postData, setPostData] = useState({
+    contact_data: '',
+    identity: '',
+    main_color: '',
+    secondary_color: '',
+    logo: ''
+  });
   const [image, setImage] = useState(" ");
   const [identity, setIdentity] = useState(" ");
   const [main_text, setMain_text] = useState("");
@@ -16,7 +26,6 @@ export const Infopost = () => {
   const [main_color, setMain_color] = useState(" ");
   const [secondary_color, setSecondary_color] = useState("");
   const [aux_color, setAux_color] = useState("");
-
   const [Post9_16, setPost9_16] = useState("");
   const [Post1_1, setPost1_1] = useState("");
   const [KeyWord1, setKeyWord1] = useState("");
@@ -26,15 +35,17 @@ export const Infopost = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="main todo">
+    <div className="todo">
+      <div className="info-post-form"></div>
       <div className="container cont">
         <form method="POST" className="appointment-form formulario_infopost" id="appointment-form">
-          <h2 className="w-100">Completar la siguiente informacion</h2>
+          <h2 className="w-100">Añade información</h2>
+          <p>Añade la información que quieras ver representada en tu diseño final.</p>
 
           <div className="form-group-1">
-            <div className="form-group d-flex justify-content-around">
-              <label htmlFor="formFileSm" className="ms-2 form-label labelcss">
-                Subir foto
+            <div className="form-group d-flex">
+              <label htmlFor="post-img-input" className="form-label">
+                Subir imagen
                 <input
                     className="form-control form-control-sm"
                     id="image"
@@ -52,7 +63,7 @@ export const Infopost = () => {
                     <i className="fa-solid fa-question"></i>
               </button>
             </div>
-            <div className="form-group d-flex justify-content-around ">
+            <div className="form-group d-flex ">
               
             <input
               type="text"
@@ -74,7 +85,7 @@ export const Infopost = () => {
               </button>
           </div>
 
-          <div className="form-group d-flex justify-content-around">
+          <div className="form-group d-flex">
             <input
               type="text"
               name="main_text"
@@ -94,7 +105,7 @@ export const Infopost = () => {
               </button>
            </div>
 
-           <div className="form-group d-flex justify-content-around"> 
+           <div className="form-group d-flex"> 
             <input
               type="text"
               name="secondary_text"
@@ -114,7 +125,7 @@ export const Infopost = () => {
               </button>
           </div>
 
-          <div className="form-group d-flex justify-content-around"> 
+          <div className="form-group d-flex"> 
             <input
               type="text"
               name="price"
@@ -134,7 +145,7 @@ export const Infopost = () => {
               </button>
            </div>
 
-           <div className="form-group d-flex justify-content-around"> 
+           <div className="form-group d-flex"> 
             <input
               type="text"
               name="contact"
@@ -144,19 +155,19 @@ export const Infopost = () => {
               value={contact_details}
               placeholder="Dato de contacto (opcional)"
             />
-              <button
+              <Button
                   type="button"
-                  className=" ayuda btn btn-outline-secondary h-25 mt-4 ms-2 rounded-circle border border-dark-subtle "
+                  className="tooltip-size btn btn-outline-secondary h-25 mt-4 ms-2 rounded-circle border border-dark-subtle "
                   data-bs-toggle="tooltip"
                   data-bs-placement="right"
-                  title="Escribe un telefo/email/pagina web o algun dato que quieras que aparezca.">
-                    <i className="fa-solid fa-question"></i>
-              </button>
-            </div>
+                  title="Escribe un telefo/email/pagina web o algun dato que quieras que aparezca."
+                  >
+              </Button>
+          </div>
 
            
             <div className="form-group">
-              <label htmlFor="formFileSm" className=" form-label labelcss">
+              <label htmlFor="formFileSm" className=" form-label upload-img-label">
                 Subir logo
               </label>
               <input
@@ -175,7 +186,7 @@ export const Infopost = () => {
             <div className="select-list seleccionar">
               <label
                  htmlFor="confirm_type"
-                 className="form-label labelcss mt-3 "
+                 className="form-label upload-img-label mt-3 "
                  required
               >
                 Que tan formal queres que sea tu publicacion
@@ -187,7 +198,7 @@ export const Infopost = () => {
                 value={formality}
                 id="formality"
               >
-                <option selected>Elegir</option>
+                <option defaultValue>Elegir</option>
                 <option value="Muy formal">Muy formal</option>
                 <option value="Mas o menos formal">Mas o menos formal</option>
                 <option value="Informal">Informal</option>
@@ -200,7 +211,7 @@ export const Infopost = () => {
             </h4>
             <div className="d-flex justify-content-around">
               <div className="">
-                <label htmlFor="color" className="ms-2 labelcss ">
+                <label htmlFor="color" className="ms-2 upload-img-label ">
                   Color 1:{" "}
                 </label>
                 <input
@@ -221,7 +232,7 @@ export const Infopost = () => {
                 </button> */}
               </div>
               <div>
-              <label htmlFor="color" className="ms-2 labelcss ">
+              <label htmlFor="color" className="ms-2 upload-img-label ">
                   Color 2:{" "}
                 </label>
                 <input
@@ -245,7 +256,7 @@ export const Infopost = () => {
               
               
               <div>
-              <label htmlFor="color" className="ms-2 labelcss ">
+              <label htmlFor="color" className="ms-2 upload-img-label ">
                   Color 3:{" "}
                 </label>
                 <input
@@ -270,7 +281,7 @@ export const Infopost = () => {
                   id="flexRadioDefault1"
                   onChange={(e) => setPost9_16(e.target.value)}
                   value={Post9_16}/>
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <label className="form-check-label" htmlFor="flexRadioDefault1">
                     Historia de Instagram (relacion 9:16)
                     </label>
                 </div>
@@ -283,7 +294,7 @@ export const Infopost = () => {
                   id="flexRadioDefault2"
                   onChange={(e) => setPost1_1(e.target.value)}
                   value={Post1_1}/>
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <label className="form-check-label" htmlFor="flexRadioDefault2">
                     Publicacion de instagram (relacion 1:1)
                     </label>
                 

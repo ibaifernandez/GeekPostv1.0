@@ -7,8 +7,17 @@ const getState = ({
     }) => {
         return {
             store: {
-                user: {},
-                infoPost: {},
+                user: {
+                    first_name: "",
+                    last_name: "",
+                    business_name: "",
+                    facebook_profile: "",
+                    instagram_profile: "",
+                    tiktok_profile: "",
+                    website_url: "",
+                    logo: ""
+                },
+                post: {},
                 errorLogin: "",
             },
             actions: {
@@ -29,7 +38,7 @@ const getState = ({
                         });
                         if (resp.status === 404) {
                             setStore({
-                                errorLogin: "Usuario o Contraseña incorrecta"
+                                errorLogin: "Usuario o contraseña incorrecta"
                             })
                             return false;
                         } else if (resp.status === 400) {
@@ -67,7 +76,7 @@ const getState = ({
                         });
                         if (resp.status === 403) {
                             setStore({
-                                errorLogin: "Cuenta ya existente"
+                                errorSignup: true
                             })
                             return false;
                         } else if (resp.status === 400) {
@@ -77,7 +86,7 @@ const getState = ({
                             const data = await resp.json();
                             localStorage.setItem("token", data ?.access_token);
                             setStore({
-                                errorLogin: ""
+                                errorLogin
                             })
                             setStore({
                                 auth: true
@@ -109,6 +118,7 @@ const getState = ({
                                 instagram_profile: data.instagram_profile,
                                 tiktok_profile: data.tiktok_profile,
                                 website_url: data.website_url,
+                                logo: data.logo,
                             }
                         });
                     } catch (e) {

@@ -43,7 +43,7 @@
 }
     Legacy iOS */
 
-.ayuda {
+.tooltip-size {
     scale: 0.5;
 }
 
@@ -76,7 +76,7 @@ figure {
 }
 
 .inputInfoPost {
-    margin: 5px;
+    margin: 5px 0;
     padding: 5px;
     width: 400px;
     height: 40px;
@@ -85,21 +85,12 @@ figure {
 
 
 .todo {
-    font-size: 13px;
-    line-height: 1.8;
-    color: #b72222;
-    background-image: url("..//img/fondo2.jpg");
+    background-image: url("../img/fondo2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
     background-position: center center;
-    font-weight: 400;
-    font-family: 'Roboto Slab';
-    margin: 0px;
-
+    padding: 20px 0;
+    position: relative;    
 }
 
 .btn-delete {
@@ -121,16 +112,9 @@ figure {
     color: var(--white);
 }
 
-
-.todo {
-    padding: 20px 0;
-    position: relative;
-}
-
 .cont {
-    width: 586px;
-    background: #fff;
-    margin-left: 180px;
+    width:60%;
+    background: var(--white);
     border-radius: 10px;
     height: auto;
     -webkit-border-radius: 10px;
@@ -254,7 +238,7 @@ input[type=checkbox]:not(old):checked+label>span:before {
     width: 400px;
 }
 
-.labelcss {
+.upload-img-label {
     width: 100% !important;
 
     border: none !important;

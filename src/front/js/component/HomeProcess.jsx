@@ -5,12 +5,8 @@ import { Link } from "react-router-dom"
 export const HomeProcess = () => (
     <section id="home-process" className="process section-bg">
         <div className="container" data-aos="fade-up">
-            <div className="section-title">
+            <div className="section-title-home">
                 <h2>Recuerda el «Proceso GeekPost»</h2>
-                <p>
-                    Un sencillo proceso que te servirá para postear en tus redes
-                    favoritas con el mejor estilo y el mínimo esfuerzo.
-                </p>
             </div>
             <div className="row mt-3">
                 <div
@@ -78,7 +74,7 @@ export const HomeProcess = () => (
                     </div>
                 </div>
                 <div className="d-flex justify-content-center">
-                    <Link to="/infopost" className="btn-get-registered">
+                    <Link to="/infopost" className="btn-create-home">
                         Crear 🖌
                     </Link>
                 </div>

@@ -1,5 +1,5 @@
 // Import de React y de hooks de React
-import React from "react";
+import React, {useEffect} from "react";
 
 // Import de hooks de React Router
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -11,6 +11,7 @@ import { Helmet } from "react-helmet";
 import { ScrollToTop } from "./component/scroll-to-top/ScrollToTop.jsx";
 import { ScrollToTopButton } from "./component/scroll-to-top/ScrollToTopButton.jsx";
 import injectContext from "./store/appContext";
+import { Breadcrumbs } from "./component/Breadcrumbs.jsx"
 
 // Import de AOS (Animated On Scroll)
 import AOSWrapper from "./component/AOS/AOSWrapper.jsx";
@@ -118,10 +119,10 @@ const App = () => {
           <Route path="/" element={<Layout />}>
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/hello" element={<Hello />} />
-            <Route path="/docs" element={<Docs />} />
-            <Route path="/help" element={<Help />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/hola" element={<Hello />} />
+            <Route path="/documentacion" element={<Docs />} />
+            <Route path="/ayuda" element={<Help />} />
+            <Route path="/contacto" element={<Contact />} />
             <Route path="/politica-de-privacidad" element={<POP />} />
             <Route path="/terminos-y-condiciones" element={<TOS />} />
             <Route path="/branding" element={<Branding />} />

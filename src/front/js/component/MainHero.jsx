@@ -32,9 +32,12 @@ export const MainHero = () => {
                         <h2 className="fs-1">... muy sencilla.</h2>
                         
                         <div className="d-flex justify-content-center justify-content-lg-end justify-content-md-around">
-                            <Link to={`/signup`} className="btn-get-started">
-                                Regístrate 🖋
-                            </Link>
+                            {localStorage.token ?
+                                <Link to={`/home`} className="btn-get-started">
+                                    Ve a tu escritorio
+                                </Link>
+                            :   <Link to={`/signup`} className="btn-get-started">Regístrate 🖋</Link>
+                            }
                             <Button
                             onClick={handleShow}
                             className="btn-watch-video nav-link">

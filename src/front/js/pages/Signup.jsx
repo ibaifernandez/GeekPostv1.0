@@ -2,14 +2,12 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { TOSModal } from "../component/modals/TOSModal.jsx";
-import { SignupModal } from "../component/modals/SignupModal.jsx";
 
 import "../../styles/signup.css";
 
-import fotoSignUp from "../../img/sign-up.jpg";
 
 export const Signup = () => {
-  const { actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
@@ -23,26 +21,34 @@ export const Signup = () => {
     e.preventDefault();
 
     const newErrors = {};
+	const emailRegex = /^\S+@\S+\.\S+$/;
+	const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
 
     if (!firstName) {
-      newErrors.firstName = "Escribe tu nombre.";
-    }
-
-    if (!email) {
-      newErrors.email = "Escribe tu email.";
-    }
-
-    if (!password) {
-      newErrors.password = "Escribe tu contraseña";
-    }
+		newErrors.firstName = "Escribe tu nombre.";
+	}
+	
+	if (!email) {
+		newErrors.email = 'Escribe tu email.';
+	} else if (!emailRegex.test(email)) {
+		newErrors.email = 'Ingresa un email válido.';
+	}
+	
+	if (!password) {
+		newErrors.password = "Escribe tu contraseña.";
+	} else if (!passwordRegex.test(password)) {
+		newErrors.passwordType = 'La contraseña debe tener al menos 8 caracteres, un número y un símbolo.';
+	}
 
     if (password !== passwordCheck) {
-      newErrors.passwordCheckFalse = "Las contraseñas no coinciden.";
+      newErrors.passwordCheck = "Las contraseñas no coinciden.";
     }
 
     if (!isChecked) {
       newErrors.requireTOS = "Debes aceptar los términos y condiciones.";
-    }
+    } else {
+	}
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -54,17 +60,23 @@ export const Signup = () => {
 			firstName,
 		});
 		if (createUser) {
-			setShowSignupModal(true);
-			console.log(showSignupModal);
+			navigate("/home")
 		}
  	};
 }
-	
+	  
+
 	return (
-		<section id="signup" className="d-flex justify-content-around">
-			<div id="signup-left-wrapper" className="pt-5">
+		<div id="shadow-wrapper">
+		<section id="signup" className="d-flex w-100">
+			<div id="signup-left-wrapper" className="w-50">
 				<h1 className="d-flex p-3">Registro</h1>
-				<form onSubmit={handleSubmit} id="signup-form input-group" className="d-flex flex-column mt-3">
+				{ store.errorSignup ?
+						<div className="rounded signup-warning text-white p-3">
+							Una cuenta con el email seleccionda ya está creada. Por favor, <Link to="/login">ingresa a tu perfil</Link>.
+						</div>
+					: null }			
+				<form onSubmit={handleSubmit} id="signup-form input-group" className="d-flex flex-column" noValidate>
 					<div id="user-first-name" className="d-flex flex-row m-3">
 						<label className="opacity-50 signup-icon" htmlFor="first-name-input">
 							<i className="fa-solid fa-user"></i>
@@ -73,13 +85,15 @@ export const Signup = () => {
 							id="first-name-input"
 							name="firstName"
 							type="text"
-							className="border-0 border-bottom w-100"
+							className="border-0 border-bottom w-100 ms-3 bg-transparent"
 							value={firstName}
 							onChange={(e) => setFirstName(e.target.value)}
 							placeholder="Ingresa tu nombre"
 						/>
 					</div>
-					{errors.firstName && <div className="ms-3 text-danger">{errors.firstName}</div>}
+					<div>
+						{errors.firstName ? <div className="rounded signup-warning text-white mx-3 p-1">{errors.firstName}</div> : null}
+					</div>
 					<div id="user-email" className="d-flex m-3">
 						<label className="opacity-50 signup-icon" htmlFor="email-input">
 							<i className="fa-solid fa-envelope"></i>
@@ -88,14 +102,16 @@ export const Signup = () => {
 							id="email-input"
 							name="email"
 							type="email"
-							className="border-0 border-bottom w-100"
+							className="border-0 border-bottom w-100 ms-3 bg-transparent"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 							placeholder="Ingresa tu correo electrónico"
 						/>
 					</div>
-					{errors.email && <div className="ms-3 text-danger">{errors.email}</div>}
-					<div id="user-pwd" className="d-flex m-3">
+					<div>
+						{errors.email ? <div className="rounded signup-warning text-white mx-3 p-1">{errors.email}</div> : null}
+					</div>
+					<div id="user-pwd" className="d-flex m-3 bg-transparent">
 						<label className="opacity-50 signup-icon" htmlFor="pwd-input">
 							<i className="fa-solid fa-lock"></i>
 						</label>
@@ -103,13 +119,16 @@ export const Signup = () => {
 							id="pwd-input"
 							name="pwd"
 							type="password"
-							className="border-0 border-bottom w-100"
+							className="border-0 border-bottom w-100 ms-3 bg-transparent"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 							placeholder="Ingresa tu contraseña"
 						/>
 					</div>
-					{errors.password && <div className="ms-3 text-danger">{errors.password}</div>}
+					<div>
+						{errors.password ? <div className="rounded signup-warning text-white mx-3 p-1">{errors.password}</div>
+						: errors.passwordType ? <div className="rounded signup-warning text-white mx-3 p-1">{errors.passwordType}</div> : null}
+					</div>
 					<div id="user-pwd-check" className="d-flex m-3 text-danger">
 						<label className="opacity-50 signup-icon" htmlFor="pwd-check-input">
 							<i className="fa-solid fa-lock"></i>
@@ -119,24 +138,23 @@ export const Signup = () => {
 							name="pwd-check"
 							type="password"
 							value={passwordCheck}
-							className="border-0 border-bottom w-100"
+							className="border-0 border-bottom w-100 ms-3 bg-transparent"
 							onChange={(e) => setPasswordCheck(e.target.value)}
 							placeholder="Confirma tu contraseña"
 						/>
-					</div>	
-					{errors.passwordCheckFalse && <div className="ms-3 text-danger">{errors.passwordCheckFalse}</div>}
-
+					</div>
+					<div>
+					{errors.passwordCheck ? <div className="rounded signup-warning text-white mx-3 p-1">{errors.passwordCheck}</div> : null}
+					</div>
 					<div className="form-check mb-0 mt-3 ms-3">
   						<input className="form-check-input" type="checkbox"
 							checked={isChecked}
 							onChange={(e) => setIsChecked(e.target.checked)} id="check-tos" />
-  						<label className="form-check-label" htmlFor="check-tos">
-								Estoy de acuerdo con los <a className="link-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">términos y condiciones </a> de este sitio web.
-							</label>
+  						<label className="form-check-label tos-acceptance-text" htmlFor="check-tos">
+							Estoy de acuerdo con los <a className="link-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">términos y condiciones </a> de este sitio web.
+						</label>
 					</div>
-					{!isChecked && <div className="ms-3 mt-3 text-danger">{errors.requireTOS}</div>}
-
-						
+					{errors.requireTOS ? <div className="rounded signup-warning text-white mx-3 mt-1 p-1">{errors.requireTOS}</div> : "" }	
 					<div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 						<div className="modal-dialog">
 							<div className="modal-content">
@@ -154,44 +172,19 @@ export const Signup = () => {
 								</div>
 							</div>
 						</div>
-					</div>		
-								
+					</div>				
 			<div className="d-flex justify-content-center">     
 				<button type="submit" className="btn-signup">Regístrate 🖋</button>
 			</div>
-			</form>
-			<div className="d-flex justify-content-center">
-				<Link to="/login" className="text-secondary">
+			<div className="d-flex justify-content-center"></div>
+				</form>
+
+				<Link to="/login" className="link-secondary text-center">
 					¡Ya tengo una cuenta!
 				</Link>
 			</div>
-		</div>
-		<div id="signup-left-wrapper">
-        <img className="mt-5 w-100 rounded signup-img" src={fotoSignUp} alt="GeekPost Signup" />
-      </div>
-	  <div>
-	  {showSignupModal && (
-		<div className="modal" tabIndex="-1" role="dialog">
-        <div className="modal-dialog" role="document">
-            <div className="modal-content">
-                <div className="modal-header">
-                    <h5 className="modal-title">¡Bienvenid@ a GeekPost!</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">
-                            <i className="fa-solid fa-cross"></i>
-                        </span>
-                    </button>
-                </div>
-                <div className="modal-body">
-                    <p>Registro exitoso! ¡Disfruta GeekPost!</p>
-                </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">¡Empezar!</button>
-                </div>
-            </div>
-        </div>
-    </div>)}
-	  </div>
-	</section>
-		);
-	};
+		<div id="signup-right-wrapper" className="w-50 img-signup"></div>
+		</section>
+	</div>
+);
+};
