@@ -1,3 +1,5 @@
+// https://stackoverflow.com/questions/58038008/how-to-stop-memory-leak-in-useeffect-hook-react
+
 import React, { useState, useEffect } from "react";
 import { Logo } from "./Logo.jsx";
 import { Link } from "react-router-dom";
