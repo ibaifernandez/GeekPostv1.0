@@ -269,10 +269,17 @@ export const Profile = () => {
           </div> */}
 
           <div className="d-flex justify-content-center">
-            <a href="#signup" className="btn-get-registered">
-              Crear 🖌
-            </a>
-          </div>
+          
+          
+
+            <button 
+                className="btn-get-registered"
+                onClick={() => {
+                  actions.putProfile( firstname,lastname,contactdata,facebook,instagram,tiktok,identity,logo,maincolor,secondarycolor,auxcolor);
+                    }}>  Guardar Info <i class="fa-solid fa-paperclip"></i> </button>
+
+            </div>
+
           <div className="d-flex justify-content-center">
             <button type="reset" className="btn-delete ">
               Borrar todo <i className="fa-regular fa-trash-can"></i>
