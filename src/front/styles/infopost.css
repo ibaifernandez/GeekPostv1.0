@@ -1,96 +1,65 @@
-/* @extend display-flex; */
-/* display-flex {
-    display: flex;
-    display: -webkit-flex;
-} */
-
-/* @extend list-type-ulli; */
-/*list-type-ulli,
-
-/* roboto-slab-300 - latin */
-/*@font-face {
-    font-family: 'Roboto', sans-serif;
-    ;
-    font-style: normal;
-    font-weight: 300;
-    src: url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");}
-    /* IE9 Compat Modes */
-/* src: local("Roboto Slab Light"), local("RobotoSlab-Light"), url("../fonts/roboto-slab/roboto-slab-v7-latin-300.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-slab/roboto-slab-v7-latin-300.woff2") format("woff2"), url("../fonts/roboto-slab/roboto-slab-v7-latin-300.woff") format("woff"), url("../fonts/roboto-slab/roboto-slab-v7-latin-300.ttf") format("truetype"), url("../fonts/roboto-slab/roboto-slab-v7-latin-300.svg#RobotoSlab") format("svg");
-    /* Legacy iOS */
-
-
-
-
-/* roboto-slab-regular - latin */
-/*@font-face {
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    src: url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");}
-    /* IE9 Compat Modes */
-/*   src: local("Roboto Slab Regular"), local("RobotoSlab-Regular"), url("../fonts/roboto-slab/roboto-slab-v7-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-slab/roboto-slab-v7-latin-regular.woff2") format("woff2"), url("../fonts/roboto-slab/roboto-slab-v7-latin-regular.woff") format("woff"), url("../fonts/roboto-slab/roboto-slab-v7-latin-regular.ttf") format("truetype"), url("../fonts/roboto-slab/roboto-slab-v7-latin-regular.svg#RobotoSlab") format("svg");
-    /* Legacy iOS */
-
-
-
-
-/* roboto-slab-700 - latin */
-/*@font-face {
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    src: url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-}
-    Legacy iOS */
-
-.tooltip-size {
-    scale: 0.5;
-}
-
-
-
-
-figure {
-    margin: 0;
-}
-
-
-.tituloh2 {
-    line-height: 1.8;
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
-    color: #222;
-    font-family: 'Roboto Slab';
-    font-size: 20px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
-.tituloh3 {
-    font-weight: bold;
-    color: #222;
-    font-size: 15px;
-    margin: 0px;
-    margin-bottom: 10px;
-}
-
-.inputInfoPost {
-    margin: 5px 0;
-    padding: 5px;
-    width: 400px;
-    height: 40px;
-}
-
-
-
-.todo {
-    background-image: url("../img/fondo2.jpg");
+#infopost-main-wrapper {
+    background-image: url("../img/infopost-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     padding: 20px 0;
     position: relative;    
+}
+
+#infopost-wrapper {
+    width:60%;
+    background: var(--white);
+    border-radius: 10px;
+    height: auto;
+    padding:1.5rem;
+}
+
+#infopost-form {
+    width:100%;
+}
+
+.image-uploader-card {
+    border: none;
+}
+
+.infopost-label {
+    font-weight: 600;
+}
+
+.btn-infopost {
+    width:25%;
+    font-weight: 200;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    transition: 1s;
+    color: var(--fucsia);
+    border: 1px solid var(--blue);
+    background: transparent;
+}
+
+.btn-infopost:hover {
+    background: var(--fucsia);
+    color: var(--white);
+}
+
+.form-control-image-uploader {
+    width:90%;
+    padding: 0.5rem 1em 0.5rem 0;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.input-infopost {
+    margin: 5px 0;
+    padding: 5px;
+    width: 90%;
+    font-weight:600;
+}
+
+::-webkit-input-placeholder {
+    color: gray;
+    font-weight: 300;
 }
 
 .btn-delete {
@@ -110,21 +79,6 @@ figure {
 .btn-delete:hover {
     background: var(--blue);
     color: var(--white);
-}
-
-.cont {
-    width:60%;
-    background: var(--white);
-    border-radius: 10px;
-    height: auto;
-    -webkit-border-radius: 10px;
-    -o-border-radius: 10px;
-    -ms-border-radius: 10px;
-
-}
-
-.appointment-form {
-    padding: 50px 60px 70px 60px !important;
 }
 
 /* input,

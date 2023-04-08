@@ -17,6 +17,10 @@
     --white: #f9f9f9;
 }
 
+.color-purple {
+    color: var(--purple);
+}
+
 @font-face {
     font-family: "inglobal-italic";
     src: local("inglobal-italic"),
@@ -69,6 +73,7 @@ a {
 input {
     font-family: "Roboto", sans-serif;
     font-weight: 200;
+    background: transparent;
 }
 
 input:focus-visible {

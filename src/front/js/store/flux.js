@@ -1,4 +1,4 @@
-let url = "https://3001-ibaifernand-geekpostv10-m1sf1vsmkcu.ws-us93.gitpod.io"
+let url = "https://3001-ibaifernand-geekpostv10-kr8unxhs4kh.ws-us93.gitpod.io"
 
 const getState = ({
         getStore,
@@ -6,21 +6,30 @@ const getState = ({
         setStore
     }) => {
         return {
+
             store: {
+
                 user: {
                     first_name: "",
                     last_name: "",
-                    business_name: "",
+                    identity: "",
                     facebook_profile: "",
                     instagram_profile: "",
                     tiktok_profile: "",
                     website_url: "",
-                    logo: ""
+                    logo: "",
+                    contact: ""
                 },
-                post: {},
+
+                post: {
+                    mainImage: ""
+                },
+
                 errorLogin: "",
             },
+
             actions: {
+
                 fetchCredentials: async ({
                     email,
                     password
@@ -57,6 +66,7 @@ const getState = ({
                         return false
                     }
                 },
+
                 createUser: async ({
                     email,
                     password,
@@ -76,7 +86,7 @@ const getState = ({
                         });
                         if (resp.status === 403) {
                             setStore({
-                                errorSignup: true
+                                errorSignup: "Ha habido un fallo con el registro. Por favor, inténtelo de nuevo."
                             })
                             return false;
                         } else if (resp.status === 400) {
@@ -86,7 +96,7 @@ const getState = ({
                             const data = await resp.json();
                             localStorage.setItem("token", data ?.access_token);
                             setStore({
-                                errorLogin
+                                errorSignup: "Sin errores a la hora del registro."
                             })
                             setStore({
                                 auth: true
@@ -98,6 +108,7 @@ const getState = ({
                         return false
                     }
                 },
+
                 getUserDetails: async () => {
                     let api = url + "/api/profile";
                     try {
@@ -113,12 +124,13 @@ const getState = ({
                             user: {
                                 first_name: data.first_name,
                                 last_name: data.last_name,
-                                business_name: data.business_name,
+                                identity: data.identity,
                                 facebook_profile: data.facebook_profile,
                                 instagram_profile: data.instagram_profile,
                                 tiktok_profile: data.tiktok_profile,
                                 website_url: data.website_url,
                                 logo: data.logo,
+                                contact: data.contact_data,
                             }
                         });
                     } catch (e) {
@@ -167,6 +179,14 @@ const getState = ({
                         console.log(e);
                     }
                 },
+
+                setMainImage: (imageUrl) => {
+                    setStore({
+                        post : {
+                            mainImage: imageUrl
+                        }
+                    });
+                }
             }
             }
         }

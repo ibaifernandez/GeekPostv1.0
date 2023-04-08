@@ -18,8 +18,6 @@ export const HomeSidebar = () => {
 		navigate("/");
 	}
 
-	console.log(store.user)
-
 	return (
 		<aside className="main">
 			<div id="home-sidebar" className="d-flex flex-column">

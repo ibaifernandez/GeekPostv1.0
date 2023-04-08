@@ -9,7 +9,6 @@ import { TOSModal } from "../component/modals/TOSModal.jsx";
 
 import "../../styles/signup.css";
 
-
 export const Signup = () => {
   const { store, actions } = useContext(Context);
   const [email, setEmail] = useState("");
@@ -18,7 +17,6 @@ export const Signup = () => {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [errors, setErrors] = useState({});
-  const [showSignupModal, setShowSignupModal] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -64,11 +62,11 @@ export const Signup = () => {
 			firstName,
 		});
 		if (createUser) {
+			console.log("hola")
 			navigate("/home")
 		}
  	};
 }
-	  
 
 	return (
 		<div id="shadow-wrapper">
