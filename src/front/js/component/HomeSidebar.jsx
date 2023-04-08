@@ -23,9 +23,9 @@ export const HomeSidebar = () => {
 			<div id="home-sidebar" className="d-flex flex-column">
 				<div href="#" className="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 					{store.user.logo ?
-						<img src={store.user.logo} alt={store.user.business_name} width="50" height="50" className="rounded-circle me-2 user-profile-img" />
-					: <img src={anon} alt={store.user.first_name} width="50" height="50" className="rounded-circle me-2 user-profile-img" />} 
-					<h1 id="sidebar-username">{store.user.first_name ? `${store.user.first_name}` : null}</h1>
+						<img src={store.user.logo} alt={store.user.identity} width="50" height="50" className="rounded-circle me-2 user-profile-img" />
+					: <img src={anon} alt={store.user.firstName} width="50" height="50" className="rounded-circle me-2 user-profile-img" />} 
+					<h1 id="sidebar-username">{store.user.firstName ? `${store.user.firstName}` : null}</h1>
 				</div>
 				<hr />
 				<ul className="nav nav-pills flex-column mb-auto">

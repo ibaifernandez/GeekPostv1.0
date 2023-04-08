@@ -10,15 +10,17 @@ const getState = ({
             store: {
 
                 user: {
-                    first_name: "",
-                    last_name: "",
+                    firstName: "",
+                    lastName: "",
                     identity: "",
-                    facebook_profile: "",
-                    instagram_profile: "",
-                    tiktok_profile: "",
-                    website_url: "",
+                    facebookProfile: "",
+                    instagramProfile: "",
+                    tiktokProfile: "",
                     logo: "",
-                    contact: ""
+                    contact: "",
+                    mainColor: "",
+                    secondaryColor: "",
+                    auxColor: "",
                 },
 
                 post: {
@@ -122,15 +124,18 @@ const getState = ({
                         const data = await resp.json();
                         setStore({
                             user: {
-                                first_name: data.first_name,
-                                last_name: data.last_name,
+                                firstName: data.first_name,
+                                lastName: data.last_name,
                                 identity: data.identity,
-                                facebook_profile: data.facebook_profile,
-                                instagram_profile: data.instagram_profile,
-                                tiktok_profile: data.tiktok_profile,
-                                website_url: data.website_url,
+                                facebookProfile: data.facebook_profile,
+                                instagramProfile: data.instagram_profile,
+                                tiktokProfile: data.tiktok_profile,
+                                websiteUrl: data.website_url,
                                 logo: data.logo,
                                 contact: data.contact_data,
+                                mainColor: data.main_color,
+                                secondaryColor: data.secondary_color,
+                                auxColor: data.aux_color,
                             }
                         });
                     } catch (e) {
@@ -139,18 +144,19 @@ const getState = ({
                 },
 
                 logOut: () => {
-                    localStorage.removeItem("token");
+                    localStorage.clear()
                     setStore({
                         auth: false,
                     });
                     console.log(getStore())
                 },
 
-                getInfoPost: async (identity, main_text,secondary_text,price,logo,formality,main_color,secondary_color,aux_color,ratio,image_id,post1_1,post9_16,contact_data,keyword1,keyword2,keyword3) => {
-                    let api = url + "/api/infoPost";
+                storeInfoPost: async (identity, main_text, secondary_text, price, logo, formality, main_color, secondary_color, aux_color, ratio, contact_data) => {
+                    let api = url + "/api/infopost";
                     try {
                         const resp = await fetch((api), {
                             method: "POST",
+                            mode: "no-cors",
                             headers: {
                                 "Content-Type": "application/json",
                                 Authorization: "Bearer " + localStorage.getItem("token"),
@@ -160,19 +166,13 @@ const getState = ({
                                 main_text,
                                 secondary_text,
                                 price,
+                                contact_data,
                                 logo,
                                 formality,
+                                ratio,
                                 main_color,
                                 secondary_color,
-                                aux_color,
-                                ratio,
-                                image_id,
-                                post1_1,
-                                post9_16,
-                                contact_data,
-                                keyword1,
-                                keyword2,
-                                keyword3,
+                                aux_color
                             }),
                         })
                     } catch (e) {
@@ -180,13 +180,6 @@ const getState = ({
                     }
                 },
 
-                setMainImage: (imageUrl) => {
-                    setStore({
-                        post : {
-                            mainImage: imageUrl
-                        }
-                    });
-                }
             }
             }
         }

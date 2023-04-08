@@ -1,6 +1,3 @@
-"""
-This module takes care of starting the API Server, Loading the DB and Adding the endpoints
-"""
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Post
 from api.utils import generate_sitemap, APIException
@@ -134,7 +131,7 @@ def get_user_info():
 
 # ROUTES FOR POST TABLE
 
-@api.route('/infoPost', methods=['GET'])
+@api.route('/infopost', methods=['GET'])
 @jwt_required()
 def get_info_post():
     current_user = get_jwt_identity()
@@ -147,12 +144,12 @@ def get_info_post():
     
 
 
-@api.route("/infoPost", methods=["POST"])
-def infoPostGuardar():
+@api.route("/infopost", methods=["POST"])
+def save_post_info():
     body = json.loads(request.data)
 
     new_post = Post(
-        user_id= body["user_id"],
+        # user_id= body["user_id"],
         identity= body["identity"],
         main_text= body["main_text"],
         secondary_text= body["secondary_text"],
@@ -162,15 +159,8 @@ def infoPostGuardar():
         main_color= body["main_color"],
         secondary_color= body["secondary_color"],
         aux_color= body["aux_color"],
-        template= body["template"],
         ratio= body["ratio"],
-        image_id= body["image_id"],
-        post1_1= body["post1_1"],   
-        post9_16= body["post9_16"],
         contact_data= body["contact_data"],
-        keyword1= body["keyword1"],
-        keyword2= body["keyword2"],
-        keyword3= body["keyword3"]
         )
 
     db.session.add(new_post)

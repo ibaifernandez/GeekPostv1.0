@@ -25,11 +25,11 @@ export const Infopost = () => {
 
     const [formality, setFormality] = useState("");
 
-    const [mainColor, setMainColor] = useState("");
+    const [mainColor, setMainColor] = useState("#000000");
 
-    const [secondaryColor, setSecondaryColor] = useState("");
+    const [secondaryColor, setSecondaryColor] = useState("#000000");
 
-    const [auxColor, setAuxColor] = useState("");
+    const [auxColor, setAuxColor] = useState("#000000");
 
     const [ratio, setRatio] = useState("")
 
@@ -38,10 +38,9 @@ export const Infopost = () => {
         setIdentity(store.user.identity);
         setLogo(store.user.logo);
         setContact(store.user.contact);
-        setIdentity(store.user.identity);
-        setIdentity(store.user.identity);
-        setIdentity(store.user.identity);
-        console.log(identity)
+        setMainColor(store.user.mainColor);
+        setSecondaryColor(store.user.secondaryColor);
+        setAuxColor(store.user.auxColor);
       }, []);
 
     const navigate = useNavigate();
@@ -64,6 +63,23 @@ export const Infopost = () => {
         const logoURL = URL.createObjectURL(file);
         localStorage.setItem("newLogo", logoURL); 
         setNewLogoIsLoaded(true);
+    }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        actions.storeInfoPost(
+            identity,
+            mainText,
+            secondaryText,
+            price,
+            logo,
+            formality,
+            mainColor,
+            secondaryColor,
+            auxColor,
+            ratio,
+            contact
+          );
     }
 
     const imageUploaderTooltip = (
@@ -115,12 +131,44 @@ export const Infopost = () => {
     </Tooltip>
     );
     
+    const formalityTooltip = (
+    <Tooltip id="logo-tooltip">
+        Dependiendo de la naturaleza de tu negocio y de tu publicación, elige el nivel de formalidad que más te
+        convenga. ¡Cada uno arrojará un resultado diferente en forma de post final!
+    </Tooltip>
+    );
+    
+    const ratioTooltip = (
+    <Tooltip id="logo-tooltip">
+        Ten en cuenta que las publicaciones cuadradas se ven mejor en los feed de las diferentes redes sociales 
+        mientras que las publicaciones verticales son más adecuadas para las <em>stories</em>.
+    </Tooltip>
+    );
+    
+    const mainColorTooltip = (
+    <Tooltip id="logo-tooltip">
+        ¿Tiene tu marca un color principal? De ser así, elígelo aquí.
+    </Tooltip>
+    );
+    
+    const secondaryColorTooltip = (
+    <Tooltip id="logo-tooltip">
+        ¿Tiene tu marca un color secundario? De ser así, elígelo aquí.
+    </Tooltip>
+    );
+    
+    const auxColorTooltip = (
+    <Tooltip id="logo-tooltip">
+        ¿Tiene tu marca un color auxiliar? De ser así, elígelo aquí.
+    </Tooltip>
+    );
+    
     return (
         <div id="infopost-main-wrapper">
             <div id="infopost-wrapper" className="container">
                 <h2 className="w-100 text-center">¡Crea tu composición!</h2>
                 <p className="text-center mt-3">Añade a continuación la información que quieras ver representada en tu diseño final.</p>
-                <form id="infopost-form" /*onSubmit=""*/>
+                <form id="infopost-form" method="post" onSubmit={(e) => {handleSubmit(e)}}>
                     <div id="infopost-form-wrapper" className="form-group-1">
                         
                         <div id="image-uploader" className="image-uploader-card"> 
@@ -139,13 +187,10 @@ export const Infopost = () => {
                                 <OverlayTrigger placement="right" overlay={imageUploaderTooltip}>
                                     <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
                                 </OverlayTrigger>
-                                {/* <button className="btn btn-infopost" type="submit" onClick={(e) => handleImageUpload(e)}>
-                                    Subir imagen
-                                </button> */}
                             </div>
                             <div id="uploaded-main-image" className="img-fluid">
                                 { mainImageisLoaded ?
-                                    (<div className="mt-3">
+                                    (<div className="mt-3 d-flex justify-content-center">
                                         <img src={localStorage.mainImage} alt="" className="img-fluid" />
                                     </div>)
                                 : null }
@@ -262,7 +307,7 @@ export const Infopost = () => {
                                     type="file"
                                     id="logoFile"
                                     accept="image/*"
-                                    required
+                                    required={store.user.logo ? false : true}
                                     onChange={(e) => handleLogoUpload(e)}
                                 />
                                 <OverlayTrigger placement="right" overlay={logoTooltip}>
@@ -286,8 +331,8 @@ export const Infopost = () => {
                             <label htmlFor="formality" className="form-label infopost-label">
                                 8. Elige el nivel de formalidad de tu post.
                             </label>
-                            <div className="d-flex">
-                                <div id="formality-input" className="w-100 d-flex flex-column align-middle mt-3">
+                            <div className="d-flex w-100">
+                                <div id="formality-input" className="d-flex flex-column align-middle mt-3 w-100">
                                     <input
                                         type="range"
                                         name="contact-level"
@@ -296,22 +341,120 @@ export const Infopost = () => {
                                         min="1"
                                         max="3"
                                         step="1"
-                                        onChange={(e) => {(parseInt(e.target.value))}}
+                                        onChange={(e) => {setFormality(parseInt(e.target.value))}}
+                                        value={formality}
                                     />
-                                    <div className="d-flex justify-content-between" style={{ width:'100%' }}>
+                                    <div className="d-flex justify-content-between slider-tags-infopost">
                                         <span>Formal</span>
                                         <span>Semiformal</span>
                                         <span>Informal</span>
                                     </div>
                                 </div>    
-    <OverlayTrigger placement="right" overlay={contactTooltip}>
-      <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
-    </OverlayTrigger>
-  </div>
- 
-</div>
+                                <OverlayTrigger placement="right" overlay={formalityTooltip}>
+                                    <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+
+                        <div id="ratio-input" className="mt-4">
+                            <div htmlFor="square" className="form-label infopost-label">
+                                9. ¿Quieres tu post en formato cuadrado o vertical?
+                            </div>
+                            <div id="ratio-input-selector" className="mt-3 d-flex justify-content-between">
+                                <div id="square-input" className="w-25">
+                                    <input
+                                        type="radio"
+                                        id="square"
+                                        name="shape"
+                                        value={ratio}
+                                        className="form-check-input"
+                                        onChange={(e) => setRatio(e.target.checked)}
+                                        required
+                                    />
+                                    <label htmlFor="square" className="ms-3">
+                                        Cuadrado
+                                    </label>
+                                </div>
+                                <div id="vertical-input" className="w-25">
+                                    <input
+                                        type="radio"
+                                        id="vertical"
+                                        name="shape"
+                                        value={ratio}
+                                        className="form-check-input"
+                                        onChange={(e) => setRatio(e.target.checked)}
+                                        required
+                                     />
+                                     <label htmlFor="vertical" className="ms-3">
+                                        Vertical
+                                    </label>
+                                </div>
+                                <OverlayTrigger placement="right" overlay={ratioTooltip}>
+                                    <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+
+                        <div id="main-color-picker" className="mt-4">
+                            <label htmlFor="main-color" className="form-label infopost-label">
+                                10. ¿Cuál es el color principal de tu marca?
+                            </label>
+                            <div id="main-color-picker-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    type="color"
+                                    name="main-color"
+                                    id="main-color"
+                                    className="input-infopost border-0 border-bottom"
+                                    onChange={(e) => setMainColor(e.target.value)}
+                                    value={mainColor}
+                                />
+                                <OverlayTrigger placement="right" overlay={mainColorTooltip}>
+                                <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+                        
+                        <div id="secondary-color-picker" className="mt-4">
+                            <label htmlFor="secondary-color" className="form-label infopost-label">
+                                10. ¿Cuál es el color secundario de tu marca?
+                            </label>
+                            <div id="secondary-color-picker-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    type="color"
+                                    name="secondary-color"
+                                    id="secondary-color"
+                                    className="input-infopost border-0 border-bottom"
+                                    onChange={(e) => setSecondaryColor(e.target.value)}
+                                    value={secondaryColor}
+                                />
+                                <OverlayTrigger placement="right" overlay={secondaryColorTooltip}>
+                                <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+                        
+                        <div id="aux-color-picker" className="mt-4">
+                            <label htmlFor="aux-color" className="form-label infopost-label">
+                                10. ¿Cuál es el color auxiliar de tu marca?
+                            </label>
+                            <div id="aux-color-picker-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    type="color"
+                                    name="aux-color"
+                                    id="aux-color"
+                                    className="input-infopost border-0 border-bottom"
+                                    onChange={(e) => setAuxColor(e.target.value)}
+                                    value={auxColor}
+                                />
+                                <OverlayTrigger placement="right" overlay={auxColorTooltip}>
+                                <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
 
                     </div>
+                    <button type="submit" className="btn btn-submit-infopost">Enviar</button>
+
                 </form>
             </div>
         </div>
