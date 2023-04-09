@@ -152,6 +152,7 @@ const getState = ({
                 },
 
                 storeInfoPost: async (identity, main_text, secondary_text, price, logo, formality, main_color, secondary_color, aux_color, ratio, contact_data) => {
+                    console.log(identity, main_text, secondary_text, price, logo, formality, main_color, secondary_color, aux_color, ratio, contact_data)                    
                     let api = url + "/api/infopost";
                     try {
                         const resp = await fetch((api), {
