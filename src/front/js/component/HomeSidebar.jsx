@@ -11,6 +11,7 @@ export const HomeSidebar = () => {
 
 	useEffect(() => {
 		actions.getUserDetails();
+		console.log(store)
 	}, []);
 
 	const handleLogout = () => {
@@ -56,6 +57,17 @@ export const HomeSidebar = () => {
 					</li>
 				</ul>
 				<hr />
+				<ul class="list-inline ms-4">
+					<li class="list-inline-item me-4">
+						{store.user.facebookProfile ? <a href={store.user.facebookProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-facebook-square"></i></a> : null} 
+					</li>
+					<li class="list-inline-item me-4">
+						{store.user.instagramProfile ? <a href={store.user.instagramProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-instagram"></i></a> : null} 
+					</li>
+					<li class="list-inline-item me-4">
+						{store.user.tiktokProfile ? <a href={store.user.tiktokProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-tiktok"></i></a> : null} 
+					</li>
+				</ul>
 			</div>
 		</aside>
 	)

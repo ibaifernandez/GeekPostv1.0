@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/contact.css";
+import contactPic from "../../img/comparte.jpeg"
 
 export const Contact = () => (
     <section id="contact" className="contact mb-5 pb5">
@@ -21,23 +22,18 @@ export const Contact = () => (
                             <p>A108 Adam Street, New York, NY 535022</p>
                         </div>
 
-                        <div className="email">
-                            <i className="bi bi-envelope"></i>
-                            <h4>Email:</h4>
-                            <p>info@example.com</p>
-                        </div>
+                        <div className="d-flex align-items-center">
+    <div className="d-inline">
+        <a href="https://api.whatsapp.com/send?phone=+593984038732&text=%C2%A1Pim%20pam%20pum%20bocadillo%20de%20at%C3%BAn!" target="_blank" className="whatsapp">
+            <i className="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+    <h4 className="ml-2 mb-0">Text us</h4>
+</div>
 
-                        <div className="phone">
-                            <i className="bi bi-phone"></i>
-                            <h4>Call:</h4>
-                            <p>+1 5589 55488 55s</p>
+                        <div className="contact-img-container">
+                            <img className="contact-img" src={contactPic} alt="" />
                         </div>
-
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                            frameBorder="0"
-                            allowFullScreen
-                        ></iframe>
                     </div>
                 </div>
 

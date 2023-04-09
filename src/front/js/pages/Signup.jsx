@@ -26,7 +26,6 @@ export const Signup = () => {
 	const emailRegex = /^\S+@\S+\.\S+$/;
 	const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
-
     if (!firstName) {
 		newErrors.firstName = "Escribe tu nombre.";
 	}

@@ -142,25 +142,25 @@ def get_info_post():
     result = post_query.serialize()
     return jsonify(result), 200
     
-
-
 @api.route("/infopost", methods=["POST"])
+@jwt_required()
 def save_post_info():
     body = json.loads(request.data)
+    current_user = get_jwt_identity()
 
     new_post = Post(
-        # user_id= body["user_id"],
-        identity= body["identity"],
-        main_text= body["main_text"],
-        secondary_text= body["secondary_text"],
-        price= body["price"],
-        logo= body["logo"],
-        formality= body["formality"],
-        main_color= body["main_color"],
-        secondary_color= body["secondary_color"],
-        aux_color= body["aux_color"],
-        ratio= body["ratio"],
-        contact_data= body["contact_data"],
+        user_id = current_user,
+        identity = body["identity"],
+        main_text = body["main_text"],
+        secondary_text = body["secondary_text"],
+        price = body["price"],
+        logo = body["logo"],
+        formality = body["formality"],
+        main_color = body["main_color"],
+        secondary_color = body["secondary_color"],
+        aux_color = body["aux_color"],
+        ratio = body["ratio"],
+        contact_data = body["contact_data"],
         )
 
     db.session.add(new_post)
