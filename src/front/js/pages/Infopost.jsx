@@ -166,12 +166,9 @@ export const Infopost = () => {
               //  value={logo}
                 type="file"
               />
-          
-
-
-
-         
           </div>
+
+
             <div className="select-list seleccionar">
               <label
                  htmlFor="confirm_type"
