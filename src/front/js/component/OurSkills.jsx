@@ -1,4 +1,5 @@
 import React from "react";
+import skills from "../../img/skills.png"
 
 export const OurSkills = () => (
     <section id="skills" className="skills">
@@ -10,7 +11,7 @@ export const OurSkills = () => (
                 data-aos-delay="100"
             >
                 <img
-                    src="assets/img/skills.png"
+                    src={skills}
                     className="img-fluid"
                     alt=""
                 />
@@ -62,9 +63,7 @@ export const OurSkills = () => (
                     </div>
 
                     <div className="progress">
-                        <span className="skill"
-                            >JavaScript <i className="val">75%</i></span
-                        >
+                        <span className="skill">JavaScript <i className="val">75%</i></span>
                         <div className="progress-bar-wrap">
                             <div
                                 className="progress-bar"

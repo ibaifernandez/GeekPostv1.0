@@ -151,11 +151,14 @@ const getState = ({
                     console.log(getStore())
                 },
 
-                storeInfoPost: async (identity, main_text, secondary_text, price, logo, formality, main_color, secondary_color, aux_color, ratio, contact_data) => {
-                    console.log(identity, main_text, secondary_text, price, logo, formality, main_color, secondary_color, aux_color, ratio, contact_data)                    
+                storeInfoPost: async (identity, mainText, secondaryText, price, logo, formality, mainColor, secondaryColor, auxColor, ratio, contact) => {
+                    console.log("ENVIADO DESDE FLUX");
+                    console.log(identity, mainText, secondaryText, price, logo, formality, mainColor, secondaryColor, auxColor, ratio, contact);
+                    
                     let api = url + "/api/infopost";
+                    
                     try {
-                        const resp = await fetch((api), {
+                        const resp = await fetch(api, {
                             method: "POST",
                             mode: "no-cors",
                             headers: {
@@ -163,23 +166,29 @@ const getState = ({
                                 Authorization: "Bearer " + localStorage.getItem("token"),
                             },
                             body: JSON.stringify({
-                                identity,
-                                main_text,
-                                secondary_text,
-                                price,
-                                contact_data,
-                                logo,
-                                formality,
-                                ratio,
-                                main_color,
-                                secondary_color,
-                                aux_color
-                            }),
-                        })
-                    } catch (e) {
-                        console.log(e);
+                            identity,
+                            main_text: mainText,
+                            secondary_text: secondaryText,
+                            price,
+                            contact_data: contact,
+                            logo,
+                            formality,
+                            ratio,
+                            main_color: mainColor,
+                            secondary_color: secondaryColor,
+                            aux_color: auxColor,
+                        }),
+                    });
+                    if (resp.ok) {
+                        console.log('La petición se ha completado con éxito');
+                        // ¿Qué puedo hacer con la respuesta?
+                    } else {
+                        console.error('Error en la petición:', resp.status, resp.statusText);
                     }
-                },
+                } catch (e) {
+                    console.error('Error en la petición:', e);
+                }
+            },
 
             }
             }

@@ -23,7 +23,7 @@ export const Infopost = () => {
     
     const [newLogoIsLoaded, setNewLogoIsLoaded] = useState(false);
 
-    const [formality, setFormality] = useState("");
+    const [formality, setFormality] = useState(2);
 
     const [mainColor, setMainColor] = useState("#000000");
 
@@ -63,10 +63,25 @@ export const Infopost = () => {
         const logoURL = URL.createObjectURL(file);
         localStorage.setItem("newLogo", logoURL); 
         setNewLogoIsLoaded(true);
+        setLogo(null);
     }
     
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("ENVIADO DESDE INFOPOST");
+        console.log(
+            identity,
+            mainText,
+            secondaryText,
+            price,
+            logo,
+            formality,
+            mainColor,
+            secondaryColor,
+            auxColor,
+            ratio,
+            contact
+            )
         actions.storeInfoPost(
             identity,
             mainText,
@@ -92,21 +107,21 @@ export const Infopost = () => {
     <Tooltip id="identity-tooltip">
         Escribe aquí la identidad de tu negocio, que bien podría ser tu nombre en el caso de que se 
         trate de una marca personal o del nombre de tu negocio si lo que quieres es publicar algo 
-        relativo a él.
+        relativo a él. Máximo 25 caracteres.
     </Tooltip>
     );
 
     const mainTextTooltip = (
     <Tooltip id="main-text-tooltip">
         Escribe aquí el que será el texto principal de tu diseño, es decir, el principal reclamo para
-        quien se tope con el post.
+        quien se tope con el post. Máximo 25 caracteres.
     </Tooltip>
     );
 
     const secondaryTextTooltip = (
     <Tooltip id="secondary-text-tooltip">
         Escribe aquí el que será el texto secundario de tu diseño, es decir, una explicación adicional
-        para entender de qué trata tu post.
+        para entender de qué trata tu post. Máximo 50 caracteres.
     </Tooltip>
     );
 
@@ -114,14 +129,14 @@ export const Infopost = () => {
     <Tooltip id="price-tooltip">
         Escribe aquí el precio u oferta, si es que tu post incluye alguno. Si no, déjalo vacío. Si se trata 
         de un precio, puedes incluir el símbolo de la divisa (por ejemplo, "$3,95"). Si se trata de una 
-        oferta, puedes escribirla en forma de porcentaje (por ejemplo "20%")
+        oferta, puedes escribirla en forma de porcentaje (por ejemplo "20%"). Máximo 10 caracteres.
     </Tooltip>
     );
 
     const contactTooltip = (
     <Tooltip id="contact-tooltip">
         Escribe aquí una forma sencilla de que tus clientes puedan contactarte, como un número de teléfono, 
-        la dirección de un sitio web o un correo electrónico.
+        la dirección de un sitio web o un correo electrónico. Máximo 15 caracteres.
     </Tooltip>
     );
     
@@ -209,7 +224,8 @@ export const Infopost = () => {
                                     className="input-infopost border-0 border-bottom"
                                     onChange={(e) => setIdentity(e.target.value)}
                                     value={identity}
-                                    placeholder="Pastelería La Increíble"
+                                    placeholder="Pastelería La Increíble (max. 25 caracteres)"
+                                    maxLength={25}
                                 />
                                 <OverlayTrigger placement="right" overlay={identityTooltip}>
                                     <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
@@ -229,7 +245,8 @@ export const Infopost = () => {
                                     className="input-infopost border-0 border-bottom"
                                     onChange={(e) => setMainText(e.target.value)}
                                     value={mainText}
-                                    placeholder="¡Deliciosos pasteles de chocolate!"
+                                    placeholder="¡Deliciosos pasteles de chocolate! (Máx. 25 caracteres)"
+                                    maxLength={25}
                                 />
                                 <OverlayTrigger placement="right" overlay={mainTextTooltip}>
                                     <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
@@ -249,7 +266,8 @@ export const Infopost = () => {
                                     className="input-infopost border-0 border-bottom"
                                     onChange={(e) => setSecondaryText(e.target.value)}
                                     value={secondaryText}
-                                    placeholder="¡Hechos con cacao ecuatoriano 100% puro!"
+                                    placeholder="¡Hechos con cacao ecuatoriano 100% puro! (Máx. 50 caracteres)"
+                                    maxLength={50}
                                 />
                                 <OverlayTrigger placement="right" overlay={secondaryTextTooltip}>
                                     <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
@@ -269,7 +287,8 @@ export const Infopost = () => {
                                     className="input-infopost border-0 border-bottom"
                                     onChange={(e) => setPrice(e.target.value)}
                                     value={price}
-                                    placeholder="$3,95"
+                                    placeholder="$3,95 (Máx. 10 caracteres)"
+                                    maxLength={10}
                                 />
                                 <OverlayTrigger placement="right" overlay={priceTooltip}>
                                     <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
@@ -289,7 +308,8 @@ export const Infopost = () => {
                                     className="input-infopost border-0 border-bottom"
                                     onChange={(e) => setContact(e.target.value)}
                                     value={contact}
-                                    placeholder="+59398403873"
+                                    placeholder="+59398403873 (Máx. 15 caracteres)"
+                                    maxLength={15}
                                 />
                                 <OverlayTrigger placement="right" overlay={contactTooltip}>
                                     <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
@@ -335,8 +355,8 @@ export const Infopost = () => {
                                 <div id="formality-input" className="d-flex flex-column align-middle mt-3 w-100">
                                     <input
                                         type="range"
-                                        name="contact-level"
-                                        id="contact-level"
+                                        name="formality-level"
+                                        id="formality-level"
                                         className="input-infopost border-0 border-bottom"
                                         min="1"
                                         max="3"
@@ -365,10 +385,10 @@ export const Infopost = () => {
                                     <input
                                         type="radio"
                                         id="square"
-                                        name="shape"
+                                        name="ratio"
                                         value={ratio}
                                         className="form-check-input"
-                                        onChange={(e) => setRatio(e.target.checked)}
+                                        onChange={(e) => setRatio(e.target.id)}
                                         required
                                     />
                                     <label htmlFor="square" className="ms-3">
@@ -379,10 +399,10 @@ export const Infopost = () => {
                                     <input
                                         type="radio"
                                         id="vertical"
-                                        name="shape"
+                                        name="ratio"
                                         value={ratio}
                                         className="form-check-input"
-                                        onChange={(e) => setRatio(e.target.checked)}
+                                        onChange={(e) => setRatio(e.target.id)}
                                         required
                                      />
                                      <label htmlFor="vertical" className="ms-3">
