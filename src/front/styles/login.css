@@ -15,9 +15,12 @@
     transform: translate(-50%, -50%);
 }
 
-.login-left-wrapper,
+.login-left-wrapper {
+    padding: 30px 10px ;
+}
+
 .login-right-wrapper {
-    padding: 30px 50px;
+    padding: 20px;
 }
 
 .login-left-wrapper {

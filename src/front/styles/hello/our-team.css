@@ -2,10 +2,6 @@
 # Our team
 --------------------------------------------------------------*/
 
-.our-team-p {
-    padding: 0 100px;
-}
-  
 .team .member {
     position: relative;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);

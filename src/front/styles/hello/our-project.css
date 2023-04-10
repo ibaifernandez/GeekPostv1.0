@@ -2,10 +2,6 @@
 # Our Project
 --------------------------------------------------------------*/
 
-.why-us .content {
-  padding-top: 60px;
-}
-
 .why-us .content h3 {
   font-weight: 400;
   font-size: 34px;
@@ -13,8 +9,7 @@
 }
 
 .why-us .content p {
-  font-size: 15px;
-  color: #848484;
+  font-size: 1rem;
 }
 
 .why-us .accordion-list {
@@ -27,11 +22,11 @@
 }
 
 .why-us .accordion-list li + li {
-  margin-top: 15px;
+  margin-top: 2rem;
 }
 
 .why-us .accordion-list li {
-  padding: 20px;
+  padding: 20px 20px 20px 0;
   background: #fff;
   border-radius: 4px;
 }

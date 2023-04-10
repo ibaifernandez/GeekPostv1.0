@@ -17,12 +17,12 @@ export const Footer = () => (
                             <h2>GeekPost</h2>
                         </Link>
                         <p>
-                            <i className="fa-solid fa-location-dot"></i> Salinas ·
-                            Bogotá · Panamá
+                            <i className="fa-solid fa-location-dot"></i>
+                            <span className="ms-2">Málaga · Bogotá · Panamá</span>
                         </p>
                     </div>
                     <div className="col-lg-3 col-md-6 footer-links">
-                        <h4>Mapa de navegación</h4>
+                        <h4 className="mb-3">Mapa de navegación</h4>
                         <ul>
                             <li>
                                 <i className="fa fa-chevron-right me-3"></i>
@@ -44,7 +44,7 @@ export const Footer = () => (
                     </div>
 
                     <div className="col-lg-3 col-md-6 footer-links">
-                        <h4>Business Platform</h4>
+                        <h4 className="mb-3">Business Platform</h4>
                         <ul>
                             <li>
                                 <i className="fa fa-chevron-right me-3"></i>
@@ -66,14 +66,14 @@ export const Footer = () => (
                     </div>
 
                     <div className="col-lg-3 col-md-6 footer-links">
-                        <h4>Síguenos en redes</h4>
+                        <h4 className="mb-3">Síguenos en redes</h4>
                         <p>
                             Por ahora no tenemos redes y lo más probable es que
                             pase un largo rato hasta que las tengamos... Pero
                             mira qué bonitos, serios y profesionales quedan
                             estos botoncitos aquí...
                         </p>
-                        <div className="social-links">
+                        <div className="social-links mt-4">
                             <a href="#" className="twitter">
                                 <i className="fa-brands fa-twitter"></i>
                             </a>
