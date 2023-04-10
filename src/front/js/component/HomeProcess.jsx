@@ -73,8 +73,8 @@ export const HomeProcess = () => (
                         </p>
                     </div>
                 </div>
-                <div className="d-flex justify-content-center">
-                    <Link to="/infopost" className="btn-create-home">
+                <div  className="d-flex justify-content-center">
+                    <Link to="/infopost" id="create-post-button" className="btn-create-home">
                         Crear 🖌
                     </Link>
                 </div>

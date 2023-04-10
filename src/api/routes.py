@@ -131,20 +131,6 @@ def get_user_info():
 
 # ROUTES FOR POST TABLE
 
-@api.route('/infopost', methods=['GET'])
-@jwt_required()
-def get_info_post():
-    current_user = get_jwt_identity()
-    post_query = Post.query.filter_by(user_id=current_user).first()
-    
-    if post_query is None:
-        return jsonify({"msg": "There are no Post for this user"}), 400
-    result = post_query.serialize()
-    return jsonify(result), 200
-
-
-# ME
-
 @api.route("/infopost", methods=["POST"])
 @jwt_required()
 def save_post_info():
@@ -226,5 +212,42 @@ def save_post_info():
 
     except Exception as e:
     # Si hay cualquier otro error, se registra en la consola y se devuelve un código 500 con un mensaje genérico de error
+        app.logger.exception(e)
+        return jsonify({"error": "Ocurrió un error inesperado en el servidor"}), 500
+
+
+@api.route("/infopost/<int:post_id>", methods=["GET"])
+@jwt_required()
+def get_post_info(post_id):
+    try:
+        post = Post.query.filter_by(id=post_id).first()
+
+        if not post:
+            raise NotFound(f"No se encontró ningún post con id {post_id}")
+
+        current_user = get_jwt_identity()
+        app.logger.info(f'El usuario autenticado es: {current_user}')
+
+        # Si el usuario autenticado no es el dueño del post, se le niega el acceso
+        if post.user_id != current_user:
+            raise Forbidden("No tiene permiso para acceder a este post")
+
+        # Devuelve la información del post en la base de datos
+        return jsonify({"post": post.serialize()}), 200
+
+    except NotFound as e:
+        # Si no se encuentra el post, devuelve un código 404 con el mensaje de error
+        return jsonify({"error": str(e)}), 404
+
+    except Forbidden as e:
+        # Si el usuario autenticado no es el dueño del post, devuelve un código 403 con el mensaje de error
+        return jsonify({"error": str(e)}), 403
+
+    except (jwt.exceptions.InvalidTokenError, jwt.exceptions.ExpiredSignatureError) as e:
+        # Si hay un error de autenticación, devuelve un código 401 con el mensaje de error
+        return jsonify({"error": "Token de autenticación inválido o caducado"}), 401
+
+    except Exception as e:
+        # Si hay cualquier otro error, se registra en la consola y se devuelve un código 500 con un mensaje genérico de error
         app.logger.exception(e)
         return jsonify({"error": "Ocurrió un error inesperado en el servidor"}), 500

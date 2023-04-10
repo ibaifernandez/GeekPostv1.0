@@ -71,7 +71,7 @@ export const Signup = () => {
 		<div id="shadow-wrapper">
 		<section id="signup" className="d-flex w-100">
 			<div id="signup-left-wrapper" className="w-50">
-				<h1 className="d-flex p-3">Registro</h1>
+				<h1 className="d-flex p-3 mt-4">Registro</h1>
 				{ store.errorSignup ?
 						<div className="rounded signup-warning text-white p-3">
 							Una cuenta con el email seleccionda ya está creada. Por favor, <Link to="/login">ingresa a tu perfil</Link>.

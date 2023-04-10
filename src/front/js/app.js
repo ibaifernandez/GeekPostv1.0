@@ -11,7 +11,6 @@ import { Helmet } from "react-helmet";
 import { ScrollToTop } from "./component/scroll-to-top/ScrollToTop.jsx";
 import { ScrollToTopButton } from "./component/scroll-to-top/ScrollToTopButton.jsx";
 import injectContext from "./store/appContext";
-import { Breadcrumbs } from "./component/Breadcrumbs.jsx"
 
 // Import de AOS (Animated On Scroll)
 import AOSWrapper from "./component/AOS/AOSWrapper.jsx";
@@ -46,6 +45,7 @@ import { SemiFormalSquareTemplate } from "./templates/SemiFormalSquareTemplate.j
 import { SemiFormalVerticalTemplate } from "./templates/SemiFormalVerticalTemplate.jsx";
 import { InformalSquareTemplate } from "./templates/InformalSquareTemplate.jsx";
 import { InformalVerticalTemplate } from "./templates/InformalVerticalTemplate.jsx";
+import { Xxx } from "./component/TemplateSelector.jsx";
 
 // Import de layouts
 import { IntroLayout } from "./layouts/introLayout.js";
@@ -105,6 +105,7 @@ const App = () => {
           {/* Ruta para Error [sin header ninguno]*/}
           <Route path="*" element={<Error404 />} />
           {/* Rutas para previsualizar templates [sin header ninguno] */}
+          <Route path="xxx" element={<Xxx />} />
           <Route path="formal-square-template" element={<FormalSquareTemplate />} />
           <Route path="formal-vertical-template" element={<FormalVerticalTemplate />} />
           <Route path="semiformal-square-template" element={<SemiFormalSquareTemplate />} />

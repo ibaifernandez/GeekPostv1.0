@@ -26,7 +26,7 @@ export const HomeSidebar = () => {
 					{store.user.logo ?
 						<img src={store.user.logo} alt={store.user.identity} width="50" height="50" className="rounded-circle me-2 user-profile-img" />
 					: <img src={anon} alt={store.user.firstName} width="50" height="50" className="rounded-circle me-2 user-profile-img" />} 
-					<h1 id="sidebar-username">{store.user.firstName ? `${store.user.firstName}` : null}</h1>
+					<h2 id="sidebar-username">{store.user.firstName ? `${store.user.firstName}` : null}</h2>
 				</div>
 				<hr />
 				<ul className="nav nav-pills flex-column mb-auto">
@@ -39,13 +39,13 @@ export const HomeSidebar = () => {
 					<li className="nav-item">
 						<Link to="my-profile" className="nav-link sidebar-nav-link">
 							<i className="fa fa-user pe-3" aria-hidden="true" width="16" height="16"></i>
-							Mi perfil
+							<span id="profile-link-home-sidebar">Mi perfil</span>
 						</Link>
 					</li>
 					<li className="nav-item">
 						<Link to="/my-compositions" className="nav-link sidebar-nav-link">
 								<i className="fa fa-brush pe-3" aria-hidden="true" width="16" height="16"></i>
-								Mis composiciones
+								<span id="my-compositions-link-home-sidebar">Mis composiciones</span>
 						</Link>
 					</li>
 					<li className="nav-item">
@@ -57,14 +57,14 @@ export const HomeSidebar = () => {
 					</li>
 				</ul>
 				<hr />
-				<ul class="list-inline ms-4">
-					<li class="list-inline-item me-4">
+				<ul className="list-inline ms-4">
+					<li className="list-inline-item me-4">
 						{store.user.facebookProfile ? <a href={store.user.facebookProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-facebook-square"></i></a> : null} 
 					</li>
-					<li class="list-inline-item me-4">
+					<li className="list-inline-item me-4">
 						{store.user.instagramProfile ? <a href={store.user.instagramProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-instagram"></i></a> : null} 
 					</li>
-					<li class="list-inline-item me-4">
+					<li className="list-inline-item me-4">
 						{store.user.tiktokProfile ? <a href={store.user.tiktokProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-tiktok"></i></a> : null} 
 					</li>
 				</ul>

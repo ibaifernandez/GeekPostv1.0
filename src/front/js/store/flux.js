@@ -189,6 +189,26 @@ const getState = ({
                     console.error('Error en la petición:', e);
                 }
             },
+            getInfoPost: async () => {
+                let api = url + "/api/infopost/???";
+                try {
+                  const resp = await fetch(api, {
+                    method: "GET",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: "Bearer " + localStorage.getItem("token"),
+                    },
+                  });
+                  const data = await resp.json();
+                  setStore({
+                    post: {
+                      mainImage: data.main_image,
+                    },
+                  });
+                } catch (e) {
+                  console.log(e);
+                }
+              },
 
             }
             }

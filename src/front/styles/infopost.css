@@ -87,18 +87,6 @@
     color: var(--white);
 }
 
-/* input,
-select .elegir {
-    width: 100%;
-    display: block;
-    border: none;
-    border-bottom: 2px solid #ebebeb;
-    padding: 2px 0;
-    color: #222;
-    margin-bottom: 15px;
-    font-family: 'Roboto Slab';
-} */
-
 input:focus,
 select:focus {
     color: #222 !important;
@@ -159,9 +147,6 @@ input[type=checkbox]:not(old):checked+label>span:before {
     background: #3a518d;
 }
 
-
-
-
 #confirm_type {
     margin-bottom: 15px;
 }
@@ -183,15 +168,8 @@ input[type=checkbox]:not(old):checked+label>span:before {
 
 }
 
-
-
 #confirm_type {
     z-index: 99;
-}
-
-.SelectorFormalidad {
-    height: 30px;
-
 }
 
 .inputLogo {
@@ -217,8 +195,6 @@ select:focus {
 .inputKW {
     width: 120px;
 }
-
-
 
 @media screen and (max-width: 1024px) {
     .container {

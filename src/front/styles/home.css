@@ -4,7 +4,7 @@
 
 #home-header {
     transition: all 0.5s;
-    z-index: 999;
+    z-index: 99;
     zoom: 0.95;
     background: var(--purple);
 }
