@@ -26,13 +26,18 @@ export const Profile = () => {
 
 
   return (
+    <section id="home-process" className="process section-bg">
+    <div className="container" data-aos="fade-up">
+        <div className="section-title">
+            <h2>Mi Perfil</h2>
+        </div>
     <div className="ContenedorProfileG d-flex flex-row overflow-scroll p-3 m-3">
     <div className=" w-100  ContenedorProfile">
       <img
         className="fotoAvatar "
         src="https://cdn.pixabay.com/photo/2020/10/11/19/51/cat-5646889_1280.jpg"
       />
-      <h2 className="TituloProfile">Mi Perfil</h2>
+     
       <form
         className="well form-horizontal"
         action=" "
@@ -303,5 +308,7 @@ export const Profile = () => {
       </form>
     </div>
     </div>
+    </div>
+        </section>
   );
 };
