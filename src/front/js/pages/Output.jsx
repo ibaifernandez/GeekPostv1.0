@@ -1,4 +1,7 @@
-import React, { useContext, useEffect } from "react";
+//  https://www.npmjs.com/package/html2canvas
+//  https://www.robinwieruch.de/react-component-to-image/
+
+import React, { useContext, useEffect, useState } from "react";
 import "../../styles/output.css";
 import { FacebookShareButton, FacebookIcon } from 'react-share';
 
@@ -38,8 +41,9 @@ export const Output = () => {
     const ratio = store.infoPost.ratio
     const formality = store.infoPost.formality
 
+    const [template, setTemplate] = useState(null)
+
     const templateSelector = () => {
-        let template = "";
         if (ratio === "vertical") {
             if (formality === 1) {
             return <InformalVerticalTemplate />;
@@ -55,7 +59,8 @@ export const Output = () => {
             if (formality === 1) {
             template = <InformalSquareTemplate />;
             } else if (formality === 2) {
-template = <InformalVerticalTemplate />
+                setTemplate(<InformalSquareTemplate />)
+                console.log(template)
             } else if (formality === 3) {
             template = <FormalSquareTemplate />;
             } else {
@@ -64,8 +69,7 @@ template = <InformalVerticalTemplate />
         } else {
             // ¿Qué hacemos en caso de que no haya una combinación de plantilla válida para las variables dadas?
         }
-        return template;
-        };
+            };
 
         
     const finalComposition = (ratio, formality) => {
@@ -79,7 +83,7 @@ template = <InformalVerticalTemplate />
                 <div className="col-sm-12 col-lg-6 p-0 m-0">
                     <div className="final-composition-wrapper">
                         <div className="final-composition-wrapper-img">
-                            <SemiFormalVerticalTemplate />
+                            {template}
                         </div>
                     </div>
                 </div>
