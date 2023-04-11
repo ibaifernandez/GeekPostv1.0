@@ -11,7 +11,6 @@ export const HomeSidebar = () => {
 
 	useEffect(() => {
 		actions.getUserDetails();
-		console.log(store)
 	}, []);
 
 	const handleLogout = () => {
