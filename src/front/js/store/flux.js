@@ -23,7 +23,7 @@ const getState = ({
                     auxColor: "",
                 },
 
-                post: {
+                infopost: {
                     mainImage: ""
                 },
 
@@ -160,10 +160,9 @@ const getState = ({
                     try {
                         const resp = await fetch(api, {
                             method: "POST",
-                            mode: "no-cors",
                             headers: {
                                 "Content-Type": "application/json",
-                                Authorization: "Bearer " + localStorage.getItem("token"),
+                                "Authorization": "Bearer " + localStorage.getItem("token"),
                             },
                             body: JSON.stringify({
                             identity,
@@ -189,8 +188,8 @@ const getState = ({
                     console.error('Error en la petición:', e);
                 }
             },
-            getInfoPost: async () => {
-                let api = url + "/api/infopost/???";
+            getInfoPost: async (postId) => {
+                let api = url + "/api/infopost/" + postId;
                 try {
                   const resp = await fetch(api, {
                     method: "GET",

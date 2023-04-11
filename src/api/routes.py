@@ -23,7 +23,6 @@ def login():
     access_token = create_access_token(identity=user.id)
     return jsonify(access_token=access_token), 200
 
-
 @api.route("/home", methods=["GET"])
 @jwt_required()
 def home():
@@ -32,7 +31,6 @@ def home():
     }
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
-
 
 @api.route("/signup", methods=["POST"])
 def signup():
@@ -128,93 +126,35 @@ def get_user_info():
 
     return jsonify(result), 200
 
-
 # ROUTES FOR POST TABLE
 
 @api.route("/infopost", methods=["POST"])
 @jwt_required()
 def save_post_info():
-    try:
-        body = request.get_json()
+    body = request.get_json()
 
-        # Validación de entrada
-        if not body:
-            raise BadRequest("No se encontró ningún cuerpo en la solicitud")
+    current_user = get_jwt_identity()
 
-        required_fields = ["identity", "main_text", "secondary_text", "price", "logo", "formality", "main_color", "secondary_color", "aux_color", "ratio", "contact_data"]
-        missing_fields = [field for field in required_fields if field not in body]
+    new_post = Post(
+        user_id = current_user,
+        identity = body["identity"],
+        main_text = body["main_text"],
+        secondary_text = body["secondary_text"],
+        price = body["price"],
+        logo = body["logo"],
+        formality = body["formality"],
+        main_color = body["main_color"],
+        secondary_color = body["secondary_color"],
+        aux_color = body["aux_color"],
+        ratio = body["ratio"],
+        contact_data = body["contact_data"]
+    )
 
-        if missing_fields:
-            raise BadRequest(f"Faltan campos obligatorios en la solicitud: {', '.join(missing_fields)}")
+    db.session.add(new_post)
+    db.session.commit()
 
-        if not isinstance(body["identity"], str) or not body["identity"].strip():
-            raise BadRequest("La identidad debe ser una cadena no vacía")
-
-        if not isinstance(body["main_text"], str) or not body["main_text"].strip():
-            raise BadRequest("El texto principal debe ser una cadena no vacía")
-
-        if not isinstance(body["secondary_text"], str) or not body["secondary_text"].strip():
-            raise BadRequest("El texto secundario debe ser una cadena no vacía")
-
-        if not isinstance(body["price"], str) or not body["price"].strip():
-            raise BadRequest("El precio debe ser una cadena no vacía")
-
-        if not isinstance(body["formality"], int) or body["formality"] not in [1, 2, 3]:
-            raise BadRequest("La formalidad debe ser un número entero con valores 1, 2 o 3")
-
-        if not isinstance(body["main_color"], str) or not body["main_color"].strip():
-            raise BadRequest("El color principal debe ser una cadena no vacía")
-
-        if not isinstance(body["secondary_color"], str) or not body["secondary_color"].strip():
-            raise BadRequest("El color secundario debe ser una cadena no vacía")
-
-        if not isinstance(body["aux_color"], str) or not body["aux_color"].strip():
-            raise BadRequest("El color auxiliar debe ser una cadena no vacía")
-
-        if not isinstance(body["ratio"], str) or body["ratio"].strip() not in ["square", "vertical"]:
-            raise BadRequest("La proporción debe ser una cadena 'square' o 'vertical'")
-
-        if not isinstance(body["contact_data"], str) or not body["contact_data"].strip():
-            raise BadRequest("Los datos de contacto deben ser una cadena no vacía")
-
-        current_user = get_jwt_identity()
-        app.logger.info(f'El usuario autenticado es: {current_user}')
-
-        new_post = Post(
-            user_id=current_user,
-            identity=body["identity"],
-            main_text=body["main_text"],
-            secondary_text=body["secondary_text"],
-            price=body["price"],
-            logo=body["logo"],
-            formality=body["formality"],
-            main_color=body["main_color"],
-            secondary_color=body["secondary_color"],
-            aux_color=body["aux_color"],
-            ratio=body["ratio"],
-            contact_data=body["contact_data"],
-        )
-
-        db.session.add(new_post)
-        db.session.commit()
-
-        # Devuelve la nueva entrada en la base de datos y la identidad del usuario autenticado
-        return jsonify({
-            "post": new_post.serialize(), "current_user": current_user}), 201
-
-    except BadRequest as e:
-    # Si hay un error de validación, devuelve un código 400 con el mensaje de error
-        return jsonify({"error": str(e)}), 400
-
-    except (jwt.exceptions.InvalidTokenError, jwt.exceptions.ExpiredSignatureError) as e:
-    # Si hay un error de autenticación, devuelve un código 401 con el mensaje de error
-        return jsonify({"error": "Token de autenticación inválido o caducado"}), 401
-
-    except Exception as e:
-    # Si hay cualquier otro error, se registra en la consola y se devuelve un código 500 con un mensaje genérico de error
-        app.logger.exception(e)
-        return jsonify({"error": "Ocurrió un error inesperado en el servidor"}), 500
-
+    return jsonify({
+        "post": new_post.serialize(), "current_user": current_user}), 201
 
 @api.route("/infopost/<int:post_id>", methods=["GET"])
 @jwt_required()
@@ -251,3 +191,10 @@ def get_post_info(post_id):
         # Si hay cualquier otro error, se registra en la consola y se devuelve un código 500 con un mensaje genérico de error
         app.logger.exception(e)
         return jsonify({"error": "Ocurrió un error inesperado en el servidor"}), 500
+
+@api.route("/protected", methods=["GET"])
+@jwt_required()
+def protected():
+    # Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200

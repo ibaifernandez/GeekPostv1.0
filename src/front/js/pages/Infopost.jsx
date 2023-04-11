@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../../front/styles/infopost.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
 export const Infopost = () => {
 
@@ -94,7 +94,8 @@ export const Infopost = () => {
             auxColor,
             ratio,
             contact
-          );
+          )
+          navigate("/output")
     }
 
     const imageUploaderTooltip = (
@@ -177,6 +178,16 @@ export const Infopost = () => {
         ¿Tiene tu marca un color auxiliar? De ser así, elígelo aquí.
     </Tooltip>
     );
+
+    useEffect(() => {
+        fetch("https://3001-ibaifernand-geekpostv10-kr8unxhs4kh.ws-us93.gitpod.io/api/protected", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        })
+    },[])
     
     return (
         <div id="infopost-main-wrapper">
