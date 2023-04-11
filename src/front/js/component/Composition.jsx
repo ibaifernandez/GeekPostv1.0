@@ -21,32 +21,42 @@ export const Composition = () => {
                             </ul>
                         </div>
                         
-                        <div className="container-fluid tab-content" id="pills-tabContent">
-                            <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                        <div className="container-fluid tab-content compcont" id="pills-tabContent">
+                            <div className="tab-pane fade show active overflow-scroll compcont" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                                 <div className="row justify-content-center g-2 flex-column flex-md-row ps-2 pe-2">
-                                    <div className="col-md-6 col-lg-4 mt-2">
+                                    <div className="col-md-6 col-lg-4 mt-2 p-2">
+                                        <img className="img-fluid w-100 h-100" src="https://images.template.net/54866/Med-Spa-Instagram-Post-sm-1610521430297-548660.jpeg" alt="postImage" />
+                                    </div>
+                                    <div className="col-md-6 col-lg-4 p-2">
+                                        <img className="img-fluid w-100 h-100" src="https://images.template.net/54702/Spa-Advertisement-Instagram-Post-sm-1610418067377-547020.jpeg" alt="postImage" />
+                                    </div>
+                                    <div className="col-md-6 col-lg-4 p-2">
                                         <img className="img-fluid w-100 h-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUJx5g8wjHHtBy51MFOHgCGV_dnCkrL0pAyw&usqp=CAU" alt="postImage" />
                                     </div>
-                                    <div className="col-md-6 col-lg-4">
-                                        <img className="img-fluid w-100 h-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUJx5g8wjHHtBy51MFOHgCGV_dnCkrL0pAyw&usqp=CAU" alt="postImage" />
+                                </div>
+                                <div className="row justify-content-center g-2 flex-column flex-md-row ps-2 pe-2">
+                                    <div className="col-md-6 col-lg-4 mt-2 p-2">
+                                        <img className="img-fluid w-100 h-200" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/whatsapp-status-and-instagram-story-fashion-a-design-template-5826cc5d21c964f070d3a4a9d597a6ac_screen.jpg?ts=1637014577" alt="postImage" />
                                     </div>
-                                    <div className="col-md-6 col-lg-4">
-                                        <img className="img-fluid w-100 h-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUJx5g8wjHHtBy51MFOHgCGV_dnCkrL0pAyw&usqp=CAU" alt="postImage" />
+                                    <div className="col-md-6 col-lg-4 p-2">
+                                        <img className="img-fluid w-100 h-200" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/new-arrival-in-store-instagram-story-template-design-00e18ce7924908ed9db64c719b56e9e0_screen.jpg?ts=1637013791" alt="postImage" />
                                     </div>
-                                    <div className="col-md-6 col-lg-4">
-                                        <img className="img-fluid w-100 h-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUJx5g8wjHHtBy51MFOHgCGV_dnCkrL0pAyw&usqp=CAU" alt="postImage" />
+                                    <div className="col-md-6 col-lg-4 p-2">
+                                        <img className="img-fluid w-100 h-200" src="https://static.vecteezy.com/system/resources/previews/020/012/339/non_2x/green-illustrated-holiday-special-sale-instagram-story-free-editor_template.jpeg" alt="postImage" />
                                     </div>
                                 </div>
                             </div>
-                            <div className="container-fluid tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                         
+
+                            <div className="container-fluid tab-pane fade overflow-scroll compcont" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                                 <div className="col-12 d-flex justify-content-center mb-4 mt-1">
-                                        <img className="img-fluid w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUJx5g8wjHHtBy51MFOHgCGV_dnCkrL0pAyw&usqp=CAU" alt="postImage" />
+                                        <img className="img-fluid w-100" src="https://images.template.net/54866/Med-Spa-Instagram-Post-sm-1610521430297-548660.jpeg" alt="postImage" />
                                 </div>
                                 <div className="col-12 d-flex justify-content-center mb-4 mt-4">
-                                    <img className="img-fluid w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUJx5g8wjHHtBy51MFOHgCGV_dnCkrL0pAyw&usqp=CAU" alt="postImage" />
+                                    <img className="img-fluid w-100" src="https://images.template.net/54702/Spa-Advertisement-Instagram-Post-sm-1610418067377-547020.jpeg" alt="postImage" />
                                 </div>
                                 <div className="col-12 d-flex justify-content-center mb-4 mt-4">
-                                    <img className="card-img-top img-fluid w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUJx5g8wjHHtBy51MFOHgCGV_dnCkrL0pAyw&usqp=CAU" alt="postImage" />
+                                    <img className="card-img-top img-fluid w-100" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/whatsapp-status-and-instagram-story-fashion-a-design-template-5826cc5d21c964f070d3a4a9d597a6ac_screen.jpg?ts=1637014577" alt="postImage" />
                                 </div>
                             </div>
                         </div>   
