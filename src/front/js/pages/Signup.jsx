@@ -61,7 +61,6 @@ export const Signup = () => {
 			firstName,
 		});
 		if (createUser) {
-			console.log("hola")
 			navigate("/home")
 		}
  	};

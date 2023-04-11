@@ -16,7 +16,11 @@ const Tutorial = () => {
     const steps = [
         {
             target: "body",
-            content: "¡Bienvenido a GeekPost!",
+            content: (<div>
+                        <p>HOla Ibai</p>
+                        <br />
+                        <h3>Soy otra linea</h3>
+                    </div>),
             placement: "center",
             disableBeacon:true,
         },
@@ -52,10 +56,25 @@ const Tutorial = () => {
         }
   ];
 
-  
-
   return (
-    <Joyride steps={steps} disableScrolling={true} locale={customLocale} />
+    <Joyride steps={steps}
+        disableScrolling={true}
+        locale={customLocale}
+        showSkipButton={true}
+        continuous={true}
+        showProgress={true}
+        styles={{
+            options: {
+              arrowColor: '#e3ffeb',
+              backgroundColor: '#e3ffeb',
+              overlayColor: 'rgba(79, 26, 0, 0.4)',
+              primaryColor: '#000',
+              textColor: '#004a14',
+              width: 900,
+              zIndex: 1000,
+            }
+          }}
+    />
   );
 };
 
