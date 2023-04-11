@@ -211,6 +211,11 @@ const getState = ({
 
             }
             }
-        }
 
-        export default getState;
+        }
+      },
+    },
+  };
+};
+
+export default getState;
