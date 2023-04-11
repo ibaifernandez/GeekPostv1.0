@@ -81,9 +81,11 @@ export const IntroProcess = () => (
                     </div>
                 </div>
                 <div className="d-flex justify-content-center">
-                    <Link to="/signup" className="btn-get-registered">
-                        Regístrate 🖋
+                {localStorage.token ?
+                    <Link to={`/home`} className="btn-get-registered">
+                        Ve a tu escritorio 🏠
                     </Link>
+                :   <Link to={`/signup`} className="btn-get-registered">Regístrate 🖋</Link>}
                 </div>
             </div>
         </div>

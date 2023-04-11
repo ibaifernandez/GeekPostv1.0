@@ -4,7 +4,7 @@
 
 #home-header {
     transition: all 0.5s;
-    z-index: 999;
+    z-index: 99;
     zoom: 0.95;
     background: var(--purple);
 }
@@ -26,19 +26,57 @@
     z-index: 1;
 }
 
+.section-title-home {
+    text-align: center;
+}
+
+.section-title-home h2 {
+    /* font-size: 32px; */
+    /* font-weight: bold; */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    color: var(--purple)
+}
+
+.section-title-home h2::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+}
+
+.section-title-home h2::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--fucsia);
+    bottom: 0;
+    left: calc(50% - 20px);
+}
+
 /* Sidebar */
 
 aside {
     width: 280px;
-    height:100vh;
+    height:100%;
     position:absolute;
-    padding: 148px 0 0 1rem;
+    padding: 65px 0 0 1rem;
     background: var(--blue);
 }
 
 #sidebar-username {
-    font-size:18px;
+    font-size:24px;
     margin-top: 15px;
+    margin-left: 10px;
+    color: var(--white)
 }
 
 .sidebar-nav-link {
@@ -50,6 +88,30 @@ aside {
     margin-left:280px;
 }
 
+#home-process {
+    padding-top:25px;
+    height:100%;
+}
+
 #home-process h2 {
     font-size:24px;
+}
+
+.btn-create-home {
+    font-weight: 200;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 28px 11px 28px;
+    border-radius: 50px;
+    transition: 1s;
+    margin-top: 1rem;
+    color: var(--fucsia);
+    border: 1px solid var(--blue);
+    background: transparent;
+}
+
+.btn-create-home:hover {
+    background: var(--fucsia);
+    color: var(--white);
 }

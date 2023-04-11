@@ -1,348 +1,496 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../../front/styles/infopost.css";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import { OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
 export const Infopost = () => {
-  const { store, actions } = useContext(Context);
-  const [image, setImage] = useState(" ");
-  const [identity, setIdentity] = useState(" ");
-  const [main_text, setMain_text] = useState("");
-  const [secondary_text, setSecondary_text] = useState(" ");
-  const [price, setPrice] = useState(" ");
-  const [contact_details, setContact_details] = useState("");
-  const [logo, setLogo] = useState("");
-  const [formality, setFormality] = useState(" ");
-  const [main_color, setMain_color] = useState(" ");
-  const [secondary_color, setSecondary_color] = useState("");
-  const [aux_color, setAux_color] = useState("");
 
-  const [Post9_16, setPost9_16] = useState("");
-  const [Post1_1, setPost1_1] = useState("");
-  const [KeyWord1, setKeyWord1] = useState("");
-  const [KeyWord2, setKeyWord2] = useState("");
-  const [KeyWord3, setKeyWord3] = useState("");
+    const { store, actions } = useContext(Context);
+  
+    const [mainImageisLoaded, setMainImageIsLoaded] = useState(false);
+   
+    const [identity, setIdentity] = useState("");
 
-  const navigate = useNavigate();
+    const [mainText, setMainText] = useState("");
 
-  return (
-    <div className="main todo">
-      <div className="container cont">
-        <form method="POST" className="appointment-form formulario_infopost" id="appointment-form">
-          <h2 className="w-100">Completar la siguiente informacion</h2>
+    const [secondaryText, setSecondaryText] = useState("");
 
-          <div className="form-group-1">
-            <div className="form-group d-flex justify-content-around">
-              <label htmlFor="formFileSm" className="ms-2 form-label labelcss">
-                Subir foto
-                <input
-                    className="form-control form-control-sm"
-                    id="image"
-                    onChange={(e) => setImage(e.target.value)}
-                  //  value={image}
-                    type="file"
-                />
-              </label>
-              <button
-                  type="button"
-                  className=" ayuda btn btn-outline-secondary h-25 mt-4 ms-2 rounded-circle border border-dark-subtle "
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="right"
-                  title="Subir la foto que quieras publicar en formato jpg">
-                    <i className="fa-solid fa-question"></i>
-              </button>
+    const [price, setPrice] = useState("");
+    
+    const [contact, setContact] = useState("");
+
+    const [logo, setLogo] = useState("");
+    
+    const [newLogoIsLoaded, setNewLogoIsLoaded] = useState(false);
+
+    const [formality, setFormality] = useState(2);
+
+    const [mainColor, setMainColor] = useState("#000000");
+
+    const [secondaryColor, setSecondaryColor] = useState("#000000");
+
+    const [auxColor, setAuxColor] = useState("#000000");
+
+    const [ratio, setRatio] = useState("")
+
+    useEffect(() => {
+        actions.getUserDetails();
+        setIdentity(store.user.identity);
+        setLogo(store.user.logo);
+        setContact(store.user.contact);
+        setMainColor(store.user.mainColor);
+        setSecondaryColor(store.user.secondaryColor);
+        setAuxColor(store.user.auxColor);
+      }, []);
+
+    const navigate = useNavigate();
+
+    const handleImageUpload = (e) => {
+        e.preventDefault();
+        const input = document.getElementById('mainImageFile');
+        const file = input.files[0];
+        if (!file) return;
+        const imageURL = URL.createObjectURL(file);
+        localStorage.setItem("mainImage", imageURL); 
+        setMainImageIsLoaded(true);
+    }
+    
+    const handleLogoUpload = (e) => {
+        e.preventDefault();
+        const input = document.getElementById('logoFile');
+        const file = input.files[0];
+        if (!file) return;
+        const logoURL = URL.createObjectURL(file);
+        localStorage.setItem("newLogo", logoURL); 
+        setNewLogoIsLoaded(true);
+        setLogo(null);
+    }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("ENVIADO DESDE INFOPOST");
+        console.log(
+            identity,
+            mainText,
+            secondaryText,
+            price,
+            logo,
+            formality,
+            mainColor,
+            secondaryColor,
+            auxColor,
+            ratio,
+            contact
+            )
+        actions.storeInfoPost(
+            identity,
+            mainText,
+            secondaryText,
+            price,
+            logo,
+            formality,
+            mainColor,
+            secondaryColor,
+            auxColor,
+            ratio,
+            contact
+          )
+          navigate("/output")
+    }
+
+    const imageUploaderTooltip = (
+    <Tooltip id="image-uploader-tooltip">
+        Sube aquí la imagen que quieres que sea el foco principal de la composición de tu post final.
+    </Tooltip>
+    );
+
+    const identityTooltip = (
+    <Tooltip id="identity-tooltip">
+        Escribe aquí la identidad de tu negocio, que bien podría ser tu nombre en el caso de que se 
+        trate de una marca personal o del nombre de tu negocio si lo que quieres es publicar algo 
+        relativo a él. Máximo 25 caracteres.
+    </Tooltip>
+    );
+
+    const mainTextTooltip = (
+    <Tooltip id="main-text-tooltip">
+        Escribe aquí el que será el texto principal de tu diseño, es decir, el principal reclamo para
+        quien se tope con el post. Máximo 25 caracteres.
+    </Tooltip>
+    );
+
+    const secondaryTextTooltip = (
+    <Tooltip id="secondary-text-tooltip">
+        Escribe aquí el que será el texto secundario de tu diseño, es decir, una explicación adicional
+        para entender de qué trata tu post. Máximo 50 caracteres.
+    </Tooltip>
+    );
+
+    const priceTooltip = (
+    <Tooltip id="price-tooltip">
+        Escribe aquí el precio u oferta, si es que tu post incluye alguno. Si no, déjalo vacío. Si se trata 
+        de un precio, puedes incluir el símbolo de la divisa (por ejemplo, "$3,95"). Si se trata de una 
+        oferta, puedes escribirla en forma de porcentaje (por ejemplo "20%"). Máximo 10 caracteres.
+    </Tooltip>
+    );
+
+    const contactTooltip = (
+    <Tooltip id="contact-tooltip">
+        Escribe aquí una forma sencilla de que tus clientes puedan contactarte, como un número de teléfono, 
+        la dirección de un sitio web o un correo electrónico. Máximo 15 caracteres.
+    </Tooltip>
+    );
+    
+    const logoTooltip = (
+    <Tooltip id="logo-tooltip">
+        Elige tu «logo». Quedará mucho mejor si eliges uno que tenga proporción cuadradada.
+    </Tooltip>
+    );
+    
+    const formalityTooltip = (
+    <Tooltip id="logo-tooltip">
+        Dependiendo de la naturaleza de tu negocio y de tu publicación, elige el nivel de formalidad que más te
+        convenga. ¡Cada uno arrojará un resultado diferente en forma de post final!
+    </Tooltip>
+    );
+    
+    const ratioTooltip = (
+    <Tooltip id="logo-tooltip">
+        Ten en cuenta que las publicaciones cuadradas se ven mejor en los feed de las diferentes redes sociales 
+        mientras que las publicaciones verticales son más adecuadas para las <em>stories</em>.
+    </Tooltip>
+    );
+    
+    const mainColorTooltip = (
+    <Tooltip id="logo-tooltip">
+        ¿Tiene tu marca un color principal? De ser así, elígelo aquí.
+    </Tooltip>
+    );
+    
+    const secondaryColorTooltip = (
+    <Tooltip id="logo-tooltip">
+        ¿Tiene tu marca un color secundario? De ser así, elígelo aquí.
+    </Tooltip>
+    );
+    
+    const auxColorTooltip = (
+    <Tooltip id="logo-tooltip">
+        ¿Tiene tu marca un color auxiliar? De ser así, elígelo aquí.
+    </Tooltip>
+    );
+
+    useEffect(() => {
+        fetch("https://3001-ibaifernand-geekpostv10-kr8unxhs4kh.ws-us93.gitpod.io/api/protected", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        })
+    },[])
+    
+    return (
+        <div id="infopost-main-wrapper">
+            <div id="infopost-wrapper" className="container">
+                <h2 className="w-100 text-center">¡Crea tu composición!</h2>
+                <p className="text-center mt-3">Añade a continuación la información que quieras ver representada en tu diseño final.</p>
+                <form id="infopost-form" method="post" onSubmit={(e) => {handleSubmit(e)}}>
+                    <div id="infopost-form-wrapper" className="form-group-1">
+                        
+                        <div id="image-uploader" className="image-uploader-card"> 
+                            <label htmlFor="mainImageFile" className="form-label infopost-label">
+                                1. Selecciona una imagen (tamaño máximo 5 Mb)
+                            </label>
+                            <div id="image-uploader-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    className="form-control-image-uploader"
+                                    type="file"
+                                    id="mainImageFile"
+                                    accept="image/*"
+                                    required
+                                    onChange={(e) => handleImageUpload(e)}
+                                />
+                                <OverlayTrigger placement="right" overlay={imageUploaderTooltip}>
+                                    <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                            <div id="uploaded-main-image" className="img-fluid">
+                                { mainImageisLoaded ?
+                                    (<div className="mt-3 d-flex justify-content-center">
+                                        <img src={localStorage.mainImage} alt="" className="img-fluid" />
+                                    </div>)
+                                : null }
+                           </div>
+                        </div>
+
+                        <div id="identity-uploader" className="mt-4">
+                            <label htmlFor="identity" className="form-label infopost-label">
+                                2. ¿Cuál es la identidad de tu negocio?
+                            </label>
+                            <div id="identity-uploader-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    type="text"
+                                    name="identity"
+                                    id="identity"
+                                    className="input-infopost border-0 border-bottom"
+                                    onChange={(e) => setIdentity(e.target.value)}
+                                    value={identity}
+                                    placeholder="Pastelería La Increíble (max. 25 caracteres)"
+                                    maxLength={25}
+                                />
+                                <OverlayTrigger placement="right" overlay={identityTooltip}>
+                                    <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+                        
+                        <div id="main-text-uploader" className="mt-4">
+                            <label htmlFor="main-text" className="form-label infopost-label">
+                                3. Escribe el texto principal de tu post.
+                            </label>
+                            <div id="main-text-uploader-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    type="text"
+                                    name="main-text"
+                                    id="main-text"
+                                    className="input-infopost border-0 border-bottom"
+                                    onChange={(e) => setMainText(e.target.value)}
+                                    value={mainText}
+                                    placeholder="¡Deliciosos pasteles de chocolate! (Máx. 25 caracteres)"
+                                    maxLength={25}
+                                />
+                                <OverlayTrigger placement="right" overlay={mainTextTooltip}>
+                                    <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+                        
+                        <div id="secondary-text-uploader" className="mt-4">
+                            <label htmlFor="secondary-text" className="form-label infopost-label">
+                                4. Escribe el texto secundario de tu post.
+                            </label>
+                            <div id="secondary-text-uploader-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    type="text"
+                                    name="secondary-text"
+                                    id="secondary-text"
+                                    className="input-infopost border-0 border-bottom"
+                                    onChange={(e) => setSecondaryText(e.target.value)}
+                                    value={secondaryText}
+                                    placeholder="¡Hechos con cacao ecuatoriano 100% puro! (Máx. 50 caracteres)"
+                                    maxLength={50}
+                                />
+                                <OverlayTrigger placement="right" overlay={secondaryTextTooltip}>
+                                    <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+
+                        <div id="price-uploader" className="mt-4">
+                            <label htmlFor="price" className="form-label infopost-label">
+                                5. Escribe aquí el precio u oferta que quieres que aparezca en tu post.
+                            </label>
+                            <div id="price-uploader-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    type="text"
+                                    name="price"
+                                    id="price"
+                                    className="input-infopost border-0 border-bottom"
+                                    onChange={(e) => setPrice(e.target.value)}
+                                    value={price}
+                                    placeholder="$3,95 (Máx. 10 caracteres)"
+                                    maxLength={10}
+                                />
+                                <OverlayTrigger placement="right" overlay={priceTooltip}>
+                                    <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+
+                        <div id="contact-uploader" className="mt-4">
+                            <label htmlFor="contact" className="form-label infopost-label">
+                                6. Escribe aquí tus datos de contacto.
+                            </label>
+                            <div id="contact-uploader-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    type="text"
+                                    name="contact"
+                                    id="contact"
+                                    className="input-infopost border-0 border-bottom"
+                                    onChange={(e) => setContact(e.target.value)}
+                                    value={contact}
+                                    placeholder="+59398403873 (Máx. 15 caracteres)"
+                                    maxLength={15}
+                                />
+                                <OverlayTrigger placement="right" overlay={contactTooltip}>
+                                    <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+                        
+                        <div id="logo-uploader" className="image-uploader-card mt-4"> 
+                        <label htmlFor="logoFile" className="form-label infopost-label">
+                                7. Carga tu logo (tamaño máximo 5 Mb)
+                            </label>
+                            <div id="logo-uploader-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    className="form-control-image-uploader"
+                                    type="file"
+                                    id="logoFile"
+                                    accept="image/*"
+                                    required={store.user.logo ? false : true}
+                                    onChange={(e) => handleLogoUpload(e)}
+                                />
+                                <OverlayTrigger placement="right" overlay={logoTooltip}>
+                                    <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                            <div id="pre-uploaded-logo" className="img-fluid">
+                                { newLogoIsLoaded ? 
+                                    (<div className="mt-3 d-flex justify-content-center">
+                                        <img src={localStorage.newLogo} alt="" className="img-fluid" />
+                                    </div>)
+                                : store.user.logo ?
+                                    (<div className="mt-3 d-flex justify-content-center">
+                                       <img src={logo} alt="" className="img-fluid" />
+                                    </div>)                                
+                                : null }
+                           </div>
+                        </div>
+
+                        <div id="formality-meter" className="mt-4">
+                            <label htmlFor="formality" className="form-label infopost-label">
+                                8. Elige el nivel de formalidad de tu post.
+                            </label>
+                            <div className="d-flex w-100">
+                                <div id="formality-input" className="d-flex flex-column align-middle mt-3 w-100">
+                                    <input
+                                        type="range"
+                                        name="formality-level"
+                                        id="formality-level"
+                                        className="input-infopost border-0 border-bottom"
+                                        min="1"
+                                        max="3"
+                                        step="1"
+                                        onChange={(e) => {setFormality(parseInt(e.target.value))}}
+                                        value={formality}
+                                    />
+                                    <div className="d-flex justify-content-between slider-tags-infopost">
+                                        <span>Formal</span>
+                                        <span>Semiformal</span>
+                                        <span>Informal</span>
+                                    </div>
+                                </div>    
+                                <OverlayTrigger placement="right" overlay={formalityTooltip}>
+                                    <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+
+                        <div id="ratio-input" className="mt-4">
+                            <div htmlFor="square" className="form-label infopost-label">
+                                9. ¿Quieres tu post en formato cuadrado o vertical?
+                            </div>
+                            <div id="ratio-input-selector" className="mt-3 d-flex justify-content-between">
+                                <div id="square-input" className="w-25">
+                                    <input
+                                        type="radio"
+                                        id="square"
+                                        name="ratio"
+                                        value={ratio}
+                                        className="form-check-input"
+                                        onChange={(e) => setRatio(e.target.id)}
+                                        required
+                                    />
+                                    <label htmlFor="square" className="ms-3">
+                                        Cuadrado
+                                    </label>
+                                </div>
+                                <div id="vertical-input" className="w-25">
+                                    <input
+                                        type="radio"
+                                        id="vertical"
+                                        name="ratio"
+                                        value={ratio}
+                                        className="form-check-input"
+                                        onChange={(e) => setRatio(e.target.id)}
+                                        required
+                                     />
+                                     <label htmlFor="vertical" className="ms-3">
+                                        Vertical
+                                    </label>
+                                </div>
+                                <OverlayTrigger placement="right" overlay={ratioTooltip}>
+                                    <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+
+                        <div id="main-color-picker" className="mt-4">
+                            <label htmlFor="main-color" className="form-label infopost-label">
+                                10. ¿Cuál es el color principal de tu marca?
+                            </label>
+                            <div id="main-color-picker-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    type="color"
+                                    name="main-color"
+                                    id="main-color"
+                                    className="input-infopost border-0 border-bottom"
+                                    onChange={(e) => setMainColor(e.target.value)}
+                                    value={mainColor}
+                                />
+                                <OverlayTrigger placement="right" overlay={mainColorTooltip}>
+                                <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+                        
+                        <div id="secondary-color-picker" className="mt-4">
+                            <label htmlFor="secondary-color" className="form-label infopost-label">
+                                10. ¿Cuál es el color secundario de tu marca?
+                            </label>
+                            <div id="secondary-color-picker-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    type="color"
+                                    name="secondary-color"
+                                    id="secondary-color"
+                                    className="input-infopost border-0 border-bottom"
+                                    onChange={(e) => setSecondaryColor(e.target.value)}
+                                    value={secondaryColor}
+                                />
+                                <OverlayTrigger placement="right" overlay={secondaryColorTooltip}>
+                                <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+                        
+                        <div id="aux-color-picker" className="mt-4">
+                            <label htmlFor="aux-color" className="form-label infopost-label">
+                                10. ¿Cuál es el color auxiliar de tu marca?
+                            </label>
+                            <div id="aux-color-picker-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    type="color"
+                                    name="aux-color"
+                                    id="aux-color"
+                                    className="input-infopost border-0 border-bottom"
+                                    onChange={(e) => setAuxColor(e.target.value)}
+                                    value={auxColor}
+                                />
+                                <OverlayTrigger placement="right" overlay={auxColorTooltip}>
+                                <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button type="submit" className="btn btn-submit-infopost">Enviar</button>
+
+                </form>
             </div>
-            <div className="form-group d-flex justify-content-around ">
-              
-            <input
-              type="text"
-              name="identity"
-              id="identity"
-              className="inputInfoPost border border-0 border-bottom"
-              onChange={(e) => setIdentity(e.target.value)}
-              value={identity}
-              placeholder="Identidad"
-            />
+        </div>
 
-              <button
-                  type="button"
-                  className=" ayuda btn btn-outline-secondary h-25 mt-4 ms-2 rounded-circle border border-dark-subtle "
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="right"
-                  title="Escribe el nombre destacado de tu marca/emprendimiento">
-                    <i className="fa-solid fa-question"></i>
-              </button>
-          </div>
-
-          <div className="form-group d-flex justify-content-around">
-            <input
-              type="text"
-              name="main_text"
-              id="main_text"
-              className="inputInfoPost border border-0 border-bottom"
-              onChange={(e) => setMain_text(e.target.value)}
-              value={main_text}
-              placeholder="Texto principal (opcional)"
-            />
-               <button
-                  type="button"
-                  className=" ayuda btn btn-outline-secondary h-25 mt-4 ms-2 rounded-circle border border-dark-subtle "
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="right"
-                  title="Escribe un titulo que quieras que aparezca en la publicacion">
-                    <i className="fa-solid fa-question"></i>
-              </button>
-           </div>
-
-           <div className="form-group d-flex justify-content-around"> 
-            <input
-              type="text"
-              name="secondary_text"
-              id="secondary_text"
-              className="inputInfoPost border border-0 border-bottom "
-              onChange={(e) => setSecondary_text(e.target.value)}
-              value={secondary_text}
-              placeholder="Texto secundario (opcional)"
-            />
-                    <button
-                  type="button"
-                  className=" ayuda btn btn-outline-secondary h-25 mt-4 ms-2 rounded-circle border border-dark-subtle "
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="right"
-                  title="Escribe un texto menos destacado">
-                    <i className="fa-solid fa-question"></i>
-              </button>
-          </div>
-
-          <div className="form-group d-flex justify-content-around"> 
-            <input
-              type="text"
-              name="price"
-              id="price"
-              className="inputInfoPost border border-0 border-bottom"
-              onChange={(e) => setPrice(e.target.value)}
-              value={price}
-              placeholder="Oferta (opcional)"
-            />
-                  <button
-                  type="button"
-                  className=" ayuda btn btn-outline-secondary h-25 mt-4 ms-2 rounded-circle border border-dark-subtle "
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="right"
-                  title="Escribe un precio/promocion/oferta">
-                    <i className="fa-solid fa-question"></i>
-              </button>
-           </div>
-
-           <div className="form-group d-flex justify-content-around"> 
-            <input
-              type="text"
-              name="contact"
-              id="contact"
-              className="inputInfoPost border border-0 border-bottom"
-              onChange={(e) => setContact_details(e.target.value)}
-              value={contact_details}
-              placeholder="Dato de contacto (opcional)"
-            />
-              <button
-                  type="button"
-                  className=" ayuda btn btn-outline-secondary h-25 mt-4 ms-2 rounded-circle border border-dark-subtle "
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="right"
-                  title="Escribe un telefo/email/pagina web o algun dato que quieras que aparezca.">
-                    <i className="fa-solid fa-question"></i>
-              </button>
-            </div>
-
-           
-            <div className="form-group">
-              <label htmlFor="formFileSm" className=" form-label labelcss">
-                Subir logo
-              </label>
-              <input
-                className="form-control form-control-sm inputLogo"
-                id="Logo"
-                onChange={(e) => setLogo(e.target.value)}
-              //  value={logo}
-                type="file"
-              />
-          </div>
-
-
-            <div className="select-list seleccionar">
-              <label
-                 htmlFor="confirm_type"
-                 className="form-label labelcss mt-3 "
-                 required
-              >
-                Que tan formal queres que sea tu publicacion
-              </label>
-              <select
-                name="confirm_type"
-                className="SelectorFormalidad "
-                onChange={(e) => setFormality(e.target.value)}
-                value={formality}
-                id="formality"
-              >
-                <option selected>Elegir</option>
-                <option value="Muy formal">Muy formal</option>
-                <option value="Mas o menos formal">Mas o menos formal</option>
-                <option value="Informal">Informal</option>
-              </select>
-            </div>
-
-            <h4 className="pb-3">
-              Elige 3 colores que se identifiquen con tu marca:
-             
-            </h4>
-            <div className="d-flex justify-content-around">
-              <div className="">
-                <label htmlFor="color" className="ms-2 labelcss ">
-                  Color 1:{" "}
-                </label>
-                <input
-                  type="color"
-                  name="color"
-                  id="color"
-                  className="w-50 ms-3 elegir "
-                  onChange={(e) => setMain_color(e.target.value)}
-                  value={main_color}
-                
-                />
-                {/* <button
-                  className="ms-3 rounded-circle"
-                  onClick={(e) => setMain_color(e.target.value)}
-                  value={main_color}
-                >
-                  <i className="fa-sharp fa-solid fa-check"></i>
-                </button> */}
-              </div>
-              <div>
-              <label htmlFor="color" className="ms-2 labelcss ">
-                  Color 2:{" "}
-                </label>
-                <input
-                  type="color"
-                  name="color"
-                  id="color"
-                  className="w-50 ms-3 elegir  "
-                  onChange={(e) => setSecondary_color(e.target.value)}
-                  value={secondary_color}
-                
-                />
-
-                   </div>
-                {/* <button
-                  className="ms-3 rounded-circle"
-                  onClick={(e) => setSecondary_color(e.target.value)}
-                  value={secondary_color}
-                >
-                  <i className="fa-sharp fa-solid fa-check"></i>
-                </button> */}
-              
-              
-              <div>
-              <label htmlFor="color" className="ms-2 labelcss ">
-                  Color 3:{" "}
-                </label>
-                <input
-                  type="color"
-                  name="color"
-                  id="color"
-                  className="w-50 ms-3 elegir "
-                  onChange={(e) => setAux_color(e.target.value)}
-                  value={aux_color}
-                />
-                </div>
-                </div>
-                
-                <h4 className="pb-3 pt-3">En que formato quieres tu posteo:</h4>
-                <div >
-
-
-                <div className="form-check">
-                  <input className="form-check-input" 
-                  type="radio" 
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                  onChange={(e) => setPost9_16(e.target.value)}
-                  value={Post9_16}/>
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Historia de Instagram (relacion 9:16)
-                    </label>
-                </div>
-                
-                <div className="form-check">
-                  
-                  <input className="form-check-input" 
-                  type="radio" 
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                  onChange={(e) => setPost1_1(e.target.value)}
-                  value={Post1_1}/>
-                  <label class="form-check-label" for="flexRadioDefault2">
-                    Publicacion de instagram (relacion 1:1)
-                    </label>
-                
-                </div>
-
-              <h4 className="pb-3 pt-3">Escribe 3 palabras que se relaciones con tu posteo: </h4>
-              
-               
-              <div className="form-group d-flex justify-content-around ">
-                <input
-                    type="text"
-                    className="m-3 p-2 border border-0 border-bottom inputKW"
-                    name="KeyWord1"
-                    id="KeyWord1"
-                    onChange={(e) => setKeyWord1(e.target.value)}
-                    value={KeyWord1}
-                    placeholder="Palabra 1"
-              />
-                  <input
-                    type="text"
-                    className="m-3 p-2 border border-0 border-bottom inputKW"
-                    name="KeyWord2"
-                    id="KeyWord2"
-                    onChange={(e) => setKeyWord2(e.target.value)}
-                    value={KeyWord2}
-                    placeholder="Palabra 2"
-              />
-                  <input
-                    type="text"
-                    className="m-3 p-2 border border-0 border-bottom inputKW"
-                    name="KeyWord3"
-                    id="KeyWord3"
-                    onChange={(e) => setKeyWord3(e.target.value)}
-                    value={KeyWord3}
-                    placeholder="Palabra 3"
-              />
-                </div>
-{/* 
-                <button
-                    className="ms-3 rounded-circle"
-                    onClick={(e) => setAux_color(e.target.value)}
-                    value={aux_color}>
-                  <i className="fa-sharp fa-solid fa-check"></i>
-                </button> */}
-              
-            </div>
-          </div>
-          <div className="d-flex justify-content-center">
-            <button 
-                className="btn-get-registered"
-                onClick={() => {
-                  actions.getInfoPost();
-                    }}> Crear 🖌  </button>
-            
-            </div>
-          <div className="d-flex justify-content-center">
-          <button type="reset" className="btn-delete "> 
-           Borrar todo <i className="fa-regular fa-trash-can"></i>
-          </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+         
+      
+    );
 };

@@ -1,6 +1,3 @@
-"""
-This module takes care of starting the API Server, Loading the DB and Adding the endpoints
-"""
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Post
 from api.utils import generate_sitemap, APIException
@@ -26,7 +23,6 @@ def login():
     access_token = create_access_token(identity=user.id)
     return jsonify(access_token=access_token), 200
 
-
 @api.route("/home", methods=["GET"])
 @jwt_required()
 def home():
@@ -35,7 +31,6 @@ def home():
     }
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
-
 
 @api.route("/signup", methods=["POST"])
 def signup():
@@ -131,50 +126,75 @@ def get_user_info():
 
     return jsonify(result), 200
 
-
 # ROUTES FOR POST TABLE
 
-@api.route('/infoPost', methods=['GET'])
+@api.route("/infopost", methods=["POST"])
 @jwt_required()
-def get_info_post():
+def save_post_info():
+    body = request.get_json()
+
     current_user = get_jwt_identity()
-    post_query = Post.query.filter_by(user_id=current_user).first()
-    
-    if post_query is None:
-        return jsonify({"msg": "There are no Post for this user"}), 400
-    result = post_query.serialize()
-    return jsonify(result), 200
-    
-
-
-@api.route("/infoPost", methods=["POST"])
-def infoPostGuardar():
-    body = json.loads(request.data)
 
     new_post = Post(
-        user_id= body["user_id"],
-        identity= body["identity"],
-        main_text= body["main_text"],
-        secondary_text= body["secondary_text"],
-        price= body["price"],
-        logo= body["logo"],
-        formality= body["formality"],
-        main_color= body["main_color"],
-        secondary_color= body["secondary_color"],
-        aux_color= body["aux_color"],
-        template= body["template"],
-        ratio= body["ratio"],
-        image_id= body["image_id"],
-        post1_1= body["post1_1"],   
-        post9_16= body["post9_16"],
-        contact_data= body["contact_data"],
-        keyword1= body["keyword1"],
-        keyword2= body["keyword2"],
-        keyword3= body["keyword3"]
-        )
+        user_id = current_user,
+        identity = body["identity"],
+        main_text = body["main_text"],
+        secondary_text = body["secondary_text"],
+        price = body["price"],
+        logo = body["logo"],
+        formality = body["formality"],
+        main_color = body["main_color"],
+        secondary_color = body["secondary_color"],
+        aux_color = body["aux_color"],
+        ratio = body["ratio"],
+        contact_data = body["contact_data"]
+    )
 
     db.session.add(new_post)
     db.session.commit()
 
+    return jsonify({
+        "post": new_post.serialize(), "current_user": current_user}), 201
 
-    return jsonify(new_post.serialize()), 200
+@api.route("/infopost/<int:post_id>", methods=["GET"])
+@jwt_required()
+def get_post_info(post_id):
+    try:
+        post = Post.query.filter_by(id=post_id).first()
+
+        if not post:
+            raise NotFound(f"No se encontró ningún post con id {post_id}")
+
+        current_user = get_jwt_identity()
+        app.logger.info(f'El usuario autenticado es: {current_user}')
+
+        # Si el usuario autenticado no es el dueño del post, se le niega el acceso
+        if post.user_id != current_user:
+            raise Forbidden("No tiene permiso para acceder a este post")
+
+        # Devuelve la información del post en la base de datos
+        return jsonify({"post": post.serialize()}), 200
+
+    except NotFound as e:
+        # Si no se encuentra el post, devuelve un código 404 con el mensaje de error
+        return jsonify({"error": str(e)}), 404
+
+    except Forbidden as e:
+        # Si el usuario autenticado no es el dueño del post, devuelve un código 403 con el mensaje de error
+        return jsonify({"error": str(e)}), 403
+
+    except (jwt.exceptions.InvalidTokenError, jwt.exceptions.ExpiredSignatureError) as e:
+        # Si hay un error de autenticación, devuelve un código 401 con el mensaje de error
+        return jsonify({"error": "Token de autenticación inválido o caducado"}), 401
+
+    except Exception as e:
+        # Si hay cualquier otro error, se registra en la consola y se devuelve un código 500 con un mensaje genérico de error
+        app.logger.exception(e)
+        return jsonify({"error": "Ocurrió un error inesperado en el servidor"}), 500
+
+@api.route("/protected", methods=["GET"])
+@jwt_required()
+def protected():
+    # Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200

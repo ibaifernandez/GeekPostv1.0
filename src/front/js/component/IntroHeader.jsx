@@ -1,3 +1,5 @@
+// https://stackoverflow.com/questions/58038008/how-to-stop-memory-leak-in-useeffect-hook-react
+
 import React, { useState, useEffect } from "react";
 import { Logo } from "./Logo.jsx";
 import { Link } from "react-router-dom";
@@ -45,33 +47,39 @@ export const IntroHeader = () => {
                             <Link
                                 className="nav-link active"
                                 aria-current="page"
-                                to="/hello"
+                                to="/hola"
                             >
                                 ¡Hola! 👋🏼
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/help" className="nav-link">
+                            <Link to="/ayuda" className="nav-link">
                                 Ayuda 👩🏽‍🚒
                             </Link>
                         </li>
                         {/* <li className="nav-item">
-                            <Link to="/docs" className="nav-link">
+                            <Link to="/documentacion" className="nav-link">
                                 Docs 📚
                             </Link>
                         </li> */}
                         <li className="nav-item">
-                            <Link to="/contact" className="nav-link">
+                            <Link to="/contacto" className="nav-link">
                                 Contacto 💌
                             </Link>
                         </li>
-                        <Link to={`/login`}>
+                        {localStorage.token ? <Link to={`/home`}>
+                            <li className="nav-item">
+                                <button className="getstarted ms-auto">
+                                    <i className="fa fa-home"></i>
+                                </button>
+                            </li>
+                        </Link> :  <Link to={`/login`}>
                             <li className="nav-item">
                                 <button className="getstarted ms-auto">
                                     Ingresar 🤩
                                 </button>
                             </li>
-                        </Link>
+                        </Link>}
                     </ul>
                 </div>
             </nav>

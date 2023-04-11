@@ -13,22 +13,22 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    min-width: 800px;
+    min-height: 425px;
+    border-radius: 5px;
 }
 
-.login-left-wrapper,
+.login-left-wrapper {
+    padding: 30px 10px ;
+}
+
 .login-right-wrapper {
-    padding: 30px 50px;
+    padding: 20px;
+    border-radius: 0 5px 5px 0;
 }
 
 .login-left-wrapper {
     width: 60%;
-}
-
-.login-h2 {
-    font-size: 28px;
-    font-family: "Roboto", sans-serif;
-    margin-top: 25px;
-    color: var(--fucsia);
 }
 
 .login-form {
@@ -47,8 +47,6 @@
 
 .avatar::after,
 .avatar::before {
-    /* -webkit-backface-visibility: hidden;
-    backface-visibility: hidden; */
     content: "";
     position: absolute;
     left: 50%;
@@ -87,36 +85,8 @@
     transition: all 0.5s ease-in-out;
 }
 
-.usermail,
-.password {
-    position: relative;
-}
-
-.usermail::after,
-.password::after {
-    /* -webkit-backface-visibility: hidden;
-    backface-visibility: hidden; */
-    color: rgba(0, 0, 0, 0.2);
-    display: block;
-    font: 400 16px "FontAwesome", sans-serif;
-    left: 14px;
-    position: absolute;
-    top: 35%;
-    -webkit-transform: translate3d(-50%, -50%, 0) scale(1);
-    transform: translate3d(-50%, -50%, 0) scale(1);
-    z-index: 1;
-}
-
-.usermail::after {
-    content: "\f2be";
-}
-
-.password::after {
-    content: "\f084";
-}
-
 .label-block {
-    display: block;
+    margin: 0 0 2rem 0;
 }
 
 .login-input {
@@ -125,23 +95,17 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     display: block;
     outline: none;
-    margin: 0 0 2rem 0;
-    padding: 0 0.5rem 0.5rem 2rem;
+    padding: 0;
+    margin: 0 0 0 0.5rem;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     width: 100%;
+    font-weight:600;
 }
 
 .inputlogin:focus {
     border-bottom-color: var(--purple);
 }
-
-/* .row::after {
-  clear: both;
-  content: '';
-  display: block;
-  width: 100%;
-} */
 
 .login-button {
     border: none;
@@ -158,4 +122,18 @@
 
 .lost-password {
     margin: 30px 0 0;
+}
+
+.login-warning {
+    background: var(--fucsia);
+    opacity:0.65;
+    font-size:12px;
+    color: var(--white);
+    padding:0.5rem;
+    border-radius: 5px;
+}
+
+::-webkit-input-placeholder {
+    color: gray;
+    font-weight: 300;
 }

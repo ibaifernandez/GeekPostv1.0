@@ -17,6 +17,10 @@
     --white: #f9f9f9;
 }
 
+.color-purple {
+    color: var(--purple);
+}
+
 @font-face {
     font-family: "inglobal-italic";
     src: local("inglobal-italic"),
@@ -56,7 +60,7 @@ h6 {
     margin: 0;
 }
 
-p {
+p, label {
     font-family: "Roboto", sans-serif;
 }
 
@@ -69,6 +73,7 @@ a {
 input {
     font-family: "Roboto", sans-serif;
     font-weight: 200;
+    background: transparent;
 }
 
 input:focus-visible {
@@ -78,6 +83,10 @@ input:focus-visible {
 
 .row>* {
     padding-right:0px;
+}
+
+.w-12 {
+    width:12%;
 }
 
 /*--------------------------------------------------------------
@@ -126,6 +135,10 @@ section {
     background-color: var(--white);
 }
 
+.section-pure-white-bg {
+    background-color: white;
+}
+
 .section-title {
     text-align: center;
     padding-bottom: 30px;
@@ -134,7 +147,6 @@ section {
 .section-title h2 {
     /* font-size: 32px; */
     /* font-weight: bold; */
-    text-transform: uppercase;
     margin-bottom: 20px;
     padding-bottom: 20px;
     position: relative;
@@ -164,7 +176,7 @@ section {
 }
 
 .section-title p {
-    margin: 35px 0 0 0;
+    margin: 35px 100px 0;
 }
 
 /*--------------------------------------------------------------
@@ -473,7 +485,8 @@ section {
 
 #footer .footer-top {
     padding: 60px 0 30px 0;
-    background: #fff;
+    background: var(--white);
+    position:relative;
 }
 
 #footer .footer-top .footer-contact {
@@ -617,42 +630,26 @@ section {
 # Breadcrumbs
 --------------------------------------------------------------*/
 .breadcrumbs {
-    padding: 0;
-    background: #f3f5fa;
-    min-height: 40px;
+    background: var(--white);
   }
-  
-  @media (max-width: 992px) {
-    .breadcrumbs {
-      margin-top: 68px;
-    }
-  }
-  
-  .breadcrumbs h2 {
-    font-size: 28px;
-    font-weight: 600;
-    color: #37517e;
-  }
-  
-  .breadcrumbs ol {
+
+.breadcrumbs ul {
     display: flex;
-    flex-wrap: wrap;
     list-style: none;
-    padding: 0 0 10px 0;
-    margin: 0;
     font-size: 14px;
-  }
+    margin: 0 1rem 0 0;
+    padding: 1rem;
+    padding-left:1.5rem;
+}
   
-  .breadcrumbs ol li+li {
+.breadcrumbs ul li+li {
     padding-left: 10px;
-  }
+}
   
-  .breadcrumbs ol li+li::before {
-    display: inline-block;
+.breadcrumbs ul li+li::before {
     padding-right: 10px;
-    color: #4668a2;
-    content: "/";
-  }
+    content: "»";
+}
   
 
 /* MainHeader */

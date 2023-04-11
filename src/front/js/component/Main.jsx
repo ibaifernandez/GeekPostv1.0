@@ -21,6 +21,6 @@ export const Main = () => (
         <IntroProcess />
         <NeedHelp />
         <IntroAboutUs />
-        {/* <Newsletter /> */}
+        <Newsletter />
     </>
 );

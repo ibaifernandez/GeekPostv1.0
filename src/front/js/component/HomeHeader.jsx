@@ -23,7 +23,7 @@ export const HomeHeader = () => {
         >
             <nav className="navbar navbar-expand-lg  px-3 d-flex justify-content-between">
                 <Logo />
-                    <ul className="navbar-nav ms-auto">
+                    <ul id="header-create-post-button" className="navbar-nav d-flex justify-content-end w-12">
                         <li className="nav-item">
                             <Link to="/infopost">
                                 <button className="getstarted ms-auto">
