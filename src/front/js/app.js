@@ -1,5 +1,5 @@
 // Import de React y de hooks de React
-import React, {useEffect} from "react";
+import React from "react";
 
 // Import de hooks de React Router
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -45,7 +45,6 @@ import { SemiFormalSquareTemplate } from "./templates/SemiFormalSquareTemplate.j
 import { SemiFormalVerticalTemplate } from "./templates/SemiFormalVerticalTemplate.jsx";
 import { InformalSquareTemplate } from "./templates/InformalSquareTemplate.jsx";
 import { InformalVerticalTemplate } from "./templates/InformalVerticalTemplate.jsx";
-import { Xxx } from "./component/TemplateSelector.jsx";
 
 // Import de layouts
 import { IntroLayout } from "./layouts/introLayout.js";
@@ -105,7 +104,6 @@ const App = () => {
           {/* Ruta para Error [sin header ninguno]*/}
           <Route path="*" element={<Error404 />} />
           {/* Rutas para previsualizar templates [sin header ninguno] */}
-          <Route path="xxx" element={<Xxx />} />
           <Route path="formal-square-template" element={<FormalSquareTemplate />} />
           <Route path="formal-vertical-template" element={<FormalVerticalTemplate />} />
           <Route path="semiformal-square-template" element={<SemiFormalSquareTemplate />} />

@@ -156,45 +156,14 @@ def save_post_info():
     return jsonify({
         "post": new_post.serialize(), "current_user": current_user}), 201
 
-@api.route("/infopost/<int:post_id>", methods=["GET"])
+@api.route("/infopost/", methods=["GET"])
 @jwt_required()
-def get_post_info(post_id):
-    try:
-        post = Post.query.filter_by(id=post_id).first()
-
-        if not post:
-            raise NotFound(f"No se encontró ningún post con id {post_id}")
-
-        current_user = get_jwt_identity()
-        app.logger.info(f'El usuario autenticado es: {current_user}')
-
-        # Si el usuario autenticado no es el dueño del post, se le niega el acceso
-        if post.user_id != current_user:
-            raise Forbidden("No tiene permiso para acceder a este post")
-
-        # Devuelve la información del post en la base de datos
-        return jsonify({"post": post.serialize()}), 200
-
-    except NotFound as e:
-        # Si no se encuentra el post, devuelve un código 404 con el mensaje de error
-        return jsonify({"error": str(e)}), 404
-
-    except Forbidden as e:
-        # Si el usuario autenticado no es el dueño del post, devuelve un código 403 con el mensaje de error
-        return jsonify({"error": str(e)}), 403
-
-    except (jwt.exceptions.InvalidTokenError, jwt.exceptions.ExpiredSignatureError) as e:
-        # Si hay un error de autenticación, devuelve un código 401 con el mensaje de error
-        return jsonify({"error": "Token de autenticación inválido o caducado"}), 401
-
-    except Exception as e:
-        # Si hay cualquier otro error, se registra en la consola y se devuelve un código 500 con un mensaje genérico de error
-        app.logger.exception(e)
-        return jsonify({"error": "Ocurrió un error inesperado en el servidor"}), 500
-
-@api.route("/protected", methods=["GET"])
-@jwt_required()
-def protected():
-    # Access the identity of the current user with get_jwt_identity
+def get_post_info():
     current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user), 200
+
+    post = Post.query.filter_by(user_id=current_user).order_by(Post.id.desc()).first()
+
+    if not post:
+        raise Forbidden("No tiene permiso para acceder a este post")
+
+    return jsonify({"post": post.serialize()}), 200

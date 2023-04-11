@@ -1,24 +1,85 @@
-import React from "react";
-import { SemiFormalVerticalTemplate } from "../templates/SemiFormalVerticalTemplate.jsx"
-import { Footer } from "../component/Footer.jsx"
+import React, { useContext, useEffect } from "react";
 import "../../styles/output.css";
 import { FacebookShareButton, FacebookIcon } from 'react-share';
 
-export const Output = () => (
+// ELIGE LA PLANTILLA LA LLENA DE INFORMACION POR PROPS LA CONVIERTE EN JPG Y LA SUBE A IMGUR ¿HASTA QUÉ PUNTO PUEDO SER EL OUTPUT?
 
-    // <SelectorDelogica>
-    // <PLANTILLA> Store cambiar variables por esa información
-    // REACT-JPG
-    // ENVIAR IMAGEN A IMGUR CON FETCH (POST)
+import { Context } from "../store/appContext.js"
+import { FormalSquareTemplate } from "../templates/FormalSquareTemplate.jsx";
+import { FormalVerticalTemplate } from "../templates/FormalVerticalTemplate.jsx";
+import { SemiFormalSquareTemplate } from "../templates/SemiFormalSquareTemplate.jsx";
+import { SemiFormalVerticalTemplate } from "../templates/SemiFormalVerticalTemplate.jsx";
+import { InformalSquareTemplate } from "../templates/InformalSquareTemplate.jsx";
+import { InformalVerticalTemplate } from "../templates/InformalVerticalTemplate.jsx";
 
+    // retorno : plantilla (ratio, formality) ==> {react-jpg} ==> .JPG ==> <Output/>
+
+    // navigate/("output")
+
+// }
+
+    // importar la plantilla que ha elegido el selector de plantilla
+
+    // rellanrla de información
+
+    // PRUEBA ENORME pasarla por la librería que la convierte en jpg
+
+    // enviarla a imgur
+
+export const Output = () => {
+
+    const {store, actions} = useContext(Context)
+
+    useEffect(()=>{
+        actions.getInfoPost()
+        templateSelector()
+    },[])
+
+    const ratio = store.infoPost.ratio
+    const formality = store.infoPost.formality
+
+    const templateSelector = () => {
+        let template = "";
+        if (ratio === "vertical") {
+            if (formality === 1) {
+            return <InformalVerticalTemplate />;
+            } else if (formality === 2) {
+            template = <SemiFormalVerticalTemplate />;
+            } else if (formality === 3) {
+            template = <FormalVerticalTemplate />;
+            } else {
+            // ¿Qué hacemos en caso de que no haya una combinación de plantilla válida para las variables dadas?
+            }
+        } else if (ratio === "square") {
+            console.log("HOLA")
+            if (formality === 1) {
+            template = <InformalSquareTemplate />;
+            } else if (formality === 2) {
+template = <InformalVerticalTemplate />
+            } else if (formality === 3) {
+            template = <FormalSquareTemplate />;
+            } else {
+            // ¿Qué hacemos en caso de que no haya una combinación de plantilla válida para las variables dadas?
+            }
+        } else {
+            // ¿Qué hacemos en caso de que no haya una combinación de plantilla válida para las variables dadas?
+        }
+        return template;
+        };
+
+        
+    const finalComposition = (ratio, formality) => {
+        
+    }
+
+    return (
     <>
         <div className="container-fluid p-0 m-0">
             <div className="row p-0 m-0 output-wrapper">
                 <div className="col-sm-12 col-lg-6 p-0 m-0">
                     <div className="final-composition-wrapper">
                         <div className="final-composition-wrapper-img">
-                            {/* <SemiFormalVerticalTemplate /> */}
-                            <img src="https://i.XDeimgur.com"  />
+                            <SemiFormalVerticalTemplate />
                         </div>
                     </div>
                 </div>
@@ -45,6 +106,7 @@ export const Output = () => (
                 </div>
             </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
     </>
-    );
+    )
+};

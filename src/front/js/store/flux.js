@@ -23,8 +23,16 @@ const getState = ({
                     auxColor: "",
                 },
 
-                infopost: {
-                    mainImage: ""
+                infoPost: {
+                    mainImage: "",
+                    identity: "",
+                    mainText: "",
+                    secondaryText: "",
+                    price: "",
+                    contactData: "",
+                    mainColor: "",
+                    secondaryColor: "",
+                    auxColor: ""
                 },
 
                 errorLogin: "",
@@ -136,6 +144,7 @@ const getState = ({
                                 mainColor: data.main_color,
                                 secondaryColor: data.secondary_color,
                                 auxColor: data.aux_color,
+                                email: data.email
                             }
                         });
                     } catch (e) {
@@ -148,7 +157,6 @@ const getState = ({
                     setStore({
                         auth: false,
                     });
-                    console.log(getStore())
                 },
 
                 storeInfoPost: async (identity, mainText, secondaryText, price, logo, formality, mainColor, secondaryColor, auxColor, ratio, contact) => {
@@ -188,8 +196,9 @@ const getState = ({
                     console.error('Error en la petición:', e);
                 }
             },
-            getInfoPost: async (postId) => {
-                let api = url + "/api/infopost/" + postId;
+            
+            getInfoPost: async () => {
+                let api = url + "/api/infopost";
                 try {
                   const resp = await fetch(api, {
                     method: "GET",
@@ -198,13 +207,23 @@ const getState = ({
                       Authorization: "Bearer " + localStorage.getItem("token"),
                     },
                   });
-                  const data = await resp.json();
+                  const data = await resp.json()
                   setStore({
-                    post: {
-                      mainImage: data.main_image,
+                    infoPost: {
+                      mainImage: data.post.main_image,
+                      identity: data.post.identity,
+                      mainText: data.post.main_text,
+                      secondaryText: data.post.secondaryText,
+                      price: data.post.price,
+                      contactData: data.post.contact_data,
+                      mainColor: data.post.main_color,
+                      secondaryColor: data.post.secondaryColor,
+                      auxColor: data.post.auxColor,
+                      formality: data.post.formality,
+                      ratio: data.post.ratio
                     },
-                  });
-                } catch (e) {
+                  })
+               } catch (e) {
                   console.log(e);
                 }
               },
