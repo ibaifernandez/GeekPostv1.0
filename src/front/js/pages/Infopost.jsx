@@ -33,6 +33,8 @@ export const Infopost = () => {
 
     const [ratio, setRatio] = useState("")
 
+    const [cta, setCta] = useState("")
+
     useEffect(() => {
         actions.getUserDetails();
         setIdentity(store.user.identity);
@@ -67,21 +69,7 @@ export const Infopost = () => {
     }
     
     const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("ENVIADO DESDE INFOPOST");
-        console.log(
-            identity,
-            mainText,
-            secondaryText,
-            price,
-            logo,
-            formality,
-            mainColor,
-            secondaryColor,
-            auxColor,
-            ratio,
-            contact
-            )
+        e.preventDefault()
         actions.storeInfoPost(
             identity,
             mainText,
@@ -93,9 +81,10 @@ export const Infopost = () => {
             secondaryColor,
             auxColor,
             ratio,
-            contact
+            contact,
+            cta
           )
-          navigate("/output")
+        //   navigate("/output")
     }
 
     const imageUploaderTooltip = (
@@ -146,6 +135,12 @@ export const Infopost = () => {
         Elige tu «logo». Quedará mucho mejor si eliges uno que tenga proporción cuadradada.
     </Tooltip>
     );
+
+    const ctaTooltip = (
+    <Tooltip id="cta-tooltip">
+        Invita aquí a los usuarios que vean tu post a realizar una acción.
+    </Tooltip>
+    );
     
     const formalityTooltip = (
     <Tooltip id="logo-tooltip">
@@ -179,16 +174,6 @@ export const Infopost = () => {
     </Tooltip>
     );
 
-    useEffect(() => {
-        fetch("https://3001-ibaifernand-geekpostv10-kr8unxhs4kh.ws-us93.gitpod.io/api/protected", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("token")
-            }
-        })
-    },[])
-    
     return (
         <div id="infopost-main-wrapper">
             <div id="infopost-wrapper" className="container">
@@ -218,6 +203,7 @@ export const Infopost = () => {
                                 { mainImageisLoaded ?
                                     (<div className="mt-3 d-flex justify-content-center">
                                         <img src={localStorage.mainImage} alt="" className="img-fluid" />
+                                        {/* <button type="button" onClick={localStorage.removeItem("mainImage") && setMainImageIsLoaded(false)}>wefeqwfw</button> */}
                                     </div>)
                                 : null }
                            </div>
@@ -327,10 +313,31 @@ export const Infopost = () => {
                                 </OverlayTrigger>
                             </div>
                         </div>
+
+                        <div id="cta-uploader" className="mt-4">
+                            <label htmlFor="cta" className="form-label infopost-label">
+                                7. ¿A qué vas a invitar a tus clientes?
+                            </label>
+                            <div id="cta-uploader-input" className="d-flex align-middle justify-content-between mt-3">
+                                <input
+                                    type="text"
+                                    name="cta"
+                                    id="cta"
+                                    className="input-infopost border-0 border-bottom"
+                                    onChange={(e) => setCta(e.target.value)}
+                                    value={cta}
+                                    placeholder="¡Encarga el tuyo! (max. 25 caracteres)"
+                                    maxLength={25}
+                                />
+                                <OverlayTrigger placement="right" overlay={ctaTooltip}>
+                                    <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
                         
                         <div id="logo-uploader" className="image-uploader-card mt-4"> 
                         <label htmlFor="logoFile" className="form-label infopost-label">
-                                7. Carga tu logo (tamaño máximo 5 Mb)
+                                8. Carga tu logo (tamaño máximo 5 Mb)
                             </label>
                             <div id="logo-uploader-input" className="d-flex align-middle justify-content-between mt-3">
                                 <input
@@ -360,7 +367,7 @@ export const Infopost = () => {
 
                         <div id="formality-meter" className="mt-4">
                             <label htmlFor="formality" className="form-label infopost-label">
-                                8. Elige el nivel de formalidad de tu post.
+                                9. Elige el nivel de formalidad de tu post.
                             </label>
                             <div className="d-flex w-100">
                                 <div id="formality-input" className="d-flex flex-column align-middle mt-3 w-100">
@@ -389,7 +396,7 @@ export const Infopost = () => {
 
                         <div id="ratio-input" className="mt-4">
                             <div htmlFor="square" className="form-label infopost-label">
-                                9. ¿Quieres tu post en formato cuadrado o vertical?
+                                10. ¿Quieres tu post en formato cuadrado o vertical?
                             </div>
                             <div id="ratio-input-selector" className="mt-3 d-flex justify-content-between">
                                 <div id="square-input" className="w-25">
@@ -428,7 +435,7 @@ export const Infopost = () => {
 
                         <div id="main-color-picker" className="mt-4">
                             <label htmlFor="main-color" className="form-label infopost-label">
-                                10. ¿Cuál es el color principal de tu marca?
+                                11. ¿Cuál es el color principal de tu marca?
                             </label>
                             <div id="main-color-picker-input" className="d-flex align-middle justify-content-between mt-3">
                                 <input
@@ -447,7 +454,7 @@ export const Infopost = () => {
                         
                         <div id="secondary-color-picker" className="mt-4">
                             <label htmlFor="secondary-color" className="form-label infopost-label">
-                                10. ¿Cuál es el color secundario de tu marca?
+                                12. ¿Cuál es el color secundario de tu marca?
                             </label>
                             <div id="secondary-color-picker-input" className="d-flex align-middle justify-content-between mt-3">
                                 <input
@@ -466,7 +473,7 @@ export const Infopost = () => {
                         
                         <div id="aux-color-picker" className="mt-4">
                             <label htmlFor="aux-color" className="form-label infopost-label">
-                                10. ¿Cuál es el color auxiliar de tu marca?
+                                13. ¿Cuál es el color auxiliar de tu marca?
                             </label>
                             <div id="aux-color-picker-input" className="d-flex align-middle justify-content-between mt-3">
                                 <input

@@ -3,7 +3,7 @@
 // https://www.chromium.org/developers/design-documents/create-amazing-password-forms/
 
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { TOSModal } from "../component/modals/TOSModal.jsx";
 
@@ -18,6 +18,8 @@ export const Signup = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+
+  const location = useLocation()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,7 +63,7 @@ export const Signup = () => {
 			firstName,
 		});
 		if (createUser) {
-			navigate("/home")
+			navigate("/home", { state: { prevPath: location.pathname } })
 		}
  	};
 }
@@ -89,6 +91,7 @@ export const Signup = () => {
 							value={firstName}
 							onChange={(e) => setFirstName(e.target.value)}
 							placeholder="Ingresa tu nombre"
+							autoComplete="off"
 						/>
 					</div>
 					<div>
@@ -106,6 +109,7 @@ export const Signup = () => {
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 							placeholder="Ingresa tu correo electrónico"
+							autoComplete="email"
 						/>
 					</div>
 					<div>
@@ -123,6 +127,7 @@ export const Signup = () => {
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 							placeholder="Ingresa tu contraseña"
+							autoComplete="new-password"
 						/>
 					</div>
 					<div>
@@ -141,6 +146,7 @@ export const Signup = () => {
 							className="border-0 border-bottom w-100 ms-3 bg-transparent"
 							onChange={(e) => setPasswordCheck(e.target.value)}
 							placeholder="Confirma tu contraseña"
+							autoComplete="off"
 						/>
 					</div>
 					<div>

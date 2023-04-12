@@ -14,6 +14,7 @@ import { SemiFormalSquareTemplate } from "../templates/SemiFormalSquareTemplate.
 import { SemiFormalVerticalTemplate } from "../templates/SemiFormalVerticalTemplate.jsx";
 import { InformalSquareTemplate } from "../templates/InformalSquareTemplate.jsx";
 import { InformalVerticalTemplate } from "../templates/InformalVerticalTemplate.jsx";
+import { useNavigate } from "react-router-dom";
 
     // retorno : plantilla (ratio, formality) ==> {react-jpg} ==> .JPG ==> <Output/>
 
@@ -32,48 +33,54 @@ import { InformalVerticalTemplate } from "../templates/InformalVerticalTemplate.
 export const Output = () => {
 
     const {store, actions} = useContext(Context)
+    const navigate = useNavigate()
+
+    const [isPostLoaded, setIsPostLoaded] = useState(false)
 
     useEffect(()=>{
         actions.getInfoPost()
-        templateSelector()
+            .then(() => setIsPostLoaded(true))
+            .catch(console.log("¡Error!"))
     },[])
 
     const ratio = store.infoPost.ratio
     const formality = store.infoPost.formality
+    console.log("ratio")
+    console.log(ratio)
+    console.log("formality")
+    console.log(formality)
 
     const [template, setTemplate] = useState(null)
 
-    const templateSelector = () => {
+    useEffect(() => {
         if (ratio === "vertical") {
             if (formality === 1) {
-            return <InformalVerticalTemplate />;
+                setTemplate(<InformalVerticalTemplate />)
             } else if (formality === 2) {
-            template = <SemiFormalVerticalTemplate />;
+                setTemplate(<SemiFormalVerticalTemplate
+                    mainText={mainText} />)
             } else if (formality === 3) {
-            template = <FormalVerticalTemplate />;
+                setTemplate(<FormalVerticalTemplate />)
             } else {
-            // ¿Qué hacemos en caso de que no haya una combinación de plantilla válida para las variables dadas?
             }
         } else if (ratio === "square") {
-            console.log("HOLA")
             if (formality === 1) {
-            template = <InformalSquareTemplate />;
-            } else if (formality === 2) {
                 setTemplate(<InformalSquareTemplate />)
-                console.log(template)
+            } else if (formality === 2) {
+                setTemplate(<SemiFormalSquareTemplate />)
             } else if (formality === 3) {
-            template = <FormalSquareTemplate />;
+                setTemplate(<FormalSquareTemplate />)
             } else {
-            // ¿Qué hacemos en caso de que no haya una combinación de plantilla válida para las variables dadas?
             }
         } else {
-            // ¿Qué hacemos en caso de que no haya una combinación de plantilla válida para las variables dadas?
         }
-            };
+    }, [ratio, formality])
 
-        
-    const finalComposition = (ratio, formality) => {
-        
+    console.log("template")
+    console.log(template)
+
+    if (!isPostLoaded) {
+        return <div>Loading...</div>
     }
 
     return (

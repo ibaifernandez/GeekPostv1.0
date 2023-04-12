@@ -61,6 +61,7 @@ class Post(db.Model):
     keyword1 = db.Column(db.String(250), nullable=True)
     keyword2 = db.Column(db.String(250), nullable=True)
     keyword3 = db.Column(db.String(250), nullable=True)
+    cta = db.Column(db.String(250), nullable=True)
         
     def __repr__(self):
         return '<Post %r>' % self.id
@@ -86,4 +87,5 @@ class Post(db.Model):
             "keyword1": self.keyword1,
             "keyword2": self.keyword2,
             "keyword3": self.keyword3,     
+            "cta": self.cta,     
         }

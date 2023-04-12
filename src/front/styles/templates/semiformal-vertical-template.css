@@ -1,22 +1,12 @@
-#vsft-wrapper {
-    --indigo-black: #28262C;
-    --tropical-indigo: #998FC7;
-    --periwinkle: #D4C2FC;
-    --magnolia: #F9F5FF;
-    --resolution-blue: #14248A;
-}
-
 #vsft {
     position: relative;
     margin: 25px auto;
     width: 450px;
     height: 800px;
-    background: var(--magnolia);
 }
 
 #vsft-main-wrapper {
     height:60%;
-    background: var(--periwinkle)
 }
 
 #vsft-top-margin-accent {
@@ -24,24 +14,44 @@
     left: 100px;
     height: 20px;
     width: 200px;
-    background: var(--tropical-indigo)
 }
 
 #vsft-offer-tag {
     position: absolute; /* Importante */
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     margin: 25px 15px 0 0;
     border-radius: 50%;
-    background: var(--resolution-blue);
     right: 0;
     z-index: 999;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--magnolia);
     font-size: 2rem;
     font-weight: bold;
+}
+
+#vsft-logo-tag {
+    position: absolute; /* Importante */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    left: 0;
+    top:300px;
+    left:50px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    overflow:hidden;
+}
+
+#vsft-logo-tag img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 #vsft-h1 {
@@ -49,7 +59,6 @@
     top: 510px;
     font-size: 32px;
     font-weight: 900;
-    color: var(--resolution-blue);
     margin: 0 0 0 1rem; /* Importante */
 }
 
@@ -70,34 +79,35 @@
     right: -25px;
     width: 400px;
     height: 350px;
-    background: #998FC7;
     transform: rotate(270deg);
     display: flex;
     align-items: end;
     justify-content: center;
     padding-right: 10px;
-    color: var(--magnolia);
     font-size: 2rem;
 }
 
 #vsft-secondary-wrapper {
     margin-top: 75px;
     height: 20%;
-    background: var(--magnolia);
 }
 
 #vsft-secondary-text {
     width: 90%;
     margin-left: 15px;
-    color: var(--indigo-black);
 }
 
-#vsft-cta {
+#vsft-cta-container {
     font-family: Arial, Helvetica, sans-serif;
     align-items: center;
     justify-content: center;
     margin-left: 100px;
     text-align: center;
+    font-size:1.5rem;
+}
+
+#vsft-cta {
+    padding: 1rem;
 }
 
 #vsft-cta p:first-child {
