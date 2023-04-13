@@ -147,7 +147,8 @@ def save_post_info():
         secondary_color = body["secondary_color"],
         aux_color = body["aux_color"],
         ratio = body["ratio"],
-        contact_data = body["contact_data"]
+        contact_data = body["contact_data"],
+        cta = body["cta"]
     )
 
     db.session.add(new_post)

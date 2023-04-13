@@ -47,6 +47,9 @@
 
 body {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 h1,
@@ -421,6 +424,7 @@ section {
 #footer {
     font-size: 14px;
     background: var(--blue);
+    flex: 0 0 auto;
 }
 
 .footer-newsletter {

@@ -25,7 +25,6 @@ export const Profile = () => {
     }, []);
 
 
-
   return (
     <section id="home-process" className="process section-bg">
     <div className="container" data-aos="fade-up">

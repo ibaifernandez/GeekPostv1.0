@@ -7,6 +7,7 @@
     z-index: 99;
     zoom: 0.95;
     background: var(--purple);
+    flex: 0 0 auto;
 }
 
 #home-header #logo .logo {
@@ -70,6 +71,7 @@ aside {
     position:absolute;
     padding: 65px 0 0 1rem;
     background: var(--blue);
+    flex: 0 0 auto;
 }
 
 #sidebar-username {

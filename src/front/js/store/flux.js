@@ -1,4 +1,4 @@
-let url = "https://3001-ibaifernand-geekpostv10-kr8unxhs4kh.ws-us93.gitpod.io"
+let url = "https://3001-ibaifernand-geekpostv10-kr8unxhs4kh.ws-us94.gitpod.io"
 
 const getState = ({
         getStore,
@@ -23,18 +23,7 @@ const getState = ({
                     auxColor: "",
                 },
 
-                infoPost: {
-                    mainImage: "",
-                    identity: "",
-                    mainText: "",
-                    secondaryText: "",
-                    price: "",
-                    contactData: "",
-                    mainColor: "",
-                    secondaryColor: "",
-                    auxColor: ""
-                },
-
+                infoPost: {},
                 errorLogin: "",
             },
 
@@ -159,9 +148,7 @@ const getState = ({
                     });
                 },
 
-                storeInfoPost: async (identity, mainText, secondaryText, price, logo, formality, mainColor, secondaryColor, auxColor, ratio, contact) => {
-                    console.log("ENVIADO DESDE FLUX");
-                    console.log(identity, mainText, secondaryText, price, logo, formality, mainColor, secondaryColor, auxColor, ratio, contact);
+                storeInfoPost: async (identity, mainText, secondaryText, price, logo, formality, mainColor, secondaryColor, auxColor, ratio, contact, cta) => {
                     
                     let api = url + "/api/infopost";
                     
@@ -173,19 +160,20 @@ const getState = ({
                                 "Authorization": "Bearer " + localStorage.getItem("token"),
                             },
                             body: JSON.stringify({
-                            identity,
-                            main_text: mainText,
-                            secondary_text: secondaryText,
-                            price,
-                            contact_data: contact,
-                            logo,
-                            formality,
-                            ratio,
-                            main_color: mainColor,
-                            secondary_color: secondaryColor,
-                            aux_color: auxColor,
+                                identity,
+                                main_text: mainText,
+                                secondary_text: secondaryText,
+                                price,
+                                contact_data: contact,
+                                logo,
+                                formality,
+                                ratio,
+                                main_color: mainColor,
+                                secondary_color: secondaryColor,
+                                aux_color: auxColor,
+                                cta
                         }),
-                    });
+                    })
                     if (resp.ok) {
                         console.log('La petición se ha completado con éxito');
                         // ¿Qué puedo hacer con la respuesta?
@@ -210,17 +198,18 @@ const getState = ({
                   const data = await resp.json()
                   setStore({
                     infoPost: {
-                      mainImage: data.post.main_image,
-                      identity: data.post.identity,
-                      mainText: data.post.main_text,
-                      secondaryText: data.post.secondaryText,
-                      price: data.post.price,
-                      contactData: data.post.contact_data,
-                      mainColor: data.post.main_color,
-                      secondaryColor: data.post.secondaryColor,
-                      auxColor: data.post.auxColor,
-                      formality: data.post.formality,
-                      ratio: data.post.ratio
+                        cta: data.post.cta,
+                        identity: data.post.identity,
+                        mainText: data.post.main_text,
+                        secondaryText: data.post.secondary_text,
+                        price: data.post.price,
+                        contactData: data.post.contact_data,
+                        mainColor: data.post.main_color,
+                        secondaryColor: data.post.secondary_color,
+                        auxColor: data.post.aux_color,
+                        formality: data.post.formality,
+                        ratio: data.post.ratio,
+                        logo: data.post.logo
                     },
                   })
                } catch (e) {

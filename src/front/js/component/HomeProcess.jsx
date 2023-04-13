@@ -1,6 +1,10 @@
 import React from "react";
-import roundedPhoto1 from "../../img/cta-bg.jpg";
 import { Link } from "react-router-dom" 
+
+import roundedPhoto1 from "../../img/subir-foto.jpeg";
+import roundedPhoto2 from "../../img/escribe.jpeg";
+import roundedPhoto3 from "../../img/disena.jpeg";
+import roundedPhoto4 from "../../img/comparte.jpeg";
 
 export const HomeProcess = () => (
     <section id="home-process" className="process section-bg">
@@ -32,7 +36,7 @@ export const HomeProcess = () => (
                 >
                     <div className="icon-box">
                       <div className="icon d-flex justify-content-center">
-                            <img className="rounded-photo" src={roundedPhoto1} />
+                            <img className="rounded-photo" src={roundedPhoto2} />
                         </div>
                         <h3>Añade información</h3>
                         <p>
@@ -48,7 +52,7 @@ export const HomeProcess = () => (
                 >
                     <div className="icon-box">
                         <div className="icon d-flex justify-content-center">
-                            <img className="rounded-photo" src={roundedPhoto1} />
+                            <img className="rounded-photo" src={roundedPhoto3} />
                         </div>
                         <h3>¡Obtén tu diseño!</h3>
                         <p>
@@ -64,7 +68,7 @@ export const HomeProcess = () => (
                 >
                     <div className="icon-box">
                         <div className="icon d-flex justify-content-center">
-                            <img className="rounded-photo" src={roundedPhoto1} />
+                            <img className="rounded-photo" src={roundedPhoto4} />
                         </div>
                         <h3>Comparte</h3>
                         <p>
