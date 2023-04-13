@@ -120,10 +120,21 @@ export const Output = () => {
 
     return (
     <>
-    {!isPostLoaded ?     <ClipLoader
-                size={150}
-                aria-label="Loading Spinner"
-          /> : 
+    {!isPostLoaded ?
+            <div className="row w-100">
+                <div className="col-sm-12 my-auto mx-auto">
+                    <div className="w-25 outline-danger mx-auto d-flex justify-content-center">
+                        <div>
+                        <ClipLoader
+                                className="mx-auto"
+                                size={150}
+                                aria-label="Loading Spinner"
+                            />
+                            </div>
+                    </div>
+                </div>
+            </div>
+        : 
     <>
         <div className="row p-0 m-0 output-wrapper">
             <div className="col-sm-12 col-lg-6 p-0 m-0">
