@@ -55,6 +55,7 @@ export const Login = () => {
                             </Link>
                                 .
                         </span>
+
                     </div>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="email" className="d-flex align-items-center mb-3">
