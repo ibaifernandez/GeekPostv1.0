@@ -94,7 +94,6 @@ const Tutorial = () => {
 export const Home = () => {
     const [freshRegistry, setFreshRegistry] = useState(false);
     const location = useLocation();
-    console.log(location);
 
     useEffect(() => {
         if (location.state && location.state.prevPath === "/signup") {
@@ -104,7 +103,7 @@ export const Home = () => {
 
     return (
         <div className="main-wrapper">
-            {freshRegistry && <Tutorial />}
+            {freshRegistry ? <Tutorial /> : null}
             <HomeProcess />
         </div>
     );

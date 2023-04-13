@@ -196,7 +196,6 @@ const getState = ({
                     },
                   });
                   const data = await resp.json()
-                  console.log(data)
                   setStore({
                     infoPost: {
                         cta: data.post.cta,

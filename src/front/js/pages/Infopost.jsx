@@ -84,7 +84,7 @@ export const Infopost = () => {
             contact,
             cta
           )
-        //   navigate("/output")
+          navigate("/output")
     }
 
     const imageUploaderTooltip = (

@@ -26,7 +26,7 @@ export const Profile = () => {
 
 
     return (
-        <section id="home-process" className="process section-bg">
+        <section id="home-profile" className="section-bg">
         <div className="container" data-aos="fade-up">
             <div className="section-title">
                 <h2>Mi Perfil</h2>

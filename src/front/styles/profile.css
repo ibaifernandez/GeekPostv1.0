@@ -57,3 +57,9 @@
     left: 300px;
     width: 700px;
 }
+
+#home-profile {
+    /* margin-left:20%; */
+    flex: 1 0 auto;
+    overflow-y: auto;
+}
