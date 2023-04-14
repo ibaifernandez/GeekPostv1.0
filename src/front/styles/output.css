@@ -1,14 +1,29 @@
 .final-composition-wrapper {
     background: azure;
     box-shadow: 5px 0px rgba(0, 0, 0, 0.3);
-    height:100vh;
+    margin-top:-50px;
 }
 
 .final-composition-wrapper-img {
     display:flex;
+    flex-direction: column;
+    align-items:center;
     justify-content: center;
-    transform: scale(0.9);
-    zoom:0.75;
+    transform: scale(0.85);
+}
+
+.btn-output-download {
+    margin-top: -25px;
+    font-weight: 200;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 28px 11px 28px;
+    border-radius: 50px;
+    transition: 1s;
+    color: var(--fucsia);
+    border: 1px solid var(--blue);
+    background: transparent;
 }
 
 .feedback-happy-talk-lead {
@@ -18,3 +33,4 @@
 .feedback-happy-talk{
     padding: 0 0 0 1rem;
 }
+
