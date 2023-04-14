@@ -15,8 +15,7 @@ import ClipLoader from "react-spinners/ClipLoader"
 //     borderColor: "red",
 //   };
 
-import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
+import html2canvas from 'html2canvas';
 
 import { Context } from "../store/appContext.js"
 
@@ -70,26 +69,26 @@ export const Output = () => {
 
     const exportRef = useRef()
 
-    const handleDownloadImage = useCallback(() => {
-        const element = exportRef.current;
-        if (element === null) {
-            return
-        }
+    // const handleDownloadImage = useCallback(() => {
+    //     const element = exportRef.current;
+    //     if (element === null) {
+    //         return
+    //     }
     
-        toJpeg(element, { quality: 0.95 })
-            .then((dataUrl) => {
-                const link = document.createElement('a')
-                console.log("LINK")
-                console.log(link)
-                link.download = 'finale-composition.jpeg'
-                link.href = dataUrl
-                link.click()
-            })
-            .catch((err) => {
-                console.log("ERROR DE LA PROMESA")
-                console.log(err)
-        })
-    }, [exportRef])
+    //     toJpeg(element, { quality: 0.95 })
+    //         .then((dataUrl) => {
+    //             const link = document.createElement('a')
+    //             console.log("LINK")
+    //             console.log(link)
+    //             link.download = 'finale-composition.jpeg'
+    //             link.href = dataUrl
+    //             link.click()
+    //         })
+    //         .catch((err) => {
+    //             console.log("ERROR DE LA PROMESA")
+    //             console.log(err)
+    //     })
+    // }, [exportRef])
 
     //     convertHTMLToImage()
     // },[isPostLoaded])
@@ -117,6 +116,19 @@ export const Output = () => {
     //     console.log(imageUrl);
     //   }
 
+    const handleDownloadImage = () => {
+        html2canvas(document.getElementById("vsft"), {
+            backgroundColor:null,
+            logging:true,
+            x:3,
+            y:6
+        })
+            .then(function(canvas) {
+                let imageData = canvas.toDataURL()
+                localStorage.setItem('finale-composition', imageData)
+                navigate("/download")
+            });
+        }
 
     return (
     <>
@@ -143,10 +155,10 @@ export const Output = () => {
                         <div ref={exportRef} id="finale-composition">
                             {template}
                         </div>
+                        <button type="button" className="btn-output-download" onClick={handleDownloadImage}>
+                            Descargar
+                        </button>
                     </div>
-                    <button type="button" onClick={handleDownloadImage}>
-                        Download as Image
-                    </button>
                 </div>
             </div>
             <div className="col-sm-12 col-lg-5 p-3 ms-5">
@@ -169,7 +181,7 @@ export const Output = () => {
                 </div>
                 <div className="mt-3 p-3">
                     <FacebookShareButton
-                        // url={'AQUI IRÍA LA URL DE IMGUR'}
+                        url={'AQUI IRÍA LA URL DE IMGUR'}
                         quote={'Dummy text!'}
                         hashtag="#muo">
                         <FacebookIcon size={64} borderRadius={"5px"} />

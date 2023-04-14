@@ -1,19 +1,10 @@
 import React, { useState } from "react";
 import { Logo } from "./Logo.jsx";
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 export const HomeHeader = () => {
-    // const [headerOpacity, setHeaderOpacity] = useState({
-    //     opacity: 0,
-    //     currentScrollHeight: 0,
-    // });
 
-    // window.onscroll = () => {
-    //     const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
-    //     setHeaderOpacity({ currentScrollHeight: newScrollHeight });
-    // };
-
-    // const opacity = Math.min(headerOpacity.currentScrollHeight / 100, 1);
+    const location = useLocation()
 
     return (
         <header
@@ -25,11 +16,17 @@ export const HomeHeader = () => {
                 <Logo />
                     <ul id="header-create-post-button" className="navbar-nav d-flex justify-content-end w-12">
                         <li className="nav-item">
+                            {location.pathname === "/infopost" ?
+                                <button className="getstarted ms-auto" onClick={() => window.location.reload()}>
+                                    Recargar
+                                </button>
+                            : 
                             <Link to="/infopost">
                                 <button className="getstarted ms-auto">
                                     Crear 🖌
                                 </button>
                             </Link>
+                            }
                         </li>
                     </ul>
             </nav>

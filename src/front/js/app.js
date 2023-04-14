@@ -50,6 +50,7 @@ import { InformalVerticalTemplate } from "./templates/InformalVerticalTemplate.j
 import { IntroLayout } from "./layouts/introLayout.js";
 import { Layout } from "./layouts/layout.js";
 import { HomeLayout } from "./layouts/homeLayout.js";
+import { Download } from "./pages/Download.jsx";
 
 // Componente App
 const App = () => {
@@ -103,6 +104,7 @@ const App = () => {
         <Routes>
           {/* Ruta para Error [sin header ninguno]*/}
           <Route path="*" element={<Error404 />} />
+          <Route path="download" element={<Download />} />
           {/* Rutas para previsualizar templates [sin header ninguno] */}
           <Route path="formal-square-template" element={<FormalSquareTemplate />} />
           <Route path="formal-vertical-template" element={<FormalVerticalTemplate />} />

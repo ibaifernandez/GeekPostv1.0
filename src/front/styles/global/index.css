@@ -635,6 +635,7 @@ section {
 --------------------------------------------------------------*/
 .breadcrumbs {
     background: var(--white);
+    z-index: 900;
   }
 
 .breadcrumbs ul {

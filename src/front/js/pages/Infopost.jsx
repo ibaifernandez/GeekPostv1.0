@@ -69,23 +69,39 @@ export const Infopost = () => {
     }
     
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         actions.storeInfoPost(
-            identity,
-            mainText,
-            secondaryText,
-            price,
-            logo,
-            formality,
-            mainColor,
-            secondaryColor,
-            auxColor,
-            ratio,
-            contact,
-            cta
-          )
-          navigate("/output")
-    }
+          identity,
+          mainText,
+          secondaryText,
+          price,
+          logo,
+          formality,
+          mainColor,
+          secondaryColor,
+          auxColor,
+          ratio,
+          contact,
+          cta
+        );
+        fetch(logo)
+        .then(response => {
+            return response.arrayBuffer();
+        })
+        .then(arrayBuffer => {
+            const blob = new Blob([arrayBuffer], { type: 'image/jpeg' });
+            const reader = new FileReader();
+            reader.onload = () => {
+                const base64 = reader.result;
+                localStorage.setItem('logo', base64);
+            };
+            reader.readAsDataURL(blob);
+        })
+        .catch(error => {
+            console.error('Error fetching image:', error);
+        });
+        navigate("/output");
+    };
 
     const imageUploaderTooltip = (
     <Tooltip id="image-uploader-tooltip">
@@ -111,7 +127,7 @@ export const Infopost = () => {
     const secondaryTextTooltip = (
     <Tooltip id="secondary-text-tooltip">
         Escribe aquí el que será el texto secundario de tu diseño, es decir, una explicación adicional
-        para entender de qué trata tu post. Máximo 50 caracteres.
+        para entender de qué trata tu post. Máximo 75 caracteres.
     </Tooltip>
     );
 
@@ -263,8 +279,8 @@ export const Infopost = () => {
                                     className="input-infopost border-0 border-bottom"
                                     onChange={(e) => setSecondaryText(e.target.value)}
                                     value={secondaryText}
-                                    placeholder="¡Hechos con cacao ecuatoriano 100% puro! (Máx. 50 caracteres)"
-                                    maxLength={50}
+                                    placeholder="¡Hechos con cacao ecuatoriano 100% puro! (Máx. 75 caracteres)"
+                                    maxLength={75}
                                 />
                                 <OverlayTrigger placement="right" overlay={secondaryTextTooltip}>
                                     <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>

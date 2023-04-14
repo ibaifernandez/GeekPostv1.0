@@ -17,7 +17,7 @@ class User(db.Model):
     main_color = db.Column(db.String(250), nullable=True)
     secondary_color = db.Column(db.String(250), nullable=True)
     aux_color = db.Column(db.String(250), nullable=True)
-    post = db.relationship('Post', backref='user', lazy=True)
+    post = db.relationship('Post', backref='user', lazy=True, cascade="all, delete-orphan")
 
     def __repr__(self):
         return '<User %r>' % self.email
