@@ -125,9 +125,7 @@
 }
 
 #vsft-cta p:first-child {
-    padding: 15px 30px;
-    background: var(--resolution-blue);
-    color: var(--magnolia)
+    padding: 15px 30px;    
 }
 
 #vsft-cta p:first-child span {

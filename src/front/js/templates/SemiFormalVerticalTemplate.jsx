@@ -10,8 +10,6 @@ export const SemiFormalVerticalTemplate = () => {
 
     useEffect(()=>{
         actions.getInfoPost()  
-        // const base64LogoUrl = localStorage.getItem('base64LogoUrl');
-
     },[])
 
     const { auxColor, contactData, identity, mainColor, mainText, price, secondaryColor, secondaryText, cta, logo } = store.infoPost

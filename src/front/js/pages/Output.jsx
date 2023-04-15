@@ -1,19 +1,10 @@
-//  https://www.npmjs.com/package/html2canvas
-//  https://www.robinwieruch.de/react-component-to-image/
-
-import React, { useContext, useEffect, useState, useRef, useCallback } from "react"
+import React, { useContext, useEffect, useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { FacebookShareButton, FacebookIcon } from 'react-share'
 import { TwitterShareButton, TwitterIcon } from 'react-share'
 
 import ClipLoader from "react-spinners/ClipLoader"
-
-// const override: CSSProperties = {
-//     display: "block",
-//     margin: "0 auto",
-//     borderColor: "red",
-//   };
 
 import html2canvas from 'html2canvas';
 
@@ -35,12 +26,11 @@ export const Output = () => {
     const navigate = useNavigate()
 
     const [template, setTemplate] = useState(null)
-    const [isPostLoaded, setIsPostLoaded] = useState(false)
+    const [isTemplateLoaded, setIsTemplateLoaded] = useState(false)
+    const [isTemplateExported, setIsTemplateExported] = useState(false)
 
     useEffect(()=>{
         actions.getInfoPost()
-            .then(() => setIsPostLoaded(true))
-            .catch(console.log("¡Error!"))
     },[])
 
     const ratio = store.infoPost.ratio
@@ -52,6 +42,7 @@ export const Output = () => {
                 setTemplate(<InformalVerticalTemplate />)
             } else if (formality === 2) {
                 setTemplate(<SemiFormalVerticalTemplate />)
+                setIsTemplateLoaded(true)
             } else if (formality === 3) {
                 setTemplate(<FormalVerticalTemplate />)
             } 
@@ -62,77 +53,35 @@ export const Output = () => {
                 setTemplate(<SemiFormalSquareTemplate />)
             } else if (formality === 3) {
                 setTemplate(<FormalSquareTemplate />)
-            } else {
             }
         }
     }, [ratio, formality])
 
-    const exportRef = useRef()
-
-    // const handleDownloadImage = useCallback(() => {
-    //     const element = exportRef.current;
-    //     if (element === null) {
-    //         return
-    //     }
-    
-    //     toJpeg(element, { quality: 0.95 })
-    //         .then((dataUrl) => {
-    //             const link = document.createElement('a')
-    //             console.log("LINK")
-    //             console.log(link)
-    //             link.download = 'finale-composition.jpeg'
-    //             link.href = dataUrl
-    //             link.click()
-    //         })
-    //         .catch((err) => {
-    //             console.log("ERROR DE LA PROMESA")
-    //             console.log(err)
-    //     })
-    // }, [exportRef])
-
-    //     convertHTMLToImage()
-    // },[isPostLoaded])
-
-    // const uploadImage = async (imageData) => {
-    // const apiUrl = 'https://api.imgur.com/3/image';
-    // const response = await fetch(apiUrl, {
-    //     method: 'POST',
-    //     headers: {
-    //     Authorization: `Bearer ${accessToken}`,
-    //     'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //     image: imageData,
-    //     type: 'base64',
-    //     }),
-    // });
-    // const data = await response.json();
-    // return data.data.link;
-    // }
-
-    // const handleUpload = async () => {
-    //     const imageData = await convertToImage();
-    //     const imageUrl = await uploadImage(imageData);
-    //     console.log(imageUrl);
-    //   }
-
-    const handleDownloadImage = () => {
-        html2canvas(document.getElementById("vsft"), {
-            backgroundColor:null,
-            logging:true,
-            x:3,
-            y:6
-        })
-            .then(function(canvas) {
-                let imageData = canvas.toDataURL()
-                localStorage.setItem('finale-composition', imageData)
-                navigate("/download")
-            });
+    useEffect(()=>{
+        if (document.getElementById("vsft")) {
+            const handleDownloadImage = () => {
+            html2canvas(document.getElementById("vsft"), {
+                backgroundColor:null,
+                logging:true,
+                x:3,
+                y:6
+            })
+                .then(function(canvas) {
+                    let imageData = canvas.toDataURL()
+                    localStorage.setItem("finale-composition", imageData)
+                    setIsTemplateExported(true)
+                    console.log("CREANDOOOOOOOO")
+                })
+            }
+            handleDownloadImage()
+        } else {
+            console.log("RENDERIZANDO")
         }
+    }, [isTemplateLoaded])
 
     return (
     <>
-    {!isPostLoaded ?
+    {!isTemplateLoaded ?
             <div className="row w-100">
                 <div className="col-sm-12 my-auto mx-auto">
                     <div className="w-25 outline-danger mx-auto d-flex justify-content-center">
@@ -151,13 +100,13 @@ export const Output = () => {
         <div className="row p-0 m-0 output-wrapper">
             <div className="col-sm-12 col-lg-6 p-0 m-0">
                 <div className="final-composition-wrapper">
+                    <div id="finale-composition-graphic">
+                        { isTemplateLoaded && isTemplateExported ? <img src={localStorage.getItem("finale-composition")} />
+                        : isTemplateLoaded && !isTemplateExported ? <div>Loading...</div>
+                        : null }
+                    </div>
                     <div className="final-composition-wrapper-img">
-                        <div ref={exportRef} id="finale-composition">
-                            {template}
-                        </div>
-                        <button type="button" className="btn-output-download" onClick={handleDownloadImage}>
-                            Descargar
-                        </button>
+                        {template}
                     </div>
                 </div>
             </div>
@@ -181,8 +130,7 @@ export const Output = () => {
                 </div>
                 <div className="mt-3 p-3">
                     <FacebookShareButton
-                        url={'AQUI IRÍA LA URL DE IMGUR'}
-                        quote={'Dummy text!'}
+                        url={'https://i.imgur.com/eabk1Kz.png'}
                         hashtag="#muo">
                         <FacebookIcon size={64} borderRadius={"5px"} />
                         <span className="ms-3">Compartir en Facebook</span>
@@ -203,18 +151,31 @@ export const Output = () => {
 </>)
 };
 
-    // ELIGE LA PLANTILLA LA LLENA DE INFORMACION POR PROPS LA CONVIERTE EN JPG Y LA SUBE A IMGUR ¿HASTA QUÉ PUNTO PUEDO SER EL OUTPUT?
 
-    // retorno : plantilla (ratio, formality) ==> {react-jpg} ==> .JPG ==> <Output/>
 
-    // navigate/("output")
 
-// }
 
-    // importar la plantilla que ha elegido el selector de plantilla
 
-    // rellanrla de información
 
-    // PRUEBA ENORME pasarla por la librería que la convierte en jpg
+    // const uploadImage = async (imageData) => {
+    // const apiUrl = 'https://api.imgur.com/3/image';
+    // const response = await fetch(apiUrl, {
+    //     method: 'POST',
+    //     headers: {
+    //     Authorization: `Bearer ${accessToken}`,
+    //     'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //     image: imageData,
+    //     type: 'base64',
+    //     }),
+    // });
+    // const data = await response.json();
+    // return data.data.link;
+    // }
 
-    // enviarla a imgur
+    // const handleUpload = async () => {
+    //     const imageData = await convertToImage();
+    //     const imageUrl = await uploadImage(imageData);
+    //     console.log(imageUrl);
+    //   }
