@@ -18,7 +18,6 @@ export const Signup = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-
   const location = useLocation();
 
   const handleSubmit = async (e) => {

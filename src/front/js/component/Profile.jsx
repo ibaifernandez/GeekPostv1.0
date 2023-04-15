@@ -6,7 +6,6 @@ import { Context } from "../store/appContext";
 
 export const Profile = () => {
   const { store, actions } = useContext(Context);
-
   const [firstname, setFirstname] = useState(store.user.first_name);
   const [lastname, setLastname] = useState(store.user.first_name);
   const [email, setEmail] = useState(store.user.first_name);
