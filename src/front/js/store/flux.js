@@ -221,9 +221,6 @@ const getState = ({
             }
 
         }
-      },
-    },
-  };
-};
+     
 
 export default getState;
