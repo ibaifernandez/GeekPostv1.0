@@ -493,13 +493,8 @@ section {
     position:relative;
 }
 
-#footer .footer-top .footer-contact {
-    margin-bottom: 30px;
-}
-
 #footer .footer-top .footer-contact h2 {
     font-size: 41px;
-    margin: 0 0 10px 0;
     padding: 2px 0;
     line-height: 1;
     font-weight: 600;

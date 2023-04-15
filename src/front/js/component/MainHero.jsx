@@ -26,7 +26,7 @@ export const MainHero = () => {
                         data-aos="zoom-in"
                         data-aos-delay="200"
                     >
-                        <h1 className="hero-h1">
+                        <h1 className="hero-h1 mt-5">
                             Publica en redes sociales de una manera sencilla...
                         </h1>
                         <h2 className="fs-1">... muy sencilla.</h2>

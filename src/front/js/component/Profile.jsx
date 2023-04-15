@@ -1,37 +1,41 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
+
 import "../../styles/profile.css";
-import { useEffect, useContext, useState } from "react";
-import roundedPhoto1 from "../../img/cta-bg.jpg";
+
 import { Context } from "../store/appContext";
 
 export const Profile = () => {
     const { store, actions } = useContext(Context);
 
-    const [ firstname, setFirstname ] = useState(store.user.first_name);
-    const [ lastname, setLastname ] = useState(store.user.first_name);
-    const [ email, setEmail ] = useState(store.user.first_name);
-    const [ contactdata, setContactdata ] = useState(store.user.first_name);
-    const [ facebook, setFacebook ] = useState(store.user.first_name);
-    const [ instagram, setInstagram ] = useState(store.user.first_name);
-    const [ tiktok, setTiktok ] = useState(store.user.first_name);
-    const [ identity, setIdentity ] = useState(store.user.first_name);
-    const [ maincolor, setMaincolor ] = useState(store.user.first_name);
-    const [ secondarycolor, setSecondarycolor ] = useState(store.user.first_name);
-    const [ auxcolor, setAuxcolor ] = useState(store.user.first_name);
+    // const [ firstName, setFirstName ] = useState(store.user.first_name);
+    // const [ lastName, setLastName ] = useState(store.user.last_name);
+    // const [ email, setEmail ] = useState(store.user.email);
+    // const [ contactData, setContactData ] = useState(store.user.contact);
+    // const [ facebookProfile, setFacebookProfile ] = useState(store.user.facebbook_profile);
+    // const [ instagramProfile, setInstagramProfile ] = useState(store.user.instagram_profile);
+    // const [ tikTokProfile, setTikTokProfile ] = useState(store.user.tiktok_profile);
+    // const [ identity, setIdentity ] = useState(store.user.identity);
+    // const [ mainColor, setMainColor ] = useState(store.user.main_color);
+    // const [ secondaryColor, setSecondaryColor ] = useState(store.user.secondary_color);
+    // const [ auxColor, setAuxColor ] = useState(store.user.aux);
 
 
     useEffect(() => {
         actions.getUserDetails();
     }, []);
 
+    console.log(store)
+
+    const {auxColor, contactData, usermail, facebookProfile, firstName, useridentity, instagramProfile, userlogo, mainColor, secondaryColor, tikTokProfile, websiteUrl} = store
+
 
     return (
         <section id="home-profile" className="section-bg">
-        <div className="container" data-aos="fade-up">
-            <div className="section-title">
-                <h2>Mi Perfil</h2>
-            </div>
-        <div className="ContenedorProfileG d-flex flex-row overflow-scroll p-3 m-3">
+            <div className="container" data-aos="fade-up">
+                <div className="section-title">
+                    <h2>Mi Perfil</h2>
+                </div>
+            <div className="ContenedorProfileG d-flex flex-row overflow-scroll p-3 m-3">
         <div className=" w-100  ContenedorProfile">
         <img
             className="fotoAvatar "

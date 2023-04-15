@@ -1,196 +1,224 @@
-// Create Amazing Password Forms
-
-// https://www.chromium.org/developers/design-documents/create-amazing-password-forms/
-
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { TOSModal } from "../component/modals/TOSModal.jsx";
-
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import "../../styles/signup.css";
+import signupImg from "../../img/sign-up.jpg";
 
-export const Signup = () => {
-  const { store, actions } = useContext(Context);
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
-  const [errors, setErrors] = useState({});
+export const Signup = () => {    
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const location = useLocation()
+  const { store, actions } = useContext(Context);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const initialValues = {
+    firstName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    tos: false,
+  };
 
-    const newErrors = {};
-	const emailRegex = /^\S+@\S+\.\S+$/;
-	const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-
-    if (!firstName) {
-		newErrors.firstName = "Escribe tu nombre.";
-	}
+	//	«validationSchema» es una instancia de la clase Yup.object().shape(), que se utiliza para definir un esquema de validación
+	//	de objetos en Yup. Este esquema de validación se define utilizando una serie de métodos de validación de Yup, como .string(),
+	//	.required(), .min(), .max(), .email(), entre otros. 
 	
-	if (!email) {
-		newErrors.email = 'Escribe tu email.';
-	} else if (!emailRegex.test(email)) {
-		newErrors.email = 'Ingresa un email válido.';
-	}
-	
-	if (!password) {
-		newErrors.password = "Escribe tu contraseña.";
-	} else if (!passwordRegex.test(password)) {
-		newErrors.passwordType = 'La contraseña debe tener al menos 8 caracteres, un número y un símbolo.';
-	}
+	const validationSchema = Yup.object().shape({
+		firstName: Yup.string()
+		  .required('El nombre es obligatorio.')
+		  .min(3, 'El nombre debe ser de al menos 3 caracteres.')
+		  .matches(/^[^\s]+(\s+[^\s]+)*$/, 'El nombre no debe contener espacios en blanco.'),
+		email: Yup.string()
+		  .email('Debe ingresar un email válido.')
+		  .required('El email es obligatorio.')
+		  .test(
+			'valid-extension',
+			'El correo electrónico debe tener una extensión de dominio válida.',
+			(value) => {
+			  if (!value) return false;
+			  const extRregex = /\.[A-Za-z]{2,}$/;
+			  return extRregex.test(value);
+			}
+		  ),
+		password: Yup.string()
+		  .required('La contraseña es obligatoria.')
+		  .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+			"La contraseña debe contener al menos 8 caracteres, una letra minúscula, una letra mayúscula, un número y uno de los siguientes caracteres especiales: @, #, $, %, &, *"),
+		confirmPassword: Yup.string()
+		  .required('La confirmación de la contraseña es obligatoria.')
+		  .oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir.'),
+		tos: Yup.boolean()
+		  .oneOf([true], 'Debes aceptar los términos y condiciones para poder continuar.'),
+	  });
 
-    if (password !== passwordCheck) {
-      newErrors.passwordCheck = "Las contraseñas no coinciden.";
-    }
+	//	«handleSubmit» —a continuación— es una función que se pasa como prop «onSubmit» al componente Formik —y que, por tanto, se 
+	//	ejecuta cuando el usuario envía el formulario. Esta función toma dos argumentos: «values» y «setSubmitting». «values» es un 
+	//	objeto que contiene los valores de los campos del formulario. Cada propiedad de dicho objeto se corresponde con un campo 
+	//	del formulario y tiene como valor el contenido actual del campo. «setSubmitting» es una función que se utiliza para indicar 
+	//	si el formulario está siendo enviado en este momento. Cuando se llama con el valor true, Formik mostrará un indicador de carga
+	//	y deshabilitará los botones del formulario. Cuando se llama con el valor false, Formik desactivará el indicador de carga y
+	//	volverá a habilitar los botones. Dentro de la función «handleSubmit», se usa setTimeout para simular una solicitud asíncrona
+	//	a un servidor. En este caso, se muestra una alerta con los valores del formulario. Luego, se llama a setSubmitting(false) 
+	//	para indicar que la solicitud ha terminado y que el formulario está listo para enviar de nuevo. 
 
-    if (!isChecked) {
-      newErrors.requireTOS = "Debes aceptar los términos y condiciones.";
-    } else {
-	}
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    } else {
+	const handleSubmit = async (values, { setSubmitting }) => {
+		const { email, password, firstName } = values;
 		const createUser = await actions.createUser({
-			email,
-			password,
-			firstName,
+		  email,
+		  password,
+		  firstName,
 		});
 		if (createUser) {
-			navigate("/home", { state: { prevPath: location.pathname } })
+		  navigate("/home", { state: { prevPath: location.pathname } })
 		}
- 	};
-}
+		setSubmitting(false);
+	  };
 
 	return (
-		<div id="shadow-wrapper">
-		<section id="signup" className="d-flex w-100">
-			<div id="signup-left-wrapper" className="w-50">
-				<h1 className="d-flex p-3 mt-4">Registro</h1>
-				{ store.errorSignup ?
-						<div className="rounded signup-warning text-white p-3">
-							Una cuenta con el email seleccionda ya está creada. Por favor, <Link to="/login">ingresa a tu perfil</Link>.
-						</div>
-					: null }			
-				<form onSubmit={handleSubmit} id="signup-form input-group" className="d-flex flex-column" noValidate>
-					<div id="user-first-name" className="d-flex flex-row m-3">
-						<label className="opacity-50 signup-icon" htmlFor="first-name-input">
-							<i className="fa-solid fa-user"></i>
-						</label>
-						<input
-							id="first-name-input"
-							name="firstName"
-							type="text"
-							className="border-0 border-bottom w-100 ms-3 bg-transparent"
-							value={firstName}
-							onChange={(e) => setFirstName(e.target.value)}
-							placeholder="Ingresa tu nombre"
-							autoComplete="off"
-						/>
-					</div>
-					<div>
-						{errors.firstName ? <div className="rounded signup-warning text-white mx-3 p-1">{errors.firstName}</div> : null}
-					</div>
-					<div id="user-email" className="d-flex m-3">
-						<label className="opacity-50 signup-icon" htmlFor="email-input">
-							<i className="fa-solid fa-envelope"></i>
-						</label>
-						<input
-							id="email-input"
-							name="email"
-							type="email"
-							className="border-0 border-bottom w-100 ms-3 bg-transparent"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-							placeholder="Ingresa tu correo electrónico"
-							autoComplete="email"
-						/>
-					</div>
-					<div>
-						{errors.email ? <div className="rounded signup-warning text-white mx-3 p-1">{errors.email}</div> : null}
-					</div>
-					<div id="user-pwd" className="d-flex m-3 bg-transparent">
-						<label className="opacity-50 signup-icon" htmlFor="pwd-input">
-							<i className="fa-solid fa-lock"></i>
-						</label>
-						<input
-							id="pwd-input"
-							name="pwd"
-							type="password"
-							className="border-0 border-bottom w-100 ms-3 bg-transparent"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							placeholder="Ingresa tu contraseña"
-							autoComplete="new-password"
-						/>
-					</div>
-					<div>
-						{errors.password ? <div className="rounded signup-warning text-white mx-3 p-1">{errors.password}</div>
-						: errors.passwordType ? <div className="rounded signup-warning text-white mx-3 p-1">{errors.passwordType}</div> : null}
-					</div>
-					<div id="user-pwd-check" className="d-flex m-3 text-danger">
-						<label className="opacity-50 signup-icon" htmlFor="pwd-check-input">
-							<i className="fa-solid fa-lock"></i>
-						</label>
-						<input
-							id="pwd-check-input"
-							name="pwd-check"
-							type="password"
-							value={passwordCheck}
-							className="border-0 border-bottom w-100 ms-3 bg-transparent"
-							onChange={(e) => setPasswordCheck(e.target.value)}
-							placeholder="Confirma tu contraseña"
-							autoComplete="off"
-						/>
-					</div>
-					<div>
-					{errors.passwordCheck ? <div className="rounded signup-warning text-white mx-3 p-1">{errors.passwordCheck}</div> : null}
-					</div>
-					<div className="form-check mb-0 mt-3 ms-3">
-  						<input className="form-check-input" type="checkbox"
-							checked={isChecked}
-							onChange={(e) => setIsChecked(e.target.checked)} id="check-tos" />
-  						<label className="form-check-label tos-acceptance-text" htmlFor="check-tos">
-							Estoy de acuerdo con los <a className="link-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">términos y condiciones </a> de este sitio web.
-						</label>
-					</div>
-					{errors.requireTOS ? <div className="rounded signup-warning text-white mx-3 mt-1 p-1">{errors.requireTOS}</div> : "" }	
-					<div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-						<div className="modal-dialog">
-							<div className="modal-content">
-								<div className="modal-header">
-									<h2 className="modal-title">Términos y condiciones</h2>
-									<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-								</div>
-								
-								<div className="modal-body">
-									<TOSModal />
-								</div>
-								
-								<div className="modal-footer">
-									<button type="button" className="btn btn-signup" data-bs-dismiss="modal">Cerrar</button>
-								</div>
-							</div>
-						</div>
-					</div>				
-			<div className="d-flex justify-content-center">     
-				<button type="submit" className="btn-signup">Regístrate 🖋</button>
-			</div>
-			<div className="d-flex justify-content-center"></div>
-				</form>
+		<section id="signup" className="container-fluid m-0">
+			<div className="row">
+				<div id="signup-left-wrapper" className="col-sm-12 col-lg-6">
 
-				<Link to="/login" className="link-secondary text-center">
-					¡Ya tengo una cuenta!
-				</Link>
+					<h1 className="d-flex justify-content-center p-3">Registro</h1>
+						{store.errorSignup ? (
+							<div className="rounded signup-warning text-white p-3">
+								Una cuenta con el email seleccionado ya está creada. Por favor,{" "}
+								<Link to="/login">ingresa a tu perfil</Link>.
+							</div>
+						) : null}
+
+					<Formik
+						//	Se pasa el objeto «initialValues» que contiene los valores iniciales de los campos
+						//	del formulario como valor del prop homólogo (línea 20)
+						initialValues={initialValues}
+						//	Se pasa el objeto «validationSchemes» (línea 28) como valor del prop homólogo.
+						//	El objeto  «validationSchemes» se crea con el método object() del paquete Yup
+						//	y contiene la lógica de validación de los campos del formulario.
+						validationSchema={validationSchema}
+						//	Al enviarse el formulario, se ejecuta la función handleSubmit (línea 56).
+						onSubmit={handleSubmit}
+						//	A continuación dos propiedades (booleanas) nativas de Formik.
+						//	ValidateOnBlur indica si se deben validar los campos en cada evento de «desenfoque»
+						//	Al establecer «validateOnBlur» como «true» y «validateOnChange» como «false» se validará
+						//	cada campo cuando se desenfoque del mismo, más no cuando cambie el valor de cada input.
+						validateOnBlur={true}
+						validateOnChange={false}
+					>
+						{({ values, isSubmitting }) => (
+							
+							<Form id="signup-form" className="d-flex flex-column input-group" noValidate>
+
+								{/* Campo del nombre */}
+
+								<div id="user-first-name" className="d-flex flex-row m-3">
+									<label className="opacity-50 signup-icon" htmlFor="first-name-input">
+										<i className="fa-solid fa-user"></i>
+									</label>
+									<Field
+										id="first-name-input"
+										name="firstName"
+										type="text"
+										className="border-0 border-bottom w-100 ms-3 bg-transparent"
+										placeholder="Ingresa tu nombre"
+										autoComplete="off"
+									/>
+								</div>
+								<div>
+									<ErrorMessage name="firstName" component="div" className="signup-warning" />
+								</div>
+
+								{/* Campo del correo electrónico */}
+								
+								<div id="user-email" className="d-flex m-3">
+									<label className="opacity-50 signup-icon" htmlFor="email-input">
+										<i className="fa-solid fa-envelope"></i>
+									</label>
+									<Field
+										id="email-input"
+										name="email"
+										type="email"
+										className="border-0 border-bottom w-100 ms-3 bg-transparent"
+										placeholder="Ingresa tu correo electrónico"
+										autoComplete="email"
+									/>
+								</div>
+								<div>
+									<ErrorMessage name="email" component="div" className="signup-warning" />
+								</div>
+							
+								{/* Campo de la contraseña */}
+
+								<div id="user-pwd" className="d-flex m-3 bg-transparent">
+									<label className="opacity-50 signup-icon" htmlFor="pwd-input">
+										<i className="fa-solid fa-lock"></i>
+									</label>
+									<Field
+										id="pwd-input"
+										name="password"
+										type="password"
+										className="border-0 border-bottom w-100 ms-3 bg-transparent"
+										placeholder="Ingresa tu contraseña"
+										autoComplete="new-password"
+									/>
+								</div>
+								<div>
+									<ErrorMessage name="password" component="div" className="signup-warning" />
+									<ErrorMessage name="passwordType" component="div" className="signup-warning" />
+								</div>
+							
+								{/* Campo de confirmación de contraseña */}
+
+								<div id="user-pwd-check" className="d-flex m-3 bg-transparent">
+								<label className="opacity-50 signup-icon" htmlFor="pwd-check-input">
+									<i className="fa-solid fa-lock"></i>
+								</label>
+								<Field
+									id="pwd-check-input"
+									name="confirmPassword"
+									type="password"
+									className="border-0 border-bottom w-100 ms-3 bg-transparent"
+									placeholder="Confirma tu contraseña"
+									autoComplete="new-password"
+								/>
+								</div>
+								<div>
+									<ErrorMessage name="confirmPassword" component="div" className="signup-warning" />
+									<ErrorMessage name="passwordMatch" component="div" className="signup-warning" />
+								</div>
+
+								{/* Campo de aceptación de términos y condiciones */}
+
+								<div id="tos-check" className="d-flex m-3 bg-transparent">
+								<Field id="tos-check" type="checkbox" name="tos" />
+									<label className="opacity-50 signup-icon ms-3" htmlFor="tos-check-input">
+										Acepto los
+											<Link className="secondary-link" to="/terminos-y-condiciones" target="_blank">
+												{" "}términos y condiciones{" "} 
+											<i class="fas fa-external-link-alt"></i>
+											</Link> de GeekPost.
+									</label>
+								</div>
+								<div>
+									<ErrorMessage name="tos" component="div" className="signup-warning" />
+								</div>
+								
+								<div id="submit-btn" className="d-flex justify-content-center m-3">
+									<button type="submit" className="btn-signup" disabled={isSubmitting}>
+										Registrarse
+									</button>
+								</div>
+							
+							</Form>
+						)}
+					</Formik>
+				</div>
+			
+				<div id="signup-right-wrapper" className="col-sm-12 col-lg-6"></div>
 			</div>
-		<div id="signup-right-wrapper" className="w-50 img-signup"></div>
 		</section>
-	</div>
-);
-};
+	)
+}
+
+// Create Amazing Password Forms
+// https://www.chromium.org/developers/design-documents/create-amazing-password-forms/

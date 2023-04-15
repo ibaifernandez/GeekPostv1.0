@@ -8,18 +8,22 @@ export const Footer = () => (
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 col-md-6 footer-contact">
-                        <Link to="/">
-                            <img
-                                src={GeekPostIso}
-                                alt="GeekPost Isotype"
-                                width="125px"
-                            />
-                            <h2>GeekPost</h2>
-                        </Link>
-                        <p>
-                            <i className="fa-solid fa-location-dot"></i>
-                            <span className="ms-2">Málaga · Bogotá · Panamá</span>
-                        </p>
+                        <div> 
+                            <Link to="/">
+                                <img
+                                    src={GeekPostIso}
+                                    alt="GeekPost Isotype"
+                                    width="150px"
+                                />
+                            </Link>
+                            <div className="footer-logo-location">
+                                <h2>GeekPost</h2>
+                                <p>
+                                    <i className="fa-solid fa-location-dot"></i>
+                                    <span className="ms-2">Málaga · Bogotá · Panamá</span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                     <div className="col-lg-3 col-md-6 footer-links">
                         <h4 className="mb-3">Mapa de navegación</h4>
