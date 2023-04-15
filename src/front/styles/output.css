@@ -1,7 +1,7 @@
 .final-composition-wrapper {
     background: azure;
     box-shadow: 5px 0px rgba(0, 0, 0, 0.3);
-    margin-top:-50px;
+    /* margin-top:-50px; */
 }
 
 .final-composition-wrapper-img {
@@ -10,6 +10,16 @@
     align-items:center;
     justify-content: center;
     transform: scale(0.85);
+    position: absolute;
+    opacity: 0;
+}
+
+#finale-composition-graphic {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    margin-top: 25px;   
 }
 
 .btn-output-download {
