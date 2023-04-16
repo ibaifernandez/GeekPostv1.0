@@ -28,6 +28,7 @@ export const Output = () => {
     const [template, setTemplate] = useState(null)
     const [isTemplateLoaded, setIsTemplateLoaded] = useState(false)
     const [isTemplateExported, setIsTemplateExported] = useState(false)
+    const [sharingUrl, setSharingUrl] = useState(false)
 
     useEffect(()=>{
         actions.getInfoPost()
@@ -57,27 +58,65 @@ export const Output = () => {
         }
     }, [ratio, formality])
 
-    useEffect(()=>{
+    useEffect(() => {
         if (document.getElementById("vsft")) {
-            const handleDownloadImage = () => {
+          const handleDownloadImage = () => {
             html2canvas(document.getElementById("vsft"), {
-                backgroundColor:null,
-                logging:true,
-                x:3,
-                y:6
+              backgroundColor: null,
+              logging: false,
+              x: 3,
+              y: 6
             })
-                .then(function(canvas) {
-                    let imageData = canvas.toDataURL()
-                    localStorage.setItem("finale-composition", imageData)
-                    setIsTemplateExported(true)
-                    console.log("CREANDOOOOOOOO")
-                })
-            }
-            handleDownloadImage()
-        } else {
-            console.log("RENDERIZANDO")
+              .then(function (canvas) {
+                let imageData = canvas.toDataURL();
+      
+                localStorage.setItem("finale-composition", imageData);
+      
+                
+      
+                setIsTemplateExported(true);
+      
+                const apiUrl = "https://api.imgur.com/3/image";
+      
+                const apiKey = "b4860ef308c697c";
+      
+                const finalImageToBeUploaded = imageData.split(",")[1];
+     
+                const formData = new FormData();
+                formData.append("image", finalImageToBeUploaded);
+
+                return fetch(apiUrl, {
+                  method: "POST",
+                  headers: {
+                    Authorization: "Client-ID " + apiKey
+                  },
+                  body: formData
+                });
+              })
+              .then(response => {
+                console.log("response");
+                console.log(response);
+                if (response.ok) {
+                  console.log("LO CONSEGUIMOS!!!");
+                  return response.json();
+                } else {
+                  throw new Error("Error al subir imagen");
+                }
+              })
+              .then(function (data) {
+                setSharingUrl(data.data.link)
+                console.log(sharingUrl)
+                console.log(data.data.link);
+              })
+              .catch(function (error) {
+                console.error(error);
+              });
+          };
+          handleDownloadImage();
         }
-    }, [isTemplateLoaded])
+      }, [isTemplateLoaded]);
+      
+      
 
     return (
     <>
@@ -87,7 +126,7 @@ export const Output = () => {
                     <div className="w-25 outline-danger mx-auto d-flex justify-content-center">
                         <div>
                         <ClipLoader
-                                className="mx-auto"
+                                className="clip-loader"
                                 size={150}
                                 aria-label="Loading Spinner"
                             />
@@ -102,7 +141,6 @@ export const Output = () => {
                 <div className="final-composition-wrapper">
                     <div id="finale-composition-graphic">
                         { isTemplateLoaded && isTemplateExported ? <img src={localStorage.getItem("finale-composition")} />
-                        : isTemplateLoaded && !isTemplateExported ? <div>Loading...</div>
                         : null }
                     </div>
                     <div className="final-composition-wrapper-img">
@@ -129,53 +167,19 @@ export const Output = () => {
                     algún día.
                 </div>
                 <div className="mt-3 p-3">
-                    <FacebookShareButton
-                        url={'https://i.imgur.com/eabk1Kz.png'}
-                        hashtag="#muo">
+                    <FacebookShareButton url={sharingUrl}>
                         <FacebookIcon size={64} borderRadius={"5px"} />
                         <span className="ms-3">Compartir en Facebook</span>
                     </FacebookShareButton>
                 </div>
                 <div className="p-3">
-                    <TwitterShareButton
-                        // url={'AQUI IRÍA LA URL DE IMGUR'}
-                        quote={'Dummy text!'}
-                        hashtag="#muo">
-                        <TwitterIcon size={64} borderRadius={"5px"} />
-                        <span className="ms-3">Compartir en Twitter</span>
-                    </TwitterShareButton>
+                <TwitterShareButton url={sharingUrl}>
+                    <TwitterIcon size={64} borderRadius={"5px"} />
+                    <span className="ms-3">Compartir en Twitter</span>
+                </TwitterShareButton>
                 </div>
             </div>
         </div>
     </>}
 </>)
 };
-
-
-
-
-
-
-
-    // const uploadImage = async (imageData) => {
-    // const apiUrl = 'https://api.imgur.com/3/image';
-    // const response = await fetch(apiUrl, {
-    //     method: 'POST',
-    //     headers: {
-    //     Authorization: `Bearer ${accessToken}`,
-    //     'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //     image: imageData,
-    //     type: 'base64',
-    //     }),
-    // });
-    // const data = await response.json();
-    // return data.data.link;
-    // }
-
-    // const handleUpload = async () => {
-    //     const imageData = await convertToImage();
-    //     const imageUrl = await uploadImage(imageData);
-    //     console.log(imageUrl);
-    //   }

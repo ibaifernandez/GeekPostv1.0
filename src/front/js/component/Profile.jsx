@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
+
 import "../../styles/profile.css";
-import { useEffect, useContext, useState } from "react";
-import roundedPhoto1 from "../../img/cta-bg.jpg";
+
 import { Context } from "../store/appContext";
 
 export const Profile = () => {
