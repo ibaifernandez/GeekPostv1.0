@@ -10,17 +10,17 @@ export const Profile = () => {
 
 
   const { store, actions } = useContext(Context);
-  const [first_name, setFirstname] = useState(store.user.first_name);
-  const [last_name, setLastname] = useState(store.user.last_name);
+  const [first_name, setFirstname] = useState(store.user.firstName);
+  const [last_name, setLastname] = useState(store.user.lastName);
   const [email, setEmail] = useState(store.user.email);
-  const [contact_data, setContactdata] = useState(store.user.contact_data);
-  const [facebook_profile, setFacebook] = useState(store.user.facebook_profile);
-  const [instagram_profile, setInstagram] = useState(store.user.instagram_profile);
-  const [tiktok_profile, setTiktok] = useState(store.user.tiktok_profile);
+  const [contact_data, setContactdata] = useState(store.user.contact);
+  const [facebook_profile, setFacebook] = useState(store.user.facebookProfile);
+  const [instagram_profile, setInstagram] = useState(store.user.instagramProfile);
+  const [tiktok_profile, setTiktok] = useState(store.user.tiktokProfile);
   const [identity, setIdentity] = useState(store.user.identity);
-  const [main_color, setMaincolor] = useState(store.user.main_color);
-  const [secondary_color, setSecondarycolor] = useState(store.user.secondary_color);
-  const [aux_color, setAuxcolor] = useState(store.user.aux_color);
+  const [main_color, setMaincolor] = useState(store.user.mainColor);
+  const [secondary_color, setSecondarycolor] = useState(store.user.secondaryColor);
+  const [aux_color, setAuxcolor] = useState(store.user.auxColor);
   const [logo, setLogo] = useState("");
   const [newLogoIsLoaded, setNewLogoIsLoaded] = useState(false);
 
@@ -56,7 +56,7 @@ export const Profile = () => {
             <form
               className="well form-horizontal"
               action=" "
-              method="post"
+             // method="post"
               id="contact_form"
             >
               <fieldset className="formularioProfile">
@@ -74,7 +74,7 @@ export const Profile = () => {
                         placeholder="Primer Nombre"
                         className="form-control border border-0 border-bottom w-100"
                         type="text"
-                        defaultValue={store.user.first_name}
+                        defaultValue={store.user.firstName}
                         onChange={(e) => setFirstname(e.target.value)}
                       />
                     </div>
@@ -92,7 +92,7 @@ export const Profile = () => {
                           placeholder="Apellido"
                           className="form-control border border-0 border-bottom"
                           type="text"
-                          defaultValue={store.user.last_name}
+                          defaultValue={store.user.lastName}
                           onChange={(e) => setLastname(e.target.value)}
                         />
                       </div>
@@ -132,7 +132,7 @@ export const Profile = () => {
                           placeholder="Dato de contacto"
                           className="form-control border border-0 border-bottom"
                           type="text"
-                          defaultValue={store.user.contact_data}
+                          defaultValue={store.user.contact}
                           onChange={(e) => setContactdata(e.target.value)}
                         />
                       </div>
@@ -153,7 +153,7 @@ export const Profile = () => {
                           placeholder="Perfil de Facebook"
                           className="form-control border border-0 border-bottom"
                           type="text"
-                          defaultValue={store.user.facebook_profile}
+                          defaultValue={store.user.facebookProfile}
                           onChange={(e) => setFacebook(e.target.value)}
                         />
                       </div>
@@ -174,7 +174,7 @@ export const Profile = () => {
                           placeholder="Perfil de Instagram"
                           className="form-control border border-0 border-bottom"
                           type="text"
-                          defaultValue={store.user.instagram_profile}
+                          defaultValue={store.user.instagramProfile}
                           onChange={(e) => setInstagram(e.target.value)}
                         />
                       </div>
@@ -195,7 +195,7 @@ export const Profile = () => {
                           placeholder="Perfil de TikTok"
                           className="form-control border border-0 border-bottom"
                           type="text"
-                          defaultValue={store.user.tiktok_profile}
+                          defaultValue={store.user.tiktokProfile}
                           onChange={(e) => setTiktok(e.target.value)}
                         />
                       </div>
@@ -273,7 +273,7 @@ export const Profile = () => {
                           placeholder="Color 1"
                           className="form-control border border-0 border-bottom"
                           type="text"
-                          defaultValue={store.user.main_color}
+                          defaultValue={store.user.mainColor}
                           onChange={(e) => setMaincolor(e.target.value)}
                         />
                       </div>
@@ -294,7 +294,7 @@ export const Profile = () => {
                           placeholder="Color 2"
                           className="form-control border border-0 border-bottom"
                           type="text"
-                          defaultValue={store.user.secondary_color}
+                          defaultValue={store.user.secondaryColor}
                           onChange={(e) => setSecondarycolor(e.target.value)}
                         />
                       </div>
@@ -313,7 +313,7 @@ export const Profile = () => {
                           placeholder="Color 3"
                           className="form-control border border-0 border-bottom"
                           type="text"
-                          defaultValue={store.user.aux_color}
+                          defaultValue={store.user.auxColor}
                           onChange={(e) => setAuxcolor(e.target.value)}
                         />
                       </div>
@@ -339,6 +339,9 @@ export const Profile = () => {
                           main_color,
                           secondary_color,
                           aux_color,
+
+                        
+                      
                         );
                       }}
                     >

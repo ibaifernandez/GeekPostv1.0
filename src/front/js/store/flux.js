@@ -233,6 +233,7 @@ const getState = ({
             putProfile: async (
               first_name,
               last_name,
+              email,
               contact_data,
               facebook_profile,
               instagram_profile,
@@ -254,6 +255,7 @@ const getState = ({
                   body: JSON.stringify({
                     first_name,
                     last_name,
+                    email,
                     contact_data,
                     facebook_profile,
                     instagram_profile,

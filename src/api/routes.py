@@ -82,8 +82,8 @@ def update_account():
 
     if "email" in body:
         user_query.email =  body["email"]
-    if "password" in body:
-        user_query.password =  body["password"]
+    # if "password" in body:
+    #     user_query.password =  body["password"]
     if "name" in body:
         user_query.name =  body["name"]
     if "last_name" in body:
