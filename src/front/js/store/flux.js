@@ -1,4 +1,4 @@
-let url = "https://3001-ibaifernand-geekpostv10-kr8unxhs4kh.ws-us94.gitpod.io"
+let url = "https://3001-ibaifernand-geekpostv10-kr8unxhs4kh.ws-us94.gitpod.io";
 
 const getState = ({
     getStore,
@@ -22,6 +22,32 @@ const getState = ({
                 infoPost: {},
                 errorLogin: "",
             },
+            body: JSON.stringify({
+              email: email,
+              password: password,
+            }),
+          });
+          if (resp.status === 404) {
+            setStore({
+              errorLogin: "Usuario o contraseña incorrecta",
+            });
+            return false;
+          } else if (resp.status === 400) {
+            return false;
+          }
+          if (resp.status === 200) {
+            const data = await resp.json();
+            localStorage.setItem("token", data?.access_token);
+            setStore({
+              auth: true,
+            });
+            return true;
+          }
+        } catch (error) {
+          console.log("Error loading message from backend", error);
+          return false;
+        }
+      },
 
             actions: {
                 fetchCredentials: async ({
@@ -140,13 +166,22 @@ const getState = ({
                     }
                 },
 
-                logOut: () => {
-                    localStorage.clear()
-                    setStore({
-                        auth: false,
-                    });
-                },
 
+      storeInfoPost: async (
+        identity,
+        mainText,
+        secondaryText,
+        price,
+        logo,
+        formality,
+        mainColor,
+        secondaryColor,
+        auxColor,
+        ratio,
+        contact,
+        cta
+      ) => {
+        let api = url + "/api/infopost";
                 storeInfoPost: async (
                     identity,
                     mainText,
