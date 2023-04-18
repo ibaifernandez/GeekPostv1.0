@@ -53,7 +53,6 @@ def signup():
     access_token = create_access_token(identity=userCreated.id)
     return jsonify(access_token=access_token), 200
 
-
 @api.route('/profile', methods=['DELETE'])
 @jwt_required()
 def delete_account():
@@ -77,7 +76,7 @@ def update_account():
     user_query = User.query.filter_by(id=current_user).first()
 
     if user_query is None:
-        response_body = {"msg": "User doesn't exists"}
+        response_body = {"msg": "User doesn't exist."}
         return jsonify(response_body), 400    
 
     if "email" in body:
@@ -161,10 +160,26 @@ def save_post_info():
 @jwt_required()
 def get_post_info():
     current_user = get_jwt_identity()
-
     post = Post.query.filter_by(user_id=current_user).order_by(Post.id.desc()).first()
 
     if not post:
-        raise Forbidden("No tiene permiso para acceder a este post")
+        raise Forbidden("No tiene permiso para acceder a este post.")
 
     return jsonify({"post": post.serialize()}), 200
+
+@api.route("/post/<int:id>/image-url", methods=["POST"])
+def add_image_url_to_post(id):
+    post = Post.query.get(id)
+
+    if not post:
+        return jsonify({"Error": "Post not found."}), 404
+
+    data = request.get_json()
+
+    if not data.get("image_url"):
+        return jsonify({"Error": "Not URL present in request."}), 400
+
+    post.image_url = data["image_url"]
+    db.session.commit()
+
+    return jsonify({"msg": "URL added to post's registry successfully."}), 200
