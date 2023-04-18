@@ -28,8 +28,7 @@ export const Output = () => {
     const [template, setTemplate] = useState(null)
     const [isTemplateLoaded, setIsTemplateLoaded] = useState(false)
     const [isTemplateExported, setIsTemplateExported] = useState(false)
-    const [sharingUrl, setSharingUrl] = useState(false)
-    const [isUrlIsReadyToBeRegistered, setIsUrlIsReadyToBeRegistered] = useState(false)
+    const [sharingUrl, setSharingUrl] = useState("")
 
     const getInfoPost = async () => {
         const infoPost = await actions.getInfoPost()
@@ -64,7 +63,6 @@ export const Output = () => {
 
     useEffect(() => {
         getInfoPost()
-
         if (document.getElementById("vsft")) {
           const handleDownloadImage = () => {
             html2canvas(document.getElementById("vsft"), {
@@ -105,15 +103,15 @@ export const Output = () => {
           };
           handleDownloadImage();
         }
-            actions.addUrlToPost(68, "sharingUrl")
-            .then(response => {
-                console.log("response");
-                console.log(response);
-                console.log(store.infoPost)
-            }).catch(error => console.log(error))
       }, [isTemplateLoaded]);
-      
-     
+
+    useEffect(()=>{
+        if (sharingUrl !== "" && store.infoPost.id) {
+            actions.addUrlToPost(store.infoPost.id, sharingUrl).then(response => {
+                console.log(response)
+            }).catch(error => console.log(error))
+        }
+    },[sharingUrl])
 
     return (
     <>

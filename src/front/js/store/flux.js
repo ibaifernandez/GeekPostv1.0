@@ -234,29 +234,21 @@ const getState = ({
             },
 
             addUrlToPost: async (postId, imageUrl) => {
-                    const addToUrlToPostToUrl = url + `/api/post/${postId}/image-url`
-                    console.log(addToUrlToPostToUrl)
-                        try {
-                        console.log("LO INTENTO!!!!")
-                        const resp = await fetch(addToUrlToPostToUrl,{
-                            methods: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify({
-                                image_url: imageUrl
-                            }),
+                try {
+                    const resp = await fetch(`${url}/api/post/${postId}/image-url`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            image_url: imageUrl
                         })
-                        const data = resp.json()
-                        console.log("SI CARGAAA!!!!!")
-                        console.log(data)
-                    }
-                    catch (error) {
-                        console.log("NO CARGA!!!")
-                    }
+                    });
+                } catch (error) {
                 }
             }
         }
     }
+}
 
 export default getState;
