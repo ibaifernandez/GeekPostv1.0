@@ -246,7 +246,49 @@ const getState = ({
                     });
                 } catch (error) {
                 }
-            }
+            },
+            
+            putProfile: async (
+              first_name,
+              last_name,
+              email,
+              contact_data,
+              facebook_profile,
+              instagram_profile,
+              tiktok_profile,
+              identity,
+              logo,
+              main_color,
+              secondary_color,
+              aux_color
+            ) => {
+              let api = url + "/api/profile";
+              try {
+                const resp = await fetch(api, {
+                  method: "PUT",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                  },
+                  body: JSON.stringify({
+                    first_name,
+                    last_name,
+                    email,
+                    contact_data,
+                    facebook_profile,
+                    instagram_profile,
+                    tiktok_profile,
+                    identity,
+                    logo,
+                    main_color,
+                    secondary_color,
+                    aux_color,
+                  }),
+                });
+              } catch (e) {
+                console.log(e);
+              }
+            },
         }
     }
 }
