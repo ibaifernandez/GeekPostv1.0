@@ -18,5 +18,9 @@
 }
 
 button.comp-btn {
-    color:purple;
+    color: purple;
+}
+
+.compcont {
+    height: 610px;
 }
