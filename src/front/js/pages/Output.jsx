@@ -138,7 +138,7 @@ export const Output = () => {
                         { isTemplateLoaded && isTemplateExported ? <img src={localStorage.getItem("finale-composition")} />
                         : null }
                     </div>
-                    <div className="final-composition-wrapper-img">
+                    <div className="final-composition-wrapper-img" id="final-composition-wrapper-img">
                         {template}
                     </div>
                 </div>
