@@ -218,7 +218,7 @@ export const Infopost = () => {
                             <div id="uploaded-main-image" className="img-fluid">
                                 { mainImageisLoaded ?
                                     (<div className="mt-3 d-flex justify-content-center">
-                                        <img src={localStorage.mainImage} alt="" className="img-fluid" />
+                                        <img src={localStorage.mainImage} alt="" className="infopost-img" />
                                         {/* <button type="button" onClick={localStorage.removeItem("mainImage") && setMainImageIsLoaded(false)}>wefeqwfw</button> */}
                                     </div>)
                                 : null }
@@ -371,11 +371,11 @@ export const Infopost = () => {
                             <div id="pre-uploaded-logo" className="img-fluid">
                                 { newLogoIsLoaded ? 
                                     (<div className="mt-3 d-flex justify-content-center">
-                                        <img src={localStorage.newLogo} alt="" className="img-fluid" />
+                                        <img src={localStorage.newLogo} alt="" className="infopost-img" />
                                     </div>)
                                 : store.user.logo ?
                                     (<div className="mt-3 d-flex justify-content-center">
-                                       <img src={logo} alt="" className="img-fluid" />
+                                       <img src={logo} alt="" className="infopost-img" />
                                     </div>)                                
                                 : null }
                            </div>

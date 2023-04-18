@@ -54,7 +54,7 @@ class Post(db.Model):
     aux_color = db.Column(db.String(250), nullable=True)
     template = db.Column(db.String(250), nullable=True)
     ratio = db.Column(db.String(250), nullable=True)
-    image_id = db.Column(db.String(250), nullable=True)
+    image_url = db.Column(db.String(250), nullable=True)
     post1_1 = db.Column(db.String(250), nullable=True)
     post9_16 = db.Column(db.String(250), nullable=True)
     contact_data = db.Column(db.String(250), nullable=True)
@@ -80,7 +80,7 @@ class Post(db.Model):
             "aux_color": self.aux_color,
             "template": self.template,
             "ratio": self.ratio,
-            "image_id": self.image_id,
+            "image_url": self.image_url,
             "post1_1": self.post1_1,
             "post9_16": self.post9_16,
             "contact_data": self.contact_data,

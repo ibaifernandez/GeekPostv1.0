@@ -28,11 +28,14 @@ export const Output = () => {
     const [template, setTemplate] = useState(null)
     const [isTemplateLoaded, setIsTemplateLoaded] = useState(false)
     const [isTemplateExported, setIsTemplateExported] = useState(false)
-    const [sharingUrl, setSharingUrl] = useState(false)
+    const [sharingUrl, setSharingUrl] = useState("")
 
-    useEffect(()=>{
-        actions.getInfoPost()
-    },[])
+    const getInfoPost = async () => {
+        const infoPost = await actions.getInfoPost()
+        if (infoPost) {
+            console.log({infoPost: store.infoPost})
+        }
+    }
 
     const ratio = store.infoPost.ratio
     const formality = store.infoPost.formality
@@ -59,6 +62,7 @@ export const Output = () => {
     }, [ratio, formality])
 
     useEffect(() => {
+        getInfoPost()
         if (document.getElementById("vsft")) {
           const handleDownloadImage = () => {
             html2canvas(document.getElementById("vsft"), {
@@ -66,24 +70,17 @@ export const Output = () => {
               logging: false,
               x: 3,
               y: 6
-            })
-              .then(function (canvas) {
+            }).then((canvas) => {
                 let imageData = canvas.toDataURL();
-      
-                localStorage.setItem("finale-composition", imageData);
-      
-                
-      
-                setIsTemplateExported(true);
-      
+                localStorage.setItem("finale-composition", imageData)
+                setIsTemplateExported(true)
+
                 const apiUrl = "https://api.imgur.com/3/image";
-      
                 const apiKey = "b4860ef308c697c";
-      
-                const finalImageToBeUploaded = imageData.split(",")[1];
-     
-                const formData = new FormData();
-                formData.append("image", finalImageToBeUploaded);
+                
+                const finalImageToBeUploaded = imageData.split(",")[1]
+                const formData = new FormData()
+                formData.append("image", finalImageToBeUploaded)
 
                 return fetch(apiUrl, {
                   method: "POST",
@@ -91,32 +88,30 @@ export const Output = () => {
                     Authorization: "Client-ID " + apiKey
                   },
                   body: formData
-                });
-              })
-              .then(response => {
-                console.log("response");
-                console.log(response);
+                })
+            }).then(response => {
                 if (response.ok) {
-                  console.log("LO CONSEGUIMOS!!!");
                   return response.json();
                 } else {
                   throw new Error("Error al subir imagen");
                 }
-              })
-              .then(function (data) {
+              }).then((data) => {
                 setSharingUrl(data.data.link)
-                console.log(sharingUrl)
-                console.log(data.data.link);
-              })
-              .catch(function (error) {
+              }).catch((error) => {
                 console.error(error);
               });
           };
           handleDownloadImage();
         }
       }, [isTemplateLoaded]);
-      
-      
+
+    useEffect(()=>{
+        if (sharingUrl !== "" && store.infoPost.id) {
+            actions.addUrlToPost(store.infoPost.id, sharingUrl).then(response => {
+                console.log(response)
+            }).catch(error => console.log(error))
+        }
+    },[sharingUrl])
 
     return (
     <>
