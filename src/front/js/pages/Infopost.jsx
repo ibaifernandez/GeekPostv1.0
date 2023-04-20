@@ -517,3 +517,17 @@ export const Infopost = () => {
       
     );
 };
+
+//  Librerías para «poner bonito» el color picker input:
+//  (1) react-color: proporciona una gama de diferentes selectores de color para elegir. Admite formatos de color RGB, 
+//  HSL y HEX e incluye funciones como transparencia alfa, muestras de color y paletas de colores.
+//  (2) react-colorful: proporciona un componente de selector de color simple e intuitivo. Admite formatos de color RGB, 
+//  HSL y HEX e incluye funciones como transparencia alfa y ajustes preestablecidos de color.
+//  (3) react-native-color-picker: (para React Native) proporciona un componente de selector de color personalizable que
+//  se puede usar en las plataformas iOS y Android. Admite formatos de color RGB, HSL y HSV e incluye características como
+//  transparencia alfa, ajustes preestablecidos de color y un selector de rueda de color.
+//  (4) react-sketch-picker: selector de color simple y personalizable para React que incluye una rueda de color, controles
+//  deslizantes de saturación y brillo, y campos de entrada RGB y HEX.
+//  (5) react-color-hook: proporciona un conjunto de hooks de React para crear componentes de selección de color
+//  personalizados. Incluye hooks para manejar la selección de color, la conversión de formato de color y la validación de
+//  color.

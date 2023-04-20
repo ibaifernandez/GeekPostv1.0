@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 import { FacebookShareButton, FacebookIcon } from 'react-share'
 import { TwitterShareButton, TwitterIcon } from 'react-share'
+import { LinkedinShareButton, LinkedinIcon } from 'react-share'
 
 import ClipLoader from "react-spinners/ClipLoader"
 
@@ -38,6 +39,7 @@ export const Output = () => {
     }
 
     const ratio = store.infoPost.ratio
+    console.log(ratio)
     const formality = store.infoPost.formality
 
     useEffect(() => {
@@ -46,10 +48,10 @@ export const Output = () => {
                 setTemplate(<InformalVerticalTemplate />)
             } else if (formality === 2) {
                 setTemplate(<SemiFormalVerticalTemplate />)
-                setIsTemplateLoaded(true)
             } else if (formality === 3) {
                 setTemplate(<FormalVerticalTemplate />)
             } 
+            setIsTemplateLoaded(true)
         } else if (ratio === "square") {
             if (formality === 1) {
                 setTemplate(<InformalSquareTemplate />)
@@ -58,13 +60,14 @@ export const Output = () => {
             } else if (formality === 3) {
                 setTemplate(<FormalSquareTemplate />)
             }
+            setIsTemplateLoaded(true)
         }
     }, [ratio, formality])
 
     useEffect(() => {
         getInfoPost()
         if (document.getElementById("vsft")) {
-          const handleDownloadImage = () => {
+          const handleDownloadImage = async () => {
             html2canvas(document.getElementById("vsft"), {
               backgroundColor: null,
               logging: false,
@@ -76,7 +79,7 @@ export const Output = () => {
                 setIsTemplateExported(true)
 
                 const apiUrl = "https://api.imgur.com/3/image";
-                const apiKey = "b4860ef308c697c";
+                const apiKey = process.env.IMGUR_URL
                 
                 const finalImageToBeUploaded = imageData.split(",")[1]
                 const formData = new FormData()
@@ -113,6 +116,15 @@ export const Output = () => {
         }
     },[sharingUrl])
 
+    const handleDownload = () => {
+        const link = document.createElement("a")
+        link.download = "Mi-diseño-GeekPost.png"
+        link.href = sharingUrl
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+      };
+
     return (
     <>
     {!isTemplateLoaded ?
@@ -132,18 +144,20 @@ export const Output = () => {
         : 
     <>
         <div className="row p-0 m-0 output-wrapper">
-            <div className="col-sm-12 col-lg-6 p-0 m-0">
+            <div className="col-sm-0 col-lg-3"></div>
+            <div className="col-sm-12 col-lg-3 p-0 final-composition-container">
                 <div className="final-composition-wrapper">
                     <div id="finale-composition-graphic">
-                        { isTemplateLoaded && isTemplateExported ? <img src={localStorage.getItem("finale-composition")} />
+                        { isTemplateLoaded && isTemplateExported ? <img className="img-fluid" src={localStorage.getItem("finale-composition")} />
                         : null }
                     </div>
-                    <div className="final-composition-wrapper-img">
+                    <div id="final-composition-wrapper-img" className="final-composition-wrapper-img">
                         {template}
                     </div>
                 </div>
             </div>
-            <div className="col-sm-12 col-lg-5 p-3 ms-5">
+            {/* <div className="col-sm-0 col-lg-1"></div> */}
+            <div className="col-sm-12 col-lg-5 p-3 ms-5 right-output-wrapper">
                 <h2 className="px-3">¡Felicidades!</h2>
                 <h3 className="px-3 mt-3">¡Ya eres todo un (o una) <em>GeekPoster</em>!</h3>
                 <p className="lead feedback-happy-talk-lead">
@@ -152,7 +166,7 @@ export const Output = () => {
                 </p>
                 <div className="feedback-happy-talk">
                     <p>
-                        Yo opino que La idea de la inmortalidad del pulpo es fascinante... como idea. Sin embargo, no
+                        Yo opino que la idea de la inmortalidad del pulpo es fascinante... como idea. Sin embargo, no
                         hay evidencia científica que respalde tal hecho.
                     </p>
                 </div>
@@ -161,17 +175,29 @@ export const Output = () => {
                     <em> hashtags </em>
                     algún día.
                 </div>
-                <div className="mt-3 p-3">
-                    <FacebookShareButton url={sharingUrl}>
-                        <FacebookIcon size={64} borderRadius={"5px"} />
-                        <span className="ms-3">Compartir en Facebook</span>
-                    </FacebookShareButton>
-                </div>
-                <div className="p-3">
-                <TwitterShareButton url={sharingUrl}>
-                    <TwitterIcon size={64} borderRadius={"5px"} />
-                    <span className="ms-3">Compartir en Twitter</span>
-                </TwitterShareButton>
+                <div className="d-flex">
+                    <div className="mt-4 p-3 d-flex flex-column w-50 justify-content-between">
+                        <FacebookShareButton url={sharingUrl} className="d-flex justify-content-between align-items-center">
+                            <FacebookIcon size={64} borderRadius={"5px"} />
+                            <span>Compartir en Facebook</span>
+                        </FacebookShareButton>
+                        <LinkedinShareButton url={sharingUrl} className="d-flex justify-content-between align-items-center mt-5" >
+                            <LinkedinIcon size={64} borderRadius={"5px"} />
+                            <span>Compartir en LinkedIn</span>
+                        </LinkedinShareButton>
+                    </div>
+                    <div className="mt-4 p-3 d-flex flex-column w-50 justify-content-between">
+                        <TwitterShareButton url={sharingUrl} className="d-flex justify-content-between align-items-center">
+                            <TwitterIcon size={64} borderRadius={"5px"} />
+                            <span className="ms-3">Compartir en Twitter</span>
+                        </TwitterShareButton>
+                        <div className="d-flex justify-content-between align-items-center mt-5">
+                            <button className="download-button" onClick={handleDownload}>
+                                <i className="fa fa-download color-white"></i>
+                            </button>
+                            <span className="ms-3">Descargar composición</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

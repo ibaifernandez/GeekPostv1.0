@@ -1,7 +1,11 @@
 .final-composition-wrapper {
     background: azure;
-    box-shadow: 5px 0px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 5px 0px rgba(0, 0, 0, 0.3); */
     /* margin-top:-50px; */
+}
+
+.final-composition-container {
+    width:25%;
 }
 
 .final-composition-wrapper-img {
@@ -11,6 +15,7 @@
     justify-content: center;
     transform: scale(0.85);
     position: absolute;
+    top:0;
     opacity: 0;
 }
 
@@ -19,7 +24,13 @@
     flex-direction: column;
     align-items:center;
     justify-content: center;
-    margin-top: 25px;   
+    margin: 20px 0 0 0;   
+}
+
+.right-output-wrapper {
+    /* border-left: 2px solid black; */
+    box-shadow: -5px 0px rgba(0, 0, 0, 0.3);
+
 }
 
 .btn-output-download {
@@ -40,10 +51,18 @@
     padding: 1rem 0 0 1rem;
 }
 
-.feedback-happy-talk{
+.feedback-happy-talk {
     padding: 0 0 0 1rem;
 }
 
 .clip-loader {
     margin: 100% 0;
+}
+
+.download-button {
+    width: 64px;
+    height: 64px;
+    border-radius:5px;
+    border: none;
+    background-color: var(--blue);
 }

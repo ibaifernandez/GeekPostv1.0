@@ -44,7 +44,7 @@ export const Signup = () => {
 		password: Yup.string()
 		  .required('La contraseña es obligatoria.')
 		  .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
-			"La contraseña debe contener al menos 8 caracteres, una letra minúscula, una letra mayúscula, un número y uno de los siguientes caracteres especiales: @, #, $, %, &, *"),
+			"La contraseña debe contener al menos 8 caracteres, una letra minúscula, una letra mayúscula, un número y uno de los siguientes caracteres especiales: @, #, $, %, &, !, *"),
 		confirmPassword: Yup.string()
 		  .required('La confirmación de la contraseña es obligatoria.')
 		  .oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir.'),

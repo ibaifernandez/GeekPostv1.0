@@ -1,16 +1,13 @@
-#ssft-wrapper {
-    --raisin-black: #28262C;
-    --tropical-indigo: #998FC7;
-    --periwinkle: #D4C2FC;
-    --magnolia: #F9F5FF;
-    --resolution-blue: #14248A;
-}
+/* #ssft-wrapper {} */
 
-#ssft {
+.ssft {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: relative; /* Importantísimo para que todo permanezca dentro del cuadrado */
     width: 800px; 
     height: 800px;
-    background: var(--magnolia);
+    transform: scale(0.9);
+    margin-top:-25px;
+    letter-spacing: 3px;
 }
 
 #ssft-main-wrapper {
@@ -28,7 +25,7 @@
 
 #ssft-offer-tag {
     position: absolute; 
-    width: 150px; 
+    width: auto; 
     height: 150px;
     margin: 25px 25px 0 0;
     border-radius: 50%; 
@@ -38,14 +35,15 @@
     display: flex; 
     align-items: center;
     justify-content: center;
-    color: var(--magnolia); 
     font-size: 2rem; 
     font-weight: bold;
+    padding:10px;
 }
 
 #ssft-main-text { /* Esta es la caja donde va el titulo principal */
     position:absolute; /* Importante */
-    top:170px; 
+    top:100px; 
+    left:-40px;
     transform: rotate(270deg);
     width:400px;
     height:200px;
@@ -56,8 +54,8 @@
 
 #ssft-h1 {
     font-size: 48px;
-    font-weight: 900;
-    color: var(--resolution-blue); 
+    font-weight: 700;
+    letter-spacing: 10px;
 }
 
 #ssft-photo-wrapper img {
@@ -73,12 +71,10 @@
 
 #ssft-right-margin {
     position:absolute; /* Importante */
-    top:215px; 
+    top:255px; 
     right:-25px; 
     width:400px;
     height:350px;
-    background: var(--tropical-indigo);
-    transform: rotate(270deg); 
     display:flex; 
     align-items: end; 
     justify-content: center; 
@@ -89,10 +85,10 @@
 
 #ssft-left-margin {
     position:absolute; /* Importante */
-    top: 549px;
+    top: 560px;
     left: 100px;
     width: 200px;
-    height: 40px;
+    height: 45px;
     background: var(--tropical-indigo);
     color: var(--magnolia); 
 }
@@ -107,7 +103,8 @@
 
 #ssft-secondary-text {
     width: 300px; /* Importante */
-    color: var(--raisin-black)
+    font-size:18px;
+    margin-top:-25px;
 }
 
 #ssft-cta {

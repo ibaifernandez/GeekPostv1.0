@@ -127,7 +127,6 @@ const App = () => {
             <Route path="/politica-de-privacidad" element={<POP />} />
             <Route path="/terminos-y-condiciones" element={<TOS />} />
             <Route path="/branding" element={<Branding />} />
-            <Route path="/output" element={<Output />} />
           </Route>
           {/* Rutas de las vistas posteriores al registro e ingreso [con «Home Header»] */}
           <Route path="/" element={<HomeLayout />}>
@@ -135,6 +134,7 @@ const App = () => {
             <Route path="/my-profile" element={<MyProfile />} />
             <Route path="/my-compositions" element={<MyCompositions />} />
             <Route path="/infopost" element={<Infopost />} />
+            <Route path="/output" element={<Output />} />
           </Route>
         </Routes>
       </BrowserRouter>
