@@ -56,9 +56,9 @@ export const StandardHeader = () => {
 							</Link>
 						: <Link to={`/login`}>
 							<li className="nav-item">
-							<button onClick={cleanLocalStorage} className="getstarted ms-auto">
+							 <button onClick={"cleanLocalStorage"} className="getstarted ms-auto">
 								Ingresar 🤩
-							</button>
+							</button> 
 							</li>
 						</Link>}
 					</ul>
