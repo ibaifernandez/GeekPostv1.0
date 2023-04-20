@@ -16,10 +16,10 @@ export const SemiFormalVerticalTemplate = () => {
 
     return (
     <div id="vsft-wrapper">
-        <div id="vsft" style={{backgroundColor: `${auxColor}`}}>
+        <div id="vsft" className="vsft" style={{backgroundColor: `${auxColor}`}}>
             <div id="vsft-main-wrapper" style={{ backgroundColor: `${secondaryColor}` }}>
                 <div id="vsft-top-margin" style={{ backgroundColor: `${mainColor}` }}>
-                    <div id="vsft-top-margin-accent"></div>
+                    <div id="vsft-top-margin-accent" style={{ backgroundColor: `${secondaryColor}`}}></div>
                 </div>
                 <div id="vsft-main-inner-wrapper" style={{ backgroundColor: `${mainColor}`}}>
                     <div id="vsft-offer-tag" style={{ backgroundColor: `${auxColor}`, color: `${secondaryColor}` }}>{price}</div>

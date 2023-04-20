@@ -1,4 +1,4 @@
-let url = "https://3001-ibaifernand-geekpostv10-kr8unxhs4kh.ws-us94.gitpod.io"
+let url = process.env.BACKEND_URL
 
 const getState = ({
     getStore,
@@ -246,6 +246,11 @@ const getState = ({
                     });
                 } catch (error) {
                 }
+            },
+            
+            cleanLocalStorage: () => {
+                const elementsToRemove = ['mainImage', 'logo', 'finale-composition'];
+                elementsToRemove.forEach(element => localStorage.removeItem(element));
             },
             
             putProfile: async (

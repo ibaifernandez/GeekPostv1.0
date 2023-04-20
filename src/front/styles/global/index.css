@@ -1,7 +1,7 @@
 /**
 * Project Name: GeekPost v1.0
 * Started: Friday 17th, March 2023
-* Repo URL: ###
+* Repo URL: https://github.com/ibaifernandez/GeekPostv1.0
 * Author: Sol La Banca, Sebastián Cardona e Ibai Fernández
 */
 
@@ -19,6 +19,10 @@
 
 .color-purple {
     color: var(--purple);
+}
+
+.color-white {
+    color: var(--white);
 }
 
 @font-face {
@@ -485,6 +489,19 @@ section {
 
 #newsletter-btn:hover {
     background: var(--fucsia);
+}
+
+.newsletter-input {
+    font-weight:600;
+}
+.newsletter-warning {
+    background: var(--blue);
+    color:var(--white);
+    font-size:14px;
+    padding:0.5rem;
+    width:90%;
+    margin: 0 auto;
+    border-radius:5px;
 }
 
 #footer .footer-top {
