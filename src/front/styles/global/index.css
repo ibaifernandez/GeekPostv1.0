@@ -68,6 +68,9 @@ h6 {
     margin: 0;
 }
 
+p {
+    margin:0;
+}
 
 a {
     text-decoration: none;
@@ -467,7 +470,7 @@ section {
     outline: none;
 }
 
-#newsletter-btn {
+.newsletter-btn {
     position: absolute;
     top: 0;
     right: 0;
@@ -492,8 +495,7 @@ section {
 }
 .newsletter-warning {
     background: var(--blue);
-    color:var(--white);
-    font-size:14px;
+    font-size:16px;
     padding:0.5rem;
     width:90%;
     margin: 0 auto;
@@ -673,4 +675,11 @@ section {
     z-index: 999;
     zoom: 0.95;
     background: var(--purple);
+}
+
+/* Coming Soon */
+
+.coming-soon {
+    margin:-75px 0 -25px;
+    height:80vh;
 }
