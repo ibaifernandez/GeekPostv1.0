@@ -33,9 +33,6 @@ export const Output = () => {
 
     const getInfoPost = async () => {
         const infoPost = await actions.getInfoPost()
-        if (infoPost) {
-            console.log({infoPost: store.infoPost})
-        }
     }
 
     const ratio = store.infoPost.ratio
