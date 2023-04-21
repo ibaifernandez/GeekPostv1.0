@@ -54,6 +54,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: "Poppins", sans-serif;
 }
 
 h1,
@@ -67,18 +68,16 @@ h6 {
     margin: 0;
 }
 
-p, label {
-    font-family: "Roboto", sans-serif;
+p {
+    margin:0;
 }
 
 a {
-    font-family: "Roboto", sans-serif;
     text-decoration: none;
     cursor:pointer;
 }
 
 input {
-    font-family: "Roboto", sans-serif;
     font-weight: 200;
     background: transparent;
 }
@@ -398,7 +397,7 @@ section {
     .cta .cta-btn-container {
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
     }
 }
 /*--------------------------------------------------------------
@@ -471,7 +470,7 @@ section {
     outline: none;
 }
 
-#newsletter-btn {
+.newsletter-btn {
     position: absolute;
     top: 0;
     right: 0;
@@ -496,8 +495,7 @@ section {
 }
 .newsletter-warning {
     background: var(--blue);
-    color:var(--white);
-    font-size:14px;
+    font-size:16px;
     padding:0.5rem;
     width:90%;
     margin: 0 auto;
@@ -647,6 +645,7 @@ section {
 --------------------------------------------------------------*/
 .breadcrumbs {
     background: var(--white);
+    position:relative;
     z-index: 900;
   }
 
@@ -676,4 +675,11 @@ section {
     z-index: 999;
     zoom: 0.95;
     background: var(--purple);
+}
+
+/* Coming Soon */
+
+.coming-soon {
+    margin:-75px 0 -25px;
+    height:80vh;
 }

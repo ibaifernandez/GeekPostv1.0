@@ -180,7 +180,7 @@
     padding: 10px 28px 11px 28px;
     border-radius: 50px;
     transition: 1s;
-    margin: 10px 0 0 0;
+    margin: 25px 0 0 0;
     color: var(--white);
     border: 1px solid var(--white);
     background: transparent;
@@ -196,7 +196,7 @@
     display: flex;
     align-items: center;
     transition: 0.5s;
-    margin: 10px 0 0 25px;
+    margin: 25px 0 0 25px;
     color: #fff;
     line-height: 1;
     background: transparent;

@@ -1,96 +1,101 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { subscriptionMessages } from "../data/newsletterData.js"
+import { validateEmail } from "../utils/validateEmail.js"
 
-export const Newsletter = () => {
-    
+const SubscriptionForm = ({ onSubscribe }) => {
     const [usermail, setUsermail] = useState("");
 
-    const [successfulSubscription, setSuccessfulSubscription] = useState("");
-    const [subscriptionError, setSubscriptionError] = useState("");
-
-    const handleUsermail = (e) => {
-        setUsermail(e.target.value);
-    };
-
-    const addSubscriber = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+        onSubscribe(usermail);
+    }
 
-        if (usermail === "") {
-            setSuccessfulSubscription(false);
-            setSubscriptionError("Por favor, ingresa tu correo electrónico.");
-            return;
+    const handleUsermailChange = (e) => {
+        setUsermail(e.target.value);
+    }
+
+    return (
+        <form>
+        <input
+            type="email"
+            onChange={handleUsermailChange}
+            placeholder="Ingresa tu correo electrónico"
+            value={usermail}
+            required
+        />
+        <button type="submit" onClick={handleSubmit} className="newsletter-btn">
+            Suscribirse
+        </button>
+        </form>
+    )
+}
+
+export const Newsletter = () => {
+    const [subscriptionMessage, setSubscriptionMessage] = useState("")
+
+    const handleSubscribe = (email) => {
+        // Validar que el usuario haya ingresado un correo electrónico
+        if (email === "") {
+            setSubscriptionMessage(subscriptionMessages.EMPTY_EMAIL)
+            return
         }
 
-        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-            if (!emailRegex.test(usermail)) {
-            setSuccessfulSubscription(false);
-            setSubscriptionError("Por favor, ingresa una dirección de correo electrónico válida.");
-            return;
+        // Validar que el correo electrónico sea válido
+        if (!validateEmail(email)) {
+            setSubscriptionMessage(subscriptionMessages.INVALID_EMAIL)
+            return
         }
 
-        fetch("https://connect.mailerlite.com/api/subscribers", {
+        // Realizar la petición para agregar el correo electrónico del usuario a la lista de correo
+        fetch(process.env.MAILERLITE_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
-             Authorization: "Bearer " + process.env.MAILERLITE_URL,
+                Authorization: "Bearer " + process.env.MAILERLITE_API,
             },
-            body: JSON.stringify(
-                {
-                    email: usermail,
-                    groups: ["85110772424771310"],
-                }
-            ),
-          })
+            body: JSON.stringify({
+                email: email,
+                groups: ["85110772424771310"],
+            }),
+            })
             .then((response) => {
-                console.log(response)
+                // console.log(response);
                 if (response.status === 201) {
-                    setSuccessfulSubscription("Suscrito con éxito. ¡Gracias!");
-                    setSubscriptionError("")
+                    setSubscriptionMessage(subscriptionMessages.SUBSCRIBE_SUCCESS)
                 } else if (response.status === 200) {
-                    setSuccessfulSubscription("Ya te registraste en nuestra lista de correo anteriormente. ¡Gracias!")
-                    setSubscriptionError("")
+                    setSubscriptionMessage(subscriptionMessages.ALREADY_SUBSCRIBED)
                 } else {
-                    setSuccessfulSubscription(false)
-                    setSubscriptionError("Ocurrió un error al intentar suscribirse. Por favor, inténtelo de nuevo más tarde.");
+                    setSubscriptionMessage(subscriptionMessages.SUBSCRIBE_ERROR)
                 }
-                return response.json();
+                return response.json()
             })
             .catch((error) => {
-                console.error(error);
-                setSuccessfulSubscription(false);
-                setSubscriptionError("Ocurrió un error al intentar suscribirse. Por favor, inténtelo de nuevo más tarde.");
+                console.error(error)
+                setSubscriptionMessage(subscriptionMessages.SUBSCRIBE_ERROR)
             });
         };
-      
+
     return (
         <div className="footer-newsletter">
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-lg-6">
+                    <div className="col-lg-9 col-xl-6">
                         <h4>Tu taza humeante de inspiración de los lunes</h4>
-                        <p className="lead">
-                            Suscríbete a nuestra lista de difusión para recibir
-                            cada lunes nuestro boletín de noticias semanal con
-                            el que avivaremos la llama de tu inspiración.
-                            Directo a tu buzón. Sin spam. Lo prometemos. Tus
-                            datos están a salvo con nosotros.
-                        </p>
-                        <form>
-                            <input
-                                type="email"
-                                name="email"
-                                value={usermail}
-                                onChange={handleUsermail}
-                                placeholder="Escribe aquí tu correo electrónico"
-                                className="newsletter-input"
-                            />
-                            <button id="newsletter-btn" value="Suscríbete" onClick={addSubscriber}>Suscríbete</button>
-                        </form>
-                        {subscriptionError ? <p className="mt-3 newsletter-warning">{subscriptionError}</p> : null}
-                        {successfulSubscription !== "" ? <p className="mt-3 newsletter-warning">{successfulSubscription}</p> : null}
+                            <p className="lead">
+                                Suscríbete a nuestra lista de difusión para recibir cada lunes nuestro boletín de noticias
+                                semanal con el que avivaremos la llama de tu inspiración. Directo a tu buzón. Sin spam.
+                                Lo prometemos. Tus datos están a salvo con nosotros.
+                            </p>
+                            <SubscriptionForm onSubscribe={handleSubscribe} />
+                            {subscriptionMessage && (
+                                <div className="mt-3 newsletter-warning">
+                                    <p className="text-center">{subscriptionMessage}</p>
+                                </div>
+                            )}
                     </div>
                 </div>
             </div>
         </div>
-    );
+    )
 };
