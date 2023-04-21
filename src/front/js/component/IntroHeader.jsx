@@ -10,10 +10,24 @@ export const IntroHeader = () => {
         currentScrollHeight: 0,
     });
 
-    useEffect(window.onscroll = () => {
-        const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
-        setHeaderOpacity({ currentScrollHeight: newScrollHeight });
-    },[]);
+    useEffect(() => {
+        const handleScroll = () => {
+            const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
+            //  «Functional updates»: `prevState` crea un nuevo objeto con las propiedades del estado anterior 
+            //  (...prevState) y sobrescribe la propiedad `currentScrollHeight` con el nuevo valor calculado a
+            //  partir de la posición actual del scroll.
+            setHeaderOpacity(prevState => ({
+                ...prevState,
+                currentScrollHeight: newScrollHeight
+            }));
+        }
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, [setHeaderOpacity]);
 
     const opacity = Math.min(headerOpacity.currentScrollHeight / 100, 1);
 
@@ -57,11 +71,11 @@ export const IntroHeader = () => {
                                 Ayuda 👩🏽‍🚒
                             </Link>
                         </li>
-                        {/* <li className="nav-item">
+                        <li className="nav-item">
                             <Link to="/documentacion" className="nav-link">
                                 Docs 📚
                             </Link>
-                        </li> */}
+                        </li>
                         <li className="nav-item">
                             <Link to="/contacto" className="nav-link">
                                 Contacto 💌
