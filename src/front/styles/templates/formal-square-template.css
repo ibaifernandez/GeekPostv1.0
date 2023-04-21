@@ -121,7 +121,7 @@
     font-family: 'Playfair Display', serif;
     font-weight: 500;
     position: absolute;
-    top: 50px;
+    top: 20px;
     left: 250px;
     width: 500px;
 
@@ -131,19 +131,29 @@
     font-family: 'Playfair Display', serif;
     position: absolute;
     transform: rotate(270deg);
-    top: 310px;
-    left: -100px;
-    width: 300px;
+    top: 330px;
+    left: -130px;
+    width: 500px;
     z-index: 60000;
 }
 
+.ContactData {
+    font-family: 'Playfair Display', serif;
+    position: absolute;
+    transform: rotate(270deg);
+    top: 320px;
+    left: 420px;
+    width: 500px;
+    z-index: 60000;
+}
 
 .TextoSecundario {
     font-family: 'Playfair Display', serif;
     font-size: x-large;
     position: absolute;
-    top: 100px;
+    top: 50px;
     left: 250px;
+    width: 500px;
 }
 
 .oferta {

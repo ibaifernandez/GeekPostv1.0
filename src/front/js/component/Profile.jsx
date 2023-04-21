@@ -21,12 +21,12 @@ export const Profile = () => {
   const [main_color, setMaincolor] = useState(store.user.mainColor);
   const [secondary_color, setSecondarycolor] = useState(store.user.secondaryColor);
   const [aux_color, setAuxcolor] = useState(store.user.auxColor);
-  const [logo, setLogo] = useState("");
+  const [logo, setLogo] = useState(store.user.logo);
   const [newLogoIsLoaded, setNewLogoIsLoaded] = useState(false);
 
   useEffect(() => {
     actions.getUserDetails();
-    setLogo(store.user.logo);
+   // setLogo(store.user.logo);
   }, []);
 
   const handleLogoUpload = (e) => {
@@ -251,7 +251,7 @@ export const Profile = () => {
                                     </div>)
                                 : store.user.logo ?
                                     (<div className="mt-3 d-flex justify-content-center">
-                                       <img src={logo} alt="" className="img-fluid" />
+                                       <img src={store.user.logo} alt="" className="img-fluid" />
                                     </div>)                                
                                 : null }
                            </div>
