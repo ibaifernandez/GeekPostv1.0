@@ -54,6 +54,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: "Poppins", sans-serif;
 }
 
 h1,
@@ -67,18 +68,13 @@ h6 {
     margin: 0;
 }
 
-p, label {
-    font-family: "Roboto", sans-serif;
-}
 
 a {
-    font-family: "Roboto", sans-serif;
     text-decoration: none;
     cursor:pointer;
 }
 
 input {
-    font-family: "Roboto", sans-serif;
     font-weight: 200;
     background: transparent;
 }
@@ -398,7 +394,7 @@ section {
     .cta .cta-btn-container {
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
     }
 }
 /*--------------------------------------------------------------
@@ -647,6 +643,7 @@ section {
 --------------------------------------------------------------*/
 .breadcrumbs {
     background: var(--white);
+    position:relative;
     z-index: 900;
   }
 

@@ -1,5 +1,9 @@
 import React from "react";
+import comingSoon from "../../img/coming-soon.jpg"
+import "../../styles/docs.css";
 
 export const Docs = () => (
-    <h1 className="m-5 p-5 text-center">Coming Soon!</h1>
+    <div className="d-flex w-100 50vh justify-content-center ">
+        <img className="coming-soon" src={comingSoon} />
+    </div>
 )

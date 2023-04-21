@@ -30,11 +30,11 @@ export const Footer = () => (
                         <ul>
                             <li>
                                 <i className="fa fa-chevron-right me-3"></i>
-                                <Link to="/hello">¡Hola!</Link>
+                                <Link to="/hola">¡Hola!</Link>
                             </li>
                             <li>
                                 <i className="fa fa-chevron-right me-3"></i>
-                                <Link to="/help">Ayuda</Link>
+                                <Link to="/ayuda">Ayuda</Link>
                             </li>
                             <li>
                                 <i className="fa fa-chevron-right me-3"></i>
@@ -42,7 +42,7 @@ export const Footer = () => (
                             </li>
                             <li>
                                 <i className="fa fa-chevron-right me-3"></i>
-                                <Link to="/contact">Contacto</Link>
+                                <Link to="/contacto">Contacto</Link>
                             </li>
                         </ul>
                     </div>

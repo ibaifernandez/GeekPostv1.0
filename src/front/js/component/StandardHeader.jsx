@@ -37,7 +37,7 @@ export const StandardHeader = () => {
 							</Link>
 						</li>
 					<li className="nav-item">
-							<Link to="/docs" className="nav-link">
+							<Link to="/documentacion" className="nav-link">
 								Docs 📚
 							</Link>
 						</li>

@@ -19,6 +19,7 @@
     background: #fff;
     border-radius: 4px;
     position: relative;
+    box-shadow: 0 2px 15px 2px rgba(0, 0, 0, 0.2)
 }
 
 .faq .faq-list a {
@@ -28,7 +29,6 @@
     font-size: 16px;
     line-height: 24px;
     font-weight: 500;
-    padding: 0 30px;
     outline: none;
     cursor: pointer;
 }

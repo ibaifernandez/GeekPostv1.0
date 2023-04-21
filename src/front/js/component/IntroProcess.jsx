@@ -6,7 +6,7 @@ import roundedPhoto3 from "../../img/disena.jpeg";
 import roundedPhoto4 from "../../img/comparte.jpeg";
 
 export const IntroProcess = () => (
-    <section id="process" className="process section-bg py-5">
+    <section id="process" className="process py-5">
         <div className="container" data-aos="fade-up">
             <div className="section-title">
                 <h2>El proceso más fácil</h2>

@@ -31,7 +31,7 @@ export const MainHero = () => {
                         </h1>
                         <h2 className="fs-1">... muy sencilla.</h2>
                         
-                        <div className="d-flex justify-content-center justify-content-lg-end justify-content-md-around">
+                        <div className="d-flex justify-content-center justify-content-lg-end justify-content-md-around justify-content-sm-between">
                             {localStorage.token ?
                                 <Link to={`/home`} className="btn-get-started">
                                     Ve a tu escritorio
