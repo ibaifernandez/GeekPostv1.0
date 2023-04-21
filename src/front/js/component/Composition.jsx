@@ -1,7 +1,15 @@
-import React from "react";
+import { Context } from "../store/appContext.js"
 import "../../styles/composition.css";
+import React, { useContext, useEffect } from "react";
 
 export const Composition = () => {
+    const { store, actions } = useContext(Context)
+    useEffect(()=>{
+        actions.getInfoPost()  
+    },[])
+
+    const {image_url} = store.infoPost
+
     return (
         <section id="home-process" className="process section-bg">
             <div className="container" data-aos="fade-up">
@@ -31,7 +39,7 @@ export const Composition = () => {
                                         <img className="img-fluid w-100 h-100" src="https://images.template.net/54702/Spa-Advertisement-Instagram-Post-sm-1610418067377-547020.jpeg" alt="postImage" />
                                     </div>
                                     <div className="col-md-6 col-lg-4 p-2">
-                                        <img className="img-fluid w-100 h-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUJx5g8wjHHtBy51MFOHgCGV_dnCkrL0pAyw&usqp=CAU" alt="postImage" />
+                                        <img className="img-fluid w-100 h-100" src={image_url} alt="postImage" />
                                     </div>
                                 </div>
                                 <div className="row justify-content-center g-2 flex-column flex-md-row ps-2 pe-2">
