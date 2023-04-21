@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect, useContext} from "react";
 import "../../styles/templates/informal-vertical-template.css";
-import ssftPhoto from "../../img/hero-img.jpeg" 
+import { Context } from "../store/appContext";
+
 
 export const InformalVerticalTemplate = () => {
 

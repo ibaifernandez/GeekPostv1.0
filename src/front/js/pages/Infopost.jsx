@@ -399,9 +399,9 @@ export const Infopost = () => {
                                         value={formality}
                                     />
                                     <div className="d-flex justify-content-between slider-tags-infopost">
-                                        <span>Formal</span>
-                                        <span>Semiformal</span>
                                         <span>Informal</span>
+                                        <span>Semiformal</span>
+                                        <span>Formal</span>
                                     </div>
                                 </div>    
                                 <OverlayTrigger placement="right" overlay={formalityTooltip}>
