@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "../../styles/templates/informal-square-template.css";
 
 
@@ -23,7 +23,7 @@ export const InformalSquareTemplate = () => {
                         <div id="sit-top-margin-accent"></div>
                     </div>
                     <div id="sit-main-inner-wrapper">
-                        <div id="sit-offer-tag">Oferta {price}</div>
+                        <div id="sit-offer-tag">{price}</div>
                         <div id="sit-texts-wrapper">
                             <div class="sit-imagecontainer">
                                 <img src={localStorage.mainImage} />
