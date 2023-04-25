@@ -5,7 +5,7 @@ import { FooterLinkSection } from "./FooterLinkSection.jsx";
 import { footerLinks } from "../../data/footerLinks.js";
 
 export const Footer = () => (
-    <footer id="footer">
+    <footer id="footer" className="footer">
         <div className="footer-top">
             <div className="container">
                 <div className="row">

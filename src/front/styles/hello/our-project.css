@@ -5,7 +5,7 @@
 .why-us .content h3 {
   font-weight: 400;
   font-size: 34px;
-  color: #37517e;
+  color: var(--purple);
 }
 
 .why-us .content p {
@@ -27,7 +27,7 @@
 
 .why-us .accordion-list li {
   padding: 20px 20px 20px 0;
-  background: #fff;
+  background: var(--white);
   border-radius: 4px;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .why-us .accordion-list span {
-  color: #47b2e4;
+  color: var(--blue);
   font-weight: 600;
   font-size: 18px;
   padding-right: 10px;

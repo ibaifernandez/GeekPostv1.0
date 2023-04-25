@@ -15,6 +15,7 @@
     --blue: #4795d1;
     --yellow: #fac52c;
     --white: #f9f9f9;
+    --grey: #444444;
 }
 
 .color-purple {
@@ -106,7 +107,7 @@ input:focus-visible {
     right: 15px;
     bottom: 15px;
     z-index: 996;
-    background: #47b2e4;
+    background: var(--blue);
     width: 40px;
     height: 40px;
     border-radius: 50px;
@@ -115,13 +116,13 @@ input:focus-visible {
 
 .back-to-top i {
     font-size: 24px;
-    color: #fff;
+    color: var(--white);
     line-height: 0;
 }
 
 .back-to-top:hover {
-    background: #6bc1e9;
-    color: #fff;
+    background: var(--purple);
+    color: var(--white);
 }
 
 .back-to-top.active {
@@ -165,7 +166,7 @@ section {
     display: block;
     width: 120px;
     height: 1px;
-    background: #ddd;
+    background: var(--white);
     bottom: 1px;
     left: calc(50% - 60px);
 }
@@ -283,7 +284,7 @@ section {
     box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
     padding: 50px 30px;
     transition: all ease-in-out 0.4s;
-    background: #fff;
+    background: var(--white);
 }
 
 .process .icon-box .icon {
@@ -291,7 +292,7 @@ section {
 }
 
 .process .icon-box .icon i {
-    color: #47b2e4;
+    color: var(--blue);
     font-size: 36px;
     transition: 0.3s;
 }
@@ -308,7 +309,7 @@ section {
     font-weight: 500;
     margin-bottom: 15px;
     font-size: 24px;
-    color: #37517e;
+    color: var(--purple);
 }
 
 .process .icon-box h4 a {
@@ -325,7 +326,7 @@ section {
 }
 
 .process .icon-box:hover h4 a {
-    color: #47b2e4;
+    color: var(--blue);
 }
 
 .btn-get-registered {
@@ -365,7 +366,7 @@ section {
 }
 
 .cta p {
-    color: #fff;
+    color: var(--white);
 }
 
 .cta-btn {
@@ -379,7 +380,7 @@ section {
     transition: 1s;
     margin: 10px;
     border: 2px solid var(--white);
-    color: #fff;
+    color: var(--white);
 }
 
 .cta-btn:hover {
@@ -424,7 +425,7 @@ section {
   # Footer
   --------------------------------------------------------------*/
 
-#footer {
+.footer {
     font-size: 14px;
     background: var(--blue);
     flex: 0 0 auto;
@@ -435,7 +436,7 @@ section {
     background: var(--purple);
     text-align: center;
     font-size: 15px;
-    color: #444444;
+    color: var(--grey);
 }
 
 .footer-newsletter h4 {
@@ -453,7 +454,7 @@ section {
 
 .footer-newsletter form {
     margin-top: 30px;
-    background: #fff;
+    background: var(--white);
     padding: 6px 10px;
     position: relative;
     border-radius: 50px;
@@ -480,13 +481,13 @@ section {
     font-size: 16px;
     padding: 0 20px;
     background: var(--blue);
-    color: #fff;
+    color: var(--white);
     transition: 1s;
     border-radius: 50px;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-#newsletter-btn:hover {
+.newsletter-btn:hover {
     background: var(--fucsia);
 }
 
@@ -502,39 +503,38 @@ section {
     border-radius:5px;
 }
 
-#footer .footer-top {
+.footer .footer-top {
     padding: 60px 0 30px 0;
     background: var(--white);
     position:relative;
 }
 
-#footer .footer-top .footer-contact h2 {
+.footer .footer-top .footer-contact h2 {
     font-size: 41px;
     padding: 2px 0;
     line-height: 1;
     font-weight: 600;
-    color: #37517e;
+    color: var(--purple);
 }
 
-#footer .footer-top .footer-contact h3 {
+.footer .footer-top .footer-contact h3 {
     font-size: 28px;
     margin: 0 0 10px 0;
     padding: 2px 0 2px 0;
     line-height: 1;
     text-transform: uppercase;
     font-weight: 600;
-    color: #37517e;
+    color: var(--purple);
 }
 
-#footer .footer-top .footer-contact p {
+.footer .footer-top .footer-contact p {
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 0;
-    font-family: "Jost", sans-serif;
-    color: #5e5e5e;
+    color: var(--grey);
 }
 
-#footer .footer-top h4 {
+.footer .footer-top h4 {
     font-size: 16px;
     font-weight: bold;
     color: var(--purple);
@@ -542,51 +542,51 @@ section {
     padding-bottom: 12px;
 }
 
-#footer .footer-top .footer-links {
+.footer .footer-top .footer-links {
     margin-bottom: 30px;
 }
 
-#footer .footer-top .footer-links ul {
+.footer .footer-top .footer-links ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-#footer .footer-top .footer-links ul i {
+.footer .footer-top .footer-links ul i {
     padding-right: 2px;
-    color: #47b2e4;
+    color: var(--blue);
     font-size: 18px;
     line-height: 1;
 }
 
-#footer .footer-top .footer-links ul li {
+.footer .footer-top .footer-links ul li {
     padding: 10px 0;
     margin-bottom: 8px;
     display: flex;
     align-items: center;
 }
 
-#footer .footer-top .footer-links ul li:first-child {
+.footer .footer-top .footer-links ul li:first-child {
     padding-top: 0;
 }
 
-#footer .footer-top .footer-links ul a {
-    color: #777777;
+.footer .footer-top .footer-links ul a {
+    color: var(--grey);
     transition: 0.3s;
     display: inline-block;
     line-height: 1;
 }
 
-#footer .footer-top .footer-links ul a:hover {
+.footer .footer-top .footer-links ul a:hover {
     text-decoration: none;
-    color: #47b2e4;
+    color: var(--blue);
 }
 
-#footer .footer-top .social-links a {
+.footer .footer-top .social-links a {
     font-size: 18px;
     display: inline-block;
-    background: #47b2e4;
-    color: #fff;
+    background: var(--blue);
+    color: var(--white);
     line-height: 1;
     padding: 8px 0;
     margin: 12px 18px 0 0;
@@ -597,45 +597,45 @@ section {
     transition: 0.3s;
 }
 
-#footer .footer-top .social-links a:hover {
-    background: #209dd8;
-    color: #fff;
+.footer .footer-top .social-links a:hover {
+    background: var(--blue);
+    color: var(--white);
     text-decoration: none;
 }
 
 .footer-bottom {
     padding-top: 30px;
     padding-bottom: 30px;
-    color: #fff;
+    color: var(--white);
 }
 
-#footer .copyright {
+.footer .copyright {
     float: left;
 }
 
-#footer .credits {
+.footer .credits {
     float: right;
     font-size: 13px;
 }
 
-#footer .credits a {
+.footer .credits a {
     transition: 0.3s;
     color: var(--yellow);
 }
 
 @media (max-width: 768px) {
-    #footer .footer-bottom {
+    .footer .footer-bottom {
         padding-top: 20px;
         padding-bottom: 20px;
     }
 
-    #footer .copyright,
-    #footer .credits {
+    .footer .copyright,
+    .footer .credits {
         text-align: center;
         float: none;
     }
 
-    #footer .credits {
+    .footer .credits {
         padding-top: 4px;
     }
 }
@@ -643,6 +643,7 @@ section {
 /*--------------------------------------------------------------
 # Breadcrumbs
 --------------------------------------------------------------*/
+
 .breadcrumbs {
     background: var(--white);
     position:relative;
@@ -670,7 +671,7 @@ section {
 
 /* MainHeader */
 
-#main-header {
+.main-header {
     transition: all 0.5s;
     z-index: 999;
     zoom: 0.95;

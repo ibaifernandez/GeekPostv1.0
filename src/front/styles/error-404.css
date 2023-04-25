@@ -1,6 +1,6 @@
 /* https://codepen.io/robinselmer/pen/vJjbOZ */
 
-#wrapper-404 {
+.wrapper-404 {
   zoom:1.5;
   height: 100%;
   background: radial-gradient(#11581E, #041607), url("../img/error-404-bg-1.gif") no-repeat;

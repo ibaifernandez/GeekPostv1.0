@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import "../../styles/templates/informal-square-template.css";
 
-
 import { Context } from "../store/appContext";
 
 export const InformalSquareTemplate = () => {
