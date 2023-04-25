@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
 import "../../styles/templates/informal-vertical-template.css";
 import ssftPhoto from "../../img/hero-img.jpeg" 
 
@@ -14,15 +15,15 @@ export const InformalVerticalTemplate = () => {
 
     return(
         <div id="vit-wrapper">
-            <div id="vsft">
-                <div id="vit-main-wrapper">
+            <div id="vsft" className="rectangulo">
+                <div id="vit-main-wrapper" style={{backgroundColor:`${mainColor}`}}>
                     <div id="vit-top-margin">
                         <div id="vit-top-margin-accent"></div>
                     </div>
                     <div id="vit-main-inner-wrapper">
-                        <div id="vit-offer-tag">Oferta {price}</div>
+                        <div id="vit-offer-tag"> {price}</div>
                         <div id="vit-texts-wrapper">
-                            <div class="vit-imagecontainer">
+                            <div class="vit-imagecontainer rounded-circle">
                                 <img src={localStorage.mainImage} />
                             </div>
                             <div id="vit-main-text">
@@ -30,20 +31,21 @@ export const InformalVerticalTemplate = () => {
                             </div>
                         </div>
                     </div>
-                    <div id="vit-triangle-margin" style={{backgroundColor:`${mainColor}`}}></div>
+                    <div id="vit-triangle-margin" ></div>
                 </div>
-                <div id="vit-right-margin" style={{backgroundColor:`${auxColor}`}}>
-                    <div>
+                     <div >
                         <img id="vit-logo" src={localStorage.logo} />
                     </div>
+                <div id="vit-right-margin" style={{backgroundColor:`${auxColor}`}}>
+                   
                     <div id="identity">
                         {identity}
                     </div>
                 </div>
                 <div id="vit-right-margin"></div>
-                <div id="vit-secondary-wrapper">
-                    <div id="vit-secondary-inner-wrapper" style={{backgroundColor:`${secondaryColor}`}}>
-                        <div id="vit-cta" >
+                <div id="vit-secondary-wrapper"style={{backgroundColor:`${secondaryColor}`}}>
+                    <div id="vit-secondary-inner-wrapper" >
+                        <div id="vit-cta" style={{backgroundColor:`${auxColor}`}}>
                             <p>{contactData}</p>
                         </div>
                         <p id="vit-secondary-text">
