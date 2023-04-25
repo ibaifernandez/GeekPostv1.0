@@ -1,8 +1,4 @@
-#home {
-    background: var(--blue);
-}
-
-#home-header {
+.home-header {
     transition: all 0.5s;
     z-index: 99;
     zoom: 0.95;
@@ -10,11 +6,11 @@
     flex: 0 0 auto;
 }
 
-#home-header #logo .logo {
+.home-header .logo {
     margin: 0;
 }
 
-#home-header #logo a h1 span {
+.home-header a h1 span {
     font-style: italic;
     color: var(--white);
     font-size: 42px;
@@ -22,7 +18,7 @@
     left: 7px;
 }
 
-#home-header #logo a img {
+.home-header a img {
     max-height: 40px;
     z-index: 1;
 }
@@ -47,7 +43,7 @@
     display: block;
     width: 120px;
     height: 1px;
-    background: #ddd;
+    background: var(--white);
     bottom: 1px;
     left: calc(50% - 60px);
 }
@@ -74,7 +70,7 @@ aside {
     flex: 0 0 auto;
 }
 
-#sidebar-username {
+.sidebar-username {
     font-size:24px;
     margin-top: 15px;
     margin-left: 10px;
@@ -90,12 +86,12 @@ aside {
     margin-left:280px;
 }
 
-#home-process {
+.home-process {
     padding-top:25px;
     height:100%;
 }
 
-#home-process h2 {
+.home-process h2 {
     font-size:24px;
 }
 

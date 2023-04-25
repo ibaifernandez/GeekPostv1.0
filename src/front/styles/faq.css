@@ -16,7 +16,7 @@
 
 .faq .faq-list li {
     padding: 20px;
-    background: #fff;
+    background: var(--white);
     border-radius: 4px;
     position: relative;
     box-shadow: 0 2px 15px 2px rgba(0, 0, 0, 0.2)
@@ -38,7 +38,7 @@
     position: absolute;
     right: 0;
     left: 20px;
-    color: #47b2e4;
+    color: var(--blue);
 }
 
 .faq .faq-list .icon-show,
@@ -59,12 +59,12 @@
 }
 
 .faq .faq-list a.collapsed {
-    color: #37517e;
+    color: var(--purple);
     transition: 0.3s;
 }
 
 .faq .faq-list a.collapsed:hover {
-    color: #47b2e4;
+    color: var(--blue);
 }
 
 .faq .faq-list a.collapsed .icon-show {
