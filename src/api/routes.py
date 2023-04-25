@@ -6,7 +6,12 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 import json
+import os
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
+password = os.getenv('PASSSMTP')
 api = Blueprint('api', __name__)
 
 @api.route("/login", methods=["POST"])
@@ -183,3 +188,34 @@ def add_image_url_to_post(id):
     db.session.commit()
 
     return jsonify({"msg": "URL added to post's registry successfully."}), 200
+
+@api.route('/contact', methods=['POST'])
+def handle_contact_form():
+    form = ContactForm(request.form)
+    if not form.validate():
+        return 'Datos inválidos'
+    
+    name = form.name.data
+    email = form.email.data
+    subject = form.subject.data
+    message = form.message.data
+
+    # Configurar el mensaje de correo electrónico
+
+    message_body = f"Nombre: {name}\nCorreo electrónico: {email}\nAsunto: {subject}\nMensaje: {message}"
+    msg = MIMEMultipart()
+    msg['From'] = 'info@ibaifernandez.com'
+    msg['To'] = 'info@ibaifernandez.com'
+    msg['Cc'] = 'info@aglaya.biz'
+    msg['Subject'] = "Nuevo mensaje de contacto en GeekPost"
+    msg.attach(MIMEText(message_body, 'plain'))
+    
+    # Enviar el correo electrónico
+    server = smtplib.SMTP('mail.ibaifernandez.com', 465)
+    server.starttls()
+    server.login("geekpost@ibaifernandez.com", password)
+    text = msg.as_string()
+    server.sendmail('geekpost@ibaifernandez.com', ['info@ibaifernandez.com', 'info@aglaya.biz'], text)
+    server.quit()
+
+    return 'Mensaje recibido'
