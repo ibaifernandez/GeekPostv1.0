@@ -11,7 +11,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-password = os.getenv('PASSSMTP')
+password = os.environ.get("PASSSMTP")
+print(password)
 api = Blueprint('api', __name__)
 
 @api.route("/login", methods=["POST"])
@@ -191,31 +192,38 @@ def add_image_url_to_post(id):
 
 @api.route('/contact', methods=['POST'])
 def handle_contact_form():
-    form = ContactForm(request.form)
-    if not form.validate():
-        return 'Datos inválidos'
-    
-    name = form.name.data
-    email = form.email.data
-    subject = form.subject.data
-    message = form.message.data
+    # Verificar que se ha recibido toda la información necesaria
+    required_fields = ['name', 'email', 'subject', 'message']
+    missing_fields = [field for field in required_fields if field not in request.form]
+    if missing_fields:
+        error_message = f"Los campos requeridos {', '.join(missing_fields)} no se han enviado"
+        return error_message, 400
+
+    name = request.form['name']
+    email = request.form['email']
+    subject = request.form['subject']
+    message = request.form['message']
 
     # Configurar el mensaje de correo electrónico
-
     message_body = f"Nombre: {name}\nCorreo electrónico: {email}\nAsunto: {subject}\nMensaje: {message}"
     msg = MIMEMultipart()
-    msg['From'] = 'info@ibaifernandez.com'
+    msg['From'] = 'ibai600@gmail.com'
     msg['To'] = 'info@ibaifernandez.com'
     msg['Cc'] = 'info@aglaya.biz'
     msg['Subject'] = "Nuevo mensaje de contacto en GeekPost"
     msg.attach(MIMEText(message_body, 'plain'))
-    
-    # Enviar el correo electrónico
-    server = smtplib.SMTP('mail.ibaifernandez.com', 465)
-    server.starttls()
-    server.login("geekpost@ibaifernandez.com", password)
-    text = msg.as_string()
-    server.sendmail('geekpost@ibaifernandez.com', ['info@ibaifernandez.com', 'info@aglaya.biz'], text)
-    server.quit()
 
-    return 'Mensaje recibido'
+    # Enviar el correo electrónico
+    try:
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.ehlo()
+        server.starttls()
+        server.login("ibai600@gmail.com", password)
+        text = msg.as_string()
+        server.sendmail('ibai600@gmail.com', ['info@ibaifernandez.com', 'info@aglaya.biz'], text)
+        server.quit()
+    except smtplib.SMTPException as e:
+        # Manejar errores de conexión o envío de correo electrónico
+        return f'Error al enviar el mensaje: {str(e)}', 500
+
+    return 'Mensaje recibido', 200

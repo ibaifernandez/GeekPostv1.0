@@ -8,13 +8,13 @@ export const Composition = () => {
         actions.getInfoPost()  
     },[])
 
-    const {image_url} = store.infoPost
+    const {imageUrl} = store.infoPost
 
     return (
         <section className="home-process process section-bg">
             <div className="container" data-aos="fade-up">
                 <div className="section-title">
-                    <h2>Mis Composiciones</h2>
+                    <h2>Mis composiciones</h2>
                 </div>
                 <div className="row mt-3">
                     <div className="row">
@@ -33,13 +33,13 @@ export const Composition = () => {
                             <div className="tab-pane fade show active overflow-scroll compcont" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                                 <div className="row justify-content-center g-2 flex-column flex-md-row ps-2 pe-2">
                                     <div className="col-md-6 col-lg-4 mt-2 p-2">
-                                        <img className="img-fluid w-100 h-100" src="https://images.template.net/54866/Med-Spa-Instagram-Post-sm-1610521430297-548660.jpeg" alt="postImage" />
+                                        <img className="w-100" src="https://images.template.net/54866/Med-Spa-Instagram-Post-sm-1610521430297-548660.jpeg" alt="postImage" />
                                     </div>
                                     <div className="col-md-6 col-lg-4 p-2">
-                                        <img className="img-fluid w-100 h-100" src="https://images.template.net/54702/Spa-Advertisement-Instagram-Post-sm-1610418067377-547020.jpeg" alt="postImage" />
+                                        <img className="w-100" src="https://images.template.net/54702/Spa-Advertisement-Instagram-Post-sm-1610418067377-547020.jpeg" alt="postImage" />
                                     </div>
                                     <div className="col-md-6 col-lg-4 p-2">
-                                        <img className="img-fluid w-100 h-100" src={image_url} alt="postImage" />
+                                        <img className="w-100" src={imageUrl} alt="postImage" />
                                     </div>
                                 </div>
                                 <div className="row justify-content-center g-2 flex-column flex-md-row ps-2 pe-2">

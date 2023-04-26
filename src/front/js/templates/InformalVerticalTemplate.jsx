@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/templates/informal-vertical-template.css";
-import ssftPhoto from "../../img/hero-img.jpeg";
 
 export const InformalVerticalTemplate = () => {
   const { store, actions } = useContext(Context);
@@ -47,7 +46,7 @@ export const InformalVerticalTemplate = () => {
           <img id="vit-logo" src={localStorage.logo} />
         </div>
         <div id="vit-right-margin" style={{ backgroundColor: `${auxColor}` }}>
-          <div id="identity">{identity}</div>
+          <div className="identity">{identity}</div>
         </div>
         <div id="vit-right-margin"></div>
         <div
