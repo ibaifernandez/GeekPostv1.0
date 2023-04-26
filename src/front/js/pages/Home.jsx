@@ -89,8 +89,6 @@ const Tutorial = () => {
   );
 };
 
-
-
 export const Home = () => {
     const [freshRegistry, setFreshRegistry] = useState(false);
     const location = useLocation();

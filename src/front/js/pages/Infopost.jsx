@@ -8,31 +8,18 @@ export const Infopost = () => {
     const { store, actions } = useContext(Context);
   
     const [mainImageisLoaded, setMainImageIsLoaded] = useState(false);
-   
     const [identity, setIdentity] = useState("");
-
     const [mainText, setMainText] = useState("");
-
     const [secondaryText, setSecondaryText] = useState("");
-
     const [price, setPrice] = useState("");
-    
     const [contact, setContact] = useState("");
-
     const [logo, setLogo] = useState("");
-    
     const [newLogoIsLoaded, setNewLogoIsLoaded] = useState(false);
-
     const [formality, setFormality] = useState(2);
-
     const [mainColor, setMainColor] = useState("#000000");
-
     const [secondaryColor, setSecondaryColor] = useState("#000000");
-
     const [auxColor, setAuxColor] = useState("#000000");
-
     const [ratio, setRatio] = useState("")
-
     const [cta, setCta] = useState("")
 
     useEffect(() => {
@@ -191,11 +178,11 @@ export const Infopost = () => {
     );
 
     return (
-        <div id="infopost-main-wrapper">
-            <div id="infopost-wrapper" className="container">
+        <div className="infopost-main-wrapper">
+            <div className="container infopost-wrapper">
                 <h2 className="w-100 text-center">¡Crea tu composición!</h2>
                 <p className="text-center mt-3">Añade a continuación la información que quieras ver representada en tu diseño final.</p>
-                <form id="infopost-form" method="post" onSubmit={(e) => {handleSubmit(e)}}>
+                <form className="infopost-form" method="post" onSubmit={(e) => {handleSubmit(e)}}>
                     <div id="infopost-form-wrapper" className="form-group-1">
                         
                         <div id="image-uploader" className="image-uploader-card"> 
@@ -399,9 +386,9 @@ export const Infopost = () => {
                                         value={formality}
                                     />
                                     <div className="d-flex justify-content-between slider-tags-infopost">
-                                        <span>Formal</span>
-                                        <span>Semiformal</span>
                                         <span>Informal</span>
+                                        <span>Semiformal</span>
+                                        <span>Formal</span>
                                     </div>
                                 </div>    
                                 <OverlayTrigger placement="right" overlay={formalityTooltip}>

@@ -10,10 +10,7 @@ export const HomeHeader = () => {
     const location = useLocation()
 
     return (
-        <header
-            id="home-header"
-            className="sticky-top"
-        >
+        <header className="home-header sticky-top">
             <nav className="navbar navbar-expand-lg  px-3 d-flex justify-content-between">
                 <Logo />
                     <ul id="header-create-post-button" className="navbar-nav d-flex justify-content-end">

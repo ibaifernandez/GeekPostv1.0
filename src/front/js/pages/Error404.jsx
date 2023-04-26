@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/error-404.css";
 
 export const Error404 = () => (
-    <div id="wrapper404">
+    <div className="wrapper-404">
         <div className="noise"></div>
         <div className="overlay"></div>
         <div className="terminal">

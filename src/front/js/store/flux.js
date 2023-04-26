@@ -217,6 +217,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 ratio: data.post.ratio,
                 logo: data.post.logo,
                 id: data.post.id,
+                imageUrl: data.post.image_url
               },
             });
             return true;

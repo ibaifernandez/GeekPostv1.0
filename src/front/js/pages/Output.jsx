@@ -29,6 +29,7 @@ export const Output = () => {
   const [isTemplateLoaded, setIsTemplateLoaded] = useState(false);
   const [isTemplateExported, setIsTemplateExported] = useState(false);
   const [sharingUrl, setSharingUrl] = useState("");
+  const [downloadUrl, setDownloadUrl] = useState("")
 
   const getInfoPost = async () => {
     const infoPost = await actions.getInfoPost();
@@ -74,9 +75,10 @@ export const Output = () => {
               let imageData = canvas.toDataURL();
               localStorage.setItem("finale-composition", imageData);
               setIsTemplateExported(true);
+              setDownloadUrl(imageData);
 
               const apiUrl = "https://api.imgur.com/3/image";
-              const apiKey = process.env.IMGUR_URL;
+              const apiKey = process.env.IMGUR;
 
               const finalImageToBeUploaded = imageData.split(",")[1];
               const formData = new FormData();
@@ -123,7 +125,7 @@ export const Output = () => {
   const handleDownload = () => {
     const link = document.createElement("a");
     link.download = "Mi-diseño-GeekPost.png";
-    link.href = sharingUrl;
+    link.href = downloadUrl;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -197,7 +199,7 @@ export const Output = () => {
                 algún día.
               </div>
               <div className="d-flex">
-                <div className="mt-4 p-3 d-flex flex-column w-50 justify-content-between">
+                <div className="z-index-999 mt-4 p-3 d-flex flex-column w-50 justify-content-between">
                   <FacebookShareButton
                     url={sharingUrl}
                     className="d-flex justify-content-between align-items-center"

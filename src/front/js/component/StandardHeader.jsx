@@ -6,8 +6,7 @@ export const StandardHeader = () => {
 
 	return (
 		<header
-			id="main-header"
-			className="sticky-top"
+			className="main-header sticky-top"
 		>
 			<nav className="navbar navbar-expand-lg px-3 d-flex justify-content-between">
 				<Logo />
@@ -56,7 +55,7 @@ export const StandardHeader = () => {
 							</Link>
 						: <Link to={`/login`}>
 							<li className="nav-item">
-							 <button onClick={"cleanLocalStorage"} className="getstarted ms-auto">
+							 <button className="getstarted ms-auto">
 								Ingresar 🤩
 							</button> 
 							</li>

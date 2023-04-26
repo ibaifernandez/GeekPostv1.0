@@ -25,7 +25,7 @@ export const HomeSidebar = () => {
 					{store.user.logo ?
 						<img src={store.user.logo} alt={store.user.identity} width="50" height="50" className="rounded-circle me-2 user-profile-img" />
 					: <img src={anon} alt={store.user.firstName} width="50" height="50" className="rounded-circle me-2 user-profile-img" />} 
-					<h2 id="sidebar-username">{store.user.firstName ? `${store.user.firstName}` : null}</h2>
+					<h2 className="sidebar-username">{store.user.firstName ? `${store.user.firstName}` : null}</h2>
 				</div>
 				<hr />
 				<ul className="nav nav-pills flex-column mb-auto">

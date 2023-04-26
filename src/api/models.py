@@ -52,15 +52,9 @@ class Post(db.Model):
     main_color = db.Column(db.String(250), nullable=True)
     secondary_color = db.Column(db.String(250), nullable=True)
     aux_color = db.Column(db.String(250), nullable=True)
-    template = db.Column(db.String(250), nullable=True)
     ratio = db.Column(db.String(250), nullable=True)
     image_url = db.Column(db.String(250), nullable=True)
-    post1_1 = db.Column(db.String(250), nullable=True)
-    post9_16 = db.Column(db.String(250), nullable=True)
     contact_data = db.Column(db.String(250), nullable=True)
-    keyword1 = db.Column(db.String(250), nullable=True)
-    keyword2 = db.Column(db.String(250), nullable=True)
-    keyword3 = db.Column(db.String(250), nullable=True)
     cta = db.Column(db.String(250), nullable=True)
         
     def __repr__(self):
@@ -78,14 +72,8 @@ class Post(db.Model):
             "main_color": self.main_color,
             "secondary_color": self.secondary_color,
             "aux_color": self.aux_color,
-            "template": self.template,
             "ratio": self.ratio,
             "image_url": self.image_url,
-            "post1_1": self.post1_1,
-            "post9_16": self.post9_16,
             "contact_data": self.contact_data,
-            "keyword1": self.keyword1,
-            "keyword2": self.keyword2,
-            "keyword3": self.keyword3,     
             "cta": self.cta,     
         }

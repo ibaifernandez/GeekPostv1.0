@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../../img/geekpost-icon.png";
 
 export const Logo = () => (
-    <div id="logo" className="d-flex align-items-center logo">
+    <div className="d-flex align-items-center logo">
         <Link to="/"
             href="#"
             className="logo-link"

@@ -11,18 +11,12 @@
 
 .BotonP1 {
     position: relative;
-
     left: -50px;
 }
 
-
-
 .InputArchivos {
     width: 580px;
-
 }
-
-
 
 .TituloProfile {
     position: absolute;
@@ -32,34 +26,22 @@
 
 .ContenedorProfile {
     position: relative;
-
-
 }
 
 .InputProfile {
     width: 700px;
 }
 
-
-
 .ContenedorProfileG {
     width: 100%;
     height: 720px;
     position: relative;
-
     left: 130px;
 }
-
 
 .formularioProfile {
     position: absolute;
     top: 150px;
     left: 220px;
     width: 700px;
-}
-
-#home-profile {
-    /* margin-left:20%; */
-    flex: 1 0 auto;
-    overflow-y: auto;
 }

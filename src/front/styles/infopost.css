@@ -1,4 +1,4 @@
-#infopost-main-wrapper {
+.infopost-main-wrapper {
     background-image: url("../img/infopost-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -7,7 +7,7 @@
     position: relative;    
 }
 
-#infopost-wrapper {
+.infopost-wrapper {
     width:60%;
     min-width:450px;
     background: var(--white);
@@ -16,7 +16,7 @@
     padding:1.5rem;
 }
 
-#infopost-form {
+.infopost-form {
     width:100%;
 }
 

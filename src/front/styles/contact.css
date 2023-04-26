@@ -1,19 +1,19 @@
 .info {
-    border-top: 3px solid #47b2e4;
-    border-bottom: 3px solid #47b2e4;
+    border-top: 3px solid var(--blue);
+    border-bottom: 3px solid var(--blue);
     padding: 30px;
-    background: #fff;
+    background: var(--white);
     box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.1);
 }
   
 .contact .info i {
     font-size: 20px;
-    color: #47b2e4;
+    color: var(--blue);
     height:44px;
     width:44px;
     float: left;
     margin:15px 0;
-    background: #e7f5fb;
+    background: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +25,7 @@
     padding: 0 0 10px 60px;
     margin-bottom: 20px;
     font-size: 14px;
-    color: #6182ba;
+    color: var(--purple);
 }
   
 .contact .info .email p {
@@ -39,8 +39,8 @@
 .contact .info .social-links a {
     font-size: 18px;
     display: inline-block;
-    background: #333;
-    color: #fff;
+    background: var(--grey);
+    color: var(--white);
     line-height: 1;
     padding: 8px 0;
     border-radius: 50%;
@@ -52,23 +52,23 @@
 }
   
 .contact .info .social-links a:hover {
-    background: #47b2e4;
-    color: #fff;
+    background: var(--blue);
+    color: var(--white);
 }
   
 .contact .info .email:hover i,
 .contact .info .address:hover i,
 .contact .info .phone:hover i {
-    background: #47b2e4;
-    color: #fff;
+    background: var(--blue);
+    color: var(--white);
 }
   
 .contact .php-email-form {
     width: 100%;
-    border-top: 3px solid #47b2e4;
-    border-bottom: 3px solid #47b2e4;
+    border-top: 3px solid var(--blue);
+    border-bottom: 3px solid var(--blue);
     padding: 30px;
-    background: #fff;
+    background: var(--white);
     box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
 }
   
@@ -86,8 +86,8 @@
   
 .contact .php-email-form .error-message {
     display: none;
-    color: #fff;
-    background: #ed3c0d;
+    color: var(--white);
+    background: var(--fucsia);
     text-align: left;
     padding: 15px;
     font-weight: 600;
@@ -99,8 +99,8 @@
   
 .contact .php-email-form .sent-message {
     display: none;
-    color: #fff;
-    background: #18d26e;
+    color: var(--white);
+    background: var(--yellow);
     text-align: center;
     padding: 15px;
     font-weight: 600;
@@ -108,7 +108,7 @@
   
 .contact .php-email-form .loading {
     display: none;
-    background: #fff;
+    background: var(--white);
     text-align: center;
     padding: 15px;
 }
@@ -120,8 +120,8 @@
     width: 24px;
     height: 24px;
     margin: 0 10px -6px 0;
-    border: 3px solid #18d26e;
-    border-top-color: #eee;
+    border: 3px solid var(--yellow);
+    border-top-color: var(--white);
     animation: animate-loading 1s linear infinite;
 }
   
@@ -143,7 +143,7 @@
   
 .contact .php-email-form input:focus,
 .contact .php-email-form textarea:focus {
-    border-color: #47b2e4;
+    border-color: var(--blue);
 }
   
 .contact .php-email-form input {

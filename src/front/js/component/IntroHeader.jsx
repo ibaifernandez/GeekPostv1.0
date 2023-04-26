@@ -33,10 +33,7 @@ export const IntroHeader = () => {
 
     return (
         <header
-            style={{ background: `rgb(95, 57, 141, ${opacity})` }}
-            id="header"
-            className="sticky-top"
-        >
+            style={{ background: `rgb(95, 57, 141, ${opacity})` }} className="header sticky-top" >
             <nav className="navbar navbar-expand-lg px-3 d-flex justify-content-between">
                     <Logo />
                 <button

@@ -1,5 +1,5 @@
 import ibai from "../../img/3geeks/ibai-fernandez.jpeg";
-import sebas from "../../img/3geeks/sebastian-cardonas.jpg";
+import sebas from "../../img/3geeks/sebastian-cardona.jpeg";
 import sol from "../../img/3geeks/Sol-La-Banca.jpg";
 import harryStamper from "../../img/3geeks/harry-stamper.jpeg";
 

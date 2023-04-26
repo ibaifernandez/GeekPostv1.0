@@ -27,7 +27,7 @@ export const MainHero = () => {
     const handleShowModal = () => setShowModal(true);
   
     return (
-      <section id="hero" className="d-flex align-items-center p-3">
+      <section className="hero d-flex align-items-center p-3">
         <div className="container">
           <div className="row">
             <div

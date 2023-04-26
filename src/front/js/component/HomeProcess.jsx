@@ -12,7 +12,7 @@ export const HomeProcess = () => {
     const {actions} = useContext(Context)
 
     return (
-        <section id="home-process" className="process section-bg">
+        <section className="home-process process section-bg">
             <div className="container" data-aos="fade-up">
                 <div className="section-title-home">
                     <h2>Recuerda el «Proceso GeekPost»</h2>
