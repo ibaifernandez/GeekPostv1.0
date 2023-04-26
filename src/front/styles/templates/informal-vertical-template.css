@@ -39,20 +39,14 @@
 }
 
 .vit-imagecontainer {
-
     display: block;
     width: 370px;
     height: 370px;
     overflow: hidden;
-
-
-
     /* IE 9 */
-
     /* Safari and Chrome */
     position: relative;
     /* non-essential styling */
-
     z-index: 8;
     position: absolute;
     top: 150px;
@@ -66,23 +60,24 @@
     /* IE 9 */
     /* Safari and Chrome */
     position: absolute;
-
-
-
     z-index: 10;
 }
 
 #vit-h1 {
-    transform: rotate(45deg);
+    /* transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     /* IE 9 */
-    -webkit-transform: rotate(45deg);
+    /* -webkit-transform: rotate(45deg); */
     margin-left: -70px;
     margin-top: 20px;
     font-family: 'Oswald', Arial, Sans;
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: .05em;
+    position: relative;
+    top: 400px;
+    left: 40px;
+    color: white;
 }
 
 #vit-right-margin {
@@ -163,12 +158,12 @@
     width: 350px;
     margin-bottom: 100px;
     color: white;
+
 }
 
 #vit-cta p:first-child {
     padding: 15px;
     /* importante */
-
     color: var(--magnolia);
     margin: 10px;
 }

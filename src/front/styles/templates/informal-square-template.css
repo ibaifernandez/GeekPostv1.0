@@ -8,17 +8,22 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: relative;
     /* Importantísimo para que todo permanezca dentro del cuadrado */
-    width: 800px;
-    height: 800px;
+
     transform: scale(0.9);
     margin-top: -25px;
     letter-spacing: 3px;
 }
 
-#sit {
+.cuadrado {
     position: relative;
     width: 800px;
     height: 800px;
+
+}
+
+#sit {
+    position: relative;
+
     background: var(--magnolia);
 }
 
@@ -29,130 +34,155 @@
 
 #sit-top-margin-accent {
     position: absolute;
-    left: 150px;
-    height: 500px;
-    width: 500px;
-    border-left: 200px solid transparent;
-    border-right: 200px solid transparent;
+    left: 75px;
+    height: 125px;
+    width: 125px;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
     border-top: 300px solid;
+    opacity: 100%;
+    z-index: 5;
 }
 
 .sit-imagecontainer {
-    margin: 50px auto;
     display: block;
-    width: 500px;
-    height: 500px;
+    width: 370px;
+    height: 370px;
     overflow: hidden;
-    border-radius: 28px;
-    transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
     /* IE 9 */
-    -webkit-transform: rotate(45deg);
     /* Safari and Chrome */
     position: relative;
     /* non-essential styling */
-    -webkit-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, .05);
-    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, .05);
-    z-index: 1;
+    z-index: 8;
+    position: absolute;
+    top: 150px;
+    left: 40px;
 }
 
 .sit-imagecontainer img {
-    transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
+
+    width: 370px;
+    height: 370px;
     /* IE 9 */
-    -webkit-transform: rotate(-45deg);
     /* Safari and Chrome */
     position: absolute;
-    top: -220px;
-    left: -150px;
+    z-index: 10;
 }
 
 
 #sit-h1 {
-    transform: rotate(45deg);
+    /* transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     /* IE 9 */
-    -webkit-transform: rotate(45deg);
-    margin-left: -40px;
-    margin-top: 100px;
+    /* -webkit-transform: rotate(45deg); */
+    margin-left: -70px;
+    margin-top: 20px;
     font-family: 'Oswald', Arial, Sans;
-    font-size: 30px;
+    font-size: 15px;
     text-transform: uppercase;
     letter-spacing: .05em;
+    position: relative;
+    top: 400px;
+    left: 40px;
+    color: white;
 }
 
 #sit-right-margin {
     position: absolute;
-    top: 50px;
-    left: 0px;
-    width: 190px;
-    height: 350px;
+    top: 10px;
+    left: 10px;
+    width: 130px;
+    height: 200px;
     font-family: 'Oswald', Arial, Sans;
     font-size: 20px;
     text-transform: uppercase;
     letter-spacing: .05em;
     text-align: center;
+    padding-bottom: 10px;
 }
 
 #sit-offer-tag {
-    color: var(--magnolia);
-    font-size: 2rem;
+
+    font-size: 1rem;
     font-weight: bold;
-    margin-left: 650px;
-    padding-top: 10px;
+    margin-left: 350px;
+    padding-top: 55px;
     margin-right: 150px;
+}
+
+.identity {
+    font-size: 1rem;
+    height: auto;
+    position: absolute;
+    top: 100px;
+    color: white;
 }
 
 #sit-logo {
     width: 80px;
     height: 80px;
-    object-fit: cover
+    object-fit: cover;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
 }
 
 #sit-secondary-inner-wrapper {
     display: flex;
     align-items: center;
-    margin-top: 190px;
+    height: 30%;
+    border-color: #28262C;
+    padding-top: 150px;
 }
 
 #sit-secondary-text {
     color: var(--raisin-black);
     font-family: 'Oswald', Arial, Sans;
-    font-size: 20px;
-    margin-left: 300px;
+    font-size: 15px;
+    margin-left: 30px;
     padding-left: 15px;
+    width: 150px;
+    height: 200px;
+    margin-right: 50px;
+    margin-top: -50px;
+    margin-bottom: 20px;
 }
 
 #sit-cta {
-    margin-left: 75px;
+    margin-left: 40px;
     /* Importante */
     text-align: center;
     /* Importante */
+    width: 350px;
+    margin-bottom: 100px;
+    color: white;
 }
 
 #sit-cta p:first-child {
-    padding: 15px 30px;
+    padding: 15px;
     /* importante */
-    background: var(--resolution-blue);
-    color: var(--magnolia)
+    color: var(--magnolia);
+    margin: 10px;
 }
 
 #sit-cta p:first-child span {
     font-weight: bold;
+    width: 200px;
 }
 
 #sit-cta p:nth-child(2) {
-    margin-top: -10px;
+    margin-right: 20px;
     /* Importante */
 }
 
 #sit-triangle-margin {
     position: absolute;
-    left: 300px;
-    top: 100px;
-    height: 500px;
-    width: 500px;
-    border-top: 200px solid transparent;
-    border-bottom: 200px solid transparent;
+    top: 150px;
+    left: 150px;
+    height: 125px;
+    width: 125px;
+    border-top: 150px solid transparent;
+    border-bottom: 150px solid transparent;
     border-right: 300px solid;
 }
