@@ -75,6 +75,7 @@
 	"dependencies": {
 		"aos": "^2.3.4",
 		"bootstrap": "^5.2.3",
+		"emailjs-com": "^3.2.0",
 		"formik": "^2.2.9",
 		"html-to-image": "^1.11.11",
 		"html2canvas": "^1.4.1",

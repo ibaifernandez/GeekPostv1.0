@@ -1,60 +1,40 @@
 import React, { useState } from "react";
 import "../../styles/contact.css";
-import contactPic from "../../img/comparte.jpeg"
+import contactPic from "../../img/comparte.jpeg";
+import emailjs from "emailjs-com";
+import {Link} from "react-router-dom";
+
+const serviceId = process.env.EMAILJS_SERVICE_ID;
+const templateId = process.env.EMAILJS_TEMPLATE_ID;
+const publicKey = process.env.EMAILJS_PUBLIC_KEY;
 
 export const Contact = () => {
-    let url = process.env.BACKEND_URL;
-    const [formState, setFormState] = useState({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-        loading: false,
-        success: false,
-        error: null
-    });
+  const [sending, setSending] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    setFormState({ ...formState, loading: true });
-    fetch(url + "/api/contact", {
-      method: "POST",
-      body: new FormData(event.target),
-    })
-      .then((response) => {
-        if (response.ok) {
-          setFormState({
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
-            loading: false,
-            success: true,
-            error: null,
-          });
-        } else if (response.status === 400) {
-          setFormState({
-            ...formState,
-            loading: false,
-            error: "Por favor, rellena todos los campos requeridos",
-          });
-        } else {
-          response.text().then((errorMessage) => {
-            setFormState({
-              ...formState,
-              loading: false,
-              error: errorMessage,
-            });
-          });
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setSending(true);
+    emailjs
+      .sendForm(serviceId, templateId, e.target, publicKey)
+      .then(
+        (result) => {
+          console.log(result.text);
+          setSending(false);
+          setErrorMessage(null);
+          setSuccessMessage("Tu mensaje ha sido enviado. ¡Gracias!");
+          setFormSubmitted(true);
+        },
+        (error) => {
+          console.log(error.text);
+          setSending(false);
+          setErrorMessage(
+            "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo."
+          );
         }
-      })
-      .catch((error) => {
-        setFormState({
-          ...formState,
-          loading: false,
-          error: "Error de conexión, inténtalo de nuevo más tarde",
-        });
-      });
+      );
   };
 
   return (
@@ -69,115 +49,94 @@ export const Contact = () => {
         </div>
 
         <div className="row">
-          <div className="col-lg-5">
-            <div className="info d-flex flex-column justify-content-between">
-              <div className="contact-img-container">
-                <img className="contact-img" src={contactPic} alt="" />
+            <div className="col-lg-5">
+              <div className="info d-flex flex-column justify-content-between">
+                <div className="contact-img-container">
+                  <img className="contact-img" src={contactPic} alt="" />
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="col-lg-7 mt-5 mt-lg-0 d-flex align-items-middle">
-            <form
-              onSubmit={handleFormSubmit}
-              className="php-email-form"
-              noValidate
-            >
-              <div className="row">
-                <div className="form-group col-md-6">
-                  <label htmlFor="name">Tu nombre</label>
-                  <input
-                    type="text"
-                    name="name"
-                    className="form-control"
-                    id="name"
-                    value={formState.name}
-                    onChange={(e) =>
-                      setFormState({ ...formState, name: e.target.value })
-                    }
-                    required
-                  />
+        {formSubmitted ? (
+            <div className="col-lg-7 mt-5 mt-lg-0 d-flex align-items-middle">
+                <div className="contact-form-after success-message"><p className="">{successMessage}</p>
+                    <Link to="/home">
+                        <button className="mt-5 btn-send-contact-form">
+                            Volver al inicio
+                        </button>
+                    </Link>
                 </div>
-                <div className="form-group col-md-6">
-                  <label htmlFor="email">Tu correo electrónico</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    name="email"
-                    id="email"
-                    value={formState.email}
-                    onChange={(e) =>
-                      setFormState({ ...formState, email: e.target.value                })
-                }
+            </div>
+            ) : (
+            <div className="col-lg-7 mt-5 mt-lg-0 d-flex align-items-middle">
+                <form
+                    onSubmit={sendEmail}
+                    method="post"
+                    role="form"
+                    className="contact-form-before"
+                >
+                <div className="row">
+                  <div className="form-group col-md-6">
+                    <label htmlFor="name">Tu nombre</label>
+                    <input
+                      type="text"
+                      name="name"
+                      className="form-control"
+                      id="name"
+                      required
+                    />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label htmlFor="email">Tu correo electrónico</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      name="email"
+                      id="email"
+                      required
+                    />
+
+              </div>
+            </div>
+            <div className="form-group">
+              <label htmlFor="subject">Asunto</label>
+              <input
+                type="text"
+                className="form-control"
+                name="subject"
+                id="subject"
                 required
               />
             </div>
-          </div>
-          <div className="form-group">
-            <label htmlFor="subject">Asunto</label>
-            <input
-              type="text"
-              className="form-control"
-              name="subject"
-              id="subject"
-              value={formState.subject}
-              onChange={(e) =>
-                setFormState({ ...formState, subject: e.target.value })
-              }
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Mensaje</label>
-            <textarea
-              className="form-control"
-              name="message"
-              rows="5"
-              value={formState.message}
-              onChange={(e) =>
-                setFormState({ ...formState, message: e.target.value })
-              }
-              required
-            ></textarea>
-          </div>
-          <div className="text-center">
-            <div id="form-message"></div>
-            <button
-              type="submit"
-              className="btn-contact btn-primary py-2 px-4"
-              disabled={formState.loading}
-            >
-              {formState.loading ? (
-                <>
-                  <span
-                    className="spinner-border spinner-border-sm me-2"
-                    role="status"
-                    aria-hidden="true"
-                  ></span>
-                  Enviando...
-                </>
-              ) : (
-                "Enviar"
-              )}
-            </button>
-          </div>
-          {formState.success && (
-            <div className="mt-3">
-              <div className="alert alert-success">
-                Gracias por contactar con nosotros. Te responderemos lo más
-                pronto posible.
-              </div>
+            <div className="form-group">
+              <label htmlFor="message">Mensaje</label>
+              <textarea
+                className="form-control"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
             </div>
-          )}
-          {formState.error && (
-            <div className="mt-3">
-              <div className="alert alert-danger">{formState.error}</div>
+            <div className="text-center">
+              <button type="submit" className="btn btn-primary">
+                {sending ? (
+                  <span>
+                    <i className="me-3 fa fa-spinner fa-spin"></i> Enviando...
+                  </span>
+                ) : (
+                  "Enviar mensaje"
+                )}
+              </button>
             </div>
-          )}
-        </form>
+            {errorMessage && (
+              <div className="error-message">{errorMessage}</div>
+            )}
+          </form>
+          
+        </div>
+ )}
       </div>
-    </div>
+   
   </div>
 </section>
-)
-}
+);
+};

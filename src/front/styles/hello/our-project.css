@@ -8,14 +8,6 @@
   color: var(--purple);
 }
 
-.why-us .content p {
-  font-size: 1rem;
-}
-
-.why-us .accordion-list {
-  padding-bottom: 60px;
-}
-
 .why-us .accordion-list ul {
   padding: 0;
   list-style: none;
@@ -68,7 +60,5 @@
 }
 
 .our-project-img-container {
-  padding:0;
-overflow:hidden;
-margin:0;
+  overflow:hidden;
 }

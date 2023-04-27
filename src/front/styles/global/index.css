@@ -70,7 +70,7 @@ h6 {
 }
 
 p {
-    margin:0;
+    margin-bottom: 1rem;
 }
 
 a {
@@ -184,6 +184,12 @@ section {
 
 .section-title p {
     margin: 35px 100px 0;
+}
+
+@media (max-width:990px) {
+    .section-title p {
+        margin: 10px
+    }
 }
 
 /*--------------------------------------------------------------

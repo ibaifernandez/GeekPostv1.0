@@ -19,19 +19,20 @@ export const HomeSidebar = () => {
 	}
 
 	return (
-		<aside className="main">
-			<div id="home-sidebar" className="d-flex flex-column">
-				<div href="#" className="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-					{store.user.logo ?
-						<img src={store.user.logo} alt={store.user.identity} width="50" height="50" className="rounded-circle me-2 user-profile-img" />
-					: <img src={anon} alt={store.user.firstName} width="50" height="50" className="rounded-circle me-2 user-profile-img" />} 
-					<h2 className="sidebar-username">{store.user.firstName ? `${store.user.firstName}` : null}</h2>
-				</div>
+			<aside className="row w-100 p-0">
+				<div className="col-3 home-sidebar">
+					<div href="#" className="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+						{store.user.logo ?
+							<img src={store.user.logo} alt={store.user.identity} width="50" height="50" className="rounded-circle me-2 user-profile-img" />
+						: 
+							<img src={anon} alt={store.user.firstName} width="50" height="50" className="rounded-circle me-2 user-profile-img" />} 
+						<h2 className="sidebar-username">{store.user.firstName ? `${store.user.firstName}` : null}</h2>
+					</div>
 				<hr />
-				<ul className="nav nav-pills flex-column mb-auto">
+				<ul className="nav nav-pills flex-column">
 					<li className="nav-item">
 						<Link to="/home" className="nav-link sidebar-nav-link">
-								<i className="fa fa-home pe-3" aria-hidden="true" width="16" height="16"></i>
+							<i className="fa fa-home pe-3" aria-hidden="true" width="16" height="16"></i>
 								Escritorio
 						</Link>
 					</li>
@@ -43,19 +44,20 @@ export const HomeSidebar = () => {
 					</li>
 					<li className="nav-item">
 						<Link to="/my-compositions" className="nav-link sidebar-nav-link">
-								<i className="fa fa-brush pe-3" aria-hidden="true" width="16" height="16"></i>
-								<span id="my-compositions-link-home-sidebar">Mis composiciones</span>
+							<i className="fa fa-brush pe-3" aria-hidden="true" width="16" height="16"></i>
+							<span id="my-compositions-link-home-sidebar">Mis composiciones</span>
 						</Link>
 					</li>
 					<li className="nav-item">
-							<button className="nav-link sidebar-nav-link" onClick={handleLogout}>
-								<i className="fa fa-sign-out pe-3" aria-hidden="true" width="16" height="16"></i>
+						<button className="nav-link sidebar-nav-link" onClick={handleLogout}>
+							<i className="fa fa-sign-out pe-3" aria-hidden="true" width="16" height="16"></i>
 								Salir
-							</button>
-						
+						</button>
 					</li>
 				</ul>
+				
 				<hr />
+				
 				<ul className="list-inline ms-4">
 					<li className="list-inline-item me-4">
 						{store.user.facebookProfile ? <a href={store.user.facebookProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-facebook-square"></i></a> : null} 
@@ -69,5 +71,5 @@ export const HomeSidebar = () => {
 				</ul>
 			</div>
 		</aside>
-	)
+	)	
 };
