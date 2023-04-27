@@ -72,40 +72,40 @@ export const Output = () => {
             y: 6,
           })
             .then((canvas) => {
-              let imageData = canvas.toDataURL();
-              localStorage.setItem("finale-composition", imageData);
-              setIsTemplateExported(true);
-              setDownloadUrl(imageData);
+                let imageData = canvas.toDataURL();
+                localStorage.setItem("finale-composition", imageData);
+                setIsTemplateExported(true);
+                setDownloadUrl(imageData);
 
-              const apiUrl = "https://api.imgur.com/3/image";
-              const apiKey = process.env.IMGUR;
+                const apiUrl = process.env.IMGUR_URL;
+                const apiKey = process.env.IMGUR;
 
-              const finalImageToBeUploaded = imageData.split(",")[1];
-              const formData = new FormData();
-              formData.append("image", finalImageToBeUploaded);
+                const finalImageToBeUploaded = imageData.split(",")[1];
+                const formData = new FormData();
+                formData.append("image", finalImageToBeUploaded);
 
-              return fetch(apiUrl, {
-                method: "POST",
-                headers: {
-                  Authorization: "Client-ID " + apiKey,
-                },
-                body: formData,
-              });
-            })
-            .then((response) => {
-              if (response.ok) {
-                return response.json();
-              } else {
-                throw new Error("Error al subir imagen");
-              }
-            })
-            .then((data) => {
-              setSharingUrl(data.data.link);
-            })
-            .catch((error) => {
-              console.error(error);
-            });
-        };
+                return fetch(apiUrl, {
+                    method: "POST",
+                    headers: {
+                    Authorization: "Client-ID " + apiKey
+                    },
+                    body: formData,
+                });
+                })
+                .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Error al subir imagen");
+                }
+                })
+                .then((data) => {
+                setSharingUrl(data.data.link);
+                })
+                .catch((error) => {
+                console.error(error);
+                });
+            };
         handleDownloadImage();
       }
     }

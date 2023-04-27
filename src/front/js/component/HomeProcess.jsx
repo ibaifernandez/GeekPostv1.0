@@ -82,7 +82,7 @@ export const HomeProcess = () => {
                             </p>
                         </div>
                     </div>
-                    <div  className="d-flex justify-content-center">
+                    <div  className="d-flex justify-content-center mt-3">
                         <Link to="/infopost" id="create-post-button">
                             <button onClick={actions.cleanLocalStorage} className="btn-create-home">
                                 Crear 🖌

@@ -1,6 +1,6 @@
 .home-header {
     transition: all 0.5s;
-    z-index: 99;
+    z-index: 999;
     zoom: 0.95;
     background: var(--purple);
     flex: 0 0 auto;
@@ -30,7 +30,6 @@
 .section-title-home h2 {
     /* font-size: 32px; */
     /* font-weight: bold; */
-    text-transform: uppercase;
     margin-bottom: 20px;
     padding-bottom: 20px;
     position: relative;
@@ -64,7 +63,7 @@
 aside {
     min-height:600px;
     height:100vh;
-    position:absolute;
+    z-index:997;
     }
 
 .home-sidebar {
@@ -72,8 +71,7 @@ aside {
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding:2rem 0 0 2rem;
 }
 
 .sidebar-username {
@@ -83,18 +81,22 @@ aside {
     color: var(--white)
 }
 
-.sidebar-nav-link {
-    padding:1.35rem 0;
+.sidebar-hr {
+    margin: 2rem 0;
+    background-color: var(--white);
+    border: 0;
+    height:5px !important;
+    opacity: 1;
 }
 
-.main-wrapper {
-    position:relative;
-    margin-left:280px;
+.sidebar-nav-link {
+    padding:1.35rem 0;
 }
 
 .home-process {
     padding-top:25px;
     height:100%;
+    min-height:600px;
 }
 
 .home-process h2 {
@@ -102,8 +104,10 @@ aside {
 }
 
 .home-profile {
-    padding-top:25px;
-    height:100vh;
+    top:0;
+    min-height:600px;
+    height:100px;
+    overflow: scroll;
 }
 
 .btn-create-home {

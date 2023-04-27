@@ -19,8 +19,7 @@ export const HomeSidebar = () => {
 	}
 
 	return (
-			<aside className="row w-100 p-0">
-				<div className="col-3 home-sidebar">
+				<aside className="home-sidebar">
 					<div href="#" className="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 						{store.user.logo ?
 							<img src={store.user.logo} alt={store.user.identity} width="50" height="50" className="rounded-circle me-2 user-profile-img" />
@@ -28,7 +27,7 @@ export const HomeSidebar = () => {
 							<img src={anon} alt={store.user.firstName} width="50" height="50" className="rounded-circle me-2 user-profile-img" />} 
 						<h2 className="sidebar-username">{store.user.firstName ? `${store.user.firstName}` : null}</h2>
 					</div>
-				<hr />
+				<hr className="sidebar-hr"/>
 				<ul className="nav nav-pills flex-column">
 					<li className="nav-item">
 						<Link to="/home" className="nav-link sidebar-nav-link">
@@ -49,27 +48,26 @@ export const HomeSidebar = () => {
 						</Link>
 					</li>
 					<li className="nav-item">
-						<button className="nav-link sidebar-nav-link" onClick={handleLogout}>
+						<a className="nav-link sidebar-nav-link" onClick={handleLogout}>
 							<i className="fa fa-sign-out pe-3" aria-hidden="true" width="16" height="16"></i>
 								Salir
-						</button>
+						</a>
 					</li>
 				</ul>
 				
-				<hr />
+				<hr className="sidebar-hr"/>
 				
-				<ul className="list-inline ms-4">
-					<li className="list-inline-item me-4">
+				<ul className="list-inline ms-5">
+					<li className="list-inline-item me-5">
 						{store.user.facebookProfile ? <a href={store.user.facebookProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-facebook-square"></i></a> : null} 
 					</li>
-					<li className="list-inline-item me-4">
+					<li className="list-inline-item me-5">
 						{store.user.instagramProfile ? <a href={store.user.instagramProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-instagram"></i></a> : null} 
 					</li>
-					<li className="list-inline-item me-4">
+					<li className="list-inline-item me-5">
 						{store.user.tiktokProfile ? <a href={store.user.tiktokProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-tiktok"></i></a> : null} 
 					</li>
 				</ul>
-			</div>
 		</aside>
 	)	
 };

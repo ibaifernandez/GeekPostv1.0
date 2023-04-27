@@ -82,38 +82,40 @@ def update_account():
     user_query = User.query.filter_by(id=current_user).first()
 
     if user_query is None:
-        response_body = {"msg": "User doesn't exist."}
+        response_body = {"msg": "El usuario no existe."}
         return jsonify(response_body), 400    
 
-    if "email" in body:
-        user_query.email =  body["email"]
-    # if "password" in body:
-    #     user_query.password =  body["password"]
     if "name" in body:
-        user_query.name =  body["name"]
-    if "last_name" in body:
-        user_query.last_name =  body["last_namewebsite_url"]
-    if "contact_data" in body:
-        user_query.contact_data =  body["contact_data"]
-    if "facebook_profile" in body:
-        user_query.facebook_profile =  body["facebook_profile"]
-    if "instagram_profile" in body:
-        user_query.instagram_profile =  body["instagram_profile"]
-    if "tiktok_profile" in body:
-        user_query.instagram_profile =  body["tiktok_profile"]
+        user_query.first_name = body["name"]
+        print(body)
+    if "lastName" in body:
+        user_query.last_name = body["lastName"]
+        print(body)
+    if "email" in body:
+        user_query.email = body["email"]
+    if "contact" in body:
+        user_query.contact_data = body["contact"]
+    if "facebookProfile" in body:
+        user_query.facebook_profile = body["facebookProfile"]
+    if "instagramProfile" in body:
+        user_query.instagram_profile = body["instagramProfile"]
+        print(body)
+    if "tiktokProfile" in body:
+        user_query.tiktok_profile = body["tiktokProfile"]
     if "identity" in body:
-        user_query.identity =  body["identity"]
+        user_query.identity = body["identity"]
     if "logo" in body:
-        user_query.logo =  body["logo"]
+        user_query.logo = body["logo"]
     if "main_color" in body:
-        user_query.main_color =  body["main_color"]
+        user_query.main_color = body["main_color"]
     if "secondary_color" in body:
-        user_query.secondary_color =  body["secondary_color"]
+        user_query.secondary_color = body["secondary_color"]
     if "aux_color" in body:
-        user_query.aux_color =  body["aux_color"]
+        user_query.aux_color = body["aux_color"]
+    
     db.session.commit()
+    
     return jsonify({"msg": "You information has been updated"}), 200
-
 
 @api.route("/users", methods=["GET"])
 def get_users():

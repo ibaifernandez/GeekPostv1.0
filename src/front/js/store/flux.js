@@ -251,22 +251,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         elementsToRemove.forEach((element) => localStorage.removeItem(element));
       },
 
-      putProfile: async (
-        first_name,
-        last_name,
-        email,
-        contact_data,
-        facebook_profile,
-        instagram_profile,
-        tiktok_profile,
-        identity,
-        logo,
-        main_color,
-        secondary_color,
-        aux_color
-      ) => {
+      putProfile: async (profileData) => {
         let api = url + "/api/profile";
         try {
+          console.log("Datos que se envían al servidor: ", profileData); // Agregado
           const resp = await fetch(api, {
             method: "PUT",
             headers: {
@@ -274,24 +262,28 @@ const getState = ({ getStore, getActions, setStore }) => {
               Authorization: "Bearer " + localStorage.getItem("token"),
             },
             body: JSON.stringify({
-              first_name,
-              last_name,
-              email,
-              contact_data,
-              facebook_profile,
-              instagram_profile,
-              tiktok_profile,
-              identity,
-              logo,
-              main_color,
-              secondary_color,
-              aux_color,
+              name: profileData.name,
+              lastName: profileData.lastName,
+              email: profileData.email,
+              contact: profileData.contact,
+              facebookProfile: profileData.facebookProfile,
+              instagramProfile: profileData.instagramProfile,
+              tiktokProfile: profileData.tiktokProfile,
+              identity: profileData.identity,
+              logo: profileData.logo,
+              mainColor: profileData.mainColor,
+              secondaryColor: profileData.secondaryColor,
+              auxColor: profileData.auxColor,
             }),
           });
+          return resp;
         } catch (e) {
           console.log(e);
         }
       },
+      
+    
+      
     },
   };
 };
