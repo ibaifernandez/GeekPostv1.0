@@ -2,8 +2,7 @@ import React from "react";
 import "../../styles/profile.css";
 import { useEffect, useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { HexColorPicker } from "react-colorful";
-import { OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from "react-router-dom"
 
 export const MyProfile = () => {
@@ -90,11 +89,37 @@ export const MyProfile = () => {
         }
       };
 
-      const emailTooltip = (
-        <Tooltip id="email-tooltip">
-            Si quieres cambiar tu correo electrónico, por favor, ve a la seccón «Seguridad» de tu cuenta.
-        </Tooltip>
+        const EmailTooltip = (
+            <Tooltip id="email-tooltip">
+                Si quieres cambiar tu correo electrónico, por favor, ve a la seccón «Seguridad» de tu cuenta.
+            </Tooltip>
         );
+
+        const HexColors = (
+            <Tooltip id="hex-colors-tooltip">
+                El color hexadecimal es un sistema de notación numérica utilizado para representar colores en
+                la mayoría de las páginas web. Se basa en la combinación de tres valores numéricos: rojo, verde
+                y azul (RGB, por sus siglas en inglés).
+            </Tooltip>
+        );
+
+        function convertHexToRgb(hex) {
+            if (hex && hex.length === 7 && hex.startsWith("#")) {
+              const r = parseInt(hex.slice(1, 3), 16);
+              const g = parseInt(hex.slice(3, 5), 16);
+              const b = parseInt(hex.slice(5, 7), 16);
+              return `rgb(${r},${g},${b})`;
+            }
+            return "";
+        }
+          
+        function convertRgbToHex(rgb) {
+            if (rgb && rgb.length > 4 && rgb.startsWith("rgb(") && rgb.endsWith(")")) {
+                const [r, g, b] = rgb.slice(4, -1).split(",");
+                return `#${parseInt(r).toString(16).padStart(2, "0")}${parseInt(g).toString(16).padStart(2, "0")}${parseInt(b).toString(16).padStart(2, "0")}`;
+            }
+            return "";
+        }
 
     return (
         <section className="home-profile section-bg">
@@ -124,7 +149,7 @@ export const MyProfile = () => {
                                                 onBlur={() => {actions.putProfile(profileData)}}
                                                 // onBlur={handleBlur}
                                             />
-                                            {message === "success" ? <div>Guardado</div> : null}
+                                            {/* {message === "success" ? <div>Guardado</div> : null}  */}
                                         </div>
 
                                         <div className="form-group mb-3">
@@ -138,8 +163,8 @@ export const MyProfile = () => {
                                                 onBlur={() => {actions.putProfile(profileData)}}
                                                 />
                                         </div>
-
-                                        <OverlayTrigger placement="right" overlay={emailTooltip}>
+                                        
+                                        <OverlayTrigger placement="left" overlay={EmailTooltip}>
                                             <div className="form-group mb-3">
                                             <input
                                                 name="email"
@@ -219,68 +244,99 @@ export const MyProfile = () => {
                                     </div>
                                 </div>
 
-                                <div className="row d-flex align-items-center my-3">
+                                <div className="row d-flex align-items-center mt-3">
+                                    
                                     <div className="col-6">
                                         <div className="form-group mb-3">
-                                        <input
-                                            className="form-control-image-uploader"
-                                            type="file"
-                                            id="profile-logo-file"
-                                            accept="image/*"
-                                            onChange={(e) => handleLogoUpload(e)}
-                                />
+                                            <input
+                                                className="form-control-image-uploader"
+                                                type="file"
+                                                id="profile-logo-file"
+                                                accept="image/*"
+                                                onChange={(e) => handleLogoUpload(e)}
+                                            />
                                         </div>
                                     </div>
 
-                                        <div className="col-6 d-flex justify-content-center">
-                                            <div id="pre-uploaded-logo" className="">
-                                                { newLogoIsLoaded ? 
-                                                    (<div className="">
-                                                        <img src={logo} alt="" className="profile-logo" />
-                                                    </div>)
-                                                : store.user.logo ?
-                                                    (<div className="">
-                                                        <img src={store.user.logo} alt="" className="profile-logo" />
-                                                    </div>)                                
-                                                : null }
-                                            </div>
+                                    <div className="col-6 d-flex justify-content-center">
+                                        
+                                        <div id="pre-uploaded-logo" className="">
+                                            { newLogoIsLoaded ? 
+                                                (<div className="">
+                                                    <img src={logo} alt="" className="profile-logo" />
+                                                </div>)
+                                            : store.user.logo ?
+                                                (<div className="">
+                                                    <img src={store.user.logo} alt="" className="profile-logo" />
+                                                </div>)                                
+                                            : null }
                                         </div>
+                                    
                                     </div>
                                 
-                                <div id="color-pickers" className="row mt-3">
+                                </div>
+                                
+                                <div className="row mt-3">
+                                    <div className="col-11">Si tu marca tiene colores corporativos es más que probable que conozas sus 
+                                        <strong> códigos hexadecimales</strong>. En tal caso, puedes introducirlos aquí.
+                                    </div>
+                                    <div className="col-1 d-flex justify-content-center">
+                                        <OverlayTrigger placement="top" overlay={HexColors}>
+                                            <i className="fa-solid fa-circle-question fs-1 d-flex align-items-center color-purple"></i>
+                                        </OverlayTrigger>
+                                    </div>
+                                </div>
+                                <div className="row mt-4">
                                     <div className="col-4">
                                         <div className="form-group mb-3 w-100">
-                                            <label htmlFor="main-color" className="d-flex justify-content-center">Color principal</label>
-                                            <HexColorPicker
-                                                id="main-color"
-                                                className="w-100"
+                                            <label htmlFor="main-color" className="d-flex justify-content-center">
+                                                <strong>Color principal</strong>
+                                            </label>
+                                            <div className="form-group mb-3">
+                                            <input
                                                 name="main-color"
-                                                color={profileData.mainColor}
-                                                onChange={(e) => setMainColor(e.target.value)}/>
+                                                className="form-control border border-0 border-bottom mt-3"
+                                                placeholder="#rrggbb"
+                                                type="text"
+                                                value={profileData.mainColor}
+                                                onChange={(e) => setProfileData({...profileData, mainColor: e.target.value})}
+                                                onBlur={() => {actions.putProfile(profileData)}}
+                                            />
+                                        </div>
                                         </div>
                                     </div>
 
                                     <div className="col-4">
                                         <div className="form-group mb-3 w-100">
-                                            <label htmlFor="secondary-color" className="d-flex justify-content-center">Color secundario</label>
-                                            <HexColorPicker
-                                                id="secondary-color"
-                                                className="w-100"
+                                            <label htmlFor="secondary-color" className="d-flex justify-content-center">
+                                                <strong>Color secundario</strong>
+                                            </label>
+                                            <input
                                                 name="secondary-color"
-                                                color={profileData.secondaryColor}
-                                                onChange={(e) => setSecondaryColor(e.target.value)}/>
+                                                className="form-control border border-0 border-bottom mt-3"
+                                                placeholder="#rrggbb"
+                                                type="text"
+                                                value={profileData.secondaryColor}
+                                                onChange={(e) => setProfileData({...profileData, secondaryColor: e.target.value})}
+                                                onBlur={() => {actions.putProfile(profileData)}}
+                                            />
                                         </div>
                                     </div>
 
                                     <div className="col-4">
                                         <div className="form-group mb-3 w-100">
-                                            <label htmlFor="aux-color" className="d-flex justify-content-center">Color auxiliar</label>
-                                            <HexColorPicker
-                                                id="aux-color"
-                                                className="w-100"
+                                            <label htmlFor="aux-color" className="d-flex justify-content-center">
+                                                <strong>Color auxiliar</strong>
+                                            </label>
+                                            <input
                                                 name="aux-color"
-                                                color={profileData.auxColor}
-                                                onChange={(e) => setAuxColor(e.target.value)}/>
+                                                className="form-control border border-0 border-bottom mt-3"
+                                                placeholder="#rrggbb"
+                                                type="text"
+                                                value={profileData.auxColor}
+                                                onChange={(e) => setProfileData({...profileData, auxColor: e.target.value})}
+                                                onBlur={() => {actions.putProfile(profileData)}}
+                                            />
                                         </div>
                                     </div>
                                     

@@ -59,7 +59,7 @@ export const Contact = () => {
         {formSubmitted ? (
             <div className="col-lg-7 mt-5 mt-lg-0 d-flex align-items-middle">
                 <div className="contact-form-after success-message"><p className="">{successMessage}</p>
-                    <Link to="/home">
+                    <Link to="/">
                         <button className="mt-5 btn-send-contact-form">
                             Volver al inicio
                         </button>

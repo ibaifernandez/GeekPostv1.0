@@ -192,12 +192,13 @@
     transition: 1s;
     margin: 25px 0 0 0;
     color: var(--white);
-    border: 1px solid var(--white);
-    background: transparent;
+    border: 1px solid var(--purple);
+    background: var(--purple);
 }
 
 .btn-get-started:hover {
     background: var(--fucsia);
+    border: 1px solid var(--fucsia);
     color: var(--white);
 }
 
