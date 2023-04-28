@@ -57,14 +57,14 @@ export const HomeSidebar = () => {
 				
 				<hr className="sidebar-hr"/>
 				
-				<ul className="list-inline ms-5">
-					<li className="list-inline-item me-5">
+				<ul className="list-inline ms-sm-1 ms-md-3 ms-lg-5">
+					<li className="list-inline-item me-md-4 me-lg-5">
 						{store.user.facebookProfile ? <a href={store.user.facebookProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-facebook-square"></i></a> : null} 
 					</li>
-					<li className="list-inline-item me-5">
+					<li className="list-inline-item me-md-4 me-lg-5">
 						{store.user.instagramProfile ? <a href={store.user.instagramProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-instagram"></i></a> : null} 
 					</li>
-					<li className="list-inline-item me-5">
+					<li className="list-inline-item me-md-4 me-lg-5">
 						{store.user.tiktokProfile ? <a href={store.user.tiktokProfile} className="link-light" target="_blank"><i className="fs-3 fa-brands fa-tiktok"></i></a> : null} 
 					</li>
 				</ul>

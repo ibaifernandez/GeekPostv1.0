@@ -8,7 +8,7 @@ export const HomeLayout = () => (
     <>
         <HomeHeader />
         <div className="container-fluid m-0 p-0">
-            <div className="row">   
+            <div className="row g-0">   
                 <div className="col-3 m-0 p-0">   
                     <HomeSidebar />
                 </div>

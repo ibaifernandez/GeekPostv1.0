@@ -1,3 +1,35 @@
 .profile-logo {
     max-width:100px;
 }
+
+.security {
+    border: 2px solid var(--fucsia);
+    margin-top: 2rem;
+    align-items: center;
+    padding: 1rem;
+}
+
+.security p {
+    margin-bottom:0;
+    color: red;
+}
+
+.security p:first-child {
+    font-weight: 600;
+}
+
+.btn-access-security {
+    font-weight: 200;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    color: var(--white);
+    transition: 1s;
+    border: 1px solid var(--fucsia);
+    background: red;
+    padding: 1rem;
+}
+
+.btn-access-security:hover {
+    background: var(--fucsia);
+    color: var(--white);
+}

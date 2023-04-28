@@ -17,7 +17,7 @@ export const HomeProcess = () => {
                 <div className="section-title-home">
                     <h2>Recuerda el «Proceso GeekPost»</h2>
                 </div>
-                <div className="row mt-3">
+                <div className="row m-3">
                     <div
                         className="col-xl-3 col-md-6 d-flex align-items-stretch"
                         data-aos="zoom-in"

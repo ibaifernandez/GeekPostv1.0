@@ -68,10 +68,10 @@ def delete_account():
     if user_query:
         db.session.delete(user_query)
         db.session.commit()
-        return jsonify({"msg": "Your account has been deleted"}), 200
+        return jsonify({"msg": "Tu cuenta ha sido borrada"}), 200
     
     if not user_query:
-        return jsonify({"msg": "Not able to delete this account"}), 200
+        return jsonify({"msg": "No se puede borrar la cuenta."}), 400
 
 
 @api.route('/profile', methods=['PUT'])

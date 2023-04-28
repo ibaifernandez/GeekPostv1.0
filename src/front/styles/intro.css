@@ -26,8 +26,18 @@
   # Navigation Menu
   --------------------------------------------------------------*/
 
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+}
+
 .nav-item {
     margin-left: 3rem;
+    padding: 1rem 0;
 }
 
 .nav-link {
@@ -116,8 +126,8 @@
     }
 
     .nav-item {
-        text-align: right;
-        padding: 1rem 0 1rem 1rem;
+        padding: 1rem 0 1rem 0;
+        margin-left: 0;
     }
 
     .nav-link {

@@ -2,7 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../../front/styles/infopost.css";
 import { useNavigate } from "react-router-dom";
-import { OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+
 export const Infopost = () => {
 
     const { store, actions } = useContext(Context);

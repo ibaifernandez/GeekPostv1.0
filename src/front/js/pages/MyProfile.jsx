@@ -3,12 +3,28 @@ import "../../styles/profile.css";
 import { useEffect, useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { HexColorPicker } from "react-colorful";
+import { OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
+import { Link } from "react-router-dom"
 
 export const MyProfile = () => {
 
     const { store, actions } = useContext(Context);
-    const [profileData, setProfileData] = useState({});
+    const [profileData, setProfileData] = useState({
+        name: "",
+        lastName: "",
+        email: "",
+        contact: "",
+        facebookProfile: "",
+        instagramProfile: "",
+        tiktokProfile: "",
+        identity: "",
+        logo: "",
+        mainColor: "",
+        secondaryColor: "",
+        auxColor: ""
+    });
     const [newLogoIsLoaded, setNewLogoIsLoaded] = useState(false);
+    // const [message, setMessage] = useState("");
 
     useEffect(() => {
         actions.getUserDetails();
@@ -32,6 +48,11 @@ export const MyProfile = () => {
           auxColor: store.user.auxColor
         })
       }, [store.user]);
+
+    // const handleBlur = () => {
+    //     actions.putProfile()
+    //     setMessage("success")
+    // }
 
     const apiUrl = process.env.IMGUR_URL;
     const apiKey = process.env.IMGUR;
@@ -57,9 +78,10 @@ export const MyProfile = () => {
             if (response.ok) {
                 const data = await response.json();
                 const newLogoUrl = data.data.link;
+                console.log(newLogoUrl)
                 setNewLogoIsLoaded(true);
                 setLogo(newLogoUrl);
-                // actions.putProfile (logo)
+                actions.putProfile(logo)
             } else {
                 throw new Error('Fallo al cargar el logo.');
             }
@@ -67,7 +89,12 @@ export const MyProfile = () => {
           console.error(error);
         }
       };
-      
+
+      const emailTooltip = (
+        <Tooltip id="email-tooltip">
+            Si quieres cambiar tu correo electrónico, por favor, ve a la seccón «Seguridad» de tu cuenta.
+        </Tooltip>
+        );
 
     return (
         <section className="home-profile section-bg">
@@ -95,7 +122,9 @@ export const MyProfile = () => {
                                                 value={profileData.name}
                                                 onChange={(e) => setProfileData({...profileData, name: e.target.value})}
                                                 onBlur={() => {actions.putProfile(profileData)}}
+                                                // onBlur={handleBlur}
                                             />
+                                            {message === "success" ? <div>Guardado</div> : null}
                                         </div>
 
                                         <div className="form-group mb-3">
@@ -110,17 +139,18 @@ export const MyProfile = () => {
                                                 />
                                         </div>
 
-                                        <div className="form-group mb-3">
+                                        <OverlayTrigger placement="right" overlay={emailTooltip}>
+                                            <div className="form-group mb-3">
                                             <input
                                                 name="email"
                                                 placeholder="Dirección de correo electrónico"
                                                 className="form-control border border-0 border-bottom"
                                                 type="text"
-                                                defaultValue={store.user.email}
-                                                onChange={(e) => setProfileData({...profileData, email: e.target.value})}
-                                                onBlur={() => {actions.putProfile(profileData)}}
+                                                disabled
+                                                defaultValue={profileData.email}
                                             />
                                         </div>
+                                        </OverlayTrigger>
 
                                         <div className="form-group mb-3">
                                             <input
@@ -128,7 +158,7 @@ export const MyProfile = () => {
                                                 placeholder="Nº de WhatsApp, sitio web, dirección de email..."
                                                 className="form-control border border-0 border-bottom"
                                                 type="text"
-                                                defaultValue={store.user.contact}
+                                                value={profileData.contact}
                                                 onChange={(e) => setProfileData({...profileData, contact: e.target.value})}
                                                 onBlur={() => {actions.putProfile(profileData)}}
                                             />
@@ -144,7 +174,7 @@ export const MyProfile = () => {
                                                 placeholder="https://facebook.com/[tu nombre de usuario o fan page]"
                                                 className="form-control border border-0 border-bottom"
                                                 type="text"
-                                                defaultValue={store.user.facebookProfile}
+                                                value={profileData.facebookProfile}
                                                 onChange={(e) => setProfileData({...profileData, facebookProfile: e.target.value})}
                                                 onBlur={() => {actions.putProfile(profileData)}}
                                             />
@@ -156,7 +186,7 @@ export const MyProfile = () => {
                                                 placeholder="https://instagram.com/[tu usuario de Instagram]"
                                                 className="form-control border border-0 border-bottom"
                                                 type="text"
-                                                defaultValue={store.user.instagramProfile}
+                                                value={profileData.instagramProfile}
                                                 onChange={(e) => setProfileData({...profileData, instagramProfile: e.target.value})}
                                                 onBlur={() => {actions.putProfile(profileData)}}
                                             />
@@ -180,7 +210,7 @@ export const MyProfile = () => {
                                                 placeholder="El nombre de tu marca"
                                                 className="form-control border border-0 border-bottom"
                                                 type="text"
-                                                defaultValue={store.user.identity}
+                                                value={profileData.identity}
                                                 onChange={(e) => setProfileData({...profileData, identity: e.target.value})}
                                                 onBlur={() => {actions.putProfile(profileData)}}
                                             />
@@ -218,60 +248,62 @@ export const MyProfile = () => {
                                     </div>
                                 
                                 <div id="color-pickers" className="row mt-3">
-                                    <div className="col-3">
+                                    <div className="col-4">
                                         <div className="form-group mb-3 w-100">
                                             <label htmlFor="main-color" className="d-flex justify-content-center">Color principal</label>
                                             <HexColorPicker
                                                 id="main-color"
                                                 className="w-100"
                                                 name="main-color"
-                                                color={store.user.mainColor}
+                                                color={profileData.mainColor}
                                                 onChange={(e) => setMainColor(e.target.value)}/>
                                         </div>
                                     </div>
 
-                                    <div className="col-1"></div>
-
-
-                                    <div className="col-3">
+                                    <div className="col-4">
                                         <div className="form-group mb-3 w-100">
                                             <label htmlFor="secondary-color" className="d-flex justify-content-center">Color secundario</label>
                                             <HexColorPicker
                                                 id="secondary-color"
                                                 className="w-100"
                                                 name="secondary-color"
-                                                color={store.user.secondaryColor}
+                                                color={profileData.secondaryColor}
                                                 onChange={(e) => setSecondaryColor(e.target.value)}/>
                                         </div>
                                     </div>
 
-                                    <div className="col-1"></div>
-
-
-                                    <div className="col-3">
+                                    <div className="col-4">
                                         <div className="form-group mb-3 w-100">
                                             <label htmlFor="aux-color" className="d-flex justify-content-center">Color auxiliar</label>
                                             <HexColorPicker
                                                 id="aux-color"
                                                 className="w-100"
                                                 name="aux-color"
-                                                color={store.user.auxColor}
+                                                color={profileData.auxColor}
                                                 onChange={(e) => setAuxColor(e.target.value)}/>
                                         </div>
                                     </div>
                                     
-                                    <div className="col-1"></div>
                                 
                                 </div>
 
                                     
                             </form>
 
-                                    <div className="d-flex justify-content-center">
-                                        <button type="reset" className="btn-delete ">
-                                            Borrar todo <i className="fa-regular fa-trash-can"></i>
-                                        </button>
-                                    </div>
+                            <div className="row security">
+                                <div className="col-8 pe-3">
+                                    <p>¿Quieres cambiar tu correo, tu contraseña o borrar tu cuenta?</p>
+                                    <p>Por favor, accede a la sección de Seguridad.</p>
+                                </div>
+                                <div className="col-4 d-flex justify-content-center">
+                                    <Link to="/seguridad">
+                                        <button className="btn-access-security">Seguridad</button>
+                                    </Link>
+                                </div>
+                                
+
+                            </div>
+
                         </div>
                         </div>
                     </div>
