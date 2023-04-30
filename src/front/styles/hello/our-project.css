@@ -19,7 +19,7 @@
 
 .why-us .accordion-list li {
   padding: 20px 20px 20px 0;
-  background: var(--white);
+  background: var(--yellow);
   border-radius: 4px;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .why-us .accordion-list span {
-  color: var(--blue);
+  color: var(--purple);
   font-weight: 600;
   font-size: 18px;
   padding-right: 10px;
@@ -61,4 +61,8 @@
 
 .our-project-img-container {
   overflow:hidden;
+}
+
+.our-project-chevron {
+  color: var(--purple);
 }

@@ -62,7 +62,7 @@ export const AboutUs = () => (
             rellenar cuatro o cinco líneas de texto...
           </p>
           <div className="d-flex justify-content-center">
-            <Link to="/hello" className="btn-learn-more ms-0">
+            <Link to="/hola" className="btn-learn-more ms-0">
               Conócenos 🤓
             </Link>
           </div>

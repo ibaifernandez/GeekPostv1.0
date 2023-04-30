@@ -33,3 +33,22 @@
     background: var(--fucsia);
     color: var(--white);
 }
+
+.success-message {
+    background-color: var(--fucsia);
+    color: var(--white);
+    padding: .5rem;
+}
+
+.fade-out {
+    animation: fadeOut 2.05s ease-in-out;
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }

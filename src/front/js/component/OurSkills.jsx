@@ -39,7 +39,7 @@ export const OurSkills = () => (
     <section id="skills" className="skills section-pure-white-bg p-5">
         <div className="container-fluid" data-aos="fade-up">
             <div className="row justify-content-center align-items-center">
-                <div className="col-lg-6">
+                <div className="col-lg-6 p-0">
                     <div className="content" data-aos="fade-left" data-aos-delay="100">
                         <h4>{titleText}</h4>
                         <p className="mt-3">{bodyText} <a href="https://4geeksacademy.com/es/inicio" target="_blank">4Geeks</a>. A saber:</p>
@@ -48,7 +48,7 @@ export const OurSkills = () => (
                         </div>
                     </div>
                     </div>
-                    <div className="col-lg-6 our-project-img-container ps-5 " data-aos="zoom-in" data-aos-delay="150">
+                    <div className="col-lg-6 our-project-img-container ps-lg-5 ps-md-0 pt-lg-0 pt-md-3" data-aos="zoom-in" data-aos-delay="150">
                         <img src={disena} alt="GeekPost-images" />
                     </div>
                             </div>

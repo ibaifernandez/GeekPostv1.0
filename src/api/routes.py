@@ -7,12 +7,8 @@ from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 import json
 import os
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+from sqlalchemy.exc import IntegrityError
 
-password = os.environ.get("PASSSMTP")
-print(password)
 api = Blueprint('api', __name__)
 
 @api.route("/login", methods=["POST"])
@@ -106,16 +102,21 @@ def update_account():
         user_query.identity = body["identity"]
     if "logo" in body:
         user_query.logo = body["logo"]
-    if "main_color" in body:
-        user_query.main_color = body["main_color"]
-    if "secondary_color" in body:
-        user_query.secondary_color = body["secondary_color"]
-    if "aux_color" in body:
-        user_query.aux_color = body["aux_color"]
+    if "mainColor" in body:
+        user_query.main_color = body["mainColor"]
+    if "secondaryColor" in body:
+        user_query.secondary_color = body["secondaryColor"]
+    if "auxColor" in body:
+        user_query.aux_color = body["auxColor"]
     
-    db.session.commit()
+    try:
+        db.session.commit()
+    except IntegrityError as e:
+        db.session.rollback()
+        response_body = {"msg": "Error en la actualización: el valor del campo de contacto ya está en uso por otro usuario."}
+        return jsonify(response_body), 400
     
-    return jsonify({"msg": "You information has been updated"}), 200
+    return jsonify({"msg": "Campo actualizado."}), 200
 
 @api.route("/users", methods=["GET"])
 def get_users():

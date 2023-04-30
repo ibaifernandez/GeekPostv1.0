@@ -58,7 +58,7 @@ export const Footer = () => (
                 &copy; {new Date().getFullYear()} GeekPost. All rights reserved.
             </div>
             <div className="credits">
-                Engineered by <Link to="/hello"> 3GeeksAt4Geeks</Link>
+                Engineered by <Link to="/hola"> 3GeeksAt4Geeks</Link>
             </div>
         </div>    
     </footer>

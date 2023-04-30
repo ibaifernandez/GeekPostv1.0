@@ -18,7 +18,7 @@ export const NeedHelp = () => (
                     ))}
                 </div>
                 <div className="col-lg-3 cta-btn-container text-center">
-                    <Link to="/help" className="cta-btn align-middle">
+                    <Link to="/ayuda" className="cta-btn align-middle">
                         ¡Ayuda! 😱
                     </Link>
                 </div>

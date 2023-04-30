@@ -5,11 +5,11 @@ export const OurProject = () => {
     return (
         <section id="why-us" className="why-us section-bg p-5">
             <div className="container" data-aos="fade-up">
-                <div className="row">
+                <div className="row p-3">
                     <div className="col-lg-6 our-project-img-container ps-0" data-aos="zoom-in" data-aos-delay="150">
                         <img src={comparte} alt="GeekPost-images" />
                     </div>
-                    <div className="col-lg-6 ps-3">
+                    <div className="col-lg-6 ps-lg-5 ps-md-0 pt-lg-0 pt-md-3">
                         <div className="content">
                             <h3>GeekPost: una solución a tu medida</h3>
                             <p className="lead mt-3">
@@ -27,7 +27,7 @@ export const OurProject = () => {
 
 const OurProjectAccordion = () => {
     return (
-        <div className="our-project-accordion accordion-list">
+        <div className="our-project-accordion accordion-list mt-md-4">
             <ul>
                 <li>
                     <AccordionItem
@@ -63,7 +63,7 @@ const AccordionItem = ({ title, content, index }) => {
     };
 
     return (
-        <div className="section-bg p-3">
+        <div className="p-3">
         <div className="d-flex w-100 align-items-center">
             <span className="me-3">{index}</span>
             <div className="d-flex w-100 justify-content-between">
@@ -76,8 +76,8 @@ const AccordionItem = ({ title, content, index }) => {
                 >
                 <span>{title}</span>
                     {isOpen ?
-                        <i className="fa-solid fa-chevron-right"></i>
-                    :   <i className="fa-solid fa-chevron-down"></i>}
+                        <i className="our-project-chevron fa-solid fa-chevron-right"></i>
+                    :   <i className="our-project-chevron fa-solid fa-chevron-down"></i>}
                 </a>
             </div>
         </div>

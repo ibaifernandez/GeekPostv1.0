@@ -113,11 +113,8 @@ export const Output = () => {
 
     useEffect(() => {
         if (sharingUrl !== "" && store.infoPost.id) {
-        actions
-            .addUrlToPost(store.infoPost.id, sharingUrl)
-            .then((response) => {
-            console.log(response);
-            })
+            actions.addUrlToPost(store.infoPost.id, sharingUrl)
+            // .then((response) => {})
             .catch((error) => console.log(error));
         }
     }, [sharingUrl]);

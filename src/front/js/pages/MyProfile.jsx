@@ -1,13 +1,12 @@
-import React from "react";
-import "../../styles/profile.css";
-import { useEffect, useContext, useState } from "react";
-import { Context } from "../store/appContext";
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import React from "react"
+import "../../styles/profile.css"
+import { useEffect, useContext, useState } from "react"
+import { Context } from "../store/appContext"
+import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 
 export const MyProfile = () => {
-
-    const { store, actions } = useContext(Context);
+    const { store, actions } = useContext(Context)
     const [profileData, setProfileData] = useState({
         name: "",
         lastName: "",
@@ -21,105 +20,107 @@ export const MyProfile = () => {
         mainColor: "",
         secondaryColor: "",
         auxColor: ""
-    });
-    const [newLogoIsLoaded, setNewLogoIsLoaded] = useState(false);
-    // const [message, setMessage] = useState("");
+    })
+    const [newLogoIsLoaded, setNewLogoIsLoaded] = useState(false)
+    const [updateStatus, setUpdateStatus] = useState("")
+    const [message, setMessage] = useState("")
+    const [fadeOut, setFadeOut] = useState(false)
 
     useEffect(() => {
-        actions.getUserDetails();
-        console.log("store.user")
-        console.log(store.user)
-      }, []);
+        actions.getUserDetails()
+    }, [])
       
       useEffect(() => {
         setProfileData({
-          name: store.user.firstName,
-          lastName: store.user.lastName,
-          email: store.user.email,
-          contact: store.user.contact,
-          facebookProfile: store.user.facebookProfile,
-          instagramProfile: store.user.instagramProfile,
-          tiktokProfile: store.user.tiktokProfile,
-          identity: store.user.identity,
-          logo: store.user.logo,
-          mainColor: store.user.mainColor,
-          secondaryColor: store.user.secondaryColor,
-          auxColor: store.user.auxColor
+            name: store.user.firstName,
+            lastName: store.user.lastName,
+            email: store.user.email,
+            contact: store.user.contact,
+            facebookProfile: store.user.facebookProfile,
+            instagramProfile: store.user.instagramProfile,
+            tiktokProfile: store.user.tiktokProfile,
+            identity: store.user.identity,
+            logo: store.user.logo,
+            mainColor: store.user.mainColor,
+            secondaryColor: store.user.secondaryColor,
+            auxColor: store.user.auxColor
         })
-      }, [store.user]);
+    }, [store.user])
 
-    // const handleBlur = () => {
-    //     actions.putProfile()
-    //     setMessage("success")
-    // }
-
-    const apiUrl = process.env.IMGUR_URL;
-    const apiKey = process.env.IMGUR;
-
-    const handleLogoUpload = async (e) => {
-        e.preventDefault();
-        const input = document.getElementById('profile-logo-file');
-        const file = input.files[0];
-        if (!file) return;
-      
-        const formData = new FormData();
-        formData.append('image', file);
-      
+    const handleBlur = async () => {
         try {
-          const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-              Authorization: "Client-ID " + apiKey
-            },
-            body: formData,
-          });
-      
-            if (response.ok) {
-                const data = await response.json();
-                const newLogoUrl = data.data.link;
-                console.log(newLogoUrl)
-                setNewLogoIsLoaded(true);
-                setLogo(newLogoUrl);
-                actions.putProfile(logo)
+            const resp = await actions.putProfile(profileData)
+            if (resp.msg === "Campo actualizado.") {
+                setUpdateStatus("success")
+                setMessage(resp.msg)
+                setTimeout(() => {
+                    setFadeOut(true)
+                    setUpdateStatus("")
+                }, 2000)
             } else {
-                throw new Error('Fallo al cargar el logo.');
+                setUpdateStatus("error")
+                setMessage(resp.msg)
+                setTimeout(() => {
+                    setFadeOut(true)
+                    setUpdateStatus("")
+                }, 2000)
             }
         } catch (error) {
-          console.error(error);
+            console.log(error)
         }
-      };
+    }
 
-        const EmailTooltip = (
-            <Tooltip id="email-tooltip">
-                Si quieres cambiar tu correo electrónico, por favor, ve a la seccón «Seguridad» de tu cuenta.
-            </Tooltip>
-        );
+    const apiUrl = process.env.IMGUR_URL
+    const apiKey = process.env.IMGUR
 
-        const HexColors = (
-            <Tooltip id="hex-colors-tooltip">
-                El color hexadecimal es un sistema de notación numérica utilizado para representar colores en
-                la mayoría de las páginas web. Se basa en la combinación de tres valores numéricos: rojo, verde
-                y azul (RGB, por sus siglas en inglés).
-            </Tooltip>
-        );
+    const handleLogoUpload = async (e) => {
+        e.preventDefault()
 
-        function convertHexToRgb(hex) {
-            if (hex && hex.length === 7 && hex.startsWith("#")) {
-              const r = parseInt(hex.slice(1, 3), 16);
-              const g = parseInt(hex.slice(3, 5), 16);
-              const b = parseInt(hex.slice(5, 7), 16);
-              return `rgb(${r},${g},${b})`;
+        const input = document.getElementById('profile-logo-file')
+        const file = input.files[0]
+        if (!file) return
+
+        const formData = new FormData()
+        formData.append('image', file)
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    Authorization: "Client-ID " + apiKey
+                },
+                body: formData,
+            })
+                if (response.ok) {
+                    const data = await response.json()
+                    const newLogoUrl = data.data.link
+                    setProfileData((prevData) => ({
+                        ...prevData,
+                        logo: newLogoUrl
+                    }))
+                    setNewLogoIsLoaded(true)
+                    actions.putProfile({ ...profileData, logo: newLogoUrl })
+                } else {
+                    throw new Error('Fallo al cargar el logo.')
+                }
+            } catch (error) {
+                console.error(error)
             }
-            return "";
         }
-          
-        function convertRgbToHex(rgb) {
-            if (rgb && rgb.length > 4 && rgb.startsWith("rgb(") && rgb.endsWith(")")) {
-                const [r, g, b] = rgb.slice(4, -1).split(",");
-                return `#${parseInt(r).toString(16).padStart(2, "0")}${parseInt(g).toString(16).padStart(2, "0")}${parseInt(b).toString(16).padStart(2, "0")}`;
-            }
-            return "";
-        }
+
+    const EmailTooltip = (
+        <Tooltip id="email-tooltip">
+            Si quieres cambiar tu correo electrónico, por favor, ve a la seccón «Seguridad» de tu cuenta.
+        </Tooltip>
+    )
+
+    const HexColors = (
+        <Tooltip id="hex-colors-tooltip">
+            El color hexadecimal es un sistema de notación numérica utilizado para representar colores en
+            la mayoría de las páginas web. Se basa en la combinación de tres valores numéricos: rojo, verde
+            y azul (RGB, por sus siglas en inglés).
+        </Tooltip>
+    )
 
     return (
         <section className="home-profile section-bg">
@@ -146,10 +147,8 @@ export const MyProfile = () => {
                                                 autoComplete="name"
                                                 value={profileData.name}
                                                 onChange={(e) => setProfileData({...profileData, name: e.target.value})}
-                                                onBlur={() => {actions.putProfile(profileData)}}
-                                                // onBlur={handleBlur}
+                                                onBlur={handleBlur}
                                             />
-                                            {/* {message === "success" ? <div>Guardado</div> : null}  */}
                                         </div>
 
                                         <div className="form-group mb-3">
@@ -160,21 +159,21 @@ export const MyProfile = () => {
                                                 type="text"
                                                 value={profileData.lastName}
                                                 onChange={(e) => setProfileData({...profileData, lastName: e.target.value})}
-                                                onBlur={() => {actions.putProfile(profileData)}}
+                                                onBlur={handleBlur}
                                                 />
                                         </div>
                                         
                                         <OverlayTrigger placement="left" overlay={EmailTooltip}>
                                             <div className="form-group mb-3">
-                                            <input
-                                                name="email"
-                                                placeholder="Dirección de correo electrónico"
-                                                className="form-control border border-0 border-bottom"
-                                                type="text"
-                                                disabled
-                                                defaultValue={profileData.email}
-                                            />
-                                        </div>
+                                                <input
+                                                    name="email"
+                                                    placeholder="Dirección de correo electrónico"
+                                                    className="form-control border border-0 border-bottom"
+                                                    type="text"
+                                                    disabled
+                                                    defaultValue={profileData.email}
+                                                />
+                                            </div>
                                         </OverlayTrigger>
 
                                         <div className="form-group mb-3">
@@ -185,10 +184,9 @@ export const MyProfile = () => {
                                                 type="text"
                                                 value={profileData.contact}
                                                 onChange={(e) => setProfileData({...profileData, contact: e.target.value})}
-                                                onBlur={() => {actions.putProfile(profileData)}}
+                                                onBlur={handleBlur}
                                             />
                                         </div>
-
                                     </div>
 
                                     <div className="col-lg-6 pe-3">
@@ -201,7 +199,7 @@ export const MyProfile = () => {
                                                 type="text"
                                                 value={profileData.facebookProfile}
                                                 onChange={(e) => setProfileData({...profileData, facebookProfile: e.target.value})}
-                                                onBlur={() => {actions.putProfile(profileData)}}
+                                                onBlur={handleBlur}
                                             />
                                         </div>
 
@@ -213,7 +211,7 @@ export const MyProfile = () => {
                                                 type="text"
                                                 value={profileData.instagramProfile}
                                                 onChange={(e) => setProfileData({...profileData, instagramProfile: e.target.value})}
-                                                onBlur={() => {actions.putProfile(profileData)}}
+                                                onBlur={handleBlur}
                                             />
                                         </div>
 
@@ -225,7 +223,7 @@ export const MyProfile = () => {
                                                 type="text"
                                                 value={profileData.tiktokProfile}
                                                 onChange={(e) => setProfileData({...profileData, tiktokProfile: e.target.value})}
-                                                onBlur={() => {actions.putProfile(profileData)}}
+                                                onBlur={handleBlur}
                                             />
                                         </div>
 
@@ -237,15 +235,30 @@ export const MyProfile = () => {
                                                 type="text"
                                                 value={profileData.identity}
                                                 onChange={(e) => setProfileData({...profileData, identity: e.target.value})}
-                                                onBlur={() => {actions.putProfile(profileData)}}
+                                                // onBlur={() => {actions.putProfile(profileData)}}
+                                                onBlur={handleBlur}
                                             />
                                         </div>
-
+                                    </div>
+                                </div>
+                                <div className="row g-0">
+                                    <div className="col-12">
+                                        {updateStatus === "success" ?
+                                            <div className={`success-message ${fadeOut ? 'fade-out' : ''}`}>
+                                                {message}
+                                            </div>
+                                        :
+                                        updateStatus === "error" ?
+                                            <div className={`success-message ${fadeOut ? 'fade-out' : ''}`}>
+                                                {message}
+                                            </div>
+                                        :
+                                            null
+                                        } 
                                     </div>
                                 </div>
 
                                 <div className="row d-flex align-items-center mt-3">
-                                    
                                     <div className="col-6">
                                         <div className="form-group mb-3">
                                             <input
@@ -259,11 +272,10 @@ export const MyProfile = () => {
                                     </div>
 
                                     <div className="col-6 d-flex justify-content-center">
-                                        
                                         <div id="pre-uploaded-logo" className="">
                                             { newLogoIsLoaded ? 
                                                 (<div className="">
-                                                    <img src={logo} alt="" className="profile-logo" />
+                                                    <img src={profileData.logo} alt="" className="profile-logo" />
                                                 </div>)
                                             : store.user.logo ?
                                                 (<div className="">
@@ -271,9 +283,7 @@ export const MyProfile = () => {
                                                 </div>)                                
                                             : null }
                                         </div>
-                                    
                                     </div>
-                                
                                 </div>
                                 
                                 <div className="row mt-3">
@@ -286,6 +296,7 @@ export const MyProfile = () => {
                                         </OverlayTrigger>
                                     </div>
                                 </div>
+
                                 <div className="row mt-4">
                                     <div className="col-4">
                                         <div className="form-group mb-3 w-100">
@@ -293,16 +304,16 @@ export const MyProfile = () => {
                                                 <strong>Color principal</strong>
                                             </label>
                                             <div className="form-group mb-3">
-                                            <input
-                                                name="main-color"
-                                                className="form-control border border-0 border-bottom mt-3"
-                                                placeholder="#rrggbb"
-                                                type="text"
-                                                value={profileData.mainColor}
-                                                onChange={(e) => setProfileData({...profileData, mainColor: e.target.value})}
-                                                onBlur={() => {actions.putProfile(profileData)}}
-                                            />
-                                        </div>
+                                                <input
+                                                    name="main-color"
+                                                    className="form-control border border-0 border-bottom mt-3"
+                                                    placeholder="#rrggbb"
+                                                    type="text"
+                                                    value={profileData.mainColor}
+                                                    onChange={(e) => setProfileData({...profileData, mainColor: e.target.value})}
+                                                    onBlur={handleBlur}
+                                                    />
+                                            </div>
                                         </div>
                                     </div>
 
@@ -318,7 +329,7 @@ export const MyProfile = () => {
                                                 type="text"
                                                 value={profileData.secondaryColor}
                                                 onChange={(e) => setProfileData({...profileData, secondaryColor: e.target.value})}
-                                                onBlur={() => {actions.putProfile(profileData)}}
+                                                onBlur={handleBlur}
                                             />
                                         </div>
                                     </div>
@@ -335,17 +346,13 @@ export const MyProfile = () => {
                                                 type="text"
                                                 value={profileData.auxColor}
                                                 onChange={(e) => setProfileData({...profileData, auxColor: e.target.value})}
-                                                onBlur={() => {actions.putProfile(profileData)}}
+                                                onBlur={handleBlur}
                                             />
                                         </div>
                                     </div>
-                                    
-                                
                                 </div>
-
-                                    
                             </form>
-
+                            
                             <div className="row security">
                                 <div className="col-8 pe-3">
                                     <p>¿Quieres cambiar tu correo, tu contraseña o borrar tu cuenta?</p>
@@ -356,14 +363,11 @@ export const MyProfile = () => {
                                         <button className="btn-access-security">Seguridad</button>
                                     </Link>
                                 </div>
-                                
-
                             </div>
-
-                        </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        );
-    };
+            </div>
+        </section>
+    );
+};
