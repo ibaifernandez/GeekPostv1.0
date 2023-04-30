@@ -16,36 +16,38 @@ export const InformalSquareTemplate = () => {
     return (
             
         <div id="sit-wrapper">
-            <div id="vsft">
-                <div id="sit-main-wrapper">
+            <div id="vsft" className="cuadrado">
+                <div id="sit-main-wrapper"style={{ backgroundColor: `${mainColor}` }}>
                     <div id="sit-top-margin">
                         <div id="sit-top-margin-accent"></div>
                     </div>
                     <div id="sit-main-inner-wrapper">
                         <div id="sit-offer-tag">{price}</div>
                         <div id="sit-texts-wrapper">
-                            <div class="sit-imagecontainer">
+                            <div class="sit-imagecontainer rounded-circle">
                                 <img src={localStorage.mainImage} />
                             </div>
                             <div id="sit-main-text">
-                                <h1 id="sit-h1">{mainText}</h1>
+                                <h1 id="sit-h1"className="text-center" >{mainText}</h1>
                             </div>
                         </div>
                     </div>
-                    <div id="sit-triangle-margin" style={{backgroundColor:`${mainColor}`}}></div>
+                    <div id="sit-triangle-margin" ></div>
                 </div>
                 <div id="sit-right-margin" style={{backgroundColor:`${auxColor}`}}>
                     <div>
                         <img id="sit-logo" src={localStorage.logo} />
                     </div>
-                    <div id="identity">
+                    
+                </div>
+                <div id="sit-right-margin">
+                <div className="identity">
                         {identity}
                     </div>
                 </div>
-                <div id="sit-right-margin"></div>
-                <div id="sit-secondary-wrapper">
-                    <div id="sit-secondary-inner-wrapper" style={{backgroundColor:`${secondaryColor}`}}>
-                        <div id="sit-cta">
+                <div id="sit-secondary-wrapper"style={{ backgroundColor: `${secondaryColor}` }}>
+                    <div id="sit-secondary-inner-wrapper" >
+                        <div id="sit-cta"style={{ backgroundColor: `${auxColor}` }} >
                             <p>{contactData}</p>
                         </div>
                         <p id="sit-secondary-text">

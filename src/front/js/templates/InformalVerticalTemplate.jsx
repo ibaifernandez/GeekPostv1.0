@@ -30,13 +30,13 @@ export const InformalVerticalTemplate = () => {
             <div id="vit-top-margin-accent"></div>
           </div>
           <div id="vit-main-inner-wrapper">
-            <div id="vit-offer-tag"> {price}</div>
+            <div id="vit-offer-tag" className="text-center"> {price}</div>
             <div id="vit-texts-wrapper">
               <div class="vit-imagecontainer rounded-circle">
                 <img src={localStorage.mainImage} />
               </div>
               <div id="vit-main-text">
-                <h1 id="vit-h1">{mainText}</h1>
+                <h1 id="vit-h1" className="text-center">{mainText}</h1>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@ export const InformalVerticalTemplate = () => {
         <div id="vit-right-margin" style={{ backgroundColor: `${auxColor}` }}>
           <div className="identity">{identity}</div>
         </div>
-        <div id="vit-right-margin"></div>
+       
         <div
           id="vit-secondary-wrapper"
           style={{ backgroundColor: `${secondaryColor}` }}
