@@ -17,7 +17,7 @@ export const HomeProcess = () => {
                 <div className="section-title-home">
                     <h2>Recuerda el «Proceso GeekPost»</h2>
                 </div>
-                <div className="row mt-3">
+                <div className="row m-3">
                     <div
                         className="col-xl-3 col-md-6 d-flex align-items-stretch"
                         data-aos="zoom-in"
@@ -82,7 +82,7 @@ export const HomeProcess = () => {
                             </p>
                         </div>
                     </div>
-                    <div  className="d-flex justify-content-center">
+                    <div  className="d-flex justify-content-center mt-3">
                         <Link to="/infopost" id="create-post-button">
                             <button onClick={actions.cleanLocalStorage} className="btn-create-home">
                                 Crear 🖌

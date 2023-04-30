@@ -7,12 +7,8 @@ from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 import json
 import os
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+from sqlalchemy.exc import IntegrityError
 
-password = os.environ.get("PASSSMTP")
-print(password)
 api = Blueprint('api', __name__)
 
 @api.route("/login", methods=["POST"])
@@ -68,10 +64,10 @@ def delete_account():
     if user_query:
         db.session.delete(user_query)
         db.session.commit()
-        return jsonify({"msg": "Your account has been deleted"}), 200
+        return jsonify({"msg": "Tu cuenta ha sido borrada"}), 200
     
     if not user_query:
-        return jsonify({"msg": "Not able to delete this account"}), 200
+        return jsonify({"msg": "No se puede borrar la cuenta."}), 400
 
 
 @api.route('/profile', methods=['PUT'])
@@ -82,38 +78,45 @@ def update_account():
     user_query = User.query.filter_by(id=current_user).first()
 
     if user_query is None:
-        response_body = {"msg": "User doesn't exist."}
+        response_body = {"msg": "El usuario no existe."}
         return jsonify(response_body), 400    
 
-    if "email" in body:
-        user_query.email =  body["email"]
-    # if "password" in body:
-    #     user_query.password =  body["password"]
     if "name" in body:
-        user_query.name =  body["name"]
-    if "last_name" in body:
-        user_query.last_name =  body["last_namewebsite_url"]
-    if "contact_data" in body:
-        user_query.contact_data =  body["contact_data"]
-    if "facebook_profile" in body:
-        user_query.facebook_profile =  body["facebook_profile"]
-    if "instagram_profile" in body:
-        user_query.instagram_profile =  body["instagram_profile"]
-    if "tiktok_profile" in body:
-        user_query.instagram_profile =  body["tiktok_profile"]
+        user_query.first_name = body["name"]
+        print(body)
+    if "lastName" in body:
+        user_query.last_name = body["lastName"]
+        print(body)
+    if "email" in body:
+        user_query.email = body["email"]
+    if "contact" in body:
+        user_query.contact_data = body["contact"]
+    if "facebookProfile" in body:
+        user_query.facebook_profile = body["facebookProfile"]
+    if "instagramProfile" in body:
+        user_query.instagram_profile = body["instagramProfile"]
+        print(body)
+    if "tiktokProfile" in body:
+        user_query.tiktok_profile = body["tiktokProfile"]
     if "identity" in body:
-        user_query.identity =  body["identity"]
+        user_query.identity = body["identity"]
     if "logo" in body:
-        user_query.logo =  body["logo"]
-    if "main_color" in body:
-        user_query.main_color =  body["main_color"]
-    if "secondary_color" in body:
-        user_query.secondary_color =  body["secondary_color"]
-    if "aux_color" in body:
-        user_query.aux_color =  body["aux_color"]
-    db.session.commit()
-    return jsonify({"msg": "You information has been updated"}), 200
-
+        user_query.logo = body["logo"]
+    if "mainColor" in body:
+        user_query.main_color = body["mainColor"]
+    if "secondaryColor" in body:
+        user_query.secondary_color = body["secondaryColor"]
+    if "auxColor" in body:
+        user_query.aux_color = body["auxColor"]
+    
+    try:
+        db.session.commit()
+    except IntegrityError as e:
+        db.session.rollback()
+        response_body = {"msg": "Error en la actualización: el valor del campo de contacto ya está en uso por otro usuario."}
+        return jsonify(response_body), 400
+    
+    return jsonify({"msg": "Campo actualizado."}), 200
 
 @api.route("/users", methods=["GET"])
 def get_users():
@@ -189,41 +192,3 @@ def add_image_url_to_post(id):
     db.session.commit()
 
     return jsonify({"msg": "URL added to post's registry successfully."}), 200
-
-@api.route('/contact', methods=['POST'])
-def handle_contact_form():
-    # Verificar que se ha recibido toda la información necesaria
-    required_fields = ['name', 'email', 'subject', 'message']
-    missing_fields = [field for field in required_fields if field not in request.form]
-    if missing_fields:
-        error_message = f"Los campos requeridos {', '.join(missing_fields)} no se han enviado"
-        return error_message, 400
-
-    name = request.form['name']
-    email = request.form['email']
-    subject = request.form['subject']
-    message = request.form['message']
-
-    # Configurar el mensaje de correo electrónico
-    message_body = f"Nombre: {name}\nCorreo electrónico: {email}\nAsunto: {subject}\nMensaje: {message}"
-    msg = MIMEMultipart()
-    msg['From'] = 'ibai600@gmail.com'
-    msg['To'] = 'info@ibaifernandez.com'
-    msg['Cc'] = 'info@aglaya.biz'
-    msg['Subject'] = "Nuevo mensaje de contacto en GeekPost"
-    msg.attach(MIMEText(message_body, 'plain'))
-
-    # Enviar el correo electrónico
-    try:
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.ehlo()
-        server.starttls()
-        server.login("ibai600@gmail.com", password)
-        text = msg.as_string()
-        server.sendmail('ibai600@gmail.com', ['info@ibaifernandez.com', 'info@aglaya.biz'], text)
-        server.quit()
-    except smtplib.SMTPException as e:
-        # Manejar errores de conexión o envío de correo electrónico
-        return f'Error al enviar el mensaje: {str(e)}', 500
-
-    return 'Mensaje recibido', 200

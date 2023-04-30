@@ -1,47 +1,54 @@
-.fotoAvatar {
-    border-radius: 50%;
-    height: 120px;
-    object-fit: cover;
-    object-position: center;
-    width: 120px;
-    position: absolute;
-    top: 0px;
-    left: 430px;
+.profile-logo {
+    max-width:100px;
 }
 
-.BotonP1 {
-    position: relative;
-    left: -50px;
+.security {
+    border: 2px solid var(--fucsia);
+    margin-top: 2rem;
+    align-items: center;
+    padding: 1rem;
 }
 
-.InputArchivos {
-    width: 580px;
+.security p {
+    margin-bottom:0;
+    color: red;
 }
 
-.TituloProfile {
-    position: absolute;
-    top: 200px;
-    left: 650px;
+.security p:first-child {
+    font-weight: 600;
 }
 
-.ContenedorProfile {
-    position: relative;
+.btn-access-security {
+    font-weight: 200;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    color: var(--white);
+    transition: 1s;
+    border: 1px solid var(--fucsia);
+    background: red;
+    padding: 1rem;
 }
 
-.InputProfile {
-    width: 700px;
+.btn-access-security:hover {
+    background: var(--fucsia);
+    color: var(--white);
 }
 
-.ContenedorProfileG {
-    width: 100%;
-    height: 720px;
-    position: relative;
-    left: 130px;
+.success-message {
+    background-color: var(--fucsia);
+    color: var(--white);
+    padding: .5rem;
 }
 
-.formularioProfile {
-    position: absolute;
-    top: 150px;
-    left: 220px;
-    width: 700px;
-}
+.fade-out {
+    animation: fadeOut 2.05s ease-in-out;
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }

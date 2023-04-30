@@ -56,90 +56,90 @@ import { Download } from "./pages/Download.jsx";
 const App = () => {
   const basename = process.env.BASENAME || "";
 
-  return (
-    <div>
-      <Helmet>
-        <meta name="title" content="GeekPost" />
-        <meta
-          name="description"
-          content="Semi-automatic system for social media post creation."
-        />
-        <meta
-          name="keywords"
-          content="Social Media, React, HTML, CSS, JavaScript, Python, Flask, SQLAlchemy, Front-End Development, Back-end Development, Full-Stack Development, Software Engineer, Full-Stack Engineer, Web Developer, Web Development, Web Design, Full-Stack Web Developer, Node.js, SQL"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta name="language" content="Spanish" />
-        <meta
-          name="author"
-          content="Ibai Fernández, Sol La Banca & Sebastián Cardona"
-        />
+    return (
+        <>
+        <Helmet>
+            <meta name="title" content="GeekPost" />
+            <meta
+            name="description"
+            content="Semi-automatic system for social media post creation."
+            />
+            <meta
+            name="keywords"
+            content="Social Media, React, HTML, CSS, JavaScript, Python, Flask, SQLAlchemy, Front-End Development, Back-end Development, Full-Stack Development, Software Engineer, Full-Stack Engineer, Web Developer, Web Development, Web Design, Full-Stack Web Developer, Node.js, SQL"
+            />
+            <meta name="robots" content="index, follow" />
+            <meta name="language" content="Spanish" />
+            <meta
+            name="author"
+            content="Ibai Fernández, Sol La Banca & Sebastián Cardona"
+            />
 
-        <meta property="og:locale" content="es_ES" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="GeekPost" />
-        <meta property="og:url" content="#" />
-        <meta property="og:site_name" content="GeekPost" />
-        <meta
-          property="og:description"
-          content="Semi-automatic system for social media post creation."
-        />
-        <meta property="og:image" content="../img/geekpost-iso.png" />
+            <meta property="og:locale" content="es_ES" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="GeekPost" />
+            <meta property="og:url" content="#" />
+            <meta property="og:site_name" content="GeekPost" />
+            <meta
+            property="og:description"
+            content="Semi-automatic system for social media post creation."
+            />
+            <meta property="og:image" content="../img/geekpost-iso.png" />
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="GeekPost" />
-        <meta
-          name="twitter:description"
-          content="Semi-automatic system for social media post creation."
-        />
-        <meta name="twitter:image" content="../img/geekpost-iso.png" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="GeekPost" />
+            <meta
+            name="twitter:description"
+            content="Semi-automatic system for social media post creation."
+            />
+            <meta name="twitter:image" content="../img/geekpost-iso.png" />
 
-        <title> GeekPost </title>
+            <title> GeekPost </title>
 
-        <link rel="icon" href="/geekpost-icon.png" />
-      </Helmet>
-      <BrowserRouter basename={basename}>
-        <ScrollToTop />
-        <ScrollToTopButton />
-        <Routes>
-          {/* Ruta para Error [sin header ninguno]*/}
-          <Route path="*" element={<Error404 />} />
-          <Route path="download" element={<Download />} />
-          {/* Rutas para previsualizar templates [sin header ninguno] */}
-          <Route path="formal-square-template" element={<FormalSquareTemplate />} />
-          <Route path="formal-vertical-template" element={<FormalVerticalTemplate />} />
-          <Route path="semiformal-square-template" element={<SemiFormalSquareTemplate />} />
-          <Route path="semiformal-vertical-template" element={<SemiFormalVerticalTemplate />} />
-          <Route path="informal-square-template" element={<InformalSquareTemplate />} />
-          <Route path="informal-vertical-template" element={<InformalVerticalTemplate />} />
-          {/* Rutas de la vista <Intro /> [con «IntroHeader»] */}
-          <Route path="/" element={<IntroLayout />}>
-            <Route index element={<Intro />} />
-          </Route>
-          {/* Rutas de las vistas «extra» de la aplicación [con «Standard Header»] */}
-          <Route path="/" element={<Layout />}>
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/hola" element={<Hello />} />
-            <Route path="/documentacion" element={<Docs />} />
-            <Route path="/ayuda" element={<Help />} />
-            <Route path="/contacto" element={<Contact />} />
-            <Route path="/politica-de-privacidad" element={<POP />} />
-            <Route path="/terminos-y-condiciones" element={<TOS />} />
-            <Route path="/branding" element={<Branding />} />
-          </Route>
-          {/* Rutas de las vistas posteriores al registro e ingreso [con «Home Header»] */}
-          <Route path="/" element={<HomeLayout />}>
-            <Route path="/home" element={<Home />} />
-            <Route path="/my-profile" element={<MyProfile />} />
-            <Route path="/my-compositions" element={<MyCompositions />} />
-            <Route path="/infopost" element={<Infopost />} />
-            <Route path="/output" element={<Output />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+            <link rel="icon" href="/geekpost-icon.png" />
+        </Helmet>
+        <BrowserRouter basename={basename}>
+            <ScrollToTop />
+            <ScrollToTopButton />
+            <Routes>
+            {/* Ruta para Error [sin header ninguno]*/}
+                <Route path="download" element={<Download />} />
+            {/* Rutas para previsualizar templates [sin header ninguno] */}
+                <Route path="formal-square-template" element={<FormalSquareTemplate />} />
+                <Route path="formal-vertical-template" element={<FormalVerticalTemplate />} />
+                <Route path="semiformal-square-template" element={<SemiFormalSquareTemplate />} />
+                <Route path="semiformal-vertical-template" element={<SemiFormalVerticalTemplate />} />
+                <Route path="informal-square-template" element={<InformalSquareTemplate />} />
+                <Route path="informal-vertical-template" element={<InformalVerticalTemplate />} />
+            {/* Rutas de la vista <Intro /> [con «IntroHeader»] */}
+                <Route path="/" element={<IntroLayout />}>
+                    <Route index element={<Intro />} />
+                </Route>
+            {/* Rutas de las vistas «extra» de la aplicación [con «Standard Header»] */}
+                <Route path="/" element={<Layout />}>
+                    <Route path="*" element={<Error404 />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/hola" element={<Hello />} />
+                    <Route path="/documentacion" element={<Docs />} />
+                    <Route path="/ayuda" element={<Help />} />
+                    <Route path="/contacto" element={<Contact />} />
+                    <Route path="/politica-de-privacidad" element={<POP />} />
+                    <Route path="/terminos-y-condiciones" element={<TOS />} />
+                    <Route path="/branding" element={<Branding />} />
+                </Route>
+            {/* Rutas de las vistas posteriores al registro e ingreso [con «Home Header»] */}
+                <Route path="/" element={<HomeLayout />}>
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/my-profile" element={<MyProfile />} />
+                    <Route path="/my-compositions" element={<MyCompositions />} />
+                    <Route path="/infopost" element={<Infopost />} />
+                    <Route path="/output" element={<Output />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    </>
+    );
 };
 
 export default injectContext(App);

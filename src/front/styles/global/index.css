@@ -70,7 +70,7 @@ h6 {
 }
 
 p {
-    margin:0;
+    margin-bottom: 1rem;
 }
 
 a {
@@ -92,8 +92,8 @@ input:focus-visible {
     padding-right:0px;
 }
 
-.w-12 {
-    width:12%;
+hr:not([size]) {
+    height: 1px;
 }
 
 /*--------------------------------------------------------------
@@ -184,6 +184,12 @@ section {
 
 .section-title p {
     margin: 35px 100px 0;
+}
+
+@media (max-width:990px) {
+    .section-title p {
+        margin: 10px
+    }
 }
 
 /*--------------------------------------------------------------
@@ -429,6 +435,7 @@ section {
     font-size: 14px;
     background: var(--blue);
     flex: 0 0 auto;
+    z-index:998;
 }
 
 .footer-newsletter {

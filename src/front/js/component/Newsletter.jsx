@@ -60,7 +60,6 @@ export const Newsletter = () => {
             }),
             })
             .then((response) => {
-                // console.log(response);
                 if (response.status === 201) {
                     setSubscriptionMessage(subscriptionMessages.SUBSCRIBE_SUCCESS)
                 } else if (response.status === 200) {

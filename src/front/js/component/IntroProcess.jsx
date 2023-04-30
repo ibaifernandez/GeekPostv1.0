@@ -32,7 +32,7 @@ export const IntroProcess = () => (
         {steps.map((step, index) => (
           <Step key={index} {...step} />
         ))}
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center mt-3">
         <AuthButton isLoggedIn={localStorage.token} />
         </div>
       </div>
