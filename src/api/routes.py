@@ -8,6 +8,7 @@ from flask_jwt_extended import JWTManager
 import json
 import os
 from sqlalchemy.exc import IntegrityError
+from werkzeug.exceptions import Forbidden
 
 api = Blueprint('api', __name__)
 
